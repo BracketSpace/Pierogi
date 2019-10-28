@@ -1,0 +1,8 @@
+.build-excludes
+.git
+.gitignore
+.gitattributes
+.editorconfig
+phpcs.xml.dist
+composer.json
+composer.lock
