@@ -29,7 +29,7 @@
 	<arg name="parallel" value="8"/>
 
 	<!-- Only check the PHP, CSS and SCSS files. JS files are checked separately with JSCS and JSHint. -->
-	<arg name="extensions" value="php,css,scss/css"/>
+	<arg name="extensions" value="php"/>
 
 	<!-- Check all files in this directory and the directories below it. -->
 	<file>.</file>
@@ -66,6 +66,11 @@
 		</properties>
 	</rule>
 
+	<rule ref="WordPress-Extra"><!-- Includes WordPress-Core -->
+		<!-- Getting error on placeholder files, index.php -->
+		<exclude name="PEAR.Functions.FunctionCallSignature" />
+	</rule>
+
 	<!-- Set the minimum supported WP version. This is used by several sniffs.
 		 The minimum version set here should be in line with the minimum WP version
 		 as set in the "Requires at least" tag in the readme.txt file. -->
@@ -98,7 +103,7 @@
 	-->
 
 
-	<config name="testVersion" value="5.2-99.0"/>
+	<config name="testVersion" value="5.6-"/>
 	<rule ref="PHPCompatibility">
 		<!-- Whitelist PHP native classes, interfaces, functions and constants which
 			 are back-filled by WP.

@@ -1,1 +1,8 @@
-/vendor/
+*.log
+*.lock
+package-lock.json
+style.css
+
+vendor
+node_modules
+dist
