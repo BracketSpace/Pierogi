@@ -114,7 +114,6 @@
 }
 
 @mixin font-size( $size, $line-height: null ) {
-	font-size: #{$size}px;
 	font-size: rem-calc($size);
 
 	@if ( type-of( $line-height ) == "number" ) {
