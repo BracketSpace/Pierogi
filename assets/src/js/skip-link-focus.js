@@ -5,19 +5,21 @@
  *
  * Learn more: https://git.io/vWdr2
  */
-( function() {
-	var isIe = /(trident|msie)/i.test( navigator.userAgent );
+
+const skipLink = () => {
+	// eslint-disable-next-line no-undef
+	const isIe = /(trident|msie)/i.test( navigator.userAgent );
 
 	if ( isIe && document.getElementById && window.addEventListener ) {
-		window.addEventListener( 'hashchange', function() {
-			var id = location.hash.substring( 1 ),
-				element;
+		window.addEventListener( 'hashchange', () => {
+			// eslint-disable-next-line no-undef
+			const id = location.hash.substring( 1 );
 
 			if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
 				return;
 			}
 
-			element = document.getElementById( id );
+			const element = document.getElementById( id );
 
 			if ( element ) {
 				if ( ! ( /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) ) {
@@ -28,4 +30,6 @@
 			}
 		}, false );
 	}
-} )();
+};
+
+skipLink();
