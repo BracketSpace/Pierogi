@@ -3,12 +3,16 @@ const path = require( 'path' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 const StyleLintPlugin = require( 'stylelint-webpack-plugin' );
 const ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
+const ExtraneousFileCleanupPlugin = require( 'webpack-extraneous-file-cleanup-plugin' );
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 
 module.exports = ( env, argv ) => {
 	return {
 		mode: argv.mode,
 		entry: {
 			main: './assets/src/js/main.js',
+			style: './assets/src/scss/main.scss',
+			'style-editor': './assets/src/scss/editor.scss',
 		},
 		output: {
 			path: path.resolve( __dirname, 'assets/dist' ),
@@ -70,7 +74,7 @@ module.exports = ( env, argv ) => {
 		},
 		plugins: [
 			...defaultConfig.plugins,
-			new ExtractTextPlugin( '../../style.css' ),
+			new ExtractTextPlugin( '../../[name].css' ),
 			new ImageminPlugin( {
 				test: /\.(jpe?g|png|gif|svg)$/i,
 			} ),
@@ -78,6 +82,12 @@ module.exports = ( env, argv ) => {
 				new StyleLintPlugin( {
 					configFile: '.stylelintrc',
 					context: 'assets/src/scss',
+				} ),
+			] : [] ),
+			...( process.env.NODE_ENV === 'production' ? [
+				new CleanWebpackPlugin(),
+				new ExtraneousFileCleanupPlugin( {
+					extensions: [ '.js', '.php' ],
 				} ),
 			] : [] ),
 		],

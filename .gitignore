@@ -2,6 +2,7 @@
 *.lock
 package-lock.json
 style.css
+style-editor.css
 
 vendor
 node_modules
