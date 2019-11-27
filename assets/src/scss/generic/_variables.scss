@@ -1,0 +1,30 @@
+/**
+ * Variables
+ */
+
+$font-primary: "Lato", sans-serif;
+
+$colors: (
+	yellow: #ffc33a,
+	yellow-light: #ffd983,
+	pink: #ff8787,
+	black: #000,
+	gray: (
+		#21252a,
+		#343a40,
+		#495057,
+		#717680,
+		#adb5bd,
+		#dfdfdf,
+	),
+	cream: #fdefef,
+	light: #f7f7f7,
+	white: #fff,
+);
+
+$breakpoints: (
+	xs: 480,
+	sm: 768,
+	md: 992,
+	lg: 1200,
+);

@@ -10,3 +10,7 @@ rules:
     - declarations
     - rules
   order/properties-alphabetical-order: true
+  color-named:
+    - never
+    - ignore:
+        - inside-function
