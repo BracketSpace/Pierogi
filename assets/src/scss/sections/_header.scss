@@ -212,10 +212,6 @@
 				text-align: center;
 				width: rem-calc(150);
 
-				&.menu-item-has-children {
-					padding-left: rem-calc(28);
-				}
-
 				a,
 				span {
 					color: color(gray, 3);
@@ -261,10 +257,10 @@
 							white-space: initial;
 							width: rem-calc(150);
 							word-wrap: break-word;
+						}
 
-							.mobile-submenu-btn {
-								display: none;
-							}
+						.mobile-submenu-btn {
+							display: none;
 						}
 					}
 
@@ -363,15 +359,23 @@
 }
 
 .mobile-submenu-btn {
+	align-items: center;
 	display: none;
 	height: rem-calc(25);
+	justify-content: center;
+	position: absolute;
+	right: rem-calc(-20);
+	top: 50%;
+	transform: translateY(-50%);
 	width: rem-calc(25);
 
 	@media ( max-width: 1025px ) {
-		display: inline-block;
+		display: flex;
 		margin-left: rem-calc(25);
 
 		svg {
+
+			margin-top: rem-calc(-5);
 
 			&:nth-of-type(2) {
 

@@ -185,7 +185,7 @@ class Pierogi_Primary_Menu_Nav_Walker extends Walker_Nav_Menu {
 		$item_output  = $args->before;
 		$item_output .= '<a' . $attributes . '>';
 		$item_output .= $args->link_before . $title . $args->link_after;
-
+		$item_output .= '</a>';
 		if ( $this->has_children ) {
 			$item_output .= '
 			<div class="mobile-submenu-btn" data-submenu="submenu-' . $this->submenu_id . '">
@@ -194,8 +194,6 @@ class Pierogi_Primary_Menu_Nav_Walker extends Walker_Nav_Menu {
 			</div>
 			';
 		}
-
-		$item_output .= '</a>';
 		$item_output .= $args->after;
 
 		/**
