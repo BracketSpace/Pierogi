@@ -62,11 +62,11 @@ export default class MobileMenu {
 	}
 
 	resetSubmenus( e ) {
-		if ( this.subMenuActive ) {
-			if ( e.currentTarget === this.subMenuActive ) {
-				return;
-			}
+		if ( e.currentTarget === this.subMenuActive ) {
+			return;
+		}
 
+		if ( this.subMenuActive ) {
 			const submenus = document.querySelectorAll( '.main-mobile-navigation .sub-menu' );
 			const menuContainer = document.getElementById( 'primary-mobile-menu' );
 
