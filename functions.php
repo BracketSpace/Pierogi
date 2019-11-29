@@ -7,6 +7,8 @@
  * @package Pierogi
  */
 
+require get_template_directory() . '/inc/classes/class-pierogi-primary-menu-nav-walker.php';
+
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -141,7 +143,7 @@ function pierogi_scripts() {
 
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/assets/dist/js/main.js', array(), $version, true );
+	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/assets/dist/js/main.js', array( 'wp-i18n' ), $version, true );
 
 	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 
@@ -150,6 +152,13 @@ function pierogi_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
+
+/**
+ * Register js script translations
+ */
+if ( function_exists( 'wp_set_script_translations' ) ) {
+	wp_set_script_translations( 'pierogi-script', 'pierogi' );
+}
 
 /**
  * Implement the Custom Header feature.
