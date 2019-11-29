@@ -5,15 +5,10 @@ export default class SearchModal {
 		if ( ! this.modalBtns.length ) {
 			return;
 		}
-		this.activeModal = '';
-		this.init = this.initModals.bind( this );
 
 		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
-
-		if ( this.mediaQuery.matches ) {
-			this.initMobileModal = this.initMobileModal.bind( this );
-			this.initMobileModal();
-		}
+		this.activeModal = '';
+		this.init = this.initModals.bind( this );
 
 		this.init( this.modalBtns );
 	}
