@@ -61,6 +61,7 @@ export default class SearchModal {
 				return;
 			}
 			this.activeModal.style.maxHeight = 0;
+			this.activeModal = '';
 		} );
 	}
 }
