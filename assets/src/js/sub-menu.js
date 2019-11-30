@@ -1,12 +1,13 @@
 export default class SubMenu {
 	constructor() {
 		this.menuParent = document.querySelector( '.main-navigation #primary-menu' );
-
-		if ( ! this.menuParent ) {
-			return;
-		}
 		this.findParentElems = this.findParentElems.bind( this );
 		this.menuParentItems = this.findParentElems( this.menuParent );
+
+		if ( ! this.menuParent || ! this.menuParentItems ) {
+			return;
+		}
+
 		this.subMenuContainer = document.getElementById( 'header-submenu' );
 
 		this.init = this.init.bind( this );
@@ -28,16 +29,18 @@ export default class SubMenu {
 	}
 
 	init() {
-		window.onload = () => {
-			this.menuParentItems.forEach( ( item ) => {
-				const subMenu = item.querySelector( '.sub-menu' );
-				const subMenuH = subMenu.scrollHeight + 60;
+		this.setSubMenuHeight();
+	}
 
-				subMenu.setAttribute( 'data-menu-height', subMenuH );
-				subMenu.style.visibility = 'hidden';
-				subMenu.style.opacity = 0;
-			} );
-		};
+	setSubMenuHeight() {
+		this.menuParentItems.forEach( ( item ) => {
+			const subMenu = item.querySelector( '.sub-menu' );
+			const subMenuH = subMenu.scrollHeight + 60;
+
+			subMenu.setAttribute( 'data-menu-height', subMenuH );
+			subMenu.style.visibility = 'hidden';
+			subMenu.style.opacity = 0;
+		} );
 	}
 
 	findParentElems( elem ) {

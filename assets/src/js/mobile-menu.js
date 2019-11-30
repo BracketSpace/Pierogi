@@ -7,42 +7,49 @@ const { __ } = wp.i18n;
 export default class MobileMenu {
 	constructor() {
 		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
+		this.desktopMenu = document.getElementById( 'site-navigation' );
+		this.btn = document.getElementById( 'mobile-menu-button' );
+		this.menuCreated = false;
+
+		this.mobileMenu = '';
+		this.subMenuBtns = '';
+		this.subMenuActive = '';
+
+		this.init = this.init.bind( this );
+		this.showMenu = this.showMenu.bind( this );
 
 		if ( this.mediaQuery.matches ) {
-			this.btn = document.getElementById( 'mobile-menu-button' );
-			this.desktopMenu = document.getElementById( 'site-navigation' );
-			this.mobileMenu = '';
-			this.subMenuBtns = '';
-			this.subMenuActive = '';
-
-			this.init = this.init.bind( this );
-			this.showMenu = this.showMenu.bind( this );
-
 			this.init();
-
-			this.btn.addEventListener( 'click', ( e ) => {
-				this.showMenu( e );
-			} );
-
-			[ ...this.subMenuBtns ].forEach( ( button ) => {
-				button.addEventListener( 'click', ( e ) => {
-					this.resetSubmenus( e );
-					this.showSubMenu( e );
-				} );
-			} );
 		}
+
+		this.btn.addEventListener( 'click', ( e ) => {
+			this.showMenu( e );
+		} );
+
+		[ ...this.subMenuBtns ].forEach( ( button ) => {
+			button.addEventListener( 'click', ( e ) => {
+				this.resetSubmenus( e );
+				this.showSubMenu( e );
+			} );
+		} );
 	}
 
 	init() {
+		if ( ! this.menuCreated ) {
+			this.createMobileMenu();
+		}
+
+		this.setMenuHeight();
+	}
+
+	createMobileMenu() {
 		const mobileMenu = this.desktopMenu.cloneNode( true );
 		const header = document.getElementById( 'masthead' );
-		const winH = window.innerHeight;
 
 		mobileMenu.id = 'mobile-site-navigation';
 
 		mobileMenu.classList.remove( 'main-navigation' );
 		mobileMenu.classList.add( 'main-mobile-navigation' );
-		mobileMenu.style.height = `${ winH }px`;
 		mobileMenu.querySelector( 'ul' ).id = 'primary-mobile-menu';
 
 		this.addSearchButton( mobileMenu.querySelector( 'ul' ) );
@@ -51,6 +58,13 @@ export default class MobileMenu {
 
 		this.mobileMenu = document.getElementById( 'mobile-site-navigation' );
 		this.subMenuBtns = this.mobileMenu.querySelectorAll( '.menu-item-has-children .mobile-submenu-btn' );
+		this.menuCreated = true;
+	}
+
+	setMenuHeight() {
+		const menu = this.mobileMenu;
+		const winH = window.innerHeight;
+		menu.style.height = `${ winH }px`;
 	}
 
 	showMenu( e ) {

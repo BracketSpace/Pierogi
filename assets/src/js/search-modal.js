@@ -38,31 +38,38 @@ export default class SearchModal {
 
 	animationHandler( elem, elemH ) {
 		elem.style.maxHeight = `${ elemH }px`;
+		elem.style.height = `${ elemH }px`;
 
 		if ( this.mediaQuery.matches ) {
-			elem.style.height = `${ elemH }px`;
 			elem.classList.add( 'header-search-mobile-active' );
 		}
 
 		this.activeModal = elem;
-		this.closeModal();
+		this.handleClose();
 	}
 
-	closeModal() {
+	handleClose() {
 		const closeBtn = this.activeModal.querySelector( '.search-close' );
 
 		closeBtn.addEventListener( 'click', ( e ) => {
 			e.preventDefault();
 
-			if ( this.mediaQuery.matches ) {
-				this.activeModal.classList.remove( 'header-search-mobile-active' );
-				this.activeModal = '';
-
-				return;
-			}
-			this.activeModal.style.maxHeight = 0;
-			this.activeModal = '';
+			this.hideModal();
 		} );
+	}
+
+	hideModal() {
+		if ( ! this.activeModal ) {
+			return;
+		}
+
+		if ( this.mediaQuery.matches ) {
+			this.activeModal.classList.remove( 'header-search-mobile-active' );
+		}
+
+		this.activeModal.style.maxHeight = 0;
+		this.activeModal.style.height = 0;
+		this.activeModal = '';
 	}
 }
 

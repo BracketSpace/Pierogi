@@ -7,6 +7,12 @@ import SearchModal from './search-modal';
 import SubMenu from './sub-menu';
 import MobileMenu from './mobile-menu';
 
-new SubMenu();
-new MobileMenu();
-new SearchModal();
+const mobileMenu = new MobileMenu();
+const subMenu = new SubMenu();
+const searchModal = new SearchModal();
+
+window.onresize = () => {
+	mobileMenu.init();
+	subMenu.setSubMenuHeight();
+	searchModal.hideModal();
+};
