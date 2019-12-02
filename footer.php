@@ -14,6 +14,17 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+		<nav class="footer-navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'pierogi' ); ?>">
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'footer',
+					'menu_class'     => 'footer-menu',
+					'depth'          => 0,
+				)
+			);
+			?>
+		</nav><!-- .footer-navigation -->
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'pierogi' ) ); ?>">
 				<?php

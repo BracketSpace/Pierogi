@@ -1,0 +1,41 @@
+.site-footer {
+
+	.footer-navigation {
+		background-color: color(yellow-light);
+		padding: rem-calc(138) 0;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+
+			li {
+				display: inline-block;
+				margin: 0 rem-calc(50);
+
+				@include bp-down(md) {
+					margin: rem-calc(25) rem-calc(40);
+				}
+
+				a {
+
+					@include font-size(18, 22);
+
+					color: color(gray, 1);
+					display: block;
+					font-weight: 600;
+					letter-spacing: 0.03em;
+					text-decoration: none;
+					text-transform: uppercase;
+
+					&:focus,
+					&:hover,
+					&:active {
+						box-shadow: 0 rem-calc(3) 0 0 color(gray, 2);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
