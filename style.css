@@ -1,4 +1,4 @@
-/*!
+/**
  * Theme Name: Pierogi
  * Theme URI: https://bracketspace.com/downloads/pierogi
  * Description: Pierogi is a modern, clean, Gutenberg compatible theme. Suitable for a blog, personal site or portfolio.
@@ -586,7 +586,6 @@ template {
  */
 
 body {
-  background-image: url(../../images/historia-sztuki.jpg);
   color: #21252a;
   font-family: "Lato", sans-serif;
 }
@@ -703,10 +702,89 @@ ol {
   line-height: calc(45em / 21);
 }
 
+.site-footer .container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 47.9375rem) {
+  .site-footer .container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.site-footer .site-info {
+  background-color: #21252a;
+  color: #fff;
+  padding: 20px 0;
+  padding: 1.25rem 0;
+  font-size: 18px;
+  font-size: 1.125rem;
+  /* stylelint-disable-next-line */
+  line-height: calc(24em / 18);
+}
+
+@media (max-width: 47.9375rem) {
+  .site-footer .site-info {
+    padding: 40px 0;
+    padding: 2.5rem 0;
+    font-size: 12px;
+    font-size: 0.75rem;
+    line-height: 2;
+  }
+  .site-footer .site-info span {
+    display: block;
+  }
+}
+
+.site-footer .site-info .footer-logo {
+  margin: 0 20px 0 0;
+  margin: 0 1.25rem 0 0;
+}
+
+@media (max-width: 47.9375rem) {
+  .site-footer .site-info .footer-logo {
+    margin: 0 0 28px 0;
+    margin: 0 0 1.75rem 0;
+  }
+}
+
+.site-footer .site-info .footer-logo img {
+  height: auto;
+  max-height: 48px;
+  max-height: 3rem;
+  max-width: 133px;
+  max-width: 8.3125rem;
+}
+
+@media (max-width: 47.9375rem) {
+  .site-footer .site-info .footer-logo img {
+    max-height: 36px;
+    max-height: 2.25rem;
+    max-width: 100px;
+    max-width: 6.25rem;
+  }
+}
+
+.site-footer .site-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .site-footer .footer-navigation {
   background-color: #ffd983;
   padding: 138px 0;
   padding: 8.625rem 0;
+}
+
+@media (max-width: 47.9375rem) {
+  .site-footer .footer-navigation {
+    padding: 82px 0;
+    padding: 5.125rem 0;
+  }
 }
 
 .site-footer .footer-navigation ul {
@@ -723,8 +801,15 @@ ol {
 
 @media (max-width: 61.9375rem) {
   .site-footer .footer-navigation ul li {
-    margin: 25px 40px;
-    margin: 1.5625rem 2.5rem;
+    margin: 25px 20px;
+    margin: 1.5625rem 1.25rem;
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .site-footer .footer-navigation ul li {
+    margin: 25px 18px;
+    margin: 1.5625rem 1.125rem;
   }
 }
 
