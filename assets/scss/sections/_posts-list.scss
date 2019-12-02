@@ -1,7 +1,53 @@
 .blog {
+
+	.content-area {
+
+		.entry-meta,
+		.entry-meta a {
+			font-weight: 400;
+			color: color( gray, 6 );
+			text-decoration: none;
+			margin-bottom: rem-calc( 10 );
+
+			@include font-size( 16, 19 );
+		}
+
+		.entry-title {
+			margin: rem-calc( 10 ) 0 rem-calc( 20 ) 0;
+
+			a{
+				color: color( gray, 2 );
+				text-decoration: none;
+			}
+		}
+	}
+
 	.content-area.column {
 		width: 100%;
-		max-width: rem-calc( 1080px );
+		max-width: rem-calc( 1080 );
 		margin: rem-calc( 150 ) auto ;
+
+		.post-column {
+			&-item {
+				margin: rem-calc( 100 ) 0;
+				display: flex;
+				width: 100%;
+			}
+
+			&-thumbnail {
+				width: 50%;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			&-content {
+				width: 50%;
+				padding: rem-calc( 40 );
+			}
+		}
+
 	}
 }

@@ -7,48 +7,41 @@
  * @package Pierogi
  */
 
+$categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
+<article id="post-<?php the_ID(); ?>" <?php post_class( ' post-column-item ' ); ?>>
 
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-
-		?>
-
-	</header><!-- .entry-header -->
+	<div class="post-column-thumbnail">
 
 	<?php the_post_thumbnail( 'post-list-thumb' ); ?>
 
-	<div class="entry-meta">
-		<?php
-		pierogi_posted_on();
-		pierogi_posted_by();
-		?>
-	</div><!-- .entry-meta -->
+	</div>
+	<div class="post-column-content">
+		<div class="entry-meta">
+			<?php
+			pierogi_posted_on();
 
-	<div class="entry-content">
-		<?php
-		the_excerpt(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pierogi' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
+			if ( $categories_list ) {
+				/* translators: 1: list of categories. */
+				printf( ' &#183; <span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $categories_list ); // phpcs:ignore
+			}
+			?>
+		</div><!-- .entry-meta -->
+		<header class="entry-header">
 
-		?>
-	</div><!-- .entry-content -->
+			<?php
 
-	<footer class="entry-footer">
-		<?php pierogi_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+
+			?>
+
+		</header><!-- .entry-header -->
+		<div class="entry-content">
+
+			<?php the_excerpt(); ?>
+
+		</div><!-- .entry-content -->
+	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

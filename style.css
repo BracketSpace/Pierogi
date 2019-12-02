@@ -13,7 +13,6 @@
  * This theme, like WordPress, is licensed under the GPL.
  * Use it to make something cool, have fun, and share what you've learned with others.
  */
-/*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}main{display:block}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}input{overflow:visible}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;display:table;max-width:100%;padding:0;color:inherit;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}details{display:block}summary{display:list-item}menu{display:block}canvas{display:inline-block}[hidden],template{display:none}body{color:#21252a;font-family:Lato,sans-serif}.container{max-width:1640px;max-width:102.5rem;width:100%;margin:0 auto}h1,h2,h3,h4,h5,h6{font-weight:900;margin:1em 0}h1{letter-spacing:.03em;font-size:60px;font-size:3.75rem;line-height:1.33333em}h2{color:#343a40;letter-spacing:.02em;font-size:40px;font-size:2.5rem;line-height:1.125}h3{letter-spacing:.025em;font-size:32px;font-size:2rem;line-height:1.21875em}h3,h4{color:#495057}h4{font-size:28px;font-size:1.75rem;line-height:1.21429em}h4,h5{letter-spacing:.015em}h5{color:#868e96;font-size:23px;font-size:1.4375rem;line-height:1.21739em}h6{color:#adb5bd;line-height:1.19048em}h6,p{letter-spacing:.015em;font-size:21px;font-size:1.3125rem}p{line-height:1.66667em}p.featured{color:#717680;font-size:23px;font-size:1.4375rem;line-height:1.30435em}body.archive p,body.blog p,body.search p{color:#868e96;letter-spacing:0;font-size:18px;font-size:1.125rem;line-height:1.33333em}body.single-post p.featured{color:#868e96;letter-spacing:.02em;font-size:27px;font-size:1.6875rem;line-height:1.85185em}ol,ul{letter-spacing:.015em;font-size:21px;font-size:1.3125rem;line-height:2.14286em}
 
 @import https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext;
 
@@ -591,6 +590,13 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.container {
+  max-width: 1640px;
+  max-width: 102.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
 
 /**
  * Typography
@@ -838,3 +844,55 @@ ol {
 /**
  * Global styles
  */
+
+.blog .content-area .entry-meta,
+.blog .content-area .entry-meta a {
+  font-weight: 400;
+  color: #adb5bd;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.1875;
+}
+
+.blog .content-area .entry-title {
+  margin: 10px 0 20px 0;
+  margin: 0.625rem 0 1.25rem 0;
+}
+
+.blog .content-area .entry-title a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.blog .content-area.column {
+  width: 100%;
+  max-width: 1080px;
+  max-width: 67.5rem;
+  margin: 150px auto;
+  margin: 9.375rem auto;
+}
+
+.blog .content-area.column .post-column-item {
+  margin: 100px 0;
+  margin: 6.25rem 0;
+  display: flex;
+  width: 100%;
+}
+
+.blog .content-area.column .post-column-thumbnail {
+  width: 50%;
+}
+
+.blog .content-area.column .post-column-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.blog .content-area.column .post-column-content {
+  width: 50%;
+  padding: 40px;
+  padding: 2.5rem;
+}
