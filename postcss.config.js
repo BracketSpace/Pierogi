@@ -1,11 +1,9 @@
 module.exports = {
-	plugins: [
-		require( 'autoprefixer' ),
-		require( 'pixrem' )( {
-			atrules: true,
-		} ),
-		require( 'cssnano' )( {
-			preset: 'default',
-		} ),
-	],
+  plugins: [
+    require("autoprefixer"),
+    require("pixrem")({
+      atrules: true
+    }),
+    require("postcss-prettify")
+  ]
 };
