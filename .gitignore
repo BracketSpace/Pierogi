@@ -4,6 +4,7 @@ package-lock.json
 style.css
 style-editor.css
 
-vendor
-node_modules
-dist
+/vendor
+/node_modules
+/js
+/images

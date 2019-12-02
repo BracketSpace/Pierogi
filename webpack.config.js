@@ -10,19 +10,23 @@ module.exports = ( env, argv ) => {
 	return {
 		mode: argv.mode,
 		entry: {
-			main: './assets/src/js/main.js',
-			style: './assets/src/scss/main.scss',
-			'style-editor': './assets/src/scss/editor.scss',
+			main: './assets/js/main.js',
+			style: './assets/scss/main.scss',
+			'style-editor': './assets/scss/editor.scss',
 		},
 		output: {
-			path: path.resolve( __dirname, 'assets/dist' ),
-			filename: './js/[name].js',
+			path: path.resolve( __dirname, 'js' ),
+			filename: './[name].js',
 			publicPath: '../',
 		},
 		performance: {
 			hints: false,
 			maxEntrypointSize: 512000,
 			maxAssetSize: 512000,
+		},
+		devtool: false,
+		optimization: {
+			minimize: false,
 		},
 		module: {
 			rules: [
@@ -58,11 +62,10 @@ module.exports = ( env, argv ) => {
 					test: /\.(png|jpg|gif|svg)$/i,
 					use: [
 						{
-							loader: 'url-loader',
+							loader: 'file-loader',
 							options: {
-								limit: 8192,
 								name: '[name].[ext]',
-								outputPath: 'images',
+								outputPath: '../images',
 							},
 						},
 					],
@@ -74,20 +77,21 @@ module.exports = ( env, argv ) => {
 		},
 		plugins: [
 			...defaultConfig.plugins,
-			new ExtractTextPlugin( '../../[name].css' ),
+			new ExtractTextPlugin( '../[name].css' ),
 			new ImageminPlugin( {
 				test: /\.(jpe?g|png|gif|svg)$/i,
 			} ),
 			...( ! argv.watch ? [
 				new StyleLintPlugin( {
 					configFile: '.stylelintrc',
-					context: 'assets/src/scss',
+					context: 'assets/scss',
 				} ),
 			] : [] ),
 			...( process.env.NODE_ENV === 'production' ? [
 				new CleanWebpackPlugin(),
 				new ExtraneousFileCleanupPlugin( {
 					extensions: [ '.js', '.php' ],
+					minBytes: 4096,
 				} ),
 			] : [] ),
 		],
