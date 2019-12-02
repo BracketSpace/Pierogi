@@ -64,7 +64,7 @@
 				?>
 			</nav><!-- #site-navigation -->
 			<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
-				<svg height="20.121" viewBox="0 0 20.121 20.121" width="20.121" xmlns="http://www.w3.org/2000/svg"><title><?php esc_html_e( 'Open search form', 'pierogi' ); ?></title><g stroke="#868e96" stroke-width="3"><g fill="#fff"><circle cx="8.101" cy="8.101" r="8.101" stroke="none"/><circle cx="8.101" cy="8.101" fill="none" r="6.601"/></g><path d="m14.391 14.391 3.609 3.609" fill="none" stroke-linecap="round"/></g></svg>
+				<svg height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><title><?php esc_html_e( 'Open search form', 'pierogi' ); ?></title><g stroke="#868e96" stroke-width="3"><g fill="#fff"><circle cx="8.101" cy="8.101" r="8.101" stroke="none"/><circle cx="8.101" cy="8.101" fill="none" r="6.601"/></g><path d="m14.391 14.391 3.609 3.609" fill="none" stroke-linecap="round"/></g></svg>
 			</button>
 		</div>
 		<button id="mobile-menu-button" class="mobile-menu-button">
