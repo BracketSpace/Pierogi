@@ -31,6 +31,31 @@ function pierogi_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	$wp_customize->add_section( 'pierogi_blog_layout' , array(
+		'title'             => __('Blog layout settings', 'pierogi'),
+		'description'       => __('Layout settings for blog page', 'pierogi'),
+	) );
+
+	$wp_customize->add_setting( 'pierogi_blog_layout' , array(
+		'default'       => 'column',
+		'type'          => 'theme_mod',
+		'transport'     => 'refresh',
+	) );
+	$wp_customize->add_control( 'pierogi_blog_layout_control', array(
+		'label'      => __('Layout', 'pierogi'),
+		'description'=> __('Setup blog page layout', 'pierogi'),
+		'section'    => 'pierogi_blog_layout',
+		'settings'   => 'pierogi_blog_layout',
+		'type'       => 'select',
+			'choices'    => array(
+			  'grid' => __('3 column grid', 'pierogi'),
+			  'sidebar_grid' => __('Grid with sidebar', 'pierogi'),
+			  'column' => __('Column layout', 'pierogi'),
+			  'column_sidebar' => __(' Column with sidebar', 'pierogi'),
+			),
+	) );
+
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
 

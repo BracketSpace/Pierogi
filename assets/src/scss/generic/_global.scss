@@ -6,3 +6,9 @@ body {
 	color: color(gray);
 	font-family: $font-primary;
 }
+
+.container {
+	max-width: rem-calc( 1640 );
+	width: 100%;
+	margin: 0 auto;
+}
