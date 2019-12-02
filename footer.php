@@ -14,18 +14,37 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+		<nav class="footer-navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'pierogi' ); ?>">
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'footer',
+					'menu_class'     => 'footer-menu',
+					'depth'          => 0,
+				)
+			);
+			?>
+		</nav><!-- .footer-navigation -->
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'pierogi' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'pierogi' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'pierogi' ), 'pierogi', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+			<div class="container">
+				<?php $pierogi_footer_logo_id = get_theme_mod( 'footer_logo' ); ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo">
+					<?php echo wp_get_attachment_image( $footer_logo_id, 'full' ); ?>
+				</a>
+				<div class="site-info-content">
+					<span>
+						<?php
+						/* translators: 1: Theme name, 2: Theme author. */
+						printf( esc_html__( '&copy; 2019 All Rights Reserved. %1$s by %2$s.', 'pierogi' ), 'Pierogi', '<a href="https://bracketspace.com/" target="_blank">BracketSpace</a>' );
+						?>
+					</span>
+					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'pierogi' ) ); ?>">
+						<?php
+						/* translators: %s: CMS name, i.e. WordPress. */
+						printf( esc_html__( 'Proudly powered by %s', 'pierogi' ), 'WordPress' );
+						?>
+					</a>
+				</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

@@ -1,0 +1,103 @@
+.site-footer {
+
+	.container {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+
+		@include bp-down(sm) {
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+
+	.site-info {
+		background-color: color(gray);
+		color: color(white);
+		padding: rem-calc(20) 0;
+
+		@include font-size(18, 24);
+
+		@include bp-down(sm) {
+			padding: rem-calc(40) 0;
+
+			@include font-size(12, 24);
+
+			span {
+				display: block;
+			}
+		}
+
+		.footer-logo {
+			margin: 0 rem-calc(20) 0 0;
+
+			@include bp-down(sm) {
+				margin: 0 0 rem-calc(28) 0;
+			}
+
+			img {
+				height: auto;
+				max-height: rem-calc(48);
+				max-width: rem-calc(133);
+
+				@include bp-down(sm) {
+					max-height: rem-calc(36);
+					max-width: rem-calc(100);
+				}
+			}
+		}
+
+		a {
+			color: color(white);
+			text-decoration: none;
+		}
+	}
+
+	.footer-navigation {
+		background-color: color(yellow-light);
+		padding: rem-calc(138) 0;
+
+		@include bp-down(sm) {
+			padding: rem-calc(82) 0;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+
+			li {
+				display: inline-block;
+				margin: 0 rem-calc(50);
+
+				@include bp-down(md) {
+					margin: rem-calc(25) rem-calc(20);
+				}
+
+				@include bp-down(xs) {
+					margin: rem-calc(25) rem-calc(18);
+				}
+
+				a {
+
+					@include font-size(18, 22);
+
+					color: color(gray, 1);
+					display: block;
+					font-weight: 600;
+					letter-spacing: 0.03em;
+					text-decoration: none;
+					text-transform: uppercase;
+
+					&:focus,
+					&:hover,
+					&:active {
+						box-shadow: 0 rem-calc(3) 0 0 color(gray, 2);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
