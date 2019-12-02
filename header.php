@@ -51,20 +51,38 @@
 		<div class="navigation-container">
 			<nav id="site-navigation" class="main-navigation">
 				<?php
-				wp_nav_menu(
-					array(
-						'theme_location'  => 'menu-1',
-						'menu_id'         => 'primary-menu',
-						'container_class' => 'header-menu-container',
-						'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
-						'depth'           => 2,
-						'walker'          => new Pierogi_Primary_Menu_Nav_Walker(),
-					)
-				);
+
+				if ( has_nav_menu( 'menu-1' ) ) {
+
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'menu-1',
+							'menu_id'         => 'primary-menu',
+							'container_class' => 'header-menu-container menu',
+							'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
+							'depth'           => 2,
+							'walker'          => new Pierogi_Primary_Menu_Nav_Walker(),
+						)
+					);
+
+				} else {
+
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'menu-1',
+							'menu_id'         => 'primary-menu',
+							'container_class' => 'header-menu-container menu',
+							'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
+							'depth'           => 1,
+						)
+					);
+
+				}
+
 				?>
 			</nav><!-- #site-navigation -->
 			<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
-				<svg height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><title><?php esc_html_e( 'Open search form', 'pierogi' ); ?></title><g stroke="#868e96" stroke-width="3"><g fill="#fff"><circle cx="8.101" cy="8.101" r="8.101" stroke="none"/><circle cx="8.101" cy="8.101" fill="none" r="6.601"/></g><path d="m14.391 14.391 3.609 3.609" fill="none" stroke-linecap="round"/></g></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20.121" height="20.121" viewBox="0 0 20.121 20.121"><g transform="translate(-1014 -174)"><g transform="translate(1014 174)" fill="#fff" stroke="#868e96" stroke-width="3"><circle cx="8.101" cy="8.101" r="8.101" stroke="none"/><circle cx="8.101" cy="8.101" r="6.601" fill="none"/></g><line x2="3.609" y2="3.609" transform="translate(1028.391 188.391)" fill="none" stroke="#868e96" stroke-linecap="round" stroke-width="3"/></g></svg>
 			</button>
 		</div>
 		<button id="mobile-menu-button" class="mobile-menu-button">

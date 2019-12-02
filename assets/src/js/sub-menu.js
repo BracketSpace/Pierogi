@@ -35,7 +35,7 @@ export default class SubMenu {
 	setSubMenuHeight() {
 		this.menuParentItems.forEach( ( item ) => {
 			const subMenu = item.querySelector( '.sub-menu' );
-			const subMenuH = subMenu.scrollHeight + 60;
+			const subMenuH = subMenu.scrollHeight;
 
 			subMenu.setAttribute( 'data-menu-height', subMenuH );
 			subMenu.style.visibility = 'hidden';

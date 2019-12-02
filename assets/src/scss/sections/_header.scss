@@ -1,18 +1,17 @@
 .header-top-section {
-	align-items: center;
 	backdrop-filter: blur(rem-calc(30));
 	background-color: color(white);
 	box-shadow: 0 rem-calc(1) rem-calc(10) 0 rgba(0, 0, 0, 0.14);
 	display: flex;
 	justify-content: space-between;
-	min-height: rem-calc(84);
-	padding: 0 rem-calc(140);
+	min-height: rem-calc(82);
+	padding: rem-calc( 17 ) rem-calc(140);
 	position: relative;
 	width: 100%;
 	z-index: 10;
 
 	@media (max-width: 1440px) {
-		padding: 0 rem-calc(40);
+		padding: rem-calc( 17 ) rem-calc(40);
 	}
 
 	@include bp-down( sm ) {
@@ -21,15 +20,20 @@
 	}
 
 	.site-branding {
-		max-width: rem-calc(134);
+		width: rem-calc(133);
+		margin-right: rem-calc( 30 );
+		flex-shrink: 0;
+		display: flex;
+		align-self: center;
 
 		@include bp-down( sm ) {
-			max-width: rem-calc(100);
+			width: rem-calc(100);
 		}
 
 		img {
 			height: auto;
 			width: 100%;
+			display: block;
 		}
 	}
 
@@ -72,9 +76,7 @@
 
 			svg {
 				display: block;
-				height: rem-calc(18);
-				margin-top: rem-calc(4);
-				width: rem-calc(18);
+				margin-top: rem-calc(1);
 			}
 
 			&:hover {
@@ -93,12 +95,13 @@
 		}
 	}
 
-	.header-menu-container {
+	.menu {
 
 		ul {
 			list-style: none;
 			margin: rem-calc(-4) 0 0 0;
 			padding: 0;
+			text-align: right;
 
 			li {
 				display: inline-block;
@@ -123,7 +126,7 @@
 				span {
 					color: color(gray, 5);
 					font-weight: 800;
-					letter-spacing: rem-calc(0.54);
+					letter-spacing: 0.03em;
 					position: relative;
 					text-decoration: none;
 					text-transform: uppercase;

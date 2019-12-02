@@ -90,8 +90,8 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 250,
-				'width'       => 250,
+				'height'      => 48,
+				'width'       => 133,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
