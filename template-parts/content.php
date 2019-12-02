@@ -14,8 +14,18 @@
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
+
+			if ( function_exists( 'the_subtitle' ) ) {
+				the_subtitle( '<p class="entry-subtitle">', '</p>' );
+			};
+
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+
+			if ( function_exists( 'the_subtitle' ) ) {
+				the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
+			};
+
 		endif;
 
 		if ( 'post' === get_post_type() ) :

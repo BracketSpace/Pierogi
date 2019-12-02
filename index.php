@@ -25,6 +25,15 @@ get_header();
 				?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+
+					<?php
+
+					if ( function_exists( 'the_subtitle' ) ) {
+						the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
+					}
+
+					?>
+
 				</header>
 				<?php
 			endif;

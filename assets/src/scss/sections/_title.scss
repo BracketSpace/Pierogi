@@ -1,0 +1,40 @@
+body {
+
+	.entry,
+	.page {
+
+		&-header {
+			margin: rem-calc(150) 0;
+
+			@include bp-down( sm ) {
+				margin-top: rem-calc(100) 0;
+			}
+
+			.entry-title,
+			.entry-title a,
+			.page-title,
+			.page-title a {
+
+				@extend h1;
+				color: color(gray, 1);
+				margin-bottom: rem-calc(15);
+				margin-top: 0;
+
+				text-align: center;
+				text-decoration: none;
+			}
+
+			.entry-subtitle,
+			.page-subtitle,
+			.archive-description p {
+
+				@extend .featured;
+				color: color(gray, 4);
+				margin: rem-calc(15) 0 0 0;
+
+				text-align: center;
+			}
+		}
+
+	}
+}
