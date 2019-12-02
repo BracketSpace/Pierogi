@@ -1,6 +1,21 @@
 .blog {
 
 	.content-area {
+		margin: rem-calc( 150 ) auto ;
+
+		.post-thumbnail {
+
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+
+		}
+
+		.post-list-item {
+			margin: rem-calc( 50 ) 0;
+		}
 
 		.entry-meta,
 		.entry-meta a {
@@ -10,14 +25,54 @@
 			margin-bottom: rem-calc( 10 );
 
 			@include font-size( 16, 19 );
+
+			&:hover {
+				color: color( yellow );
+			}
 		}
 
 		.entry-title {
 			margin: rem-calc( 10 ) 0 rem-calc( 20 ) 0;
 
-			a{
+			a {
 				color: color( gray, 2 );
 				text-decoration: none;
+
+				&:hover {
+					color: color( yellow );
+				}
+			}
+		}
+
+		.excerpt {
+			text-decoration: none;
+
+			&:hover p {
+				color: color( yellow );
+			}
+		}
+
+		.read-more {
+			color: color( gray, 3 );
+			font-weight: 400;
+			text-transform: uppercase;
+			text-decoration: none;
+			position: relative;
+
+			@include font-size( 16, 19 );
+
+			@include after( "", 100%, rem-calc( 2 ) ) {
+				bottom: rem-calc( -2 );
+				left: 0;
+				background-color: color( gray, 3 );
+			}
+
+			&:hover {
+				color: color( yellow );
+
+				&::after {
+					background-color: color( yellow );
+				}
 			}
 		}
 	}
@@ -25,29 +80,76 @@
 	.content-area.column {
 		width: 100%;
 		max-width: rem-calc( 1080 );
-		margin: rem-calc( 150 ) auto ;
 
-		.post-column {
+		.post-list {
+
 			&-item {
-				margin: rem-calc( 100 ) 0;
 				display: flex;
 				width: 100%;
 			}
 
-			&-thumbnail {
-				width: 50%;
-
-				img {
-					width: 100%;
-					height: auto;
-				}
-			}
-
 			&-content {
 				width: 50%;
-				padding: rem-calc( 40 );
+				padding-left: rem-calc( 40 );
+				align-self: center;
+
+				&-full {
+					width: 100%;
+					padding: 0;
+				}
+
 			}
 		}
 
+		.post-thumbnail {
+			width: 50%;
+		}
+
+	}
+
+	.content-area.grid {
+
+		.site-main {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 0 rem-calc( 20 );
+			margin-left: rem-calc( -20 );
+			margin-right: rem-calc( -20 );
+		}
+
+		.post-list {
+
+			&-item {
+				width: 30%;
+				max-width: rem-calc( 521 );
+				margin-left: rem-calc( 20 );
+				margin-right: rem-calc( 20 );
+
+				.post-thumbnail {
+					display: block;
+					width: 100%;
+					margin-bottom: rem-calc( 20 );
+				}
+
+			}
+		}
+	}
+
+	.sidebar-active {
+		display: flex;
+		margin-top: rem-calc( 150 );
+
+		.content-area {
+			margin-top: 0;
+
+			&.grid {
+
+				.post-list-item {
+					width: 50%;
+					max-width: rem-calc( 521 );
+				}
+			}
+		}
 	}
 }

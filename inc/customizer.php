@@ -32,6 +32,17 @@ function pierogi_customize_register( $wp_customize ) {
 		);
 	}
 
+}
+add_action( 'customize_register', 'pierogi_customize_register' );
+
+/**
+ * Add blog layout settings options
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ *
+ * @return void
+ */
+function pierogi_register_blog_layout( $wp_customize ) {
 	$wp_customize->add_section( 'pierogi_blog_layout' , array(
 		'title'             => __('Blog layout settings', 'pierogi'),
 		'description'       => __('Layout settings for blog page', 'pierogi'),
@@ -49,15 +60,13 @@ function pierogi_customize_register( $wp_customize ) {
 		'settings'   => 'pierogi_blog_layout',
 		'type'       => 'select',
 			'choices'    => array(
-			  'grid' => __('3 column grid', 'pierogi'),
-			  'sidebar_grid' => __('Grid with sidebar', 'pierogi'),
-			  'column' => __('Column layout', 'pierogi'),
-			  'column_sidebar' => __(' Column with sidebar', 'pierogi'),
+			  'grid' => __('Grid blog posts layout', 'pierogi'),
+			  'column' => __('Column blog posts layout', 'pierogi'),
 			),
 	) );
-
 }
-add_action( 'customize_register', 'pierogi_customize_register' );
+
+add_action( 'customize_register', 'pierogi_register_blog_layout' );
 
 /**
  * Render the site title for the selective refresh partial.

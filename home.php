@@ -12,17 +12,18 @@ $blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
 get_header();
 
 ?>
-	<div class="container">
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+<header>
+	<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 
-			<?php
-			if ( function_exists( 'the_subtitle' ) ) {
-				the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
-			}
-			?>
+	<?php
+	if ( function_exists( 'the_subtitle' ) ) {
+		the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
+	}
+	?>
 
-		</header>
+</header>
+<div class="wrap <?php if( is_active_sidebar( 'sidebar-1' ) ) echo 'sidebar-active'; ?>">
+	<div class="container posts-container">
 		<div id="primary" class="content-area <?php esc_html_e( $blog_layout_type ); ?>">
 			<main id="main" class="site-main">
 
@@ -43,8 +44,6 @@ get_header();
 
 					endwhile;
 
-					the_posts_navigation();
-
 				else :
 
 					get_template_part( 'template-parts/content', 'none' );
@@ -56,10 +55,9 @@ get_header();
 		</div><!-- #primary -->
 	</div>
 
-<?php
+<?php get_sidebar(); ?>
 
-if( 'sidebar_grid' === $blog_layout_type ) {
-	get_sidebar();
-}
+</div>
 
-get_footer();
+<?php get_footer(); ?>
+

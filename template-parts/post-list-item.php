@@ -11,14 +11,15 @@ $categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( ' post-column-item ' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-list-item' ); ?>>
 
-	<div class="post-column-thumbnail">
+	<?php if( has_post_thumbnail() ) : ?>
 
-	<?php the_post_thumbnail( 'post-list-thumb' ); ?>
+		<?php pierogi_post_thumbnail( 'post-list-thumb' ); ?>
 
-	</div>
-	<div class="post-column-content">
+	<?php endif; ?>
+
+	<div class="post-list-content <?php if( ! has_post_thumbnail() ) echo 'post-list-content-full'; ?>">
 		<div class="entry-meta">
 			<?php
 			pierogi_posted_on();
@@ -40,8 +41,13 @@ $categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 		</header><!-- .entry-header -->
 		<div class="entry-content">
 
-			<?php the_excerpt(); ?>
+			<a class="excerpt" href="<?php the_permalink() ?>">
 
+				<?php the_excerpt(); ?>
+
+			</a>
+
+			<a class="read-more" href="<?php the_permalink(); ?>"> <?php esc_html_e( 'Read More', 'pierogi' ); ?> </a>
 		</div><!-- .entry-content -->
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
