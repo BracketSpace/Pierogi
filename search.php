@@ -15,7 +15,7 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header container">
+			<header class="page-header">
 				<h1 class="page-title">
 					<?php
 					/* translators: %s: search query. */
