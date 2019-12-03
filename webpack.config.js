@@ -52,7 +52,13 @@ module.exports = ( env, argv ) => {
 					use: ExtractTextPlugin.extract( {
 						fallback: 'style-loader',
 						use: [
-							'css-loader',
+							{
+								loader: 'css-loader',
+								options: {
+									import: false,
+									importLoaders: 2,
+								},
+							},
 							'postcss-loader',
 							'sass-loader',
 						],
