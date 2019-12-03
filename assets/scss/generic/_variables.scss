@@ -16,16 +16,21 @@ $colors: (
 		#717680,
 		#868e96,
 		#adb5bd,
-		#dfdfdf,
+		#dfdfdf
 	),
 	cream: #fdefef,
 	light: #f7f7f7,
-	white: #fff,
+	white: #fff
 );
 
 $breakpoints: (
 	xs: 480,
 	sm: 768,
 	md: 992,
-	lg: 1200,
+	lg: 1200
 );
+
+$container-width: 1640;
+$container-narrow-width: 1080;
+$container-padding: 40;
+$container-mobile-padding: 20;

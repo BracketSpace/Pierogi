@@ -5,6 +5,7 @@ plugins:
   - stylelint-order
 rules:
   max-line-length: null
+  function-url-quotes: always
   order/order:
     - custom-properties
     - declarations

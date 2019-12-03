@@ -31,6 +31,33 @@ function pierogi_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	$wp_customize->add_setting( 'footer_logo' );
+	$wp_customize->add_control(
+		new WP_Customize_Cropped_Image_Control(
+			$wp_customize,
+			'footer_logo',
+			[
+				'label'         => __( 'Footer Logo', 'pierogi' ),
+				'section'       => 'title_tagline',
+				'settings'      => 'footer_logo',
+				'priority'      => 9,
+				'height'        => 133,
+				'width'         => 48,
+				'flex_height'   => true,
+				'flex_width'    => true,
+				'button_labels' => [
+					'select'       => __( 'Select logo', 'pierogi' ),
+					'change'       => __( 'Change logo', 'pierogi' ),
+					'remove'       => __( 'Remove', 'pierogi' ),
+					'default'      => __( 'Default', 'pierogi' ),
+					'placeholder'  => __( 'No logo selected', 'pierogi' ),
+					'frame_title'  => __( 'Select logo', 'pierogi' ),
+					'frame_button' => __( 'Choose logo', 'pierogi' ),
+				],
+			]
+		)
+	);
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
 

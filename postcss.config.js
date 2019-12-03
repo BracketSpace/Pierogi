@@ -4,8 +4,11 @@ module.exports = {
 		require( 'pixrem' )( {
 			atrules: true,
 		} ),
-		require( 'cssnano' )( {
-			preset: 'default',
+		require( 'perfectionist' )( {
+			cascade: false,
+			indentChar: '\t',
+			indentSize: 1,
+			trimLeadingZero: false,
 		} ),
 	],
 };
