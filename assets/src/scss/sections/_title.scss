@@ -5,10 +5,10 @@ body {
 	.page {
 
 		&-header {
-			margin: rem-calc(150) 0;
+			margin: rem-calc(150) 0 rem-calc(146);
 
 			@include bp-down( sm ) {
-				margin-top: rem-calc(100) 0;
+				margin: rem-calc(100) 0;
 			}
 
 			.entry-title,

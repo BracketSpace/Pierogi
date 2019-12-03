@@ -14,15 +14,14 @@
 
 get_header();
 
+$pierogi_page_title = ( is_front_page() && is_home() ) ? esc_html( 'Blog', 'pierogi' ) : single_post_title();
+
 ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
-		<?php if ( is_front_page() ) : ?>
-
 			<header class="page-header">
-				<h1 class="page-title screen-reader-text"><?php esc_html_e( 'Blog', 'pierogi' ); ?></h1>
+				<h1 class="page-title screen-reader-text"><?php echo esc_html( $pierogi_page_title ); ?></h1>
 
 				<?php
 
@@ -34,28 +33,9 @@ get_header();
 
 			</header>
 
-		<?php endif; ?>
-
 		<?php
+
 		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-
-					<?php
-
-					if ( function_exists( 'the_subtitle' ) ) {
-						the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
-					}
-
-					?>
-
-				</header>
-				<?php
-			endif;
-
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
