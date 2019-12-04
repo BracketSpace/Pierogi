@@ -1053,13 +1053,26 @@ ol {
 
 .header-top-section .main-navigation .navigation-shadow {
   position: absolute;
-  right: 0;
   height: 100%;
-  width: 100px;
-  width: 6.25rem;
+  width: 96px;
+  width: 6rem;
   display: block;
-  box-shadow: inset -100px 0 40px #fff;
   z-index: 10;
+  display: none;
+}
+
+.header-top-section .main-navigation .navigation-shadow-left {
+  left: 0;
+  box-shadow: inset 5rem 0 40px #fff;
+}
+
+.header-top-section .main-navigation .navigation-shadow-right {
+  right: 0;
+  box-shadow: inset -5rem 0 40px #fff;
+}
+
+.header-top-section .menu-scrollable .navigation-shadow {
+  display: block;
 }
 
 .header-top-section .menu > ul {
@@ -1086,13 +1099,15 @@ ol {
 
 .header-top-section .menu ul li {
   display: inline-block;
-  padding: 0 25px;
-  padding: 0 1.5625rem;
+  padding: 0 29px;
+  padding: 0 1.8125rem;
   flex-shrink: 0;
 }
 
 .header-top-section .menu ul li:first-of-type {
   margin-left: auto;
+  padding-left: 100px;
+  padding-left: 6.25rem;
 }
 
 @media (max-width: 74.9375rem) {

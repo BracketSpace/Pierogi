@@ -105,12 +105,28 @@
 
 		.navigation-shadow {
 			position: absolute;
-			right: 0;
 			height: 100%;
-			width: rem-calc( 100 );
+			width: rem-calc( 96 );
 			display: block;
-			box-shadow: inset -100px 0 40px#fff;
 			z-index: 10;
+			display: none;
+
+			&-left {
+				left: 0;
+				box-shadow: inset rem-calc( 80 ) 0 40px#fff;
+			}
+
+			&-right {
+				right: 0;
+				box-shadow: inset rem-calc( -80 ) 0 40px#fff;
+			}
+		}
+	}
+
+	.menu-scrollable {
+
+		.navigation-shadow {
+			display: block;
 		}
 	}
 
@@ -139,11 +155,12 @@
 
 			li {
 				display: inline-block;
-				padding: 0 rem-calc(25);
+				padding: 0 rem-calc(29);
 				flex-shrink: 0;
 
 				&:first-of-type {
 					margin-left: auto;
+					padding-left: rem-calc( 100 );
 				}
 
 				@include bp-down( lg ) {
