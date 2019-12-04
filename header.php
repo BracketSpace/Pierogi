@@ -50,6 +50,7 @@
 		</div><!-- .site-branding -->
 		<div class="navigation-container">
 			<nav id="site-navigation" class="main-navigation">
+				<span id="menu-container-shadow" class="navigation-shadow"></span>
 				<?php
 
 				if ( has_nav_menu( 'menu-1' ) ) {

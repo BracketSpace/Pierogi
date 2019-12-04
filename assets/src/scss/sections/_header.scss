@@ -95,7 +95,41 @@
 		}
 	}
 
+	.main-navigation {
+		width: calc( 100vw - #{ rem-calc( 600 ) } );
+		position: relative;
+
+		@media (max-width: 1440px) {
+			width: calc( 100vw - #{ rem-calc( 300 ) } );
+		}
+
+		.navigation-shadow {
+			position: absolute;
+			right: 0;
+			height: 100%;
+			width: rem-calc( 100 );
+			display: block;
+			box-shadow: inset -100px 0 40px#fff;
+			z-index: 10;
+		}
+	}
+
 	.menu {
+
+		>ul {
+			overflow: auto;
+			display: flex;
+			width: 100%;
+			align-items: center;
+			flex-shrink: 0;
+			-webkit-overflow-scrolling: touch;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			scrollbar-width: none;
+		}
 
 		ul {
 			list-style: none;
@@ -106,6 +140,11 @@
 			li {
 				display: inline-block;
 				padding: 0 rem-calc(25);
+				flex-shrink: 0;
+
+				&:first-of-type {
+					margin-left: auto;
+				}
 
 				@include bp-down( lg ) {
 					padding: 0 rem-calc(14);
