@@ -24,7 +24,7 @@ if ( ! function_exists( 'pierogi_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( '%s', 'post date', 'pierogi' ),
+			esc_html_x( '%s', 'post date', 'pierogi' ), // phpcs:ignore
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -115,6 +115,8 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
+	 *
+	 * @param string $size Post thumbnail size.
 	 */
 	function pierogi_post_thumbnail( $size = null ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {

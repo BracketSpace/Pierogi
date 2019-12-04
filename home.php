@@ -7,7 +7,7 @@
  * @package Pierogi
  */
 
-$blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
+$pierogi_blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
 
 get_header();
 
@@ -22,9 +22,14 @@ get_header();
 	?>
 
 </header>
-<div class="wrap <?php if( is_active_sidebar( 'sidebar-1' ) ) echo 'sidebar-active'; ?>">
-	<div class="container posts-container">
-		<div id="primary" class="content-area <?php esc_html_e( $blog_layout_type ); ?>">
+<div class="wrap
+<?php
+if ( is_active_sidebar( 'sidebar-1' ) ) {
+	echo 'sidebar-active';}
+?>
+">
+	<div class="posts-container">
+		<div id="primary" class="content-area <?php echo esc_html( $pierogi_blog_layout_type ); ?>">
 			<main id="main" class="site-main">
 
 				<?php if ( have_posts() ) : ?>
@@ -60,4 +65,3 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-
