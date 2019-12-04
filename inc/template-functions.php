@@ -35,3 +35,17 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
+
+/**
+ * Display warning when no menu is set
+ */
+function pierogi_not_set_menu_warning() {
+	$output = [];
+
+	$output[] .= '<div class="not-set-menu">';
+	$output[] .= '<p>' . esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) . '</p>';
+	$output[] .= '<div>';
+
+	$output = implode( $output );
+	echo $output; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
