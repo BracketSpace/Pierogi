@@ -14,7 +14,7 @@
 
 get_header();
 
-$pierogi_page_title = ( is_front_page() && is_home() ) ? esc_html( 'Blog', 'pierogi' ) : single_post_title();
+$pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
 
 ?>
 
