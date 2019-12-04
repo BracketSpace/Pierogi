@@ -14,7 +14,7 @@ get_header();
 		<main id="main" class="site-main">
 
 			<section class="error-404 not-found">
-				<header class="page-header">
+				<header class="page-header container">
 					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'pierogi' ); ?></h1>
 				</header><!-- .page-header -->
 
