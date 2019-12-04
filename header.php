@@ -91,9 +91,6 @@
 			<span></span>
 		</button>
 		</div>
-		<div id="header-submenu" class="header-big-section header-submenu">
-
-		</div>
 		<div id="header-search" class="header-big-section header-search">
 			<div class="search-form">
 				<span><?php esc_html_e( 'Search', 'pierogi' ); ?></span>

@@ -21,17 +21,6 @@ export default class MobileMenu {
 		if ( this.mediaQuery.matches ) {
 			this.init();
 		}
-
-		this.btn.addEventListener( 'click', ( e ) => {
-			this.showMenu( e );
-		} );
-
-		[ ...this.subMenuBtns ].forEach( ( button ) => {
-			button.addEventListener( 'click', ( e ) => {
-				this.resetSubmenus( e );
-				this.showSubMenu( e );
-			} );
-		} );
 	}
 
 	init() {
@@ -58,7 +47,27 @@ export default class MobileMenu {
 
 		this.mobileMenu = document.getElementById( 'mobile-site-navigation' );
 		this.subMenuBtns = this.mobileMenu.querySelectorAll( '.menu-item-has-children .mobile-submenu-btn' );
+
+		this.addMenuBtnsListeners();
+
 		this.menuCreated = true;
+	}
+
+	addMenuBtnsListeners() {
+		if ( this.btn ) {
+			this.btn.addEventListener( 'click', ( e ) => {
+				this.showMenu( e );
+			} );
+		}
+
+		if ( this.subMenuBtns ) {
+			[ ...this.subMenuBtns ].forEach( ( button ) => {
+				button.addEventListener( 'click', ( e ) => {
+					this.resetSubmenus( e );
+					this.showSubMenu( e );
+				} );
+			} );
+		}
 	}
 
 	setMenuHeight() {
