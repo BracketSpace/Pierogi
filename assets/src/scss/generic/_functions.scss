@@ -2,19 +2,19 @@
  * Functions
  */
 
-@function rem-calc( $size ) {
+@function rem-calc($size) {
 
 	@return ($size / 16) * 1rem;
 }
 
-@function strip-unit( $num ) {
+@function strip-unit($num) {
 
 	@return $num / ($num * 0 + 1);
 }
 
-@function color( $colorName, $index: 1 ) {
+@function color($colorName, $index: 1) {
 
-	@if map-has-key( $colors, $colorName ) {
+	@if map-has-key($colors, $colorName) {
 		$color: map-get($colors, $colorName);
 
 		$return: "";
@@ -25,7 +25,7 @@
 			$index: 3;
 		}
 
-		@if type-of( $color ) == "list" {
+		@if type-of($color) == "list" {
 			$return: nth($color, $index);
 		} @else {
 			$return: $color;
@@ -40,32 +40,32 @@
 	@return null;
 }
 
-@function font( $font ) {
+@function font($font) {
 
-	@if map-has-key( $fonts, $font ) {
+	@if map-has-key($fonts, $font) {
 
-		@return map-get( $fonts, $font );
+		@return map-get($fonts, $font);
 	} @else {
 
 		@warn "Invalid font: #{$font}.";
 	}
 }
 
-@function bp( $breakpoint, $useRem: true ) {
+@function bp($breakpoint, $useRem: true) {
 	$breakpoint-value: false;
 
-	@if map-has-key( $breakpoints, $breakpoint ) {
+	@if map-has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
-	} @else if ( type-of( $breakpoint ) == "number" ) {
+	} @else if (type-of($breakpoint) == "number") {
 		$breakpoint-value: $breakpoint;
 	} @else {
 
 		@warn "Invalid breakpoint: #{$breakpoint}.";
 	}
 
-	@if ( unitless( $breakpoint-value ) ) {
+	@if (unitless($breakpoint-value)) {
 
-		@if ( $useRem == true ) {
+		@if ($useRem == true) {
 			$breakpoint-value: rem-calc($breakpoint-value);
 		} @else {
 			$breakpoint-value: $breakpoint-value * 1px;
@@ -75,7 +75,7 @@
 	@return $breakpoint-value;
 }
 
-@function is-number( $value ) {
+@function is-number($value) {
 
 	@return type-of($value) == "number";
 }
