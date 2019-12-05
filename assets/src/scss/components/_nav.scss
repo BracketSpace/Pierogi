@@ -69,6 +69,10 @@
 			&.current_page_item a,
 			&.current_page_item span {
 				color: color(gray, 1);
+
+				&:hover {
+					color: color(yellow);
+				}
 			}
 
 			&.menu-item-has-children {
