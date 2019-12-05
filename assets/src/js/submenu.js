@@ -1,3 +1,5 @@
+import normalizeWheel from 'normalize-wheel';
+
 export default class Submenu {
 	constructor() {
 		this.navContainer = document.getElementById( 'site-navigation' );
@@ -11,9 +13,11 @@ export default class Submenu {
 		this.intervalLeft = '';
 
 		this.verticalScrollCapture = this.verticalScrollCapture.bind( this );
+		this.horizontalScrollCapture = this.horizontalScrollCapture.bind( this );
 		this.shadowElementScrollLeft = this.shadowElementScrollLeft.bind( this );
 
 		this.verticalScrollCapture();
+		this.horizontalScrollCapture();
 
 		this.init( this.menuContainer );
 
@@ -66,11 +70,28 @@ export default class Submenu {
 
 	verticalScrollCapture() {
 		this.menuContainer.addEventListener( 'wheel', ( e ) => {
-			if ( e.deltaY !== 0 ) {
-				this.menuContainer.scrollLeft -= e.deltaY;
+			const normalized = normalizeWheel( e );
+
+			if ( normalized.spinY !== 0 ) {
+				this.menuContainer.scrollLeft -= this.recalculateScroll( normalized.spinY );
 				e.preventDefault();
 			}
 		} );
+	}
+
+	horizontalScrollCapture() {
+		this.menuContainer.addEventListener( 'wheel', ( e ) => {
+			const normalized = normalizeWheel( e );
+
+			if ( normalized.spinX !== 0 ) {
+				this.menuContainer.scrollLeft -= this.recalculateScroll( normalized.spinX );
+				e.preventDefault();
+			}
+		} );
+	}
+
+	recalculateScroll( num ) {
+		return num * 100;
 	}
 
 	shadowElementScrollLeft() {
