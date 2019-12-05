@@ -993,19 +993,15 @@ ol {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+  transition: .2s;
   font-size: 18px;
   font-size: 1.125rem;
       /* stylelint-disable-next-line */
   line-height: calc(22em / 18);
 }
 
-.main-navigation .menu ul li a:hover,
-      .main-navigation .menu ul li span:hover {
-  color: #ffc33a;
-}
-
-.main-navigation .menu ul li a:hover::after,
-        .main-navigation .menu ul li span:hover::after {
+.main-navigation .menu ul li a::after,
+      .main-navigation .menu ul li span::after {
   content: "";
   display: block;
   height: 2px;
@@ -1016,11 +1012,28 @@ ol {
   bottom: -2px;
   bottom: -0.125rem;
   left: 0;
+  transition: .2s;
+  opacity: 0;
+}
+
+.main-navigation .menu ul li a:hover,
+      .main-navigation .menu ul li span:hover {
+  color: #ffc33a;
+}
+
+.main-navigation .menu ul li a:hover::after,
+        .main-navigation .menu ul li span:hover::after {
+  opacity: 1;
 }
 
 .main-navigation .menu ul li.current_page_item a,
     .main-navigation .menu ul li.current_page_item span {
   color: #21252a;
+}
+
+.main-navigation .menu ul li.current_page_item a:hover,
+      .main-navigation .menu ul li.current_page_item span:hover {
+  color: #ffc33a;
 }
 
 .main-navigation .menu ul li.menu-item-has-children .sub-menu {

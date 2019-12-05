@@ -52,15 +52,23 @@
 				position: relative;
 				text-decoration: none;
 				text-transform: uppercase;
+				transition: 0.2s;
+
+				@include after( "", 100%, rem-calc( 2 ) ) {
+					background-color: color(yellow);
+					bottom: rem-calc(-2);
+					left: 0;
+					opacity: 0;
+					transition: 0.2s;
+				}
 
 				&:hover {
 					color: color(yellow);
 
-					@include after( "", 100%, rem-calc( 2 ) ) {
-						background-color: color(yellow);
-						bottom: rem-calc(-2);
-						left: 0;
+					&::after {
+						opacity: 1;
 					}
+
 				}
 
 				@include font-size( 18, 22 );
