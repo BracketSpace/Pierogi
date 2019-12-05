@@ -2,6 +2,16 @@
  * Global styles
  */
 
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
 body {
 	color: color(gray);
 	font-family: $font-primary;

@@ -14,7 +14,7 @@
  * Use it to make something cool, have fun, and share what you've learned with others.
  */
 
-@import "https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext";
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext");
 @import "generic/variables";
 @import "generic/normalize";
 @import "generic/functions";
@@ -22,5 +22,7 @@
 @import "generic/global";
 @import "generic/typography";
 @import "sections/footer";
+@import "components/container";
 @import "components/links";
 @import "sections/posts-list";
+@import "sections/title";
