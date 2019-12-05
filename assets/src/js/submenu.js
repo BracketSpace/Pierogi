@@ -1,5 +1,4 @@
 import normalizeWheel from 'normalize-wheel';
-
 export default class Submenu {
 	constructor() {
 		this.navContainer = document.getElementById( 'site-navigation' );
@@ -91,22 +90,22 @@ export default class Submenu {
 	}
 
 	recalculateScroll( num ) {
-		return num * 100;
+		return num * 50;
 	}
 
 	shadowElementScrollLeft() {
-		this.intervalRight = window.setInterval( this.animationIntervalLeft.bind( this ), 25 );
+		this.intervalRight = window.setInterval( this.animationIntervalLeft.bind( this ), 24 );
 	}
 
 	animationIntervalLeft() {
-		this.menuContainer.scrollLeft += 1;
+		this.menuContainer.scrollLeft += 5;
 	}
 
 	shadowElementScrollRight() {
-		this.intervalLeft = window.setInterval( this.animationIntervalRight.bind( this ), 25 );
+		this.intervalLeft = window.setInterval( this.animationIntervalRight.bind( this ), 24 );
 	}
 
 	animationIntervalRight() {
-		this.menuContainer.scrollLeft -= 1;
+		this.menuContainer.scrollLeft -= 5;
 	}
 }
