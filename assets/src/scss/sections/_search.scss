@@ -21,6 +21,7 @@
 	form {
 		align-items: center;
 		display: flex;
+		padding-left: rem-calc(70);
 
 		@media ( max-width: 1025px ) {
 			flex-direction: column;

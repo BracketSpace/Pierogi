@@ -68,7 +68,8 @@
 
 			&:hover {
 
-				g {
+				g,
+				line {
 					stroke: color(yellow);
 				}
 			}
@@ -95,12 +96,12 @@
 			display: none;
 			height: 100%;
 			position: absolute;
-			width: rem-calc(96);
+			width: rem-calc(200);
 			z-index: 10;
 
 			&-left {
 				box-shadow: inset rem-calc(80) 0 rem-calc(40) #fff;
-				left: 0;
+				left: rem-calc(-100);
 			}
 
 			&-right {
@@ -119,6 +120,23 @@
 		.navigation-shadow {
 			display: block;
 		}
+
+		.menu {
+
+			ul {
+
+				> li {
+
+					&:first-of-type {
+						padding-left: rem-calc(130);
+					}
+
+					&:last-of-type {
+						padding-right: rem-calc(200);
+					}
+				}
+			}
+		}
 	}
 
 	.menu {
@@ -136,7 +154,6 @@
 
 				&:first-of-type {
 					margin-left: auto;
-					padding-left: rem-calc(100);
 				}
 
 				a,
@@ -182,6 +199,7 @@
 							margin: 0;
 							padding-bottom: rem-calc(17);
 							padding-left: 0;
+							padding-right: 0;
 
 							a,
 							span {
@@ -270,15 +288,36 @@
 		}
 
 		.mobile-submenu-open {
-			transform: translateX(rem-calc(-80));
+
+			@media (max-width: rem-calc( 1025 )) {
+				transform: translateX(rem-calc(-100));
+			}
+
+			@include bp-down( sm ) {
+				transform: translateX(rem-calc(-80));
+			}
 
 			> li {
 				text-align: left;
-				width: rem-calc(150);
+
+				@media ( max-width: rem-calc( 1025 ) ) {
+					width: rem-calc(200);
+				}
+
+				@include bp-down( sm ) {
+					width: rem-calc(150);
+				}
 
 				a,
 				span {
-					width: rem-calc(150);
+
+					@media ( max-width: rem-calc( 1025 ) ) {
+						width: rem-calc(200);
+					}
+
+					@include bp-down( sm ) {
+						width: rem-calc(150);
+					}
 				}
 			}
 		}
@@ -331,16 +370,31 @@
 
 				.sub-menu {
 					display: none;
-					padding-bottom: rem-calc(50);
+					margin-bottom: rem-calc(50);
 					position: absolute;
 					right: rem-calc(-200);
 					top: 0;
 
+					@media ( max-width: rem-calc( 1025 ) ) {
+						right: rem-calc(-300);
+					}
+
+					@media ( max-width: rem-calc( 420 ) ) {
+						right: rem-calc(-170);
+					}
+
 					li {
-						width: rem-calc(150);
+
+						@media ( max-width: rem-calc( 1025 ) ) {
+							width: rem-calc(200);
+						}
+
+						@include bp-down( sm ) {
+							width: rem-calc(150);
+						}
 
 						&:last-of-type {
-							padding-bottom: rem-calc(50);
+							margin-bottom: rem-calc(50);
 						}
 
 						a,
@@ -359,10 +413,6 @@
 
 					&.mobile-submenu-active {
 						display: block;
-					}
-
-					@media ( max-width: 420px ) {
-						right: rem-calc(-170);
 					}
 				}
 

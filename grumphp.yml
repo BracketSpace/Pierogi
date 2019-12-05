@@ -8,7 +8,7 @@ parameters:
       strict: false
     phpcs:
       standard: ./phpcs.xml
-      ignore_patterns: ['/vendor/']
+      ignore_patterns: ['/vendor/', '/dist/']
     git_blacklist:
       keywords:
         - 'die('
