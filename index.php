@@ -20,7 +20,7 @@ $pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<header class="page-header container">
+			<header class="page-header">
 				<h1 class="page-title screen-reader-text"><?php echo esc_html( $pierogi_page_title ); ?></h1>
 
 				<?php
