@@ -64,6 +64,11 @@
 			svg {
 				display: block;
 				margin-top: rem-calc(1);
+
+				g,
+				line {
+					transition: 0.2s;
+				}
 			}
 
 			&:hover {
@@ -77,7 +82,8 @@
 
 		.search-button.active {
 
-			svg g {
+			svg g,
+			svg line {
 				stroke: color(gray, 1);
 			}
 		}

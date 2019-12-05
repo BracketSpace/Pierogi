@@ -993,7 +993,7 @@ ol {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: .2s;
+  transition: 0.2s;
   font-size: 18px;
   font-size: 1.125rem;
       /* stylelint-disable-next-line */
@@ -1012,8 +1012,8 @@ ol {
   bottom: -2px;
   bottom: -0.125rem;
   left: 0;
-  transition: .2s;
   opacity: 0;
+  transition: 0.2s;
 }
 
 .main-navigation .menu ul li a:hover,
@@ -1528,12 +1528,18 @@ ol {
   margin-top: 0.0625rem;
 }
 
+.header-top-section .navigation-container .search-button svg g,
+        .header-top-section .navigation-container .search-button svg line {
+  transition: .2s;
+}
+
 .header-top-section .navigation-container .search-button:hover g,
       .header-top-section .navigation-container .search-button:hover line {
   stroke: #ffc33a;
 }
 
-.header-top-section .navigation-container .search-button.active svg g {
+.header-top-section .navigation-container .search-button.active svg g,
+    .header-top-section .navigation-container .search-button.active svg line {
   stroke: #21252a;
 }
 
