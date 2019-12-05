@@ -1,40 +1,30 @@
-body {
+.page-header,
+article.page .entry-header {
 
-	.entry,
-	.page {
+	margin: rem-calc(145) 0 rem-calc(147);
 
-		&-header {
-			margin: rem-calc(145) 0 rem-calc(147);
+	@include bp-down( sm ) {
+		margin: rem-calc(100) 0;
+	}
 
-			@include bp-down( sm ) {
-				margin: rem-calc(100) 0;
-			}
+	h1 {
 
-			.entry-top-title,
-			.entry-top-title a,
-			.page-title,
-			.page-title a {
+		color: color(gray, 1);
+		margin-bottom: rem-calc(15);
+		margin-top: 0;
 
-				@extend h1;
-				color: color(gray, 1);
-				margin-bottom: rem-calc(15);
-				margin-top: 0;
+		text-align: center;
+		text-decoration: none;
+	}
 
-				text-align: center;
-				text-decoration: none;
-			}
+	.entry-subtitle,
+	.page-subtitle,
+	.archive-description p {
 
-			.entry-subtitle,
-			.page-subtitle,
-			.archive-description p {
+		@extend .featured;
+		color: color(gray, 4);
+		margin: rem-calc(15) 0 0 0;
 
-				@extend .featured;
-				color: color(gray, 4);
-				margin: rem-calc(15) 0 0 0;
-
-				text-align: center;
-			}
-		}
-
+		text-align: center;
 	}
 }
