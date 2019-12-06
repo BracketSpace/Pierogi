@@ -75,8 +75,8 @@ add_action( 'customize_register', 'pierogi_register_blog_layout' );
  */
 function pierogi_register_sidebar_settings( $wp_customize ) {
 	$wp_customize->add_section( 'pierogi_sidebar_settings', array(
-		'title'             => __('Sidebar settings', 'pierogi'),
-		'description'       => __('Sidebar settings', 'pierogi'),
+		'title'             => __('Sidebar Settings', 'pierogi'),
+		'description'       => __('Sidebar Settings', 'pierogi'),
 	) );
 
 	$wp_customize->add_setting( 'pierogi_sidebar_settings', array(
