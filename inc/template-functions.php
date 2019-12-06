@@ -35,3 +35,17 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
+
+/**
+ * SCheck if blog page layout contains sidebar
+ *
+ * @return boolean
+ */
+function pierogi_blog_sidebar() {
+
+	$blog_layout = get_theme_mod( 'pierogi_blog_layout' );
+
+	if ( 'grid-sidebar' === $blog_layout || 'column-sidebar' === $blog_layout ) {
+		return true;
+	}
+}

@@ -36,7 +36,7 @@ function pierogi_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'pierogi_customize_register' );
 
 /**
- * Add blog layout settings options
+ * Add blog layout settings
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  *
@@ -51,7 +51,7 @@ function pierogi_register_blog_layout( $wp_customize ) {
 	$wp_customize->add_setting( 'pierogi_blog_layout', array(
 		'default'       => 'column',
 		'type'          => 'theme_mod',
-		'transport'     => 'refresh',
+		'transport'     => 'postMessage',
 	) );
 	$wp_customize->add_control( 'pierogi_blog_layout_control', array(
 		'label'       => __('Layout', 'pierogi'),
@@ -60,8 +60,10 @@ function pierogi_register_blog_layout( $wp_customize ) {
 		'settings'    => 'pierogi_blog_layout',
 		'type'        => 'select',
 		'choices'     => array(
-			'grid'   => __('Grid blog posts layout', 'pierogi'),
-			'column' => __('Column blog posts layout', 'pierogi'),
+			'grid'           => __('Grid blog posts layout', 'pierogi'),
+			'column'         => __('Column blog posts layout', 'pierogi'),
+			'grid-sidebar'   => __('Grid blog posts with sidebar layout', 'pierogi'),
+			'column-sidebar' => __('Column blog posts with sidebar layout', 'pierogi'),
 		),
 	) );
 }

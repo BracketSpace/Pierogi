@@ -7,13 +7,14 @@
  * @package Pierogi
  */
 
+$pierogi_page_title       = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
 $pierogi_blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
 
 get_header();
 
 ?>
-<header>
-	<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+<header class="page-header">
+	<h1 class="page-title screen-reader-text"><?php echo esc_html( $pierogi_page_title ); ?></h1>
 
 	<?php
 	if ( function_exists( 'the_subtitle' ) ) {
@@ -22,14 +23,9 @@ get_header();
 	?>
 
 </header>
-<div class="wrap
-<?php
-if ( is_active_sidebar( 'sidebar-1' ) ) {
-	echo 'sidebar-active';}
-?>
-">
+<div class="wrap <?php echo esc_html( $pierogi_blog_layout_type ); ?>">
 	<div class="posts-container">
-		<div id="primary" class="content-area <?php echo esc_html( $pierogi_blog_layout_type ); ?>">
+		<div id="primary" class="content-area">
 			<main id="main" class="site-main">
 
 				<?php if ( have_posts() ) : ?>
@@ -59,9 +55,12 @@ if ( is_active_sidebar( 'sidebar-1' ) ) {
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div>
-
-<?php get_sidebar(); ?>
-
 </div>
+<?php
 
+if ( pierogi_blog_sidebar() ) {
+	get_sidebar();
+}
+
+?>
 <?php get_footer(); ?>

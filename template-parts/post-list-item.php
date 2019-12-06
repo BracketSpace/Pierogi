@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying blog posts in list layout
+ * Template part for displaying blog posts on posts page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -24,7 +24,7 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 	if ( ! has_post_thumbnail() ) {
 		echo 'post-list-content-full';}
 	?>
-	">
+	"><!-- .post-list-content -->
 		<div class="entry-meta">
 			<?php
 			pierogi_posted_on();
@@ -54,5 +54,5 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 
 			<a class="read-more" href="<?php the_permalink(); ?>"> <?php esc_html_e( 'Read More', 'pierogi' ); ?> </a>
 		</div><!-- .entry-content -->
-	</div>
+	</div><!-- .post-list-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
