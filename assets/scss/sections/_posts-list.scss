@@ -1,27 +1,5 @@
 .blog {
 
-	.wrap {
-		margin-top: rem-calc(150);
-
-		@include bp-down( sm ) {
-			margin: 0;
-		}
-	}
-
-	.wrap.grid-sidebar,
-	.wrap.column-sidebar {
-		margin-top: 0;
-	}
-
-	.site-content {
-		display: flex;
-		flex-wrap: wrap;
-
-		.page-header {
-			flex: 1 100%;
-		}
-	}
-
 	.entry-meta,
 	.entry-meta a {
 		color: color(gray, 6);
@@ -101,6 +79,10 @@
 		}
 	}
 
+	.posts-container {
+		margin-bottom: rem-calc(150);
+	}
+
 	.column {
 		flex: 1 100%;
 
@@ -108,10 +90,6 @@
 			margin: 0 auto rem-calc(150) auto;
 			max-width: rem-calc(1080);
 			width: 100%;
-
-			@include bp-down( sm ) {
-				margin: 0;
-			}
 
 			.entry-title {
 				margin: rem-calc(13) 0 rem-calc(22) 0;
@@ -122,11 +100,7 @@
 	.column-sidebar {
 
 		.posts-container {
-			margin: 0 0 rem-calc(50) 0;
-
-			@include bp-down( sm ) {
-				margin: 0 0 rem-calc(100) 0;
-			}
+			margin: 0 rem-calc(20) rem-calc(150) 0;
 		}
 
 	}
@@ -193,10 +167,6 @@
 
 	.grid {
 
-		.posts-container {
-			margin-bottom: rem-calc(50);
-		}
-
 		.site-main {
 			display: flex;
 			flex-wrap: wrap;
@@ -227,17 +197,15 @@
 	.grid-sidebar,
 	.column-sidebar {
 		display: flex;
-		margin-right: rem-calc(20);
-		max-width: rem-calc(1082);
-		width: calc(67.6666% - #{ rem-calc(20) });
-
-		@include bp-down( sm ) {
-			margin: 0;
-			width: 100%;
-		}
 
 		@include bp-down( sm ) {
 			display: block;
+		}
+
+		.posts-container {
+			display: flex;
+			max-width: calc(#{rem-calc(1082)} + #{ rem-calc(40) });
+			width: 69%;
 		}
 
 		.site-main {
@@ -250,11 +218,7 @@
 	.grid-sidebar {
 
 		.posts-container {
-			margin: 0 rem-calc(-20) rem-calc(50) rem-calc(-20);
-
-			@include bp-down( sm ) {
-				margin: 0 0 rem-calc(100) 0;
-			}
+			margin: 0 rem-calc(20) rem-calc(150) rem-calc(-20);
 		}
 
 		.post-list-item {
@@ -283,6 +247,21 @@
 	.grid,
 	.column-sidebar,
 	.column {
+		margin-top: rem-calc(147);
+		width: 100%;
+
+		@include bp-down( sm ) {
+			display: block;
+			margin-top: rem-calc(100);
+			width: 100%;
+		}
+
+		.posts-container {
+
+			@include bp-down( sm ) {
+				margin: 0 0 rem-calc(100) 0;
+			}
+		}
 
 		.post-thumbnail {
 
@@ -319,6 +298,16 @@
 					width: 100%;
 				}
 
+			}
+		}
+	}
+
+	@include bp-down( sm ) {
+
+		.site-main {
+
+			.post-list-item:last-of-type {
+				margin-bottom: 0;
 			}
 		}
 	}

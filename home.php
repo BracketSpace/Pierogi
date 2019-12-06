@@ -9,6 +9,7 @@
 
 $pierogi_page_title       = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
 $pierogi_blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
+$pierogi_display_sidebar  = get_theme_mod( 'pierogi_sidebar_settings' );
 
 get_header();
 
@@ -23,7 +24,7 @@ get_header();
 	?>
 
 </header>
-<div class="wrap <?php echo esc_html( $pierogi_blog_layout_type ); ?>">
+<div class="<?php pierogi_blog_layout_class(); ?>">
 	<div class="posts-container">
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main">
@@ -55,12 +56,14 @@ get_header();
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div>
+
+	<?php
+
+	if ( $pierogi_display_sidebar ) {
+		get_sidebar();
+	}
+
+	?>
+
 </div>
-<?php
-
-if ( pierogi_blog_sidebar() ) {
-	get_sidebar();
-}
-
-?>
 <?php get_footer(); ?>

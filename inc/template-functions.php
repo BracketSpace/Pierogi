@@ -37,15 +37,19 @@ function pierogi_pingback_header() {
 add_action( 'wp_head', 'pierogi_pingback_header' );
 
 /**
- * SCheck if blog page layout contains sidebar
+ * Setup Blog Page layout css class
  *
- * @return boolean
+ * @return void
  */
-function pierogi_blog_sidebar() {
+function pierogi_blog_layout_class() {
+	$pierogi_blog_layout_type = get_theme_mod( 'pierogi_blog_layout' );
+	$display_sidebar          = get_theme_mod( 'pierogi_sidebar_settings' );
 
-	$blog_layout = get_theme_mod( 'pierogi_blog_layout' );
+	if ( ! $display_sidebar ) {
+		echo esc_html( $pierogi_blog_layout_type );
+	} else {
+		$blog_layout_class = $pierogi_blog_layout_type . '-sidebar';
 
-	if ( 'grid-sidebar' === $blog_layout || 'column-sidebar' === $blog_layout ) {
-		return true;
+		echo esc_html( $blog_layout_class );
 	}
 }
