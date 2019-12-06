@@ -1,0 +1,25 @@
+/**
+ * Container styles
+ */
+
+.container {
+	margin: auto;
+	max-width: rem-calc($container-width + ( 2 * $container-padding ));
+	padding: 0 rem-calc($container-padding);
+	width: 100%;
+
+	@include bp-down(sm) {
+		max-width: rem-calc($container-width + ( 2 * $container-mobile-padding ));
+		padding: 0 rem-calc($container-mobile-padding);
+	}
+
+	&-narrow {
+		max-width: rem-calc($container-narrow-width + ( 2 * $container-padding ));
+
+		@extend .container;
+
+		@include bp-down(sm) {
+			max-width: rem-calc($container-narrow-width + ( 2 * $container-mobile-padding ));
+		}
+	}
+}

@@ -13,22 +13,29 @@
  */
 
 get_header();
+
+$pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
+
 ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+			<header class="page-header">
+				<h1 class="page-title screen-reader-text"><?php echo esc_html( $pierogi_page_title ); ?></h1>
+
+				<?php
+
+				if ( function_exists( 'the_subtitle' ) ) {
+					the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
+				}
+
+				?>
+
+			</header>
 
 		<?php
+
 		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
