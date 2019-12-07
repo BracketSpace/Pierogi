@@ -1,12 +1,8 @@
-button:not(.toggle),
-.button,
+.btn,
 .faux-button,
 .wp-block-button__link,
 .wp-block-file
 .wp-block-file__button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
 .bg-accent,
 .bg-accent-hover:hover,
 .bg-accent-hover:focus,
@@ -27,7 +23,7 @@ input[type="submit"],
 	@include font-size( 23, 28 );
 
 	&:hover {
-		background-color: #fff;
+		background-color: color(white) !important;
 		border-color: color(pink);
 		color: color(pink);
 	}
@@ -40,16 +36,24 @@ input[type="submit"],
 	}
 }
 
-input[type="button"]:disabled,
-input[type="reset"]:disabled,
-input[type="submit"]:disabled {
-	background-color: color(gray, 5);
-	cursor: not-allowed;
-	pointer-events: all !important;
+.is-style-secondary {
 
-	&:hover {
+	.btn,
+	.faux-button,
+	.wp-block-button__link,
+	.wp-block-file
+	.wp-block-file__button,
+	.bg-accent,
+	.bg-accent-hover:hover,
+	.bg-accent-hover:focus,
+	.comment-reply-link,
+	.wp-block-button__link {
 		background-color: color(gray, 5);
-		border-color: transparent;
-		color: color(white);
+
+		&:hover {
+			background-color: color(white);
+			border-color: color(gray, 5);
+			color: color(gray, 5);
+		}
 	}
 }

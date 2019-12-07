@@ -1,3 +1,5 @@
+import './btn-colors';
+
 class Test {
 	test = 'initial test value';
 

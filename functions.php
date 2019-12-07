@@ -94,6 +94,18 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		/**
+		 * Add empty editor colot palette
+		 */
+		add_theme_support( 'editor-color-palette' );
+
+		/**
+		 * Gutenberg editor styles
+		 */
+		add_theme_support( 'editor-styles');
+		add_editor_style( 'style-editor.css' );
+
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );
@@ -142,7 +154,7 @@ function pierogi_scripts() {
 
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/assets/js/dist/main.js', array(), $version, true );
+	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', array(), $version, true );
 
 	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 
@@ -153,6 +165,15 @@ function pierogi_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
+
+/**
+ * Enqeues block editor scripts
+ */
+function pierogi_enqueue_block_editor_scripts() {
+	wp_enqueue_script( 'pierogi-flynn-editor', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
+}
+
+add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
 
 /**
  * Implement the Custom Header feature.
