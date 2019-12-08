@@ -44,6 +44,21 @@
 				margin-left: auto;
 			}
 
+			&:hover {
+				cursor: pointer;
+
+				> a {
+					color: color(yellow);
+
+					&::after {
+						opacity: 1;
+					}
+
+				}
+
+			}
+
+			/* stylelint-disable no-descending-specificity */
 			a,
 			span {
 				color: color(gray, 5);
@@ -62,18 +77,10 @@
 					transition: 0.2s;
 				}
 
-				&:hover {
-					color: color(yellow);
-
-					&::after {
-						opacity: 1;
-					}
-
-				}
-
 				@include font-size( 18, 22 );
 			}
 
+			/* stylelint-enable */
 			&.current_page_item a,
 			&.current_page_item span {
 				color: color(gray, 1);

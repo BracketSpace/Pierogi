@@ -985,6 +985,18 @@ ol {
   margin-left: auto;
 }
 
+.main-navigation .menu ul li:hover {
+  cursor: pointer;
+}
+
+.main-navigation .menu ul li:hover > a {
+  color: #ffc33a;
+}
+
+.main-navigation .menu ul li:hover > a::after {
+  opacity: 1;
+}
+
 .main-navigation .menu ul li a,
     .main-navigation .menu ul li span {
   color: #868e96;
@@ -1014,16 +1026,6 @@ ol {
   left: 0;
   opacity: 0;
   transition: 0.2s;
-}
-
-.main-navigation .menu ul li a:hover,
-      .main-navigation .menu ul li span:hover {
-  color: #ffc33a;
-}
-
-.main-navigation .menu ul li a:hover::after,
-        .main-navigation .menu ul li span:hover::after {
-  opacity: 1;
 }
 
 .main-navigation .menu ul li.current_page_item a,
@@ -1530,7 +1532,7 @@ ol {
 
 .header-top-section .navigation-container .search-button svg g,
         .header-top-section .navigation-container .search-button svg line {
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .header-top-section .navigation-container .search-button:hover g,
