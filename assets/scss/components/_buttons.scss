@@ -36,8 +36,33 @@
 	}
 }
 
-.is-style-secondary {
+.is-style-outline {
 
+	.wp-block-button__link,
+	.btn,
+	.faux-button,
+	.wp-block-button__link,
+	.wp-block-file
+	.wp-block-file__button,
+	.bg-accent,
+	.bg-accent-hover:hover,
+	.bg-accent-hover:focus,
+	.comment-reply-link,
+	.wp-block-button__link {
+		background-color: #fff;
+		border-color: color(pink);
+		color: color(pink);
+
+		&:hover {
+			background-color: color(pink) !important;
+			color: color(white);
+		}
+
+	}
+}
+
+.is-style-secondary {
+	/* stylelint-disable no-descending-specificity */
 	.btn,
 	.faux-button,
 	.wp-block-button__link,
@@ -56,4 +81,5 @@
 			color: color(gray, 5);
 		}
 	}
+	/* stylelint-enable */
 }
