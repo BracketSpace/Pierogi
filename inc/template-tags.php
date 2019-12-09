@@ -152,3 +152,34 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+
+if ( ! function_exists( 'pierogi_footer_logo' ) ) :
+	/**
+	 * Displays footer logo.
+	 */
+	function pierogi_footer_logo() {
+		$footer_logo_id = get_theme_mod( 'footer_logo', null );
+
+		if ( $footer_logo_id ) {
+			$footer_logo_attr = [
+				'class' => 'footer-logo',
+			];
+
+			$image_alt = get_post_meta( $footer_logo_id, '_wp_attachment_image_alt', true );
+			if ( empty( $image_alt ) ) {
+				$footer_logo_attr['alt'] = get_bloginfo( 'name', 'display' );
+			}
+
+			printf(
+					'<a href="%1$s" class="footer-logo-link" rel="home">%2$s</a>',
+					esc_url( home_url( '/' ) ),
+					wp_get_attachment_image( $footer_logo_id, 'full', false, $footer_logo_attr )
+			);
+		} elseif ( is_customize_preview() ) {
+			printf(
+				'<a href="%1$s" class="footer-logo-link" style="display:none;"><img class="footer-logo"/></a>',
+				esc_url( home_url( '/' ) )
+			);
+		}
+	}
+endif;

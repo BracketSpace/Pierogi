@@ -9,9 +9,7 @@
  * @package Pierogi
  */
 
-$pierogi_footer_logo      = get_theme_mod( 'footer_logo', null );
 $pierogi_footer_copyright = get_theme_mod( 'pierogi_footer_copyright', null );
-
 ?>
 
 	</div><!-- #content -->
@@ -30,11 +28,7 @@ $pierogi_footer_copyright = get_theme_mod( 'pierogi_footer_copyright', null );
 		</nav><!-- .footer-navigation -->
 		<div class="site-info">
 			<div class="container">
-				<?php if ( ! empty( $pierogi_footer_logo ) ) : ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo">
-					<?php echo wp_get_attachment_image( $pierogi_footer_logo, 'full' ); ?>
-				</a>
-				<?php endif; ?>
+				<?php pierogi_footer_logo(); ?>
 				<div class="site-info-content">
 					<?php
 					if ( ! empty( $pierogi_footer_copyright ) ) :

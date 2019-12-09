@@ -11,6 +11,7 @@ module.exports = ( env, argv ) => {
 		mode: argv.mode,
 		entry: {
 			main: './assets/js/main.js',
+			customizer: './assets/js/customizer.js',
 			style: './assets/scss/main.scss',
 			'style-editor': './assets/scss/editor.scss',
 		},
