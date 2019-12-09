@@ -94,6 +94,21 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		// Add support for full and wide align images.
+		add_theme_support( 'align-wide' );
+
+		/**
+		 * Add empty editor colot palette
+		 */
+		add_theme_support( 'editor-color-palette' );
+
+		/**
+		 * Gutenberg editor styles
+		 */
+		add_theme_support( 'editor-styles');
+		add_editor_style( 'style-editor.css' );
+
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );
@@ -173,6 +188,11 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Image functions
+ */
+require get_template_directory() . '/inc/images.php';
 
 /**
  * Load Jetpack compatibility file.
