@@ -17,16 +17,8 @@
 		color: color(white);
 		padding: rem-calc(20) 0;
 
-		@include font-size(18, 24);
-
 		@include bp-down(sm) {
 			padding: rem-calc(40) 0;
-
-			@include font-size(12, 24);
-
-			span {
-				display: block;
-			}
 		}
 
 		.footer-logo {
@@ -38,13 +30,8 @@
 
 			img {
 				height: auto;
-				max-height: rem-calc(48);
-				max-width: rem-calc(133);
-
-				@include bp-down(sm) {
-					max-height: rem-calc(36);
-					max-width: rem-calc(100);
-				}
+				max-height: rem-calc(36);
+				max-width: rem-calc(101);
 			}
 		}
 
@@ -52,6 +39,21 @@
 			color: color(white);
 			text-decoration: none;
 		}
+
+		.site-info-content {
+
+			p {
+				color: color(white);
+				margin: 0;
+
+				@include bp-down(sm) {
+
+					@include font-size(12, 24);
+				}
+
+			}
+		}
+
 	}
 
 	.footer-navigation {

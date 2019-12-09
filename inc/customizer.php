@@ -42,8 +42,8 @@ function pierogi_customize_register( $wp_customize ) {
 				'section'       => 'title_tagline',
 				'settings'      => 'footer_logo',
 				'priority'      => 9,
-				'height'        => 133,
-				'width'         => 48,
+				'height'        => 101,
+				'width'         => 36,
 				'flex_height'   => true,
 				'flex_width'    => true,
 				'button_labels' => [
@@ -58,6 +58,23 @@ function pierogi_customize_register( $wp_customize ) {
 			]
 		)
 	);
+
+	$wp_customize->add_section( 'pierogi_footer', [
+		'title'    => __( 'Footer', 'pierogi' ),
+		'priority' => 120,
+	] );
+
+	$wp_customize->add_setting( 'pierogi_footer_copyright', [
+		'capability' => 'edit_theme_options',
+		'default'    => '© 2019 All Rights Reserved. Pierogi by BracketSpace.',
+	] );
+
+	$wp_customize->add_control( 'pierogi_footer_copyright', [
+		'type'        => 'textarea',
+		'section'     => 'pierogi_footer',
+		'label'       => __( 'Footer Copyright Text', 'pierogi' ),
+		'description' => __( 'Enter copyright text', 'pierogi' ),
+	] );
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
 
