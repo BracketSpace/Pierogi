@@ -99,7 +99,7 @@
 	&.sidebar-active .column {
 
 		.posts-container {
-			margin: 0 rem-calc(20) rem-calc(150) 0;
+			margin: 0 0 rem-calc(150) 0;
 		}
 
 	}
@@ -196,6 +196,7 @@
 	&.sidebar-active .grid,
 	&.sidebar-active .column {
 		display: flex;
+		justify-content: space-between;
 
 		@include bp-down( sm ) {
 			display: block;
@@ -203,8 +204,8 @@
 
 		.posts-container {
 			display: flex;
-			max-width: calc(#{rem-calc(1082)} + #{ rem-calc(40) });
-			width: 69%;
+			max-width: rem-calc(1082);
+			width: 66%;
 
 			@include bp-down( sm ) {
 				width: 100%;
@@ -224,12 +225,7 @@
 
 	&.sidebar-active .grid {
 
-		.posts-container {
-			margin: 0 rem-calc(20) rem-calc(150) rem-calc(-20);
-		}
-
 		.post-list-item {
-			margin: 0 rem-calc(20) rem-calc(100) rem-calc(20);
 			max-width: rem-calc(521);
 			width: calc(50% - #{ rem-calc(40) });
 
