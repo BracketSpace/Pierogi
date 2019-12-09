@@ -12,16 +12,6 @@
 		vertical-align: top;
 	}
 
-	&.alignfull {
-		left: 50%;
-		margin-left: -50vw;
-		margin-right: -50vw;
-		max-width: 100vw;
-		position: relative;
-		right: 50%;
-		width: 100vw;
-	}
-
 	figcaption,
 	figcaption a {
 		color: color(gray, 6);

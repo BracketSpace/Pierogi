@@ -1,0 +1,7 @@
+.alignfull {
+	left: 50%;
+	max-width: calc(100vw - var(--scrollbar-width));
+	position: relative;
+	transform: translateX(-50%);
+	width: calc(100vw - var(--scrollbar-width));
+}

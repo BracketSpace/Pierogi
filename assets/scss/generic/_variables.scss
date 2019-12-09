@@ -34,3 +34,7 @@ $container-width: 1640;
 $container-narrow-width: 1080;
 $container-padding: 40;
 $container-mobile-padding: 20;
+
+:root {
+	--scrollbar-width: 0;
+}
