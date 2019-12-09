@@ -4,10 +4,15 @@
 
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext");
 @import "generic/variables";
-@import "generic/normalize";
-@import "generic/functions";
-@import "generic/mixins";
-@import "generic/typography";
-@import "components/links";
-@import "components/buttons";
-@import "sections/title";
+
+body {
+
+	@import "generic/normalize";
+	@import "generic/functions";
+	@import "generic/mixins";
+	@import "generic/typography";
+	@import "components/links";
+	@import "components/buttons";
+	@import "sections/title";
+
+}

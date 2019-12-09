@@ -1,14 +1,13 @@
-const { domReady } = wp;
-const { registerBlockStyle, unregisterBlockStyle } = wp.blocks;
-const { __ } = wp.i18n;
+/**
+ * WordPress Dependencies
+ */
+import domReady from '@wordpress/dom-ready';
+
+/**
+ * Internal Dependencies
+ */
+import ButtonColors from './button-colors';
 
 domReady( () => {
-	unregisterBlockStyle( 'core/button', 'squared' );
-	unregisterBlockStyle( 'core/button', 'outline' );
-
-	registerBlockStyle( 'core/button', {
-		name: 'secondary',
-		label: __( 'Secondary' ),
-		isDefault: false,
-	} );
+	new ButtonColors;
 } );
