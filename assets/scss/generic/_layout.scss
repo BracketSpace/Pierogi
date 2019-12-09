@@ -1,0 +1,31 @@
+.sidebar-active {
+
+	.content-area {
+		display: flex;
+		justify-content: space-between;
+
+		@include bp-down( sm ) {
+			display: block;
+		}
+
+		.site-main {
+			max-width: rem-calc(1082);
+			width: 66%;
+
+			@include bp-down( sm ) {
+				max-width: auto;
+				width: 100%;
+			}
+		}
+
+		.widget-area {
+			max-width: rem-calc(521);
+			width: 32%;
+
+			@include bp-down( sm ) {
+				max-width: auto;
+				width: 100%;
+			}
+		}
+	}
+}

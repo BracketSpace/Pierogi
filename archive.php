@@ -46,8 +46,13 @@ get_header();
 		?>
 
 		</main><!-- #main -->
+
+
+	<?php
+		pierogi_display_sidebar();
+	?>
+
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

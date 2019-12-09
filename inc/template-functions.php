@@ -12,14 +12,16 @@
  * @return array
  */
 function pierogi_body_classes( $classes ) {
+	$display_sidebar = get_theme_mod( 'pierogi_sidebar_settings' );
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
 
-	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
+	// Adds a class of sidebar-active when sidebar is activated in customizer.
+	if ( $display_sidebar ) {
+		$classes[] = 'sidebar-active';
 	}
 
 	return $classes;
@@ -35,3 +37,16 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_display_sidebar() {
+	$display_sidebar = get_theme_mod( 'pierogi_sidebar_settings' );
+
+	if ( $display_sidebar ) {
+		get_sidebar();
+	}
+}

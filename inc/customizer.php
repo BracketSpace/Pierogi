@@ -32,34 +32,70 @@ function pierogi_customize_register( $wp_customize ) {
 		);
 	}
 
-	$wp_customize->add_setting( 'footer_logo' );
-	$wp_customize->add_control(
-		new WP_Customize_Cropped_Image_Control(
-			$wp_customize,
-			'footer_logo',
-			[
-				'label'         => __( 'Footer Logo', 'pierogi' ),
-				'section'       => 'title_tagline',
-				'settings'      => 'footer_logo',
-				'priority'      => 9,
-				'height'        => 133,
-				'width'         => 48,
-				'flex_height'   => true,
-				'flex_width'    => true,
-				'button_labels' => [
-					'select'       => __( 'Select logo', 'pierogi' ),
-					'change'       => __( 'Change logo', 'pierogi' ),
-					'remove'       => __( 'Remove', 'pierogi' ),
-					'default'      => __( 'Default', 'pierogi' ),
-					'placeholder'  => __( 'No logo selected', 'pierogi' ),
-					'frame_title'  => __( 'Select logo', 'pierogi' ),
-					'frame_button' => __( 'Choose logo', 'pierogi' ),
-				],
-			]
-		)
-	);
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
+
+/**
+ * Add blog layout settings
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ *
+ * @return void
+ */
+function pierogi_register_blog_layout( $wp_customize ) {
+	$wp_customize->add_section( 'pierogi_blog_layout', array(
+		'title'             => __('Blog Layout', 'pierogi'),
+		'description'       => __('Layout settings for blog page', 'pierogi'),
+	) );
+
+	$wp_customize->add_setting( 'pierogi_blog_layout', array(
+		'default'       => 'column',
+		'type'          => 'theme_mod',
+	) );
+
+	$wp_customize->add_control( 'pierogi_blog_layout_control', array(
+		'section'     => 'pierogi_blog_layout',
+		'settings'    => 'pierogi_blog_layout',
+		'type'        => 'select',
+		'choices'     => array(
+			'grid'           => __('Grid', 'pierogi'),
+			'column'         => __('Column', 'pierogi'),
+		),
+	) );
+}
+
+add_action( 'customize_register', 'pierogi_register_blog_layout' );
+
+/**
+ * Add sidebar settings
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ *
+ * @return void
+ */
+function pierogi_register_sidebar_settings( $wp_customize ) {
+	$wp_customize->add_section( 'pierogi_sidebar_settings', array(
+		'title'             => __('Sidebar Settings', 'pierogi'),
+		'description'       => __('Sidebar Settings', 'pierogi'),
+	) );
+
+	$wp_customize->add_setting( 'pierogi_sidebar_settings', array(
+		'default'       => true,
+		'type'          => 'theme_mod',
+	) );
+
+	$wp_customize->add_control( 'pierogi_sidebar_settings', array(
+		'section'     => 'pierogi_sidebar_settings',
+		'settings'    => 'pierogi_sidebar_settings',
+		'type'        => 'select',
+		'choices'     => array(
+			true           => __('Display sidebar', 'pierogi'),
+			false          => __('Hide sidebar', 'pierogi'),
+		),
+	) );
+}
+
+add_action( 'customize_register', 'pierogi_register_sidebar_settings' );
 
 /**
  * Render the site title for the selective refresh partial.
