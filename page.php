@@ -14,7 +14,17 @@
 
 get_header();
 ?>
+	<header class="page-header">
 
+	<?php
+		the_title( '<h1 class="entry-title">', '</h1>' );
+
+	if ( function_exists( 'the_subtitle' ) ) {
+		the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
+	}
+
+	?>
+	</header><!-- .entry-header -->
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
