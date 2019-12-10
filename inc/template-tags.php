@@ -123,31 +123,15 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( is_singular() ) :
-			?>
-
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail( $size ); ?>
-			</div><!-- .post-thumbnail -->
-
-		<?php else : ?>
-
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail(
-				'post-thumbnail',
-				array(
-					'alt' => the_title_attribute(
-						array(
-							'echo' => false,
-						)
-					),
-				)
+		if ( is_singular() ) {
+			printf( '<div class="post-thumbnail">%s</div>',
+				get_the_post_thumbnail(  $post->ID, $size )
 			);
-			?>
-		</a>
-
-			<?php
-		endif; // End is_singular().
+		} else {
+			printf( '<a class="post-thumbnail" href="%s" aria-hidden="true" tabindex="-1">%s</a>',
+				esc_html( get_the_permalink() ),
+				get_the_post_thumbnail( $post->ID, $size )
+			);
+		} // End is_singular().
 	}
 endif;
