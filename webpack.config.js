@@ -14,6 +14,7 @@ module.exports = ( env, argv ) => {
 			customizer: './assets/js/customizer.js',
 			style: './assets/scss/main.scss',
 			'style-editor': './assets/scss/editor.scss',
+			editor: './assets/js/editor.js',
 		},
 		output: {
 			path: path.resolve( __dirname, 'js' ),

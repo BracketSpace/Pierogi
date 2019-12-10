@@ -1,21 +1,3 @@
-class Test {
-	test = 'initial test value';
+import ButtonColors from './button-colors';
 
-	constructor() {
-		this.test = 'abrakadabra';
-
-		console.log( this.test );
-
-		this.init();
-	}
-
-	init() {
-		console.log( 'init!' );
-
-		this.test = 'initiated';
-
-		console.log( this.test );
-	}
-}
-
-new Test();
+new ButtonColors;
