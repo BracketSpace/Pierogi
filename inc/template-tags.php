@@ -177,3 +177,12 @@ function pierogi_display_sidebar() {
 		get_sidebar();
 	}
 }
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_footer_text() {
+	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'pierogi_footer_text' ) ) );
+}

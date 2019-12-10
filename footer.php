@@ -9,7 +9,7 @@
  * @package Pierogi
  */
 
-$pierogi_footer_copyright = get_theme_mod( 'pierogi_footer_copyright', null );
+$pierogi_footer_text = get_theme_mod( 'pierogi_footer_text', null );
 ?>
 
 	</div><!-- #content -->
@@ -29,13 +29,9 @@ $pierogi_footer_copyright = get_theme_mod( 'pierogi_footer_copyright', null );
 		<div class="site-info">
 			<div class="container">
 				<?php pierogi_footer_logo(); ?>
-				<div class="site-info-content">
-					<?php
-					if ( ! empty( $pierogi_footer_copyright ) ) :
-						echo apply_filters( 'the_content', $pierogi_footer_copyright ); // phpcs:ignore
-					endif;
-					?>
-				</div>
+				<p class="footer-text">
+					<?php pierogi_footer_text(); ?>
+				</p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

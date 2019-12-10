@@ -39,3 +39,22 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
+
+/**
+ * Filter footer text.
+ *
+ * @param  string $text Footer text.
+ * @return string
+ */
+function pierogi_footer_text_filter( $text ) {
+	return str_ireplace( [
+		'%year%',
+		'BracketSpace',
+		'WordPress',
+	], [
+		date( 'Y' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://bracketspace.com', 'BracketSpace' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://wordpress.org', 'WordPress' ),
+	], esc_html( $text ) );
+}
+add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );

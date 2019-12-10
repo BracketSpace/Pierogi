@@ -15,45 +15,16 @@
 	.site-info {
 		background-color: color(gray);
 		color: color(white);
-		padding: rem-calc(20) 0;
+		padding: rem-calc(17) 0;
 
 		@include bp-down(sm) {
-			padding: rem-calc(40) 0;
-		}
-
-		.footer-logo-link {
-			margin: 0 rem-calc(20) 0 0;
-
-			@include bp-down(sm) {
-				margin: 0 0 rem-calc(28) 0;
-			}
-
-			img {
-				height: auto;
-				max-height: rem-calc(36);
-				max-width: rem-calc(101);
-			}
+			padding: rem-calc(40) 0 rem-calc(38);
 		}
 
 		a {
 			color: color(white);
 			text-decoration: none;
 		}
-
-		.site-info-content {
-
-			p {
-				color: color(white);
-				margin: 0;
-
-				@include bp-down(sm) {
-
-					@include font-size(12, 24);
-				}
-
-			}
-		}
-
 	}
 
 	.footer-navigation {
@@ -100,6 +71,56 @@
 					}
 				}
 			}
+		}
+	}
+
+	.footer-logo-link {
+		flex: 0 0 auto;
+		margin: 0 rem-calc(20) 0 0;
+
+		@include bp-down(sm) {
+			margin: 0 0 rem-calc(35);
+		}
+
+		img {
+			display: block;
+			height: auto;
+			max-height: rem-calc(48);
+			width: auto;
+
+			@include bp-down(xs) {
+				max-height: rem-calc(36);
+			}
+		}
+	}
+
+	.footer-text {
+		color: color(white);
+		flex: 1 1 auto;
+
+		@include font-size(18, 24);
+
+		@include bp-down(md) {
+			max-width: rem-calc(480);
+		}
+
+		@include bp-up(sm) {
+			margin: rem-calc(12) 0;
+			text-align: right;
+		}
+
+		@include bp-down(sm) {
+			margin: 0;
+			max-width: rem-calc(440);
+			text-align: center;
+
+			@include font-size(16, 24);
+		}
+
+		@include bp-down(xs) {
+			max-width: rem-calc(320);
+
+			@include font-size(12, 24);
 		}
 	}
 }
