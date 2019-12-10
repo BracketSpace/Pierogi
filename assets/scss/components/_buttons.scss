@@ -1,16 +1,5 @@
-.btn,
-.faux-button,
-.wp-block-button__link,
-.wp-block-file
-.wp-block-file__button,
-.bg-accent,
-.bg-accent-hover:hover,
-.bg-accent-hover:focus,
-.comment-reply-link,
-input[type="submit"],
-button:not(.components-button) {
+%btn {
 	-webkit-appearance: none;
-	background-color: color(pink);
 	border: rem-calc(3) solid transparent;
 	border-radius: rem-calc(5);
 	color: color(white);
@@ -24,25 +13,45 @@ button:not(.components-button) {
 
 	@include font-size( 23, 28 );
 
-	&:hover {
-		background-color: color(white) !important;
-		border-color: color(pink);
-		color: color(pink);
-	}
-
 	@include bp-down( sm ) {
 		padding: rem-calc(9) rem-calc(37) rem-calc(8) rem-calc(37);
 
 		@include font-size( 14, 17 );
 
 	}
+
+	&:hover {
+		background-color: color(white) !important;
+	}
+}
+
+.btn-primary,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file
+.wp-block-file__button,
+.bg-accent,
+.bg-accent-hover:hover,
+.bg-accent-hover:focus,
+.comment-reply-link,
+input[type="submit"],
+button:not(.components-button) {
+	background-color: color(pink);
+
+	@extend %btn;
+
+	&:hover {
+		border-color: color(pink);
+		color: color(pink);
+	}
 }
 
 .btn-secondary {
 	background-color: color(gray, 5);
 
+	@extend %btn;
+
 	&:hover {
-		background-color: color(white);
 		border-color: color(gray, 5);
 		color: color(gray, 5);
 	}
