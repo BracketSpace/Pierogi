@@ -50,3 +50,19 @@ function pierogi_display_sidebar() {
 		get_sidebar();
 	}
 }
+
+/**
+ * Add custom category widget walker
+ *
+ * @param array $args Array of categories widget options.
+ *
+ * @return array
+ */
+function pierogi_add_custom_category_widget_walker( $args ) {
+
+	$args['walker'] = new Pierogi_Widget_Category_Walker();
+
+	return $args;
+}
+
+add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );

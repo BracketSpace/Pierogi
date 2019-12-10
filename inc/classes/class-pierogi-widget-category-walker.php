@@ -7,6 +7,7 @@
  * @since 4.4.0
  */
 
+// phpcs:disable
 /**
  * Core class used to create an HTML list of categories.
  *
@@ -146,7 +147,7 @@ class Pierogi_Widget_Category_Walker extends Walker {
 		}
 
 		if ( ! empty( $args['show_count'] ) ) {
-			$count = ' <span>'. number_format_i18n( $category->count ) .'</span>';
+			$count = ' <span>' . number_format_i18n( $category->count ) . '</span>';
 		}
 
 		$link = sprintf(
@@ -268,3 +269,4 @@ class Pierogi_Widget_Category_Walker extends Walker {
 	}
 
 }
+// phpcs:enable

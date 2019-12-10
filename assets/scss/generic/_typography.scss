@@ -100,12 +100,3 @@ ol {
 
 	@include font-size(21, 45);
 }
-
-h2.widget-title {
-	text-align: center;
-	font-weight: 700;
-	color: color( gray, 5 );
-	margin: rem-calc( 40 ) 0;
-
-	@include font-size( 30, 25 );
-}

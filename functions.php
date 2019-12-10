@@ -10,7 +10,7 @@
 /**
  * Add custom cateogry walker class
  */
-require get_template_directory() . '/inc/classes/Pierogi_Widget_Category_Walker.php';
+require get_template_directory() . '/inc/classes/class-pierogi-widget-category-walker.php';
 
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
@@ -185,18 +185,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-function filter_widget_categories_args( $cat_args ) {
-    // make filter magic happen here...
-    return $cat_args;
-};
-
-function pierogi_filter_widget_categories_numeration( $args ) {
-
-	$args['walker'] = new Pierogi_Widget_Category_Walker();
-
-	return $args;
-}
-
-// add the filter
-add_filter( 'widget_categories_args', 'pierogi_filter_widget_categories_numeration', 10, 2 );
