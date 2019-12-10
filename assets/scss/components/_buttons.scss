@@ -8,7 +8,7 @@
 .bg-accent-hover:focus,
 .comment-reply-link,
 input[type="submit"],
-button {
+button:not(.components-button) {
 	-webkit-appearance: none;
 	background-color: color(pink);
 	border: rem-calc(3) solid transparent;

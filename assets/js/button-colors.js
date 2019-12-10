@@ -1,3 +1,5 @@
+const { getComputedStyle } = window;
+
 export default class ButtonColors {
 	selector = '.wp-block-button__link';
 
@@ -16,16 +18,16 @@ export default class ButtonColors {
 	}
 
 	handleMouseOver( button ) {
-		if ( button.style.color === null && button.style.backgroundColor === null ) {
-			return;
+		const style = getComputedStyle( button );
+
+		if ( button.classList.contains( 'has-text-color' ) ) {
+			button.setAttribute( 'data-color', style.color );
 		}
 
-		const { color, backgroundColor } = button.style;
-
-		button.style.borderColor = backgroundColor;
-		button.style.color = backgroundColor;
-
-		button.setAttribute( 'data-color', color );
+		if ( button.classList.contains( 'has-background' ) ) {
+			button.style.borderColor = style.backgroundColor;
+			button.style.color = style.backgroundColor;
+		}
 	}
 
 	handleMouseOut( button ) {
