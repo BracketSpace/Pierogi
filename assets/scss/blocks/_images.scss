@@ -27,10 +27,18 @@
 }
 
 figure.wp-block-image,
-.wp-block-image figure:not(.alignleft):not(.alignright) {
+.wp-block-image figure:not(.alignleft):not(.alignright):not(.aligncenter) {
 	margin: rem-calc(100) 0;
 
 	@include bp-down( sm ) {
 		margin: rem-calc(60) 0;
+	}
+}
+
+.wp-block-image .aligncenter {
+	margin: rem-calc(100) auto;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) auto;
 	}
 }
