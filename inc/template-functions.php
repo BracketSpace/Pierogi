@@ -17,10 +17,8 @@ function pierogi_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	$theme_layout = get_theme_mod( 'pierogi_theme_layout' );
-
 	// Adds a layout class.
-	$classes[] = "layout-{$theme_layout}";
+	$classes[] = get_theme_mod( 'pierogi_theme_layout' );
 
 	// Add blog page layout type css class.
 	if ( is_home() ) {

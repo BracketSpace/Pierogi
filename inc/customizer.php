@@ -105,8 +105,8 @@ function pierogi_customize_register( $wp_customize ) {
 		'type'     => 'radio',
 		'label'    => __( 'Layout', 'pierogi' ),
 		'choices'  => [
-			'no-sidebar'   => __( 'No Sidebar', 'pierogi' ),
-			'with-sidebar' => __( 'With Sidebar', 'pierogi' ),
+			'no-sidebar'  => __( 'No Sidebar', 'pierogi' ),
+			'has-sidebar' => __( 'With Sidebar', 'pierogi' ),
 		],
 	] );
 
