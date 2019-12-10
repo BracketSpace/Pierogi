@@ -27,6 +27,8 @@ export default class ButtonColors {
 		if ( button.classList.contains( 'has-background' ) ) {
 			button.style.borderColor = style.backgroundColor;
 			button.style.color = style.backgroundColor;
+		} else {
+			button.style.color = button.style.backgroundColor;
 		}
 	}
 
