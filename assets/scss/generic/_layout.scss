@@ -1,4 +1,4 @@
-body:not(.search):not(.error404) {
+body:not(.search):not(.error404):not(.blog-layout-grid) {
 
 	&.sidebar-active {
 
@@ -19,16 +19,16 @@ body:not(.search):not(.error404) {
 					width: 100%;
 				}
 			}
-
-			.widget-area {
-				max-width: rem-calc(521);
-				width: 32%;
-
-				@include bp-down( sm ) {
-					max-width: auto;
-					width: 100%;
-				}
-			}
 		}
+	}
+}
+
+.widget-area {
+	max-width: rem-calc(521);
+	width: 32%;
+
+	@include bp-down( sm ) {
+		max-width: auto;
+		width: 100%;
 	}
 }
