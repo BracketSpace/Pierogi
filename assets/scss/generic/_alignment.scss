@@ -5,3 +5,10 @@
 	transform: translateX(-50%);
 	width: calc(100vw - var(--scrollbar-width));
 }
+
+.alignwide {
+
+	@extend .alignfull;
+
+	max-width: rem-calc(1270);
+}

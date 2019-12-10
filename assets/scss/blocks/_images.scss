@@ -5,8 +5,6 @@
 }
 
 .wp-block-image {
-	margin-bottom: rem-calc(100);
-	margin-top: rem-calc(100);
 
 	img {
 		vertical-align: top;
@@ -18,8 +16,29 @@
 		margin-bottom: 0;
 		margin-top: rem-calc(20);
 		text-align: left;
-		text-decoration: none;
 
 		@include font-size( 14, 17 );
+
+		@include bp-down( sm ) {
+
+			@include font-size( 12, 20 );
+		}
+	}
+}
+
+figure.wp-block-image,
+.wp-block-image figure:not(.alignleft):not(.alignright):not(.aligncenter) {
+	margin: rem-calc(100) 0;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) 0;
+	}
+}
+
+.wp-block-image .aligncenter {
+	margin: rem-calc(100) auto;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) auto;
 	}
 }
