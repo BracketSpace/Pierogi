@@ -189,7 +189,7 @@
 	}
 
 	&.blog-layout-list,
-	&.sidebar-active.blog-layout-list {
+	&.has-sidebar.blog-layout-list {
 
 		.post {
 			display: flex;
@@ -248,7 +248,7 @@
 		}
 	}
 
-	&.sidebar-active.blog-layout-list {
+	&.has-sidebar.blog-layout-list {
 
 		.post {
 
@@ -313,7 +313,7 @@
 		}
 	}
 
-	&.sidebar-active.blog-layout-grid {
+	&.has-sidebar.blog-layout-grid {
 
 		.site-main {
 			margin-left: rem-calc(-20);
