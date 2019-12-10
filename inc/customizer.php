@@ -18,32 +18,48 @@ function pierogi_customize_register( $wp_customize ) {
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
 			'blogname',
-			array(
+			[
 				'selector'        => '.site-title a',
 				'render_callback' => 'pierogi_customize_partial_blogname',
-			)
+			]
 		);
 		$wp_customize->selective_refresh->add_partial(
 			'blogdescription',
-			array(
+			[
 				'selector'        => '.site-description',
 				'render_callback' => 'pierogi_customize_partial_blogdescription',
-			)
+			]
+		);
+		$wp_customize->selective_refresh->add_partial(
+			'footer_logo',
+			[
+				'selector'            => 'a.footer-logo-link',
+				'render_callback'     => 'pierogi_customize_partial_footer_logo',
+				'container_inclusive' => true,
+			]
 		);
 	}
 
-	$wp_customize->add_setting( 'footer_logo' );
+	$wp_customize->add_section( 'pierogi_footer', [
+		'title'    => __( 'Footer', 'pierogi' ),
+		'priority' => 120,
+	] );
+
+	$wp_customize->add_setting( 'footer_logo', [
+		'transport' => 'postMessage',
+	] );
+
 	$wp_customize->add_control(
 		new WP_Customize_Cropped_Image_Control(
 			$wp_customize,
 			'footer_logo',
 			[
 				'label'         => __( 'Footer Logo', 'pierogi' ),
-				'section'       => 'title_tagline',
+				'section'       => 'pierogi_footer',
 				'settings'      => 'footer_logo',
 				'priority'      => 9,
-				'height'        => 133,
-				'width'         => 48,
+				'height'        => 101,
+				'width'         => 36,
 				'flex_height'   => true,
 				'flex_width'    => true,
 				'button_labels' => [
@@ -58,6 +74,19 @@ function pierogi_customize_register( $wp_customize ) {
 			]
 		)
 	);
+
+	$wp_customize->add_setting( 'pierogi_footer_copyright', [
+		'capability' => 'edit_theme_options',
+		'default'    => '© 2019 All Rights Reserved. Pierogi by BracketSpace.',
+		'transport'  => 'postMessage',
+	] );
+
+	$wp_customize->add_control( 'pierogi_footer_copyright', [
+		'type'        => 'textarea',
+		'section'     => 'pierogi_footer',
+		'label'       => __( 'Footer Copyright Text', 'pierogi' ),
+		'description' => __( 'Enter copyright text', 'pierogi' ),
+	] );
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
 
@@ -80,9 +109,18 @@ function pierogi_customize_partial_blogdescription() {
 }
 
 /**
+ * Render the site tagline for the selective refresh partial.
+ *
+ * @return void
+ */
+function pierogi_customize_partial_footer_logo() {
+	pierogi_footer_logo();
+}
+
+/**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function pierogi_customize_preview_js() {
-	wp_enqueue_script( 'pierogi-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script( 'pierogi-customizer', get_template_directory_uri() . '/js/customizer.js', [ 'customize-preview' ], '1.0.0', true );
 }
 add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );

@@ -9,6 +9,7 @@
  * @package Pierogi
  */
 
+$pierogi_footer_copyright = get_theme_mod( 'pierogi_footer_copyright', null );
 ?>
 
 	</div><!-- #content -->
@@ -20,30 +21,20 @@
 				array(
 					'theme_location' => 'footer',
 					'menu_class'     => 'footer-menu',
-					'depth'          => 0,
+					'depth'          => 1,
 				)
 			);
 			?>
 		</nav><!-- .footer-navigation -->
 		<div class="site-info">
 			<div class="container">
-				<?php $pierogi_footer_logo_id = get_theme_mod( 'footer_logo' ); ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo">
-					<?php echo wp_get_attachment_image( $footer_logo_id, 'full' ); ?>
-				</a>
+				<?php pierogi_footer_logo(); ?>
 				<div class="site-info-content">
-					<span>
-						<?php
-						/* translators: 1: Theme name, 2: Theme author. */
-						printf( esc_html__( '&copy; 2019 All Rights Reserved. %1$s by %2$s.', 'pierogi' ), 'Pierogi', '<a href="https://bracketspace.com/" target="_blank">BracketSpace</a>' );
-						?>
-					</span>
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'pierogi' ) ); ?>">
-						<?php
-						/* translators: %s: CMS name, i.e. WordPress. */
-						printf( esc_html__( 'Proudly powered by %s', 'pierogi' ), 'WordPress' );
-						?>
-					</a>
+					<?php
+					if ( ! empty( $pierogi_footer_copyright ) ) :
+						echo apply_filters( 'the_content', $pierogi_footer_copyright ); // phpcs:ignore
+					endif;
+					?>
 				</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

@@ -170,6 +170,15 @@ function pierogi_scripts() {
 add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
 
 /**
+ * Enqeues block editor scripts
+ */
+function pierogi_enqueue_block_editor_scripts() {
+	wp_enqueue_script( 'pierogi-flynn-editor', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
+}
+
+add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
