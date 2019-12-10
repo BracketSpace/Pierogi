@@ -13,9 +13,6 @@ if ( ! function_exists( 'pierogi_posted_on' ) ) :
 	 */
 	function pierogi_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
 
 		$time_string = sprintf(
 			$time_string,
@@ -27,7 +24,7 @@ if ( ! function_exists( 'pierogi_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'pierogi' ),
+			esc_html_x( '%s', 'post date', 'pierogi' ), // phpcs:ignore
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -63,7 +60,7 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'pierogi' ) . '</span>', $categories_list ); // phpcs:ignore
+				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $categories_list ); // phpcs:ignore
 			}
 
 			/* translators: used between list items, there is a space after the comma */
@@ -118,38 +115,24 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
+	 *
+	 * @param string $size Post thumbnail size.
 	 */
-	function pierogi_post_thumbnail() {
+	function pierogi_post_thumbnail( $size = null ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
-		if ( is_singular() ) :
-			?>
-
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
-
-		<?php else : ?>
-
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail(
-				'post-thumbnail',
-				array(
-					'alt' => the_title_attribute(
-						array(
-							'echo' => false,
-						)
-					),
-				)
+		if ( is_singular() ) {
+			printf( '<div class="post-thumbnail">%s</div>',
+				get_the_post_thumbnail(  $post->ID, $size )
 			);
-			?>
-		</a>
-
-			<?php
-		endif; // End is_singular().
+		} else {
+			printf( '<a class="post-thumbnail" href="%s" aria-hidden="true" tabindex="-1">%s</a>',
+				esc_html( get_the_permalink() ),
+				get_the_post_thumbnail( $post->ID, $size )
+			);
+		} // End is_singular().
 	}
 endif;
 

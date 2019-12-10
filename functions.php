@@ -109,6 +109,8 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support( 'editor-styles');
 		add_editor_style( 'style-editor.css' );
 
+		// Register image size for posts list.
+		add_image_size( 'post-list-thumb', 521, 348, true );
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );

@@ -23,6 +23,7 @@ function pierogi_customize_register( $wp_customize ) {
 				'render_callback' => 'pierogi_customize_partial_blogname',
 			]
 		);
+
 		$wp_customize->selective_refresh->add_partial(
 			'blogdescription',
 			[
@@ -30,6 +31,7 @@ function pierogi_customize_register( $wp_customize ) {
 				'render_callback' => 'pierogi_customize_partial_blogdescription',
 			]
 		);
+
 		$wp_customize->selective_refresh->add_partial(
 			'footer_logo',
 			[
@@ -87,6 +89,43 @@ function pierogi_customize_register( $wp_customize ) {
 		'label'       => __( 'Footer Copyright Text', 'pierogi' ),
 		'description' => __( 'Enter copyright text', 'pierogi' ),
 	] );
+
+	$wp_customize->add_section( 'pierogi_layout', [
+		'title' => __( 'Layout', 'pierogi' ),
+	] );
+
+	$wp_customize->add_setting( 'pierogi_theme_layout', [
+		'default' => pierogi_get_theme_mod_default( 'pierogi_theme_layout' ),
+		'type'    => 'theme_mod',
+	] );
+
+	$wp_customize->add_control( 'pierogi_theme_layout_control', [
+		'section'  => 'pierogi_layout',
+		'settings' => 'pierogi_theme_layout',
+		'type'     => 'radio',
+		'label'    => __( 'Layout', 'pierogi' ),
+		'choices'  => [
+			'no-sidebar'   => __( 'No Sidebar', 'pierogi' ),
+			'with-sidebar' => __( 'With Sidebar', 'pierogi' ),
+		],
+	] );
+
+	$wp_customize->add_setting( 'pierogi_blog_layout', [
+		'default' => pierogi_get_theme_mod_default( 'pierogi_blog_layout' ),
+		'type'    => 'theme_mod',
+	] );
+
+	$wp_customize->add_control( 'pierogi_blog_layout_control', [
+		'section'  => 'pierogi_layout',
+		'settings' => 'pierogi_blog_layout',
+		'type'     => 'radio',
+		'label'    => __( 'Blog Posts Layout', 'pierogi' ),
+		'choices'  => [
+			'grid' => __( 'Grid', 'pierogi' ),
+			'list' => __( 'List', 'pierogi' ),
+		],
+	] );
+
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
 
@@ -124,3 +163,40 @@ function pierogi_customize_preview_js() {
 	wp_enqueue_script( 'pierogi-customizer', get_template_directory_uri() . '/js/customizer.js', [ 'customize-preview' ], '1.0.0', true );
 }
 add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );
+
+/**
+ * Customizer defaults
+ *
+ * @return array
+ */
+function pierogi_get_theme_mods_defaults() {
+	$defaults = [
+		'pierogi_theme_layout' => 'no-sidebar',
+		'pierogi_blog_layout'  => 'grid',
+	];
+
+	return apply_filters( 'pierogi_theme_mod_defaults', $defaults );
+}
+
+/**
+ * Filters theme mods option.
+ *
+ * @param  array $theme_mods Theme mods array.
+ * @return array
+ */
+function pierogi_theme_mods_filter( $theme_mods ) {
+	return array_merge( pierogi_get_theme_mods_defaults(), $theme_mods );
+}
+add_filter( 'option_theme_mods_pierogi', 'pierogi_theme_mods_filter' );
+
+/**
+ * Get theme mod default value.
+ *
+ * @param  string $theme_mod Theme Mod name.
+ * @return mixed
+ */
+function pierogi_get_theme_mod_default( $theme_mod ) {
+	$defaults = pierogi_get_theme_mods_defaults();
+
+	return array_key_exists( $theme_mod, $defaults ) ? $defaults[ $theme_mod ] : null;
+}

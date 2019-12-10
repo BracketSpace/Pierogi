@@ -17,9 +17,15 @@ function pierogi_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
+	$theme_layout = get_theme_mod( 'pierogi_theme_layout' );
+
+	// Adds a layout class.
+	$classes[] = "layout-{$theme_layout}";
+
+	// Add blog page layout type css class.
+	if ( is_home() ) {
+		$blog_layout = get_theme_mod( 'pierogi_blog_layout' );
+		$classes[]   = "blog-layout-{$blog_layout}";
 	}
 
 	return $classes;
@@ -35,3 +41,14 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_display_sidebar() {
+	if ( 'with-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
+		get_sidebar();
+	}
+}
