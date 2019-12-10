@@ -166,3 +166,14 @@ if ( ! function_exists( 'pierogi_footer_logo' ) ) :
 		}
 	}
 endif;
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_display_sidebar() {
+	if ( 'has-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
+		get_sidebar();
+	}
+}

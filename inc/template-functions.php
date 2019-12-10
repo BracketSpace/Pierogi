@@ -39,14 +39,3 @@ function pierogi_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'pierogi_pingback_header' );
-
-/**
- * Display sidebar based on theme settings
- *
- * @return void
- */
-function pierogi_display_sidebar() {
-	if ( 'with-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
-		get_sidebar();
-	}
-}
