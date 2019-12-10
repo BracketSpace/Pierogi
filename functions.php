@@ -96,11 +96,6 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		);
 
 		/**
-		 * Add empty editor colot palette
-		 */
-		add_theme_support( 'editor-color-palette' );
-
-		/**
 		 * Gutenberg editor styles
 		 */
 		add_theme_support( 'editor-styles');

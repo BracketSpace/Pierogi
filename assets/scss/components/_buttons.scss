@@ -1,65 +1,49 @@
-.wp-block-button {
+.btn,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file
+.wp-block-file__button,
+.bg-accent,
+.bg-accent-hover:hover,
+.bg-accent-hover:focus,
+.comment-reply-link,
+input[type="submit"],
+button {
+	-webkit-appearance: none;
+	background-color: color(pink);
+	border: rem-calc(3) solid transparent;
+	border-radius: rem-calc(5);
+	color: color(white);
+	cursor: pointer;
+	font-weight: 700;
+	letter-spacing: rem-calc(0.69);
+	overflow-wrap: break-word;
+	padding: rem-calc(16) rem-calc(57) rem-calc(15) rem-calc(57);
+	text-transform: uppercase;
+	transition: 0.3s ease-in;
 
-	.btn,
-	.faux-button,
-	.wp-block-button__link,
-	.wp-block-file
-	.wp-block-file__button,
-	.bg-accent,
-	.bg-accent-hover:hover,
-	.bg-accent-hover:focus,
-	.comment-reply-link,
-	a {
-		-webkit-appearance: none;
-		background-color: color(pink);
-		border: rem-calc(3) solid transparent;
-		border-radius: rem-calc(5);
-		color: color(white);
-		cursor: pointer;
-		font-weight: 700;
-		letter-spacing: rem-calc(0.69);
-		overflow-wrap: break-word;
-		padding: rem-calc(16) rem-calc(57) rem-calc(15) rem-calc(57);
-		text-transform: uppercase;
-		transition: 0.3s ease-in;
+	@include font-size( 23, 28 );
 
-		@include font-size( 23, 28 );
+	&:hover {
+		background-color: color(white) !important;
+		border-color: color(pink);
+		color: color(pink);
+	}
 
-		&:hover {
-			background-color: color(white) !important;
-			border-color: color(pink);
-			color: color(pink);
-		}
+	@include bp-down( sm ) {
+		padding: rem-calc(9) rem-calc(37) rem-calc(8) rem-calc(37);
 
-		@include bp-down( sm ) {
-			padding: rem-calc(9) rem-calc(37) rem-calc(8) rem-calc(37);
+		@include font-size( 14, 17 );
 
-			@include font-size( 14, 17 );
-
-		}
 	}
 }
 
-.is-style-secondary {
-	/* stylelint-disable no-descending-specificity */
-	.btn,
-	.faux-button,
-	.wp-block-button__link,
-	.wp-block-file
-	.wp-block-file__button,
-	.bg-accent,
-	.bg-accent-hover:hover,
-	.bg-accent-hover:focus,
-	.comment-reply-link,
-	.wp-block-button__link,
-	a {
-		background-color: color(gray, 5);
+.btn-secondary {
+	background-color: color(gray, 5);
 
-		&:hover {
-			background-color: color(white);
-			border-color: color(gray, 5);
-			color: color(gray, 5);
-		}
+	&:hover {
+		background-color: color(white);
+		border-color: color(gray, 5);
+		color: color(gray, 5);
 	}
-	/* stylelint-enable */
 }
