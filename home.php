@@ -51,11 +51,7 @@ get_header();
 
 		</main><!-- #main -->
 
-		<?php
-
-		pierogi_display_sidebar();
-
-		?>
+		<?php	pierogi_display_sidebar(); ?>
 
 	</div>
 
