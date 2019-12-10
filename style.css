@@ -938,32 +938,32 @@ ol {
   width: calc(100vw - 37.5rem);
 }
 
+@media (max-width: 90rem) {
+  .main-navigation {
+    width: calc(100vw - 18.75rem);
+  }
+}
+
 .main-navigation .navigation-shadow {
   display: block;
   display: none;
   height: 100%;
   position: absolute;
   z-index: 10;
+  width: 1px;
+  width: 0.0625rem;
 }
 
 .main-navigation .navigation-shadow-left {
-  box-shadow: inset 5rem 0 2.5rem #fff;
-  left: 0;
-  width: 100px;
-  width: 6.25rem;
+  box-shadow: 0.0625rem 0 1.25rem 1.25rem #fff;
+  left: -1px;
+  left: -0.0625rem;
 }
 
 .main-navigation .navigation-shadow-right {
-  box-shadow: inset -5rem 0 2.5rem #fff;
-  right: 0;
-  width: 200px;
-  width: 12.5rem;
-}
-
-@media (max-width: 90rem) {
-  .main-navigation {
-    width: calc(100vw - 18.75rem);
-  }
+  box-shadow: 0 0.0625rem 1.25rem 1.25rem #fff;
+  right: -1px;
+  right: -0.0625rem;
 }
 
 .main-navigation .menu ul {
@@ -979,6 +979,8 @@ ol {
   flex-shrink: 0;
   padding: 0 29px;
   padding: 0 1.8125rem;
+    /* stylelint-disable no-descending-specificity */
+    /* stylelint-enable */
 }
 
 .main-navigation .menu ul li:first-of-type {
@@ -1118,13 +1120,26 @@ ol {
 }
 
 .main-navigation.menu-scrollable .menu ul > li:first-of-type {
-  padding-left: 130px;
-  padding-left: 8.125rem;
+  animation: scrollInit;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  will-change: margin-left;
 }
 
-.main-navigation.menu-scrollable .menu ul > li:last-of-type {
-  padding-right: 200px;
-  padding-right: 12.5rem;
+@keyframes scrollInit {
+  0% {
+    margin-left: 0px;
+    margin-left: 0rem;
+  }
+  50% {
+    margin-left: -200px;
+    margin-left: -12.5rem;
+  }
+  100% {
+    margin-left: 0px;
+    margin-left: 0rem;
+  }
 }
 
 .main-mobile-navigation {
