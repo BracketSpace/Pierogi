@@ -5,8 +5,6 @@
 }
 
 .wp-block-image {
-	margin-bottom: rem-calc(100);
-	margin-top: rem-calc(100);
 
 	img {
 		vertical-align: top;
@@ -22,4 +20,9 @@
 
 		@include font-size( 14, 17 );
 	}
+}
+
+figure.wp-block-image,
+.wp-block-image figure:not(.alignleft):not(.alignright) {
+	margin: rem-calc(100) 0;
 }
