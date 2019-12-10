@@ -10,6 +10,11 @@
 		text-transform: uppercase;
 
 		@include font-size( 16, 19 );
+
+		@include bp-down( sm ) {
+
+			@include font-size( 12, 20 );
+		}
 	}
 
 	.entry-meta a {
@@ -24,7 +29,9 @@
 		margin: rem-calc(10) 0 rem-calc(20) 0;
 
 		@include bp-down( sm ) {
-			margin: rem-calc(10) 0 rem-calc(10) 0;
+			margin: rem-calc(10) 0;
+
+			@include font-size( 28, 34 );
 		}
 		/* stylelint-disable no-descending-specificity  */
 		a {
@@ -45,6 +52,13 @@
 		p {
 			margin-bottom: rem-calc(32);
 			transition: 0.2s;
+
+			@include bp-down( sm ) {
+
+				margin: rem-calc(10) 0;
+
+				@include font-size(16, 22);
+			}
 		}
 
 		&:hover p {
@@ -61,6 +75,11 @@
 		transition: 0.2s;
 
 		@include font-size( 16, 19 );
+
+		@include bp-down( sm ) {
+
+			@include font-size( 14, 17 );
+		}
 
 		@include after( "", 100%, rem-calc( 2 ) ) {
 			background-color: color(gray, 3);
@@ -117,6 +136,11 @@
 	}
 
 	.post-thumbnail {
+		height: auto;
+		max-height: rem-calc(348);
+
+		max-width: rem-calc(521);
+		width: auto;
 
 		@include bp-down( sm ) {
 			display: block;
@@ -158,6 +182,10 @@
 
 			.entry-title {
 				margin: rem-calc(13) 0 rem-calc(22) 0;
+
+				@include bp-down( sm ) {
+					margin: rem-calc(10) 0;
+				}
 			}
 		}
 	}
@@ -170,7 +198,7 @@
 			margin-bottom: rem-calc(100);
 			width: 100%;
 
-			@include bp-down( lg ) {
+			@include bp-down( sm ) {
 				display: block;
 				margin: rem-calc(61) auto;
 				width: 100%;
@@ -178,8 +206,10 @@
 				.post-thumbnail {
 					display: block;
 					margin: 0 auto rem-calc(10) auto;
-					max-width: rem-calc(521);
-					width: 100%;
+
+					@include bp-down( sm ) {
+						margin-bottom: rem-calc(20);
+					}
 				}
 
 				.entry-meta {
@@ -201,32 +231,47 @@
 				flex: 1 1 auto;
 				width: 50%;
 
-				@include bp-down( lg ) {
+				@include bp-down( sm ) {
 					width: 100%;
 				}
 			}
 
 			.post-thumbnail {
+				align-self: center;
 				flex: 0 0  auto;
 				margin-right: rem-calc(40);
+				width: 50%;
 
-				@include bp-down( lg ) {
+				@include bp-down( sm ) {
 					margin-left: auto;
 					margin-right: auto;
+					width: 100%;
 				}
 			}
 
 
 		}
-
-		.post-thumbnail {
-			align-self: center;
-			max-width: rem-calc(521);
-			width: 50%;
-		}
 	}
 
 	&.sidebar-active.blog-layout-list {
+
+		.post {
+
+			@include bp-between ( sm, lg ) {
+				display: block;
+				width: 100%;
+
+				&-thumbnail {
+					margin-left: auto;
+					margin-right: auto;
+					width: 100%;
+				}
+
+				&-content {
+					width: 100%;
+				}
+			}
+		}
 
 		.site-main {
 			margin-right: rem-calc(20);
@@ -267,8 +312,10 @@
 		.post-thumbnail {
 			display: block;
 			margin: 0 auto rem-calc(20) auto;
-			max-width: rem-calc(521);
-			width: 100%;
+
+			img {
+				margin: auto;
+			}
 		}
 	}
 
