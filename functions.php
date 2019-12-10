@@ -94,6 +94,9 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		// Register image size for posts list.
+		add_image_size( 'post-list-thumb', 521, 348, true );
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );
@@ -173,12 +176,6 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Image functions
- */
-
-require get_template_directory() . '/inc/images.php';
 
 /**
  * Load Jetpack compatibility file.
