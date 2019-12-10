@@ -35,7 +35,8 @@
 .bg-accent-hover:focus,
 .comment-reply-link,
 input[type="submit"],
-button:not(.components-button) {
+input[type="button"],
+button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
 	background-color: color(pink);
 
 	@extend %btn;
