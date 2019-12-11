@@ -60,21 +60,3 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
-
-/**
- * Display post navigation
- *
- * @return void
- */
-function pierogi_post_navigation() {
-	$previous_post = get_previous_post_link('<div class="post-prev"><span>Previous post</span> %link</div>', '%title');
-	$next_post     = get_next_post_link('<div class="post-next"><span>Next post</span> %link</div>', '%title');
-
-	//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-	printf(
-		'<div class="post-navigation">%s %s</div>',
-		$previous_post,
-		$next_post
-	);
-	//phpcs:enable
-}

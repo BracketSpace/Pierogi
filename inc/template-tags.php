@@ -188,3 +188,15 @@ function pierogi_display_sidebar() {
 function pierogi_footer_text() {
 	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'pierogi_footer_text' ) ) );
 }
+
+/**
+ * Display post navigation
+ *
+ * @return void
+ */
+function pierogi_post_navigation() {
+	$previous_post = get_previous_post_link('<div class="post-prev"><span>' . esc_html__( 'Previous post', 'pierogi' ) . '</span> %link</div>', '%title');
+	$next_post     = get_next_post_link('<div class="post-next"><span>' . esc_html__( 'Next post', 'pierogi'  ) . '</span> %link</div>', '%title');
+
+	printf( '<div class="post-navigation">%s %s</div>', $previous_post, $next_post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
