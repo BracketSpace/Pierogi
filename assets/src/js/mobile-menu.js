@@ -9,22 +9,18 @@ export default class MobileMenu {
 		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
 		this.desktopMenu = document.getElementById( 'site-navigation' );
 		this.btn = document.getElementById( 'mobile-menu-button' );
-		this.menuCreated = false;
 
-		this.mobileMenu = '';
-		this.subMenuBtns = '';
 		this.subMenuActive = '';
-
-		this.init = this.init.bind( this );
-		this.showMenu = this.showMenu.bind( this );
 
 		if ( this.mediaQuery.matches ) {
 			this.init();
 		}
+
+		window.addEventListener( 'resize', this.init.bind( this ) );
 	}
 
 	init() {
-		if ( ! this.menuCreated ) {
+		if ( ! this.mobileMenu ) {
 			this.createMobileMenu();
 		}
 
@@ -49,31 +45,25 @@ export default class MobileMenu {
 		this.subMenuBtns = this.mobileMenu.querySelectorAll( '.menu-item-has-children .mobile-submenu-btn' );
 
 		this.addMenuBtnsListeners();
-
-		this.menuCreated = true;
 	}
 
 	addMenuBtnsListeners() {
 		if ( this.btn ) {
-			this.btn.addEventListener( 'click', ( e ) => {
-				this.showMenu( e );
-			} );
+			this.btn.addEventListener( 'click', this.showMenu.bind( this ) );
 		}
 
 		if ( this.subMenuBtns ) {
-			[ ...this.subMenuBtns ].forEach( ( button ) => {
+			for ( const button of this.subMenuBtns ) {
 				button.addEventListener( 'click', ( e ) => {
 					this.resetSubmenus( e );
 					this.showSubMenu( e );
 				} );
-			} );
+			}
 		}
 	}
 
 	setMenuHeight() {
-		const menu = this.mobileMenu;
-		const winH = window.innerHeight;
-		menu.style.height = `${ winH }px`;
+		this.mobileMenu.style.height = `${ window.innerHeight }px`;
 	}
 
 	showMenu( e ) {

@@ -1,75 +1,66 @@
 export default class SearchModal {
 	constructor() {
-		this.modalBtns = document.querySelectorAll( '.toggle-header-modal' );
+		this.modalBtns = document.querySelectorAll( '[data-toggle-element]' );
 
-		if ( ! this.modalBtns.length ) {
-			return;
+		if ( this.modalBtns.length ) {
+			this.init();
 		}
-
-		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
-		this.activeModal = '';
-		this.init = this.initModals.bind( this );
-
-		this.init( this.modalBtns );
 	}
 
-	initModals( elements ) {
-		[ ...elements ].forEach( ( element ) => {
-			element.addEventListener( 'click', ( e ) => {
-				e.preventDefault();
+	init() {
+		this.toggleModal = this.toggleModal.bind( this );
 
-				if ( ! this.activeModal ) {
-					this.openModal( e.currentTarget );
-				} else {
-					this.activeModal.style.maxHeight = 0;
-					this.activeModal = '';
-				}
-			} );
-		} );
+		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
+
+		window.addEventListener( 'resize', this.handleResize.bind( this ) );
+
+		for ( const element of this.modalBtns ) {
+			element.addEventListener( 'click', this.toggleModal );
+		}
+	}
+
+	handleResize() {
+		if ( this.activeModal ) {
+			this.hideModal();
+		}
+	}
+
+	toggleModal( e ) {
+		e.preventDefault();
+
+		if ( ! this.activeModal ) {
+			this.openModal( e.currentTarget );
+		} else {
+			this.hideModal();
+		}
 	}
 
 	openModal( element ) {
-		const modalData = element.getAttribute( 'data-toggle-element' );
-		const modal = document.getElementById( modalData );
-		const modalH = ( this.mediaQuery.matches ) ? window.innerHeight : modal.scrollHeight + 200;
+		const	modalID = element.getAttribute( 'data-toggle-element' );
 
-		this.animationHandler( modal, modalH );
-	}
+		this.activeModal = document.getElementById( modalID );
 
-	animationHandler( elem, elemH ) {
-		elem.style.maxHeight = `${ elemH }px`;
-		elem.style.height = `${ elemH }px`;
+		const
+			height = ( this.mediaQuery.matches ) ? window.innerHeight : this.activeModal.scrollHeight + 200,
+			closeBtn = this.activeModal.querySelector( '.search-close' );
+
+		this.activeModal.style.maxHeight = `${ height }px`;
+		this.activeModal.style.height = `${ height }px`;
 
 		if ( this.mediaQuery.matches ) {
-			elem.classList.add( 'header-search-mobile-active' );
+			this.activeModal.classList.add( 'header-search-mobile-active' );
 		}
 
-		this.activeModal = elem;
-		this.handleClose();
-	}
-
-	handleClose() {
-		const closeBtn = this.activeModal.querySelector( '.search-close' );
-
-		closeBtn.addEventListener( 'click', ( e ) => {
-			e.preventDefault();
-
-			this.hideModal();
-		} );
+		closeBtn.addEventListener( 'click', this.toggleModal );
 	}
 
 	hideModal() {
-		if ( ! this.activeModal ) {
-			return;
-		}
-
 		if ( this.mediaQuery.matches ) {
 			this.activeModal.classList.remove( 'header-search-mobile-active' );
 		}
 
 		this.activeModal.style.maxHeight = 0;
 		this.activeModal.style.height = 0;
-		this.activeModal = '';
+		this.activeModal = false;
 	}
 }
-

@@ -1,50 +1,36 @@
 import normalizeWheel from 'normalize-wheel';
+
 export default class Submenu {
+	intervalRight = null;
+	intervalLeft = null;
+
 	constructor() {
 		this.navContainer = document.getElementById( 'site-navigation' );
 		this.menuContainer = document.getElementById( 'primary-menu' );
 		this.shadowRight = document.getElementById( 'menu-container-shadow-right' );
 		this.shadowLeft = document.getElementById( 'menu-container-shadow-left' );
-		this.init = this.init.bind( this );
-		this.setScrollPosition = this.setScrollPosition.bind( this );
 		this.breakpoint = window.matchMedia( '( min-width: 1025px )' );
-		this.intervalRight = '';
-		this.intervalLeft = '';
 
-		this.verticalScrollCapture = this.verticalScrollCapture.bind( this );
-		this.horizontalScrollCapture = this.horizontalScrollCapture.bind( this );
-		this.shadowElementScrollLeft = this.shadowElementScrollLeft.bind( this );
-
-		this.verticalScrollCapture();
-		this.horizontalScrollCapture();
-
-		this.init( this.menuContainer );
-
-		this.menuContainer.addEventListener( 'scroll', () => {
-			this.setScrollPosition();
-		} );
-
-		this.shadowRight.addEventListener( 'mouseover', () => {
-			this.shadowElementScrollLeft();
-		} );
-
-		this.shadowRight.addEventListener( 'mouseleave', () => {
-			clearInterval( this.intervalRight );
-		} );
-
-		this.shadowLeft.addEventListener( 'mouseover', () => {
-			this.shadowElementScrollRight();
-		} );
-
-		this.shadowLeft.addEventListener( 'mouseleave', () => {
-			clearInterval( this.intervalLeft );
-		} );
+		if ( this.menuContainer ) {
+			this.verticalScrollCapture();
+			this.horizontalScrollCapture();
+			this.init();
+		}
 	}
 
-	init( elem ) {
-		if ( elem.scrollWidth > elem.clientWidth ) {
+	init() {
+		if ( this.menuContainer.scrollWidth > this.menuContainer.clientWidth ) {
 			this.navContainer.classList.add( 'menu-scrollable' );
 		}
+
+		this.setScrollPosition = this.setScrollPosition.bind( this );
+
+		window.addEventListener( 'resize', this.setScrollPosition );
+		this.menuContainer.addEventListener( 'scroll', this.setScrollPosition );
+		this.shadowRight.addEventListener( 'mouseover', this.shadowElementScrollLeft.bind( this ) );
+		this.shadowRight.addEventListener( 'mouseleave', () => clearInterval( this.intervalRight ) );
+		this.shadowLeft.addEventListener( 'mouseover', this.shadowElementScrollRight.bind( this ) );
+		this.shadowLeft.addEventListener( 'mouseleave', () => clearInterval( this.intervalLeft ) );
 	}
 
 	setScrollPosition() {
@@ -54,17 +40,15 @@ export default class Submenu {
 			return;
 		}
 
-		if ( ! this.breakpoint.matches ) {
-			[ ...submenuItems ].forEach( ( item ) => {
+		if ( this.breakpoint.matches ) {
+			for ( const item of submenuItems ) {
+				item.style.transform = `translateX( -${ this.menuContainer.scrollLeft }px )`;
+			}
+		} else {
+			for ( const item of submenuItems ) {
 				item.style.transform = `translateX( 0 )`;
-			} );
-
-			return;
+			}
 		}
-
-		[ ...submenuItems ].forEach( ( item ) => {
-			item.style.transform = `translateX( -${ this.menuContainer.scrollLeft }px )`;
-		} );
 	}
 
 	verticalScrollCapture() {

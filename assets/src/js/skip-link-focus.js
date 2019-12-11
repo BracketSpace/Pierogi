@@ -6,7 +6,7 @@
  * Learn more: https://git.io/vWdr2
  */
 
-const skipLink = () => {
+export default () => {
 	// eslint-disable-next-line no-undef
 	const isIe = /(trident|msie)/i.test( navigator.userAgent );
 
@@ -31,5 +31,3 @@ const skipLink = () => {
 		}, false );
 	}
 };
-
-skipLink();

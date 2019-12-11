@@ -1,4 +1,4 @@
-/**
+@import url(https://fonts.googleapis.com/css?family=Lato: 300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext);/**
  * Theme Name: Pierogi
  * Theme URI: https://bracketspace.com/downloads/pierogi
  * Description: Pierogi is a modern, clean, Gutenberg compatible theme. Suitable for a blog, personal site or portfolio.
@@ -13,8 +13,6 @@
  * This theme, like WordPress, is licensed under the GPL.
  * Use it to make something cool, have fun, and share what you've learned with others.
  */
-
-@import https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext;
 
 /**
  * Variables
@@ -949,9 +947,9 @@ ol {
   display: none;
   height: 100%;
   position: absolute;
-  z-index: 10;
   width: 1px;
   width: 0.0625rem;
+  z-index: 10;
 }
 
 .main-navigation .navigation-shadow-left {
@@ -1121,9 +1119,9 @@ ol {
 
 .main-navigation.menu-scrollable .menu ul > li:first-of-type {
   animation: scrollInit;
+  animation-delay: 1s;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
-  animation-delay: 1s;
   will-change: margin-left;
 }
 
