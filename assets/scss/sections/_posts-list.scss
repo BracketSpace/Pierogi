@@ -214,17 +214,6 @@
 		}
 	}
 
-	&.has-sidebar.blog-layout-list {
-
-		.site-main {
-			margin-right: rem-calc(20);
-
-			@include bp-down( sm ) {
-				margin-right: 0;
-			}
-		}
-	}
-
 	&.blog-layout-grid {
 
 		.site-main {
@@ -259,12 +248,10 @@
 	&.has-sidebar.blog-layout-grid {
 
 		.site-main {
-			margin-left: rem-calc(-20);
 			max-width: calc(#{ rem-calc(1082) } + #{ rem-calc(40) });
 			width: calc(66% + #{rem-calc(40)});
 
 			@include bp-down( sm ) {
-				margin-left: 0;
 				width: 100%;
 			}
 		}
