@@ -24,8 +24,8 @@
 	}
 }
 
-body:not(.sidebar-active).single,
-body:not(.sidebar-active).page {
+body:not(.has-sidebar).single,
+body:not(.has-sidebar).page {
 
 	.container {
 		margin-left: auto;
