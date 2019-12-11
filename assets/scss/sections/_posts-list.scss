@@ -118,10 +118,10 @@
 	}
 
 	.post-thumbnail {
-		margin: 0 auto rem-calc(17) auto;
+		margin: 0 auto rem-calc(20) auto;
 
 		@include bp-down( sm ) {
-			margin-bottom: rem-calc(7);
+			margin-bottom: rem-calc(10);
 			width: 100%;
 		}
 
@@ -138,10 +138,7 @@
 	.post {
 
 		&:last-of-type {
-
-			@include bp-down(sm) {
-				margin-bottom: 0;
-			}
+			margin-bottom: 0 !important;
 		}
 
 		&-content {
@@ -175,13 +172,16 @@
 
 		.post-thumbnail {
 			flex: 0 0 auto;
-			margin-right: rem-calc(40);
-			width: 50%;
+
+			@include bp-up(md) {
+				margin-bottom: 0;
+				margin-right: rem-calc(40);
+				max-width: rem-calc(521);
+				width: 50%;
+			}
 
 			@include bp-down(md) {
 				display: block;
-				margin: 0 auto rem-calc(20) auto;
-				width: auto;
 			}
 
 			img {
