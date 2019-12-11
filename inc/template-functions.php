@@ -60,3 +60,41 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
+
+/**
+ * Output author box markup
+ *
+ * @return void
+ */
+function pierogi_author_box() {
+	$author_name = get_the_author_meta( 'display_name' );
+	$author_id   = get_the_author_meta( 'ID' );
+	$gravatar    = get_avatar( $author_id, 147 );
+	$description = wpautop( get_the_author_meta( 'description' ) );
+	$output      = [];
+
+		$author_content[] = sprintf(
+			'<div class="author-title">%s %s</div>',
+			'<span class="h2">' . __( 'Author', 'pierogi' ) . '</span>',
+			'<span class="h6">' . esc_html( $author_name ) . '</span>'
+		);
+
+		$content[] = sprintf(
+			'<div class="author-box-content-wrap">%s %s</div>',
+			implode('', $author_content ),
+			$description
+		);
+
+		$gravatar_content[] = sprintf(
+			'<div class="author-gravatar">%s</div>',
+			$gravatar
+		);
+
+		//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		$output[] = printf(
+			'<section class="author-box">%s %s</section>',
+			implode( '', $gravatar_content ),
+			implode( '', $content )
+		);
+		//phpcs:enable
+}

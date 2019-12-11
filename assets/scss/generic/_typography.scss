@@ -12,7 +12,8 @@ h6 {
 	margin: 1em 0;
 }
 
-h1 {
+h1,
+.h1 {
 	letter-spacing: 0.03em;
 
 	@include font-size(60, 80);
@@ -23,35 +24,40 @@ h1 {
 	}
 }
 
-h2 {
+h2,
+.h2 {
 	color: color(gray, 2);
 	letter-spacing: 0.02em;
 
 	@include font-size(40, 45);
 }
 
-h3 {
+h3,
+.h3 {
 	color: color(gray, 3);
 	letter-spacing: 0.025em;
 
 	@include font-size(32, 39);
 }
 
-h4 {
+h4,
+.h4 {
 	color: color(gray, 3);
 	letter-spacing: 0.015em;
 
 	@include font-size(28, 34);
 }
 
-h5 {
+h5,
+.h5 {
 	color: color(gray, 5);
 	letter-spacing: 0.015em;
 
 	@include font-size(23, 28);
 }
 
-h6 {
+h6,
+.h6 {
 	color: color(gray, 6);
 	letter-spacing: 0.015em;
 

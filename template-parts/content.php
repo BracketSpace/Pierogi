@@ -68,6 +68,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php pierogi_entry_footer(); ?>
+		<?php pierogi_author_box(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
