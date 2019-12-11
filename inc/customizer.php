@@ -98,7 +98,8 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 
 	$wp_customize->add_section( 'pierogi_layout', [
-		'title' => __( 'Layout', 'pierogi' ),
+		'title'    => __( 'Layout', 'pierogi' ),
+		'priority' => 100,
 	] );
 
 	$wp_customize->add_setting( 'pierogi_theme_layout', [
@@ -135,68 +136,6 @@ function pierogi_customize_register( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
-
-/**
- * Add blog layout settings
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- *
- * @return void
- */
-function pierogi_register_blog_layout( $wp_customize ) {
-	$wp_customize->add_section( 'pierogi_blog_layout', array(
-		'title'             => __('Blog Layout', 'pierogi'),
-		'description'       => __('Layout settings for blog page', 'pierogi'),
-	) );
-
-	$wp_customize->add_setting( 'pierogi_blog_layout', array(
-		'default'       => 'column',
-		'type'          => 'theme_mod',
-	) );
-
-	$wp_customize->add_control( 'pierogi_blog_layout_control', array(
-		'section'     => 'pierogi_blog_layout',
-		'settings'    => 'pierogi_blog_layout',
-		'type'        => 'select',
-		'choices'     => array(
-			'grid'           => __('Grid', 'pierogi'),
-			'column'         => __('Column', 'pierogi'),
-		),
-	) );
-}
-
-add_action( 'customize_register', 'pierogi_register_blog_layout' );
-
-/**
- * Add sidebar settings
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- *
- * @return void
- */
-function pierogi_register_sidebar_settings( $wp_customize ) {
-	$wp_customize->add_section( 'pierogi_sidebar_settings', array(
-		'title'             => __('Sidebar Settings', 'pierogi'),
-		'description'       => __('Sidebar Settings', 'pierogi'),
-	) );
-
-	$wp_customize->add_setting( 'pierogi_sidebar_settings', array(
-		'default'       => true,
-		'type'          => 'theme_mod',
-	) );
-
-	$wp_customize->add_control( 'pierogi_sidebar_settings', array(
-		'section'     => 'pierogi_sidebar_settings',
-		'settings'    => 'pierogi_sidebar_settings',
-		'type'        => 'select',
-		'choices'     => array(
-			true           => __('Display sidebar', 'pierogi'),
-			false          => __('Hide sidebar', 'pierogi'),
-		),
-	) );
-}
-
-add_action( 'customize_register', 'pierogi_register_sidebar_settings' );
 
 /**
  * Render the site title for the selective refresh partial.
