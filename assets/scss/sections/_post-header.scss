@@ -6,7 +6,10 @@
 		img {
 			display: block;
 			height: auto;
-			width: 100%;
+			margin: auto;
+			max-height: rem-calc(846);
+			max-width: 100%;
+			width: auto;
 		}
 	}
 
@@ -94,6 +97,13 @@
 }
 
 .has-sidebar {
+
+	.post-thumbnail {
+
+		img {
+			max-height: rem-calc(722);
+		}
+	}
 
 	@include bp-up( md ) {
 
