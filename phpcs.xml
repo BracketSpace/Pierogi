@@ -135,5 +135,7 @@
 	</rule>
 
 	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>assets/*</exclude-pattern>
+	<exclude-pattern>js/*</exclude-pattern>
 
 </ruleset>

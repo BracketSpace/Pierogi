@@ -21,8 +21,12 @@
 @import "generic/mixins";
 @import "generic/global";
 @import "generic/typography";
+@import "generic/alignment";
 @import "generic/layout";
-@import "sections/footer";
+@import "blocks/images";
+@import "components/buttons";
 @import "components/container";
 @import "components/links";
+@import "sections/footer";
+@import "sections/posts-list";
 @import "sections/title";

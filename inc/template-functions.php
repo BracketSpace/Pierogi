@@ -19,9 +19,13 @@ function pierogi_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	// Adds a class of sidebar-active when sidebar is activated in customizer.
-	if ( $display_sidebar ) {
-		$classes[] = 'sidebar-active';
+	// Adds a layout class.
+	$classes[] = get_theme_mod( 'pierogi_theme_layout' );
+
+	// Add blog page layout type css class.
+	if ( is_home() ) {
+		$blog_layout = get_theme_mod( 'pierogi_blog_layout' );
+		$classes[]   = "blog-layout-{$blog_layout}";
 	}
 
 	return $classes;
@@ -39,14 +43,20 @@ function pierogi_pingback_header() {
 add_action( 'wp_head', 'pierogi_pingback_header' );
 
 /**
- * Display sidebar based on theme settings
+ * Filter footer text.
  *
- * @return void
+ * @param  string $text Footer text.
+ * @return string
  */
-function pierogi_display_sidebar() {
-	$display_sidebar = get_theme_mod( 'pierogi_sidebar_settings' );
-
-	if ( $display_sidebar ) {
-		get_sidebar();
-	}
+function pierogi_footer_text_filter( $text ) {
+	return str_ireplace( [
+		'%year%',
+		'BracketSpace',
+		'WordPress',
+	], [
+		date( 'Y' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://bracketspace.com', 'BracketSpace' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://wordpress.org', 'WordPress' ),
+	], esc_html( $text ) );
 }
+add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
