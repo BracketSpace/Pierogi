@@ -111,7 +111,6 @@
 
 	.site-main {
 		align-content: flex-start;
-		margin-bottom: rem-calc(150);
 
 		@include bp-down( sm ) {
 			display: block;
@@ -157,7 +156,6 @@
 	&.blog-layout-list {
 
 		.site-main {
-			margin: 0 0 rem-calc(150) 0;
 			max-width: rem-calc(1082);
 			width: 100%;
 		}
