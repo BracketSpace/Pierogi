@@ -1,6 +1,6 @@
 body:not(.search):not(.error404):not(.blog-layout-grid) {
 
-	&.layout-with-sidebar {
+	&.has-sidebar {
 
 		.content-area {
 			display: flex;
@@ -15,7 +15,7 @@ body:not(.search):not(.error404):not(.blog-layout-grid) {
 				width: 66%;
 
 				@include bp-down( sm ) {
-					max-width: auto;
+					max-width: 100%;
 					width: 100%;
 				}
 			}
