@@ -123,16 +123,18 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( is_singular() ) {
-			printf( '<div class="post-thumbnail">%s</div>',
-				get_the_post_thumbnail(  $post->ID, $size )
-			);
-		} else {
-			printf( '<a class="post-thumbnail" href="%s" aria-hidden="true" tabindex="-1">%s</a>',
+		$thumbnail = get_the_post_thumbnail(  $post->ID, $size );
+
+		if ( ! is_singular() ) {
+			$thumbnail = sprintf(
+				'<a href="%s" aria-hidden="true" tabindex="-1">%s</a>',
 				esc_html( get_the_permalink() ),
-				get_the_post_thumbnail( $post->ID, $size )
+				$thumbnail
 			);
-		} // End is_singular().
+		}
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		printf( '<div class="post-thumbnail">%s</div>', $thumbnail );
 	}
 endif;
 
@@ -166,3 +168,23 @@ if ( ! function_exists( 'pierogi_footer_logo' ) ) :
 		}
 	}
 endif;
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_display_sidebar() {
+	if ( 'has-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
+		get_sidebar();
+	}
+}
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_footer_text() {
+	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'pierogi_footer_text' ) ) );
+}

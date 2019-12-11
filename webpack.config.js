@@ -19,7 +19,6 @@ module.exports = ( env, argv ) => {
 		output: {
 			path: path.resolve( __dirname, 'js' ),
 			filename: './[name].js',
-			publicPath: '../',
 		},
 		performance: {
 			hints: false,
@@ -74,6 +73,7 @@ module.exports = ( env, argv ) => {
 							options: {
 								name: '[name].[ext]',
 								outputPath: '../images',
+								publicPath: 'images',
 							},
 						},
 					],

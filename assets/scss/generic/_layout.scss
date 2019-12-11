@@ -1,23 +1,40 @@
-body:not(.search):not(.error404):not(.blog-layout-grid) {
+/**
+ * Layout
+ */
 
-	&.layout-with-sidebar {
+main.site-main {
+	padding-bottom: rem-calc(150);
 
-		.content-area {
-			display: flex;
-			justify-content: space-between;
+	@include bp-down(sm) {
+		padding-bottom: rem-calc(100);
+	}
+}
+
+body.no-sidebar:not(.blog-layout-grid) {
+
+	.site-main {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
+
+	.content-area {
+		display: flex;
+		justify-content: space-between;
+
+		@include bp-down( sm ) {
+			display: block;
+		}
+
+		.site-main {
+			max-width: rem-calc(1082);
+			width: 66%;
 
 			@include bp-down( sm ) {
-				display: block;
-			}
-
-			.site-main {
-				max-width: rem-calc(1082);
-				width: 66%;
-
-				@include bp-down( sm ) {
-					max-width: auto;
-					width: 100%;
-				}
+				max-width: 100%;
+				width: 100%;
 			}
 		}
 	}
