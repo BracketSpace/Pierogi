@@ -13,9 +13,9 @@ add_image_size('post-list-thumb', 521, 348, true);
  * @return void
  */
 function pierogi_theme_image_sizes() {
-	update_option( 'medium_size_w', 895, true );
+	update_option( 'medium_size_l', 895, true );
 	update_option( 'medium_size_h', 9999, false );
-	update_option( 'large_size_w', 1269, true );
+	update_option( 'large_size_l', 1269, true );
 	update_option( 'large_size_h', 9999, false );
 }
 

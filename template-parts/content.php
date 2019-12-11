@@ -7,39 +7,49 @@
  * @package Pierogi
  */
 
+$pierogi_author_id       = $post->post_author;
+$pierogi_author_image    = get_avatar( $author_id, 139);
+$pierogi_author_name     = get_the_author_meta( 'display_name', $author_id );
+$pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<div class="alignwide">
+
+		<?php pierogi_post_thumbnail( 'large' ); ?>
+
+	</div>
 	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-
-			if ( function_exists( 'the_subtitle' ) ) {
-				the_subtitle( '<p class="entry-subtitle">', '</p>' );
-			};
-
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-
-			if ( function_exists( 'the_subtitle' ) ) {
-				the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
-			};
-
-		endif;
-
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
+		<div class="author-image">
+			<div class="author-image-inner">
+				<?php echo $pierogi_author_image; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</div>
+		</div>
+		<div class="entry-meta">
 				<?php
-				pierogi_posted_on();
-				pierogi_posted_by();
+					pierogi_posted_on();
 				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+				&#183;
+				<?php
+				echo esc_html( $pierogi_author_name );
+				if ( $pierogi_categories_list ) {
+					/* translators: 1: list of categories. */
+					printf( ' &#183; <span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $pierogi_categories_list ); // phpcs:ignore
+				}
+				?>
+		</div><!-- .entry-meta -->
+		<div class="single-post-header">
+					<?php
 
-	<?php pierogi_post_thumbnail(); ?>
+					the_title( '<h1 class="entry-title">', '</h1>' );
+
+					if ( function_exists( 'the_subtitle' ) ) {
+						the_subtitle( '<p class="entry-subtitle">', '</p>' );
+					};
+
+					?>
+		</div>
+	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
