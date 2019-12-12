@@ -199,6 +199,17 @@ function pierogi_no_menu_warning() {
 }
 
 /**
+ * Echoes image url
+ *
+ * @param  string $image Image name.
+ * @return void
+ */
+function pierogi_image_url( $image ) {
+	$template_url = get_template_directory_uri();
+	echo esc_url( "{$template_url}/images/$image" );
+}
+
+/**
  * Display inline SVG from file.
  *
  * @param  string $filename Filename to load.

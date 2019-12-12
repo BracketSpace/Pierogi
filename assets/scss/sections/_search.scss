@@ -69,14 +69,14 @@
 		@media (max-width: 1025px) {
 			margin-top: rem-calc(36);
 		}
-		/* stylelint-disable no-descending-specificity */
-		svg {
+
+		img {
 			transform: rotate(0);
 			transform-origin: center;
 			transition: 0.2s;
 		}
-		/* stylelint-enable */
-		&:hover svg {
+
+		&:hover img {
 			transform: rotate(90deg);
 		}
 	}
