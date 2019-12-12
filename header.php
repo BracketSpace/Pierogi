@@ -66,7 +66,7 @@
 						?>
 					</nav><!-- #site-navigation -->
 					<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20.121" height="20.121" viewBox="0 0 20.121 20.121"><g transform="translate(-1014 -174)"><g transform="translate(1014 174)" fill="#fff" stroke="#868e96" stroke-width="3"><circle cx="8.101" cy="8.101" r="8.101" stroke="none"/><circle cx="8.101" cy="8.101" r="6.601" fill="none"/></g><line x2="3.609" y2="3.609" transform="translate(1028.391 188.391)" fill="none" stroke="#868e96" stroke-linecap="round" stroke-width="3"/></g></svg>
+						<?php pierogi_inline_svg( 'icon-search' ); ?>
 					</button>
 				</div>
 
