@@ -78,14 +78,6 @@
 		}
 	}
 
-	.current-menu-item {
-
-		a,
-		span {
-			color: color(pink);
-		}
-	}
-
 	.sub-menu {
 		left: 100%;
 		margin-bottom: rem-calc(50);
@@ -105,13 +97,24 @@
 				margin-bottom: rem-calc(50);
 			}
 
-			a,
-			span {
-				overflow: initial;
-				text-overflow: initial;
-				white-space: initial;
-				word-wrap: break-word;
-			}
+		}
+
+		a,
+		span {
+			overflow: initial;
+			text-overflow: initial;
+			white-space: initial;
+			word-wrap: break-word;
+		}
+	}
+
+	.current-menu-item {
+
+		> a,
+		> span,
+		> .item-wrap > a,
+		> .item-wrap > span {
+			color: color(pink);
 		}
 	}
 
