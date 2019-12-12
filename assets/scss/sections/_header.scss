@@ -1,0 +1,141 @@
+.header-top-section {
+	backdrop-filter: blur(rem-calc(30));
+	background-color: color(white);
+	box-shadow: 0 rem-calc(1) rem-calc(10) 0 rgba(0, 0, 0, 0.14);
+	display: flex;
+	justify-content: space-between;
+	min-height: rem-calc(82);
+	padding: rem-calc(17) rem-calc(140);
+	position: relative;
+	width: 100%;
+	z-index: 10;
+
+	.site-branding {
+		align-self: center;
+		display: flex;
+		flex: 0 0 auto;
+		margin-right: rem-calc(30);
+
+		@include bp-down( sm ) {
+			width: rem-calc(100);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		h1 {
+			color: color(gray, 1);
+			margin: 0;
+
+			@include font-size(40, 48);
+		}
+
+		p {
+			color: color(yellow);
+			margin: 0;
+		}
+	}
+
+	.custom-logo-link {
+		height: rem-calc(48);
+
+		img {
+			display: block;
+			height: auto;
+			max-height: rem-calc(48);
+			width: auto;
+		}
+	}
+
+	.navigation-container {
+		align-items: center;
+		display: flex;
+
+		.search-button {
+			background-color: transparent;
+			border: transparent;
+			cursor: pointer;
+			margin-left: rem-calc(30);
+			padding: 0;
+
+			svg {
+				display: block;
+				margin-top: rem-calc(1);
+
+				g,
+				line {
+					transition: 0.2s;
+				}
+			}
+
+			&:hover {
+
+				g,
+				line {
+					stroke: color(yellow);
+				}
+			}
+		}
+
+		.search-button.active {
+
+			svg g,
+			svg line {
+				stroke: color(gray, 1);
+			}
+		}
+
+		@media (max-width: 1025px) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 1440px) {
+		padding: rem-calc(17) rem-calc(40);
+	}
+
+	@include bp-down( sm ) {
+		min-height: rem-calc(54);
+		padding: 0 rem-calc(20);
+	}
+}
+
+.header-big-section {
+	align-items: center;
+	background-color: color(light);
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	transition: 0.5s;
+	width: 100%;
+	will-change: height;
+}
+
+.header-search {
+	height: rem-calc(262);
+	max-height: 0;
+
+	@media ( max-width: 1025px ) {
+		max-height: auto;
+		opacity: 0;
+		position: absolute;
+		transition: visibility 0.3s, opacity 0.3s;
+		visibility: hidden;
+		z-index: 8;
+	}
+}
+
+.header-submenu {
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	transition: visibility 0.3s, opacity 0.3s;
+	visibility: hidden;
+	z-index: 5;
+}
+
+.header-search-mobile-active {
+	opacity: 1;
+	visibility: visible;
+}

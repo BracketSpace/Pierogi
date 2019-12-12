@@ -25,10 +25,6 @@ module.exports = ( env, argv ) => {
 			maxEntrypointSize: 512000,
 			maxAssetSize: 512000,
 		},
-		devtool: false,
-		optimization: {
-			minimize: false,
-		},
 		module: {
 			rules: [
 				{
@@ -69,8 +65,9 @@ module.exports = ( env, argv ) => {
 					test: /\.(png|jpg|gif|svg)$/i,
 					use: [
 						{
-							loader: 'file-loader',
+							loader: 'url-loader',
 							options: {
+								limit: 8192,
 								name: '[name].[ext]',
 								outputPath: '../images',
 								publicPath: 'images',
@@ -85,21 +82,20 @@ module.exports = ( env, argv ) => {
 		},
 		plugins: [
 			...defaultConfig.plugins,
-			new ExtractTextPlugin( '../[name].css' ),
+			new ExtractTextPlugin( '../../[name].css' ),
 			new ImageminPlugin( {
 				test: /\.(jpe?g|png|gif|svg)$/i,
 			} ),
 			...( ! argv.watch ? [
 				new StyleLintPlugin( {
 					configFile: '.stylelintrc',
-					context: 'assets/scss',
+					context: 'assets/src/scss',
 				} ),
 			] : [] ),
 			...( process.env.NODE_ENV === 'production' ? [
 				new CleanWebpackPlugin(),
 				new ExtraneousFileCleanupPlugin( {
 					extensions: [ '.js', '.php' ],
-					minBytes: 4096,
 				} ),
 			] : [] ),
 		],

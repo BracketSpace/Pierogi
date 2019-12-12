@@ -188,3 +188,12 @@ function pierogi_display_sidebar() {
 function pierogi_footer_text() {
 	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'pierogi_footer_text' ) ) );
 }
+
+/**
+ * Display warning when no menu is set
+ *
+ * @return void
+ */
+function pierogi_no_menu_warning() {
+	printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+}

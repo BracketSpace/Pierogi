@@ -7,6 +7,11 @@
  * @package Pierogi
  */
 
+/**
+ * Custom nav walker
+ */
+require get_template_directory() . '/inc/classes/class-pierogi-primary-menu-nav-walker.php';
+
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -88,8 +93,8 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 250,
-				'width'       => 250,
+				'height'      => 48,
+				'width'       => 133,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
@@ -163,8 +168,6 @@ function pierogi_scripts() {
 
 	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 
-	wp_enqueue_script( 'pierogi-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -175,10 +178,17 @@ add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
  * Enqeues block editor scripts
  */
 function pierogi_enqueue_block_editor_scripts() {
-	wp_enqueue_script( 'pierogi-flynn-editor', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
+	wp_enqueue_script( 'pierogi-editor-script', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
+
+/**
+ * Register js script translations
+ */
+if ( function_exists( 'wp_set_script_translations' ) ) {
+	wp_set_script_translations( 'pierogi-script', 'pierogi' );
+}
 
 /**
  * Implement the Custom Header feature.
