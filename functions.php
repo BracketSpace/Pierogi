@@ -7,11 +7,6 @@
  * @package Pierogi
  */
 
-/**
- * Custom nav walker
- */
-require get_template_directory() . '/inc/classes/class-pierogi-primary-menu-nav-walker.php';
-
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
