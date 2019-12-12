@@ -65,7 +65,7 @@ module.exports = ( env, argv ) => {
 					test: /\.(png|jpg|gif|svg)$/i,
 					use: [
 						{
-							loader: 'url-loader',
+							loader: 'file-loader',
 							options: {
 								limit: 8192,
 								name: '[name].[ext]',
@@ -82,7 +82,7 @@ module.exports = ( env, argv ) => {
 		},
 		plugins: [
 			...defaultConfig.plugins,
-			new ExtractTextPlugin( '../../[name].css' ),
+			new ExtractTextPlugin( '../[name].css' ),
 			new ImageminPlugin( {
 				test: /\.(jpe?g|png|gif|svg)$/i,
 			} ),

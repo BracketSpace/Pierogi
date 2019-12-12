@@ -50,8 +50,9 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'pierogi' ),
-				'footer' => esc_html__( 'Footer Menu', 'pierogi' ),
+				'primary' => esc_html__( 'Primary', 'pierogi' ),
+				'mobile'  => esc_html__( 'Mobile', 'pierogi' ),
+				'footer'  => esc_html__( 'Footer Menu', 'pierogi' ),
 			)
 		);
 
@@ -164,7 +165,7 @@ function pierogi_scripts() {
 
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', array(), $version, true );
+	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', [ 'wp-i18n' ], $version, true );
 
 	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 
@@ -221,3 +222,15 @@ require get_template_directory() . '/inc/images.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $args ) {
+	if ( isset( $args->mobile ) && $args->mobile && 0 === $depth ) {
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			$item_output .= '<button class="mobile-submenu-button"></button>';
+		}
+
+		$item_output = sprintf( '<div class="item-wrap">%s</div>', $item_output );
+	}
+
+	return $item_output;
+}, 10, 4 );

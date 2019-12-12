@@ -9,7 +9,6 @@ export default class Submenu {
 		this.menuContainer = document.getElementById( 'primary-menu' );
 		this.shadowRight = document.getElementById( 'menu-container-shadow-right' );
 		this.shadowLeft = document.getElementById( 'menu-container-shadow-left' );
-		this.breakpoint = window.matchMedia( '( min-width: 1025px )' );
 		this.mobileNavigation = document.getElementById( 'mobile-site-navigation' );
 
 		if ( this.menuContainer ) {

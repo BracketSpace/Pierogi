@@ -19,6 +19,7 @@
 @import "generic/normalize";
 @import "generic/functions";
 @import "generic/mixins";
+@import "generic/animations";
 @import "generic/global";
 @import "generic/typography";
 @import "generic/alignment";
@@ -28,6 +29,7 @@
 @import "components/container";
 @import "components/links";
 @import "components/nav";
+@import "components/nav-mobile";
 @import "sections/header";
 @import "sections/title";
 @import "sections/search";
