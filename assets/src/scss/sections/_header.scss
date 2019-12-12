@@ -13,23 +13,12 @@
 	.site-branding {
 		align-self: center;
 		display: flex;
-		flex-shrink: 0;
+		flex: 0 0 auto;
 		margin-right: rem-calc(30);
-		width: rem-calc(133);
-
-		img {
-			display: block;
-			height: auto;
-			width: 100%;
-		}
 
 		@include bp-down( sm ) {
 			width: rem-calc(100);
 		}
-	}
-
-	.site-branding-text {
-		max-width: auto;
 
 		a {
 			text-decoration: none;
@@ -38,7 +27,6 @@
 		h1 {
 			color: color(gray, 1);
 			margin: 0;
-			margin-top: rem-calc(17);
 
 			@include font-size(40, 48);
 		}
@@ -46,7 +34,17 @@
 		p {
 			color: color(yellow);
 			margin: 0;
-			margin-bottom: rem-calc(17);
+		}
+	}
+
+	.custom-logo-link {
+		height: rem-calc(48);
+
+		img {
+			display: block;
+			height: auto;
+			max-height: rem-calc(48);
+			width: auto;
 		}
 	}
 

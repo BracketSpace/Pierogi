@@ -8,6 +8,6 @@ import MobileMenu from './mobile-menu';
 import Submenu from './submenu';
 
 skipLinkFocus();
-new Submenu();
 new MobileMenu();
+new Submenu();
 new SearchModal();

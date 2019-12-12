@@ -10,6 +10,7 @@ export default class Submenu {
 		this.shadowRight = document.getElementById( 'menu-container-shadow-right' );
 		this.shadowLeft = document.getElementById( 'menu-container-shadow-left' );
 		this.breakpoint = window.matchMedia( '( min-width: 1025px )' );
+		this.mobileNavigation = document.getElementById( 'mobile-site-navigation' );
 
 		if ( this.menuContainer ) {
 			this.verticalScrollCapture();
@@ -23,30 +24,61 @@ export default class Submenu {
 			this.navContainer.classList.add( 'menu-scrollable' );
 		}
 
-		this.setScrollPosition = this.setScrollPosition.bind( this );
-
-		window.addEventListener( 'resize', this.setScrollPosition );
-		this.menuContainer.addEventListener( 'scroll', this.setScrollPosition );
 		this.shadowRight.addEventListener( 'mouseover', this.shadowElementScrollLeft.bind( this ) );
 		this.shadowRight.addEventListener( 'mouseleave', () => clearInterval( this.intervalRight ) );
 		this.shadowLeft.addEventListener( 'mouseover', this.shadowElementScrollRight.bind( this ) );
 		this.shadowLeft.addEventListener( 'mouseleave', () => clearInterval( this.intervalLeft ) );
+
+		this.submenus = this.menuContainer.querySelectorAll( '.menu-item-has-children .sub-menu' );
+
+		if ( this.submenus ) {
+			this.setSubmenuPosition = this.setSubmenuPosition.bind( this );
+
+			window.addEventListener( 'resize', this.setSubmenuPosition );
+			this.menuContainer.addEventListener( 'scroll', this.setSubmenuPosition );
+
+			this.setSubmenuPosition();
+		}
 	}
 
-	setScrollPosition() {
-		const submenuItems = this.menuContainer.querySelectorAll( `.menu-item-has-children .sub-menu` );
-
-		if ( ! submenuItems ) {
-			return;
+	calculateSubmenuPosition( submenu ) {
+		if ( submenu.classList.contains( 'alignright' ) ) {
+			// Clear alignment for proper mesurement.
+			submenu.classList.remove( 'alignright' );
 		}
 
-		if ( this.breakpoint.matches ) {
-			for ( const item of submenuItems ) {
-				item.style.transform = `translateX( -${ this.menuContainer.scrollLeft }px )`;
-			}
-		} else {
-			for ( const item of submenuItems ) {
-				item.style.transform = `translateX( 0 )`;
+		submenu.style.transform = null;
+
+		const
+			rect = submenu.getBoundingClientRect(),
+			totalWidth = Math.round( rect.left + rect.width ),
+			parent = submenu.parentNode,
+			parentStyle = window.getComputedStyle( parent ),
+			parentWidth = parent.clientWidth - parseInt( parentStyle.paddingLeft ) - parseInt( parentStyle.paddingRight ),
+			rightAligned = ( totalWidth > document.body.clientWidth );
+
+		return {
+			rightAligned,
+			offset: rightAligned ? parentWidth - rect.width : 0,
+		};
+	}
+
+	isMobile() {
+		return this.mobileNavigation && ( 'none' !== window.getComputedStyle( this.mobileNavigation ).display );
+	}
+
+	setSubmenuPosition() {
+		for ( const submenu of this.submenus ) {
+			if ( this.isMobile() ) {
+				submenu.style.transform = '';
+			} else {
+				const { rightAligned, offset } = this.calculateSubmenuPosition( submenu );
+
+				if ( rightAligned ) {
+					submenu.classList.add( 'alignright' );
+				}
+
+				submenu.style.transform = `translateX(${ offset - this.menuContainer.scrollLeft }px)`;
 			}
 		}
 	}

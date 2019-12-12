@@ -24,28 +24,28 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'pierogi' ); ?></a>
 
-	<header id="masthead" class="site-header">
+	<?php
+	$pierogi_header_class = 'site-header';
+
+	if ( ! has_custom_logo() && get_bloginfo( 'description' ) ) {
+		$pierogi_header_class .= ' large';
+	}
+	?>
+
+	<header id="masthead" class="<?php echo esc_attr( $pierogi_header_class ); ?>">
 		<div class="header-top-section">
-			<div class="site-branding
-			<?php
-			if ( ! has_custom_logo() ) {
-				echo 'site-branding-text'; }
-			?>
-			">
+			<div class="site-branding">
 
-			<?php
-
-			if ( has_custom_logo() ) {
-				the_custom_logo();
-			} else {
-				echo '<a href="' . esc_url( get_home_url() ) . '">';
-				?>
-					<h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h1>
-					<p><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
-				<?php
-			}
-					echo '</a>';
-			?>
+			<?php if ( has_custom_logo() ) : ?>
+				<?php the_custom_logo(); ?>
+			<?php else : ?>
+				<a class="site-branding-text" href="<?php echo esc_url( home_url() ); ?>">
+					<h1><?php bloginfo( 'name' ); ?></h1>
+					<?php if ( get_bloginfo( 'description' ) ) : ?>
+						<p><?php bloginfo( 'description' ); ?></p>
+					<?php endif; ?>
+				</a>
+			<?php endif; ?>
 
 		</div><!-- .site-branding -->
 		<div class="navigation-container">
