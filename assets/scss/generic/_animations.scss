@@ -5,14 +5,14 @@
 @keyframes menuInitialScroll {
 
 	0% {
-		margin-left: rem-calc(0);
+		transform: translateX(0);
 	}
 
 	50% {
-		margin-left: rem-calc(-200);
+		transform: translateX(#{rem-calc(-200)});
 	}
 
 	100% {
-		margin-left: rem-calc(0);
+		transform: translateX(0);
 	}
 }
