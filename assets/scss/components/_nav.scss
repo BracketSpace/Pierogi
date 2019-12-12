@@ -1,23 +1,33 @@
 .main-navigation {
-	max-width: calc(100% - #{rem-calc(50)});
 	position: relative;
+	width: calc(100% - #{rem-calc(50)});
 
 	.navigation-shadow {
 		display: block;
 		display: none;
 		height: 100%;
 		position: absolute;
-		width: rem-calc(1);
+		width: rem-calc(24);
 		z-index: 10;
 
-		&-left {
+		@include before("", rem-calc(1), 100%, 0) {
 			box-shadow: rem-calc(1) 0 rem-calc(20) rem-calc(20) #fff;
-			left: rem-calc(-1);
+		}
+
+		&-left {
+			left: rem-calc(0);
+
+			&::before {
+				left: rem-calc(-1);
+			}
 		}
 
 		&-right {
-			box-shadow: 0 rem-calc(1) rem-calc(20) rem-calc(20) #fff;
-			right: rem-calc(-1);
+			right: rem-calc(0);
+
+			&::before {
+				right: rem-calc(-1);
+			}
 		}
 	}
 
@@ -34,11 +44,6 @@
 		li {
 			display: inline-block;
 			flex-shrink: 0;
-			padding: 0 rem-calc(29);
-
-			&:first-of-type {
-				margin-left: auto;
-			}
 
 			&:hover {
 
@@ -48,9 +53,7 @@
 					&::after {
 						opacity: 1;
 					}
-
 				}
-
 			}
 
 			/* stylelint-disable no-descending-specificity */
@@ -64,12 +67,19 @@
 				text-transform: uppercase;
 				transition: 0.2s;
 
-				@include after( "", 100%, rem-calc( 2 ) ) {
+				@include after {
 					background-color: color(yellow);
-					bottom: rem-calc(-2);
-					left: 0;
+					bottom: rem-calc(10);
+					height: rem-calc(2);
+					left: rem-calc(29);
 					opacity: 0;
+					right: rem-calc(29);
 					transition: 0.2s;
+
+					@include bp-down( lg ) {
+						left: rem-calc(20);
+						right: rem-calc(20);
+					}
 				}
 
 				@include font-size( 18, 22 );
@@ -135,11 +145,6 @@
 					}
 				}
 			}
-
-			@include bp-down( lg ) {
-				padding: 0 rem-calc(14);
-			}
-
 		}
 
 		> ul {
@@ -155,10 +160,23 @@
 			&::-webkit-scrollbar {
 				display: none;
 			}
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			> li > a {
+				display: block;
+				line-height: rem-calc(45);
+				padding: 0 rem-calc(29);
+
+				@include bp-down( lg ) {
+					padding: 0 rem-calc(20);
+				}
+			}
 		}
 	}
 
-	&.menu-scrollable {
+	&.scrollable {
+		margin: 0 rem-calc(-15);
+		width: calc(100% - #{rem-calc(20)});
 
 		.navigation-shadow {
 			display: block;
@@ -170,6 +188,22 @@
 			animation-duration: 2s;
 			animation-timing-function: ease-in-out;
 			will-change: margin-left;
+
+			&:first-child {
+				padding-left: rem-calc(44);
+
+				@include bp-down(lg) {
+					padding-left: rem-calc(35);
+				}
+			}
+
+			&:last-child {
+				padding-right: rem-calc(44);
+
+				@include bp-down(lg) {
+					padding-right: rem-calc(35);
+				}
+			}
 		}
 	}
 }

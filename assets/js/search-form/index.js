@@ -1,4 +1,4 @@
-export default class SearchModal {
+export default class SearchForm {
 	constructor() {
 		this.modalBtns = document.querySelectorAll( '[data-toggle-element]' );
 

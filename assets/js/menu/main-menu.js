@@ -1,17 +1,21 @@
 import normalizeWheel from 'normalize-wheel';
+import { innerWidth } from '../helpers';
 
-export default class Submenu {
+export default class MainMenu {
 	intervalRight = null;
 	intervalLeft = null;
 
 	constructor() {
-		this.navContainer = document.getElementById( 'site-navigation' );
-		this.menuContainer = document.getElementById( 'primary-menu' );
+		this.container = document.querySelector( 'header.site-header .container' );
+		this.branding = this.container.querySelector( '.site-branding' );
+		this.navContainer = this.container.querySelector( '.navigation-container' );
+		this.nav = document.getElementById( 'site-navigation' );
+		this.menu = document.getElementById( 'primary-menu' );
 		this.shadowRight = document.getElementById( 'menu-container-shadow-right' );
 		this.shadowLeft = document.getElementById( 'menu-container-shadow-left' );
-		this.mobileNavigation = document.getElementById( 'mobile-site-navigation' );
+		this.mobileNav = document.getElementById( 'mobile-site-navigation' );
 
-		if ( this.menuContainer ) {
+		if ( this.menu ) {
 			this.verticalScrollCapture();
 			this.horizontalScrollCapture();
 			this.init();
@@ -19,24 +23,41 @@ export default class Submenu {
 	}
 
 	init() {
-		if ( this.menuContainer.scrollWidth > this.menuContainer.clientWidth ) {
-			this.navContainer.classList.add( 'menu-scrollable' );
-		}
+		this.calculateMenuSize = this.calculateMenuSize.bind( this );
+
+		window.addEventListener( 'resize', this.calculateMenuSize );
+		window.addEventListener( 'load', this.calculateMenuSize );
 
 		this.shadowRight.addEventListener( 'mouseover', this.shadowElementScrollLeft.bind( this ) );
 		this.shadowRight.addEventListener( 'mouseleave', () => clearInterval( this.intervalRight ) );
 		this.shadowLeft.addEventListener( 'mouseover', this.shadowElementScrollRight.bind( this ) );
 		this.shadowLeft.addEventListener( 'mouseleave', () => clearInterval( this.intervalLeft ) );
 
-		this.submenus = this.menuContainer.querySelectorAll( '.menu-item-has-children .sub-menu' );
+		this.submenus = this.menu.querySelectorAll( '.menu-item-has-children .sub-menu' );
 
 		if ( this.submenus ) {
 			this.setSubmenuPosition = this.setSubmenuPosition.bind( this );
 
 			window.addEventListener( 'resize', this.setSubmenuPosition );
-			this.menuContainer.addEventListener( 'scroll', this.setSubmenuPosition );
+			this.menu.addEventListener( 'scroll', this.setSubmenuPosition );
 
 			this.setSubmenuPosition();
+		}
+	}
+
+	calculateMenuSize() {
+		const
+			containerWidth = innerWidth( this.container ),
+			brandingMargin = parseInt( window.getComputedStyle( this.branding ).marginRight ),
+			brandingWidth = this.branding.clientWidth + brandingMargin,
+			maxMenuWidth = containerWidth - brandingWidth;
+
+		this.navContainer.style.maxWidth = `${ maxMenuWidth }px`;
+
+		if ( this.menu.scrollWidth > this.menu.clientWidth ) {
+			this.nav.classList.add( 'scrollable' );
+		} else if ( this.nav.classList.contains( 'scrollable' ) ) {
+			this.nav.classList.remove( 'scrollable' );
 		}
 	}
 
@@ -51,19 +72,19 @@ export default class Submenu {
 		const
 			rect = submenu.getBoundingClientRect(),
 			totalWidth = Math.round( rect.left + rect.width ),
-			parent = submenu.parentNode,
-			parentStyle = window.getComputedStyle( parent ),
-			parentWidth = parent.clientWidth - parseInt( parentStyle.paddingLeft ) - parseInt( parentStyle.paddingRight ),
+			link = submenu.parentNode.querySelector( 'a' ),
+			linkStyle = window.getComputedStyle( link ),
+			linkWidth = link.clientWidth - parseInt( linkStyle.paddingRight ),
 			rightAligned = ( totalWidth > document.body.clientWidth );
 
 		return {
 			rightAligned,
-			offset: rightAligned ? parentWidth - rect.width : 0,
+			offset: rightAligned ? linkWidth - rect.width : parseInt( linkStyle.paddingLeft ),
 		};
 	}
 
 	isMobile() {
-		return this.mobileNavigation && ( 'none' !== window.getComputedStyle( this.mobileNavigation ).display );
+		return this.mobileNav && ( 'none' !== window.getComputedStyle( this.mobileNav ).display );
 	}
 
 	setSubmenuPosition() {
@@ -77,28 +98,28 @@ export default class Submenu {
 					submenu.classList.add( 'alignright' );
 				}
 
-				submenu.style.transform = `translateX(${ offset - this.menuContainer.scrollLeft }px)`;
+				submenu.style.transform = `translateX(${ offset - this.menu.scrollLeft }px)`;
 			}
 		}
 	}
 
 	verticalScrollCapture() {
-		this.menuContainer.addEventListener( 'wheel', ( e ) => {
+		this.menu.addEventListener( 'wheel', ( e ) => {
 			const normalized = normalizeWheel( e );
 
 			if ( normalized.spinY !== 0 ) {
-				this.menuContainer.scrollLeft -= this.recalculateScroll( normalized.spinY );
+				this.menu.scrollLeft += this.recalculateScroll( normalized.spinY );
 				e.preventDefault();
 			}
 		} );
 	}
 
 	horizontalScrollCapture() {
-		this.menuContainer.addEventListener( 'wheel', ( e ) => {
+		this.menu.addEventListener( 'wheel', ( e ) => {
 			const normalized = normalizeWheel( e );
 
 			if ( normalized.spinX !== 0 ) {
-				this.menuContainer.scrollLeft -= this.recalculateScroll( normalized.spinX );
+				this.menu.scrollLeft += this.recalculateScroll( normalized.spinX );
 				e.preventDefault();
 			}
 		} );
@@ -113,7 +134,7 @@ export default class Submenu {
 	}
 
 	animationIntervalLeft() {
-		this.menuContainer.scrollLeft += 5;
+		this.menu.scrollLeft += 5;
 	}
 
 	shadowElementScrollRight() {
@@ -121,6 +142,6 @@ export default class Submenu {
 	}
 
 	animationIntervalRight() {
-		this.menuContainer.scrollLeft -= 5;
+		this.menu.scrollLeft -= 5;
 	}
 }

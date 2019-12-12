@@ -70,6 +70,8 @@
 
 	.custom-logo-link {
 		height: rem-calc(48);
+		position: relative;
+		z-index: 11;
 
 		@include bp-down( sm ) {
 			height: rem-calc(36);
@@ -93,6 +95,8 @@
 			cursor: pointer;
 			margin-left: rem-calc(30);
 			padding: 0;
+			position: relative;
+			z-index: 11;
 
 			svg {
 				display: block;

@@ -1,5 +1,5 @@
+import MainMenu from './main-menu';
 import MobileMenu from './mobile-menu';
-import Submenu from './submenu';
 
+new MainMenu();
 new MobileMenu();
-new Submenu();
