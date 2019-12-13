@@ -5,13 +5,17 @@
 		margin-bottom: rem-calc(60);
 	}
 
+	ul {
+		list-style: none;
+	}
+}
+
+.widget_categories,
+.widget_tag_cloud {
+
 	> ul {
 		margin: rem-calc(40) 0;
 		padding-left: 0;
-	}
-
-	ul {
-		list-style: none;
 	}
 
 	li {
@@ -20,8 +24,7 @@
 		@include font-size( 16, 19 );
 	}
 
-	ul a,
-	.tagcloud a {
+	a {
 		border: rem-calc(3) solid transparent;
 		box-shadow: 0 0 rem-calc(3) 0 rgba(0, 0, 0, 0.16);
 		color: color(gray, 6);
