@@ -73,10 +73,6 @@
 			margin: 0 rem-calc(10);
 
 			@include bp-down( sm ) {
-				margin: 0 rem-calc(7);
-			}
-
-			@media ( max-width: rem-calc( 410 ) ) {
 				display: none;
 			}
 		}
@@ -90,3 +86,23 @@
 
 	}
 }
+
+.blog-layout-grid .navigation.pagination {
+	margin-top: rem-calc(50);
+}
+
+.blog-layout-list .navigation.pagination,
+.has-sidebar.blog-layout-grid .navigation.pagination {
+	margin-top: rem-calc(150);
+}
+
+/* stylelint-disable no-descending-specificity */
+.blog-layout-list .navigation.pagination,
+.blog-layout-grid .navigation.pagination,
+.has-sidebar.blog-layout-grid .navigation.pagination {
+
+	@include bp-down( sm ) {
+		margin-top: rem-calc(60);
+	}
+}
+/* stylelint-enable */
