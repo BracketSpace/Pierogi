@@ -12,6 +12,13 @@
 		display: flex;
 		justify-content: center;
 
+		@include bp-down(sm) {
+			justify-content: space-between;
+			margin-left: auto;
+			margin-right: auto;
+			max-width: rem-calc(521);
+		}
+
 		a,
 		span {
 			color: color(gray, 3);
@@ -47,43 +54,23 @@
 
 		.prev {
 			margin-right: rem-calc(50);
-
-			@include bp-down( sm ) {
-				margin-right: rem-calc(17);
-			}
-
-			@media (max-width: rem-calc( 410 )) {
-				margin-right: auto;
-			}
 		}
 
 		.next {
 			margin-left: rem-calc(50);
-
-			@include bp-down( sm ) {
-				margin-left: rem-calc(25);
-			}
-
-			@media (max-width: rem-calc( 410 )) {
-				margin-left: auto;
-			}
 		}
 
 		.page-numbers:not(.prev):not(.next) {
 			margin: 0 rem-calc(10);
 
-			@include bp-down( sm ) {
+			@include bp-down(sm) {
 				display: none;
 			}
 		}
 
-		.current {
-
-			&::after {
-				opacity: 1;
-			}
+		.current::after {
+			opacity: 1;
 		}
-
 	}
 }
 
@@ -101,7 +88,7 @@
 .blog-layout-grid .navigation.pagination,
 .has-sidebar.blog-layout-grid .navigation.pagination {
 
-	@include bp-down( sm ) {
+	@include bp-down(sm) {
 		margin-top: rem-calc(60);
 	}
 }
