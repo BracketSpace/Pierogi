@@ -19,8 +19,6 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			pierogi_author_box();
-
 			the_posts_pagination( [ 'mid_size' => 2 ] );
 
 			// If comments are open or we have at least one comment, load up the comment template.

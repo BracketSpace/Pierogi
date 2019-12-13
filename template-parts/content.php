@@ -67,4 +67,6 @@
 		?>
 	</div><!-- .entry-content -->
 
+	<?php get_template_part( 'template-parts/author-box' ); ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->
