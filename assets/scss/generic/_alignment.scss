@@ -6,6 +6,13 @@
 	width: calc(100vw - var(--scrollbar-width));
 }
 
+.has-sidebar {
+
+	.alignfull {
+		max-width: rem-calc(1082);
+	}
+}
+
 .alignwide {
 	max-width: rem-calc(1270);
 

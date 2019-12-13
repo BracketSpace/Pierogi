@@ -1,0 +1,28 @@
+.wp-block-cover {
+
+	a {
+		color: color(yellow);
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.wp-block-cover:not(.alignleft):not(.alignright) {
+	margin: rem-calc(100) 0;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) 0;
+	}
+}
+
+.wp-block-cover.alignleft {
+	float: left;
+	margin: rem-calc(8) rem-calc(16) rem-calc(16) 0;
+}
+
+.wp-block-cover.alignright {
+	float: right;
+	margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
+}
