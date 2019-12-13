@@ -47,6 +47,9 @@ get_header();
 				get_template_part( 'template-parts/content', 'none' );
 
 			endif;
+
+			the_posts_pagination( [ 'mid_size' => 2 ] );
+
 			?>
 
 		</main><!-- #main -->

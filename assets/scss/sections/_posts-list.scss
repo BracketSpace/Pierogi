@@ -209,10 +209,10 @@
 		.site-main {
 			display: flex;
 			flex-wrap: wrap;
-			margin: 0  rem-calc(-20) rem-calc(150) rem-calc(-20);
+			margin: 0  rem-calc(-20) 0 rem-calc(-20);
 
 			@include bp-down( sm ) {
-				margin: 0 0 rem-calc(100) 0;
+				margin: 0;
 			}
 		}
 
