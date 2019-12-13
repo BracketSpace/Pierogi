@@ -5,6 +5,8 @@
 	a {
 		color: color(gray, 3);
 		display: block;
+		font-weight: 700;
+		letter-spacing: rem-calc(0.35);
 		margin-top: rem-calc(10);
 		text-decoration: none;
 		transition: 0.2s;
@@ -20,9 +22,8 @@
 	.post-prev,
 	.post-next {
 		color: color(gray, 6);
-		max-width: calc(50% - #{rem-calc(65)});
+		max-width: 31%;
 		position: relative;
-		text-transform: uppercase;
 		transition: 0.2s;
 
 		@include font-size( 14, 17 );
@@ -37,7 +38,7 @@
 
 		&:hover {
 			color: color(yellow);
-			max-width: 50%;
+			max-width: 31%;
 
 			a {
 				color: color(yellow);
@@ -60,6 +61,11 @@
 				width: rem-calc(6);
 			}
 		}
+
+		span {
+			letter-spacing: rem-calc(0.42);
+			text-transform: uppercase;
+		}
 	}
 
 	/* stylelint-disable no-descending-specificity  */
@@ -79,7 +85,7 @@
 		}
 
 		&:hover {
-			padding-left: rem-calc(65);
+			transform: translateX(rem-calc(58));
 
 			@include bp-down( sm ) {
 				padding: 0;
@@ -87,6 +93,7 @@
 
 			&::after {
 				opacity: 1;
+				transform: translateX(rem-calc(-58));
 			}
 		}
 	}
@@ -108,7 +115,7 @@
 		}
 
 		&:hover {
-			padding-right: rem-calc(65);
+			transform: translateX(rem-calc(-58));
 
 			@include bp-down( sm ) {
 				padding: 0;
@@ -116,6 +123,7 @@
 
 			&::after {
 				opacity: 1;
+				transform: translateX(rem-calc(58));
 			}
 		}
 
