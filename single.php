@@ -21,7 +21,7 @@ get_header();
 
 			pierogi_author_box();
 
-			the_post_navigation();
+			the_posts_pagination( [ 'mid_size' => 2 ] );
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

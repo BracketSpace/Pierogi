@@ -14,10 +14,9 @@
 	@include font-size( 23, 28 );
 
 	@include bp-down( sm ) {
-		padding: rem-calc(9) rem-calc(37) rem-calc(8) rem-calc(37);
+		padding: rem-calc(9) rem-calc(37);
 
-		@include font-size( 14, 17 );
-
+		@include font-size(14, 16);
 	}
 
 	&:hover {
@@ -35,8 +34,7 @@
 .bg-accent-hover:focus,
 .comment-reply-link,
 input[type="submit"],
-input[type="button"],
-button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
+input[type="button"] {
 	background-color: color(pink);
 
 	@extend %btn;
@@ -55,5 +53,14 @@ button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
 	&:hover {
 		border-color: color(gray, 5);
 		color: color(gray, 5);
+	}
+}
+
+main.site-main {
+
+
+	button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
+
+		@extend .btn-primary;
 	}
 }

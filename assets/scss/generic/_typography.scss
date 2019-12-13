@@ -64,7 +64,8 @@ h6,
 	@include font-size(21, 25);
 }
 
-p {
+p,
+.editor-rich-text p {
 	letter-spacing: 0.015em;
 
 	@include font-size(21, 35);
