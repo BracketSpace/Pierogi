@@ -1,0 +1,24 @@
+.widget_calendar {
+	margin: rem-calc(100)  0;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) 0;
+	}
+
+	caption {
+		margin-bottom: rem-calc(10);
+	}
+
+	a {
+		color: color(gray, 3);
+		transition: 0.2s;
+
+		&:hover {
+			color: color(yellow);
+		}
+	}
+
+	#wp-calendar {
+		margin: 0 auto;
+	}
+}
