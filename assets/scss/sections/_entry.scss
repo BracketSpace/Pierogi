@@ -1,0 +1,36 @@
+/**
+ * Post/Page content style
+ */
+
+body.page,
+body.single-post {
+
+	article {
+		position: relative;
+
+		a {
+			color: color(yellow);
+		}
+	}
+
+	.entry-content {
+
+		p {
+			margin: rem-calc(40) 0 rem-calc(60);
+
+			+ h1,
+			+ h2 {
+				margin-top: rem-calc(100);
+			}
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	footer.entry-footer {
+		bottom: rem-calc(-40);
+		position: absolute;
+	}
+}

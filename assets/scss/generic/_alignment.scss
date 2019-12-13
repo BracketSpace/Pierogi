@@ -7,7 +7,7 @@
 }
 
 .alignwide {
-	max-width: rem-calc(1270);
+	max-width: rem-calc($alignwide-width);
 
 	@extend .alignfull;
 }
