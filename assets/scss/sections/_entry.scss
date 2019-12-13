@@ -27,6 +27,19 @@ body.single-post {
 		> :last-child {
 			margin-bottom: 0;
 		}
+
+		.page-links {
+
+			@extend %pagination-links;
+
+			.label {
+				font-weight: 400;
+
+				&::after {
+					display: none;
+				}
+			}
+		}
 	}
 
 	footer.entry-footer {
