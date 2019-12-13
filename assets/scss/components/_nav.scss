@@ -247,7 +247,7 @@
 	padding: 0;
 	width: rem-calc(25);
 
-	@media (max-width: rem-calc( 1025 )) {
+	@include bp-down(md) {
 		display: flex;
 	}
 
