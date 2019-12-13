@@ -25,10 +25,6 @@ module.exports = ( env, argv ) => {
 			maxEntrypointSize: 512000,
 			maxAssetSize: 512000,
 		},
-		devtool: false,
-		optimization: {
-			minimize: false,
-		},
 		module: {
 			rules: [
 				{
@@ -71,6 +67,7 @@ module.exports = ( env, argv ) => {
 						{
 							loader: 'file-loader',
 							options: {
+								limit: 8192,
 								name: '[name].[ext]',
 								outputPath: '../images',
 								publicPath: 'images',
@@ -92,14 +89,13 @@ module.exports = ( env, argv ) => {
 			...( ! argv.watch ? [
 				new StyleLintPlugin( {
 					configFile: '.stylelintrc',
-					context: 'assets/scss',
+					context: 'assets/src/scss',
 				} ),
 			] : [] ),
 			...( process.env.NODE_ENV === 'production' ? [
 				new CleanWebpackPlugin(),
 				new ExtraneousFileCleanupPlugin( {
 					extensions: [ '.js', '.php' ],
-					minBytes: 4096,
 				} ),
 			] : [] ),
 		],

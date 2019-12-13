@@ -24,37 +24,82 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'pierogi' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$pierogi_description = get_bloginfo( 'description', 'display' );
-			if ( $pierogi_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $pierogi_description; /* phpcs:ignore */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<?php
+	$pierogi_header_class = 'site-header';
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'pierogi' ); ?></button>
+	if ( ! has_custom_logo() && get_bloginfo( 'description' ) ) {
+		$pierogi_header_class .= ' large';
+	}
+	?>
+
+	<header id="masthead" class="<?php echo esc_attr( $pierogi_header_class ); ?>">
+		<div class="header-inner">
+			<div class="container">
+				<div class="site-branding">
+
+					<?php if ( has_custom_logo() ) : ?>
+						<?php the_custom_logo(); ?>
+					<?php else : ?>
+						<a class="site-branding-text" href="<?php echo esc_url( home_url() ); ?>">
+							<h1><?php bloginfo( 'name' ); ?></h1>
+							<?php if ( get_bloginfo( 'description' ) ) : ?>
+								<p><?php bloginfo( 'description' ); ?></p>
+							<?php endif; ?>
+						</a>
+					<?php endif; ?>
+
+				</div><!-- .site-branding -->
+
+				<div class="navigation-container">
+					<nav id="site-navigation" class="main-navigation">
+						<span id="menu-container-shadow-left" class="navigation-shadow navigation-shadow-left"></span>
+						<span id="menu-container-shadow-right" class="navigation-shadow navigation-shadow-right"></span>
+						<?php
+						wp_nav_menu( [
+							'theme_location'  => 'primary',
+							'menu_id'         => 'primary-menu',
+							'container_class' => 'main-menu-wrap',
+							'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
+							'depth'           => 2,
+							'fallback_cb'     => 'pierogi_no_menu_warning',
+						] );
+						?>
+					</nav><!-- #site-navigation -->
+					<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
+						<?php pierogi_inline_svg( 'icon-search' ); ?>
+					</button>
+				</div>
+
+				<button id="mobile-menu-button" class="mobile-menu-button">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+
+			</div>
+		</div><!-- .header-inner -->
+
+		<div id="header-search" class="header-search">
+			<div class="search-form">
+				<?php get_search_form(); ?>
+			</div>
+		</div>
+
+
+		<nav id="site-navigation-mobile" class="main-navigation-mobile">
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
+			$pierogi_mobile_location = has_nav_menu( 'mobile' ) ? 'mobile' : 'primary';
+
+			wp_nav_menu( [
+				'theme_location'  => $pierogi_mobile_location,
+				'menu_id'         => 'mobile-menu',
+				'container_class' => 'mobile-menu-wrap',
+				'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
+				'depth'           => 2,
+				'mobile'          => true,
+			] );
 			?>
-		</nav><!-- #site-navigation -->
+		</nav>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content container">

@@ -190,13 +190,50 @@ function pierogi_footer_text() {
 }
 
 /**
- * Display post navigation
+ * Display warning when no menu is set
  *
  * @return void
  */
-function pierogi_post_navigation() {
-	$previous_post = get_previous_post_link('<div class="post-prev"><span>' . esc_html__( 'Previous post', 'pierogi' ) . '</span> %link</div>', '%title');
-	$next_post     = get_next_post_link('<div class="post-next"><span>' . esc_html__( 'Next post', 'pierogi'  ) . '</span> %link</div>', '%title');
+function pierogi_no_menu_warning() {
+	printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+}
 
-	printf( '<div class="post-navigation">%s %s</div>', $previous_post, $next_post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+/**
+ * Echoes image url
+ *
+ * @param  string $image Image name.
+ * @return void
+ */
+function pierogi_image_url( $image ) {
+	$template_url = get_template_directory_uri();
+	echo esc_url( "{$template_url}/images/$image" );
+}
+
+/**
+ * Display inline SVG from file.
+ *
+ * @param  string $filename Filename to load.
+ * @return void
+ */
+function pierogi_inline_svg( $filename ) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo pierogi_get_inline_svg( $filename );
+}
+
+/**
+ * Get inline SVG from file.
+ *
+ * @param  string $filename Filename to load.
+ * @return string|bool
+ */
+function pierogi_get_inline_svg( $filename ) {
+	$directory = get_template_directory();
+	$filename  = "{$directory}/images/{$filename}.svg";
+
+	if ( is_file( $filename ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		return file_get_contents( $filename );
+	}
+
+	return false;
 }
