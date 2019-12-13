@@ -1,4 +1,5 @@
 .navigation.pagination {
+	padding-top: rem-calc(150);
 	width: 100%;
 
 	@media screen {
@@ -73,23 +74,3 @@
 		}
 	}
 }
-
-.blog-layout-grid .navigation.pagination {
-	margin-top: rem-calc(50);
-}
-
-.blog-layout-list .navigation.pagination,
-.has-sidebar.blog-layout-grid .navigation.pagination {
-	margin-top: rem-calc(150);
-}
-
-/* stylelint-disable no-descending-specificity */
-.blog-layout-list .navigation.pagination,
-.blog-layout-grid .navigation.pagination,
-.has-sidebar.blog-layout-grid .navigation.pagination {
-
-	@include bp-down(sm) {
-		margin-top: rem-calc(60);
-	}
-}
-/* stylelint-enable */
