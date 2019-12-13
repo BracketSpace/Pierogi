@@ -60,3 +60,22 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
+
+/**
+ * Change the Tag Cloud's Font Sizes.
+ *
+ * @param string $input Tag cloud link.
+ *
+ * @return string
+ */
+function pierogi_format_tagcloud_link( $input ) {
+	$input     = preg_replace('/ style=("|\')(.*?)("|\')/', '', $input);
+	$input     = str_replace('<span class="tag-link-count"> (', ' <span class="post_count">', $input);
+	$input     = str_replace(')</span>', '</span>', $input);
+	$separator = '<span class="separator">&#183</span> <span class="post_count">';
+	$input     = str_replace( '<span class="post_count">', $separator, $input );
+
+	return $input;
+}
+
+add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link', 10, 1 );
