@@ -152,6 +152,11 @@
 			margin-left: rem-calc(20);
 			vertical-align: middle;
 			width: rem-calc(25);
+
+			&:active,
+			&:focus {
+				outline: none;
+			}
 		}
 
 		> li {

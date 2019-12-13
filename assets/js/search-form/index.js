@@ -25,6 +25,7 @@ export default class SearchForm {
 
 		window.addEventListener( 'pierogi.viewportchange', this.hideModal );
 		window.addEventListener( 'pierogi.menuclose', this.hideModal );
+		window.addEventListener( 'resize', this.resizeModal.bind( this ) );
 	}
 
 	toggleModal( e ) {
@@ -37,16 +38,22 @@ export default class SearchForm {
 		}
 	}
 
-	openModal( element ) {
-		const	modalID = element.getAttribute( 'data-toggle-element' );
-
-		this.activeModal = document.getElementById( modalID );
-
+	calculateModalHeight() {
 		let height = 0;
 
 		for ( const child of this.activeModal.children ) {
 			height += child.clientHeight;
 		}
+
+		return height;
+	}
+
+	openModal( element ) {
+		const	modalID = element.getAttribute( 'data-toggle-element' );
+
+		this.activeModal = document.getElementById( modalID );
+
+		const height = this.calculateModalHeight();
 
 		this.activeModal.style.maxHeight = `${ height }px`;
 
@@ -59,6 +66,14 @@ export default class SearchForm {
 			this.activeModal = false;
 
 			triggerEvent( 'searchformclose' );
+		}
+	}
+
+	resizeModal() {
+		if ( this.activeModal ) {
+			const height = this.calculateModalHeight();
+
+			this.activeModal.style.maxHeight = `${ height }px`;
 		}
 	}
 }
