@@ -123,16 +123,18 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 			return;
 		}
 
-		if ( is_singular() ) {
-			printf( '<div class="post-thumbnail">%s</div>',
-				get_the_post_thumbnail(  $post->ID, $size )
-			);
-		} else {
-			printf( '<a class="post-thumbnail" href="%s" aria-hidden="true" tabindex="-1">%s</a>',
+		$thumbnail = get_the_post_thumbnail(  $post->ID, $size );
+
+		if ( ! is_singular() ) {
+			$thumbnail = sprintf(
+				'<a href="%s" aria-hidden="true" tabindex="-1">%s</a>',
 				esc_html( get_the_permalink() ),
-				get_the_post_thumbnail( $post->ID, $size )
+				$thumbnail
 			);
-		} // End is_singular().
+		}
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		printf( '<div class="post-thumbnail">%s</div>', $thumbnail );
 	}
 endif;
 

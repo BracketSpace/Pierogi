@@ -54,7 +54,6 @@
 			transition: 0.2s;
 
 			@include bp-down( sm ) {
-
 				margin: rem-calc(10) 0;
 
 				@include font-size(16, 22);
@@ -108,23 +107,20 @@
 			margin-top: rem-calc(100);
 			width: 100%;
 		}
+	}
 
-		.site-main {
-			align-content: flex-start;
-			margin-bottom: rem-calc(150);
+	.site-main {
+		align-content: flex-start;
 
-			@include bp-down( sm ) {
-				display: block;
-			}
+		@include bp-down( sm ) {
+			display: block;
 		}
 	}
 
 	.post-thumbnail {
-		display: block;
 		margin: 0 auto rem-calc(20) auto;
 
 		@include bp-down( sm ) {
-			display: block;
 			margin-bottom: rem-calc(10);
 			width: 100%;
 		}
@@ -132,6 +128,7 @@
 		img {
 			display: block;
 			height: auto;
+			margin: auto;
 			max-height: rem-calc(348);
 			max-width: 100%;
 			width: auto;
@@ -139,67 +136,60 @@
 	}
 
 	.post {
-		align-self: baseline;
 
-		@include bp-down( sm ) {
-			display: block;
-			margin: 0 auto rem-calc(61) auto;
-			max-width: rem-calc(521);
-			width: 100%;
+		&:last-of-type {
+			margin-bottom: 0 !important;
 		}
 
 		&-content {
 
-			@include bp-down( sm ) {
+			@include bp-down(sm) {
 				width: 100%;
 			}
-
 		}
 	}
+
 
 	&.blog-layout-list {
 
 		.site-main {
-			margin: 0 0 rem-calc(150) 0;
 			max-width: rem-calc(1082);
 			width: 100%;
 		}
-	}
-
-	&.blog-layout-list,
-	&.has-sidebar.blog-layout-list {
 
 		.post {
 			display: flex;
 			margin-bottom: rem-calc(100);
 			width: 100%;
 
-			@include bp-down ( lg ) {
-				display: block;
-				width: 100%;
-			}
-
-			@include bp-down( sm ) {
+			@include bp-down(md) {
+				flex-direction: column;
 				margin: rem-calc(61) auto;
+				max-width: rem-calc(521);
+				width: 100%;
 			}
 		}
 
 		.post-thumbnail {
 			flex: 0 0 auto;
-			margin-right: rem-calc(40);
-			width: 50%;
 
-			@include bp-down( lg ) {
+			@include bp-up(md) {
+				margin-bottom: 0;
+				margin-right: rem-calc(40);
+				max-width: rem-calc(521);
+				width: 50%;
+			}
+
+			@include bp-down(md) {
 				display: block;
-				margin: 0 auto rem-calc(20) auto;
-				width: 100%;
 			}
 
 			img {
-				margin-left: auto;
-				margin-right: auto;
-			}
 
+				@include bp-up(md) {
+					margin-right: 0;
+				}
+			}
 		}
 
 		.post-content {
@@ -227,6 +217,7 @@
 		}
 
 		.post {
+			align-self: baseline;
 			margin: 0 rem-calc(20) rem-calc(102) rem-calc(20);
 			max-width: rem-calc(521);
 			width: calc(33.333% - #{ rem-calc(40) });
@@ -235,46 +226,32 @@
 				width: calc(50% - #{ rem-calc(40) });
 			}
 
-			@include bp-down( sm ) {
-				display: block;
+			@include bp-down(sm) {
 				margin: 0 auto rem-calc(61) auto;
 				max-width: rem-calc(521);
 				width: 100%;
 			}
 		}
 
-	}
+		&.has-sidebar {
 
-	&.has-sidebar.blog-layout-grid {
+			.site-main {
+				max-width: calc(#{ rem-calc(1082) } + #{ rem-calc(40) });
+				width: calc(66% + #{rem-calc(40)});
 
-		.site-main {
-			max-width: calc(#{ rem-calc(1082) } + #{ rem-calc(40) });
-			width: calc(66% + #{rem-calc(40)});
-
-			@include bp-down( sm ) {
-				width: 100%;
-			}
-		}
-
-		.post {
-			width: calc(50% - #{ rem-calc(40) });
-
-			@include bp-down( lg ) {
-				max-width: 100%;
-				width: 100%;
+				@include bp-down( sm ) {
+					width: 100%;
+				}
 			}
 
-		}
-	}
+			.post {
+				width: calc(50% - #{ rem-calc(40) });
 
-	@include bp-down( sm ) {
-
-		.site-main {
-
-			.post:last-of-type {
-				margin-bottom: 0;
+				@include bp-down( lg ) {
+					max-width: 100%;
+					width: 100%;
+				}
 			}
 		}
 	}
-
 }

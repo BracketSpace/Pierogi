@@ -1,3 +1,14 @@
+/**
+ * Layout
+ */
+
+main.site-main {
+	padding-bottom: rem-calc(150);
+
+	@include bp-down(sm) {
+		padding-bottom: rem-calc(100);
+	}
+}
 
 body.no-sidebar:not(.blog-layout-grid) {
 
@@ -7,26 +18,23 @@ body.no-sidebar:not(.blog-layout-grid) {
 	}
 }
 
-body:not(.search):not(.error404):not(.blog-layout-grid) {
+body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 
-	&.has-sidebar {
+	.content-area {
+		display: flex;
+		justify-content: space-between;
 
-		.content-area {
-			display: flex;
-			justify-content: space-between;
+		@include bp-down( sm ) {
+			display: block;
+		}
+
+		.site-main {
+			max-width: rem-calc(1082);
+			width: 66%;
 
 			@include bp-down( sm ) {
-				display: block;
-			}
-
-			.site-main {
-				max-width: rem-calc(1082);
-				width: 66%;
-
-				@include bp-down( sm ) {
-					max-width: 100%;
-					width: 100%;
-				}
+				max-width: 100%;
+				width: 100%;
 			}
 		}
 	}
