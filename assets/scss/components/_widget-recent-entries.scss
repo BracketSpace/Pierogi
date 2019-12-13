@@ -1,0 +1,33 @@
+.widget_recent_entries {
+
+	ul {
+		line-height: 0;
+	}
+
+	li {
+		margin-bottom: rem-calc(40);
+	}
+
+	a {
+		color: color(gray, 3);
+		text-decoration: none;
+
+		@include font-size( 20, 24 );
+
+		&:hover {
+			color: color(yellow);
+		}
+	}
+
+	span {
+		color: color(gray, 6);
+		display: block;
+
+		@include font-size( 14, 17);
+
+		@include bp-down( sm ) {
+
+			@include font-size(12, 20 );
+		}
+	}
+}
