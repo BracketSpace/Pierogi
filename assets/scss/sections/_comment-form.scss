@@ -1,5 +1,9 @@
 .comments-area {
 	margin-top: rem-calc(100);
+
+	@include bp-down(sm) {
+		margin-top: rem-calc(60);
+	}
 }
 
 .comment-form {
@@ -14,6 +18,10 @@
 
 	label {
 		margin-top: rem-calc(35);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
 	}
 
 	p {
@@ -45,10 +53,18 @@
 	}
 
 	.comment-form-cookies-consent {
-		margin: rem-calc(40) rem-calc(20) rem-calc(10) rem-calc(20);
+		margin: rem-calc(35) rem-calc(20) rem-calc(10) rem-calc(20);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
 	}
 
 	.form-submit {
 		margin-top: rem-calc(35);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
 	}
 }
