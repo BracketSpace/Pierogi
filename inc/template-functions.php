@@ -60,3 +60,20 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
+
+/**
+ * Adds markup for Drop Cap
+ *
+ * @param  string $content Post content.
+ * @return string
+ */
+function pierogi_drop_cap( $content ) {
+	return preg_replace_callback( '%(<p(?:[^>]+)(?:class="[^"]*(?:has-drop-cap)[^"]*")(?:[^>]*)>)([^<>]+)(</p>)%i', function( $matches ) {
+		unset( $matches[0] );
+		$matches[2] = sprintf( '<span>%s</span>%s', substr( $matches[2], 0, 1 ), substr( $matches[2], 1 ) );
+
+		return implode( '', $matches );
+	}, $content );
+
+}
+add_action( 'the_content', 'pierogi_drop_cap' );
