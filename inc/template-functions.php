@@ -60,3 +60,23 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
+
+/**
+ * Filter comment author text
+ *
+ * @param string $translated_text Translated text.
+ * @param string $text  Text to translate.
+ * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+ *
+ * @return string
+ */
+function pierogi_remove_comments_text( $translated_text, $text, $domain ) {
+
+	if ( '%s <span class="says">says:</span>' === $text && 'default' === $domain ) {
+		return '%s';
+	}
+
+	return $translated_text;
+}
+
+add_filter( 'gettext', 'pierogi_remove_comments_text', 20, 3);
