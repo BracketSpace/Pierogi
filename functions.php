@@ -168,6 +168,13 @@ function pierogi_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	/**
+	 * Register js script translations
+	 */
+	if ( function_exists( 'wp_set_script_translations' ) ) {
+		wp_set_script_translations( 'pierogi-script', 'pierogi' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
 
@@ -179,13 +186,6 @@ function pierogi_enqueue_block_editor_scripts() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
-
-/**
- * Register js script translations
- */
-if ( function_exists( 'wp_set_script_translations' ) ) {
-	wp_set_script_translations( 'pierogi-script', 'pierogi' );
-}
 
 /**
  * Implement the Custom Header feature.
