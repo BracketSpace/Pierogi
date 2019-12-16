@@ -15,7 +15,7 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 		<div class="author-title">
 			<span class="h2"><?php esc_html_e( 'Author', 'pierogi' ); ?></span> <span class="h6"><?php the_author_meta( 'display_name' ); ?></span>
 		</div>
-		<p><?php echo esc_html( the_author_meta( 'description' ) ); ?></p>
+		<p><?php the_author_meta( 'description' ); ?></p>
 	</div>
 </aside>
 
