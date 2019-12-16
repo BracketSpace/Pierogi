@@ -6,13 +6,18 @@
 @import "generic/variables";
 
 body {
+	color: color(gray);
+	font-family: $font-primary;
 
 	@import "generic/normalize";
 	@import "generic/functions";
 	@import "generic/mixins";
 	@import "generic/typography";
+	@import "editor/title";
+	@import "editor/layout";
 	@import "components/links";
 	@import "components/buttons";
 	@import "sections/title";
+	@import "blocks/image";
 
 }

@@ -99,19 +99,20 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
-		/**
-		 * Add empty editor colot palette
-		 */
+		// Add empty editor colot palette.
 		add_theme_support( 'editor-color-palette' );
 
-		/**
-		 * Gutenberg editor styles
-		 */
+		// Add editor styles support.
 		add_theme_support( 'editor-styles');
+
+		// Add editor styles.
 		add_editor_style( 'style-editor.css' );
 
 		// Register image size for posts list.
 		add_image_size( 'post-list-thumb', 521, 348, true );
+
+		// Add excerpt support for pages.
+		add_post_type_support( 'page', 'excerpt' );
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );

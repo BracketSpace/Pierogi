@@ -10,11 +10,22 @@ main.site-main {
 	}
 }
 
-body.no-sidebar:not(.blog-layout-grid) {
+body.no-sidebar {
 
-	.site-main {
-		margin-left: auto;
-		margin-right: auto;
+	&.page,
+	&.post {
+
+		main.site-main {
+			max-width: rem-calc($content-width);
+		}
+	}
+
+	&:not(.blog-layout-grid) {
+
+		.site-main {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 }
 
