@@ -7,22 +7,25 @@
  * @package Pierogi
  */
 
-$pierogi_author_id       = $post->post_author;
-$pierogi_author_image    = get_avatar( $author_id, 139);
-$pierogi_author_name     = get_the_author_meta( 'display_name', $author_id );
 $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="alignwide">
+
+	<?php if ( has_post_thumbnail() ) : ?>
+
+		<div class="alignwide">
 
 		<?php pierogi_post_thumbnail( 'post-header-image' ); ?>
 
-	</div>
+		</div>
+
+	<?php endif; ?>
+
 	<header class="entry-header">
 		<div class="author-image">
 			<div class="author-image-inner">
-				<?php echo $pierogi_author_image; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo get_avatar( get_the_author_meta( 'ID' ), 139 ); ?>
 			</div>
 		</div>
 		<div class="entry-meta">
@@ -31,7 +34,7 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 				?>
 				&#183;
 				<?php
-				echo esc_html( $pierogi_author_name );
+				the_author_meta( 'display_name' );
 				if ( $pierogi_categories_list ) {
 					/* translators: 1: list of categories. */
 					printf( ' &#183; <span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $pierogi_categories_list ); // phpcs:ignore
