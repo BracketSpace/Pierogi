@@ -6,6 +6,10 @@ label {
 	text-transform: uppercase;
 
 	@include font-size( 16, 19 );
+
+	@include bp-down( sm ) {
+		margin: rem-calc(20) 0 rem-calc(10) 0;
+	}
 }
 
 fieldset {
