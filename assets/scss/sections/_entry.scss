@@ -5,18 +5,26 @@
 body.page,
 body.single-post {
 
+	main.site-main a {
+		color: color(yellow);
+	}
+
 	article {
 		position: relative;
-
-		a {
-			color: color(yellow);
-		}
 	}
 
 	.entry-content {
 
 		p {
-			margin: rem-calc(40) 0 rem-calc(60);
+			margin: 0;
+
+			&:not(:first-child) {
+				margin-top: rem-calc(40);
+			}
+
+			&:not(:last-child) {
+				margin-bottom: rem-calc(60);
+			}
 
 			+ h1,
 			+ h2 {
@@ -45,5 +53,28 @@ body.single-post {
 	footer.entry-footer {
 		bottom: rem-calc(-40);
 		position: absolute;
+	}
+}
+
+body.page {
+
+	.excerpt {
+		margin-bottom: rem-calc(100);
+		text-align: center;
+
+		@include bp-down(sm) {
+			margin-bottom: rem-calc(78);
+		}
+	}
+
+	&.has-sidebar .excerpt {
+
+		@include bp-up(md) {
+			text-align: left;
+		}
+
+		@include bp-up(sm) {
+			margin-bottom: rem-calc(118);
+		}
 	}
 }

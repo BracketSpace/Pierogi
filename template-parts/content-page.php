@@ -14,6 +14,8 @@
 	<?php pierogi_post_thumbnail(); ?>
 
 	<div class="entry-content">
+		<?php the_excerpt(); ?>
+
 		<?php
 		the_content();
 

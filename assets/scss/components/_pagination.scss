@@ -31,10 +31,6 @@
 
 		&:not(.prev):not(.next) {
 			margin: 0 rem-calc(10);
-
-			@include bp-down(sm) {
-				display: none;
-			}
 		}
 	}
 
@@ -75,6 +71,17 @@
 
 		.next {
 			margin-left: rem-calc(50);
+		}
+	}
+
+	a,
+	span {
+
+		&:not(.prev):not(.next) {
+
+			@include bp-down(sm) {
+				display: none;
+			}
 		}
 	}
 }
