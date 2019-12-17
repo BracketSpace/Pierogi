@@ -1,4 +1,12 @@
-.embed-container {
+.wp-block-video {
+	margin: rem-calc(100) 0;
+
+	@include bp-down(sm) {
+		margin: rem-calc(60) 0;
+	}
+}
+
+.wp-block-embed.is-type-video {
 	height: 0;
 	height: auto;
 	margin: rem-calc(100) 0;
