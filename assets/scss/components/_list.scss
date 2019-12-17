@@ -27,6 +27,13 @@ article ul,
 article ol,
 .block-library-list ol {
 	padding-left: rem-calc(25);
+
+	li::marker {
+		color: color(gray, 5);
+		font-weight: 700;
+
+		@include font-size( 18, 45 );
+	}
 }
 
 /* styleling-enable */
