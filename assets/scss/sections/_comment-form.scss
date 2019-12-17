@@ -68,3 +68,24 @@
 		}
 	}
 }
+
+.has-sidebar .comment-form {
+
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url {
+
+		@include bp-up( rem-calc( 1370 ) ) {
+			width: calc(33.333% - #{rem-calc(40)});
+		}
+
+		@include bp-down( rem-calc( 930 ) ) {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	.comment-form-cookies-consent {
+		width: 100%;
+	}
+}
