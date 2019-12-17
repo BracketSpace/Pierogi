@@ -1,0 +1,12 @@
+.wp-block-separator {
+	border-color: color(gray, 6);
+	margin: rem-calc(100) auto;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) auto;
+	}
+
+	&:not(.is-style-wide):not(.is-style-dots) {
+		max-width: 100px;
+	}
+}

@@ -9,7 +9,8 @@ body:not(.has-sidebar) {
 		width: calc(100vw - var(--scrollbar-width));
 	}
 
-	.alignwide {
+	.alignwide,
+	.wp-block-separator.is-style-wide {
 		max-width: rem-calc($alignwide-width);
 
 		@extend .alignfull;
