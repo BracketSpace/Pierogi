@@ -127,3 +127,54 @@ function pierogi_the_excerpt( $excerpt ) {
 	return $excerpt;
 }
 add_filter( 'the_excerpt', 'pierogi_the_excerpt' );
+
+/**
+ * Filter comment form fields
+ *
+ * @param array $fields Comment form fields.
+ * @return array
+ */
+function pierogi_comment_form_fields( $fields ) {
+	$commenter = wp_get_current_commenter();
+	$req       = get_option( 'require_name_email' );
+	$aria_req  = $req ? "aria-required='true'" : '';
+
+	$fields['author'] =
+		'<p class="comment-form-author">
+			<label for="author">' . __( 'Your name (required)', 'pierogi' ) . '</label>
+			<input id="author" name="author" type="text" placeholder="' . esc_attr__( 'Awesome Client-Love', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author'] ) .
+		'" size="30" max-lenght="245"' . $aria_req . ' />
+		</p>';
+
+	$fields['email'] =
+		'<p class="comment-form-email">
+			<label for="email">' . __( 'Your email (required)', 'pierogi' ) . '</label>
+			<input id="email" name="email" type="email" placeholder="' . esc_attr__( 'hello@awesomeclient.com', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author_email'] ) .
+		'" size="30" max-lenght="100" ' . $aria_req . ' />
+		</p>';
+
+	$fields['url'] =
+		'<p class="comment-form-url">
+			<label for="url">' . __( 'Website', 'pierogi' ) . '</label>
+			<input id="url" name="url" type="url"  placeholder="' . esc_attr__( 'Awesome Client-Love', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author_url'] ) .
+		'" />
+		</p>';
+
+	return $fields;
+}
+add_filter( 'comment_form_default_fields', 'pierogi_comment_form_fields' );
+
+/**
+ * Filter comment form comment fields
+ *
+ * @return string
+ */
+function pierogi_comment_form_field() {
+	$field .= '<p class="comment-form-comment">';
+	$field .= '<label for="comment">' . esc_html( 'Leave a reply', 'pierogi' ) . '</label>';
+	$field .= '<textarea id="comment" name="comment" required="required" placeholder="' . esc_html( 'Write a comment...', 'pierogi' ) . '"></textarea>';
+	$field .= '</p>';
+
+	return $field;
+}
+add_filter( 'comment_form_field_comment', 'pierogi_comment_form_field' );
