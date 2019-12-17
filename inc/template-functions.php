@@ -12,6 +12,8 @@
  * @return array
  */
 function pierogi_body_classes( $classes ) {
+	$display_sidebar = get_theme_mod( 'pierogi_sidebar_settings' );
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -58,3 +60,38 @@ function pierogi_footer_text_filter( $text ) {
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
+
+/**
+ * Adds markup for Drop Cap
+ *
+ * @param  string $content Post content.
+ * @return string
+ */
+function pierogi_drop_cap( $content ) {
+	return preg_replace_callback( '%(<p(?:[^>]+)(?:class="[^"]*(?:has-drop-cap)[^"]*")(?:[^>]*)>)([^<>]+)(</p>)%i', function( $matches ) {
+		unset( $matches[0] );
+		$matches[2] = sprintf( '<span>%s</span>%s', substr( $matches[2], 0, 1 ), substr( $matches[2], 1 ) );
+
+		return implode( '', $matches );
+	}, $content );
+
+}
+add_action( 'the_content', 'pierogi_drop_cap' );
+
+/**
+ * Filter comment author text
+ *
+ * @param string $translated_text Translated text.
+ * @param string $text  Text to translate.
+ * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+ *
+ * @return string
+ */
+function pierogi_remove_comments_text( $translated_text, $text, $domain ) {
+	if ( '%s <span class="says">says:</span>' === $text && 'default' === $domain ) {
+		return '%s';
+	}
+
+	return $translated_text;
+}
+add_filter( 'gettext', 'pierogi_remove_comments_text', 20, 3);

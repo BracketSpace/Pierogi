@@ -45,8 +45,9 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'pierogi' ),
-				'footer' => esc_html__( 'Footer Menu', 'pierogi' ),
+				'primary' => esc_html__( 'Primary', 'pierogi' ),
+				'mobile'  => esc_html__( 'Mobile', 'pierogi' ),
+				'footer'  => esc_html__( 'Footer Menu', 'pierogi' ),
 			)
 		);
 
@@ -88,8 +89,8 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 250,
-				'width'       => 250,
+				'height'      => 48,
+				'width'       => 133,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
@@ -98,20 +99,23 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
-		/**
-		 * Add empty editor colot palette
-		 */
+		// Add empty editor colot palette.
 		add_theme_support( 'editor-color-palette' );
 
-		/**
-		 * Gutenberg editor styles
-		 */
+		// Add editor styles support.
 		add_theme_support( 'editor-styles');
+
+		// Add editor styles.
 		add_editor_style( 'style-editor.css' );
 
 		// Register image size for posts list.
 		add_image_size( 'post-list-thumb', 521, 348, true );
+
+		// Register image size for post header.
 		add_image_size( 'post-header-image', 1270, 846, true );
+
+		// Add excerpt support for pages.
+		add_post_type_support( 'page', 'excerpt' );
 	}
 endif;
 add_action( 'after_setup_theme', 'pierogi_setup' );
@@ -160,14 +164,19 @@ function pierogi_scripts() {
 
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', array(), $version, true );
+	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', [ 'wp-i18n' ], $version, true );
 
 	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
 
-	wp_enqueue_script( 'pierogi-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), $version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+
+	/**
+	 * Register js script translations
+	 */
+	if ( function_exists( 'wp_set_script_translations' ) ) {
+		wp_set_script_translations( 'pierogi-script', 'pierogi' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
@@ -176,7 +185,7 @@ add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
  * Enqeues block editor scripts
  */
 function pierogi_enqueue_block_editor_scripts() {
-	wp_enqueue_script( 'pierogi-flynn-editor', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
+	wp_enqueue_script( 'pierogi-editor-script', get_stylesheet_directory_uri() . '/js/editor.js', [ 'wp-data' ], filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
@@ -207,3 +216,15 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $args ) {
+	if ( isset( $args->mobile ) && $args->mobile && 0 === $depth ) {
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			$item_output .= '<button class="mobile-submenu-button"></button>';
+		}
+
+		$item_output = sprintf( '<div class="item-wrap">%s</div>', $item_output );
+	}
+
+	return $item_output;
+}, 10, 4 );

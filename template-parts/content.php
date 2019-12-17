@@ -80,7 +80,6 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php pierogi_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<?php get_template_part( 'template-parts/author-box' ); ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->

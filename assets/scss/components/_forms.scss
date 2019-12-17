@@ -1,0 +1,125 @@
+label,
+p.label {
+	color: color(gray, 5);
+	display: block;
+	font-weight: 700;
+	margin: rem-calc(40) 0 rem-calc(10) 0;
+	text-transform: uppercase;
+
+	@include font-size( 16, 19 );
+
+	@include bp-down( sm ) {
+		margin: rem-calc(20) 0 rem-calc(10) 0;
+	}
+}
+
+fieldset {
+	border: 0 transparent;
+	padding: 0;
+}
+
+input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+select,
+textarea {
+	background-color: #f7f7f7;
+	border: 0 transparent;
+	border-radius: rem-calc(5);
+	color: color(gray, 3);
+	padding: rem-calc(19) rem-calc(40);
+	width: 100%;
+
+	@include font-size( 18, 24 );
+
+	/* stylelint-disable no-descending-specificity */
+	::placeholder {
+		color: color(gray, 6);
+	}
+	/* stylelint-enable*/
+}
+
+textarea {
+	min-height: rem-calc(206);
+	padding: rem-calc(40);
+
+	@include font-size( 18, 25 );
+}
+
+select {
+	appearance: none;
+	background-image: url("../images/arrow-down.svg");
+	background-position: right rem-calc(26) top 50%, 0 0;
+	background-repeat: no-repeat, repeat;
+	background-size: rem-calc(15) auto, 100%;
+	display: block;
+	min-width: rem-calc(334);
+	width: auto;
+
+	@media (max-width: rem-calc( 334 )) {
+		min-width: rem-calc(300);
+	}
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	opacity: 0;
+	position: absolute;
+
+	+ label {
+		color: color(gray);
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 400;
+		margin: rem-calc(6) 0;
+		padding: 0 0 0 rem-calc(44);
+		position: relative;
+		text-transform: initial;
+
+		@include font-size( 21, 25 );
+
+		@include before("", rem-calc(24), rem-calc(24), 0, 0) {
+			background: #f7f7f7;
+			border: 1px solid color(gray, 7);
+		}
+
+		@include after("") {
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 0;
+			top: 50%;
+			transform: translateY(-50%) scale(0.3);
+			transition: all 0.2s;
+		}
+
+	}
+
+	&:checked + label::after {
+		opacity: 1;
+		transform: translateY(-50%) scale(1);
+	}
+}
+
+input[type="checkbox"] {
+
+	// stylelint-disable-next-line no-descending-specificity
+	+ label::after {
+		background-image: url("../images/check.svg");
+		height: rem-calc(13);
+		left: rem-calc(5);
+		width: rem-calc(15);
+	}
+}
+
+input[type="radio"] {
+
+	+ label::before {
+		border-radius: 50%;
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
+	+ label::after {
+		background-image: url("../images/radio-active.svg");
+		height: rem-calc(8);
+		left: rem-calc(8);
+		width: rem-calc(8);
+	}
+}

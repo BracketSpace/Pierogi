@@ -1,32 +1,51 @@
+/**
+ * Layout
+ */
 
-body.no-sidebar:not(.blog-layout-grid) {
+main.site-main {
+	padding-bottom: rem-calc(150);
 
-	.site-main {
-		margin-left: auto;
-		margin-right: auto;
+	@include bp-down(sm) {
+		padding-bottom: rem-calc(100);
 	}
 }
 
-body:not(.search):not(.error404):not(.blog-layout-grid) {
+body.no-sidebar {
 
-	&.has-sidebar {
+	&.page,
+	&.post {
 
-		.content-area {
-			display: flex;
-			justify-content: space-between;
+		main.site-main {
+			max-width: rem-calc($content-width);
+		}
+	}
 
-			@include bp-down( md ) {
-				display: block;
-			}
+	&:not(.blog-layout-grid) {
 
-			.site-main {
-				max-width: rem-calc(1082);
-				width: 66%;
+		.site-main {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
 
-				@include bp-down( md ) {
-					max-width: 100%;
-					width: 100%;
-				}
+body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
+
+	.content-area {
+		display: flex;
+		justify-content: space-between;
+
+		@include bp-down(sm) {
+			display: block;
+		}
+
+		.site-main {
+			max-width: rem-calc(1082);
+			width: 66%;
+
+			@include bp-down(sm) {
+				max-width: 100%;
+				width: 100%;
 			}
 		}
 	}

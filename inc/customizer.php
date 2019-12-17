@@ -98,7 +98,8 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 
 	$wp_customize->add_section( 'pierogi_layout', [
-		'title' => __( 'Layout', 'pierogi' ),
+		'title'    => __( 'Layout', 'pierogi' ),
+		'priority' => 100,
 	] );
 
 	$wp_customize->add_setting( 'pierogi_theme_layout', [

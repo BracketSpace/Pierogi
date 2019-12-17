@@ -36,7 +36,7 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( [ 'mid_size' => 2 ] );
 
 		else :
 
@@ -46,8 +46,13 @@ get_header();
 		?>
 
 		</main><!-- #main -->
+
+
+	<?php
+		pierogi_display_sidebar();
+	?>
+
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

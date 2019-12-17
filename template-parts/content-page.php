@@ -10,15 +10,6 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-			the_title( '<h1 class="entry-title">', '</h1>' );
-
-		if ( function_exists( 'the_subtitle' ) ) {
-			the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
-		}
-		?>
-	</header><!-- .entry-header -->
 
 	<?php pierogi_post_thumbnail(); ?>
 
@@ -26,12 +17,10 @@
 		<?php
 		the_content();
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pierogi' ),
-				'after'  => '</div>',
-			)
-		);
+		wp_link_pages( [
+			'before' => sprintf( '<div class="page-links"><span class="label">%s</span>', esc_html__( 'Pages:', 'pierogi' ) ),
+			'after'  => '</div>',
+		] );
 		?>
 	</div><!-- .entry-content -->
 
