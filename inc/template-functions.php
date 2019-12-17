@@ -77,3 +77,15 @@ function pierogi_drop_cap( $content ) {
 
 }
 add_action( 'the_content', 'pierogi_drop_cap' );
+
+/**
+ * Add wrapper to oembed elements
+ *
+ * @param string $html Oembed html markup.
+ *
+ * @return string
+ */
+function pierogi_responsive_embed( $html ) {
+	return '<div class="embed-container">' . $html . '</div>';
+}
+add_filter( 'embed_oembed_html', 'pierogi_responsive_embed', 10, 3 );
