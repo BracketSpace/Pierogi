@@ -1,28 +1,14 @@
 .blog {
 
-	.entry-meta,
-	.entry-meta a {
-		color: color(gray, 6);
-		font-weight: 400;
-		letter-spacing: rem-calc(0.4);
-		margin-bottom: rem-calc(10);
-		text-decoration: none;
-		text-transform: uppercase;
+	.posts {
 
-		@include font-size( 16, 19 );
-
-		@include bp-down( sm ) {
-
-			@include font-size( 12, 20 );
+		@include bp-down(sm) {
+			margin-bottom: rem-calc(-61);
 		}
 	}
 
-	.entry-meta a {
-		transition: 0.2s;
-
-		&:hover {
-			color: color(yellow);
-		}
+	.entry-meta {
+		margin-bottom: rem-calc(10);
 	}
 
 	.entry-title {
@@ -33,7 +19,7 @@
 
 			@include font-size( 28, 34 );
 		}
-		/* stylelint-disable no-descending-specificity  */
+
 		a {
 			color: color(gray, 2);
 			letter-spacing: rem-calc(0.4);
@@ -135,17 +121,10 @@
 		}
 	}
 
-	.post {
+	.post-content {
 
-		&:last-of-type {
-			margin-bottom: 0 !important;
-		}
-
-		&-content {
-
-			@include bp-down(sm) {
-				width: 100%;
-			}
+		@include bp-down(sm) {
+			width: 100%;
 		}
 	}
 
@@ -153,8 +132,12 @@
 	&.blog-layout-list {
 
 		.site-main {
-			max-width: rem-calc(1082);
+			max-width: rem-calc($container-narrow-width);
 			width: 100%;
+		}
+
+		.posts {
+			margin-bottom: rem-calc(-100);
 		}
 
 		.post {
@@ -206,13 +189,13 @@
 
 	&.blog-layout-grid {
 
-		.site-main {
+		.posts {
 			display: flex;
 			flex-wrap: wrap;
-			margin: 0  rem-calc(-20) rem-calc(150) rem-calc(-20);
+			margin: 0  rem-calc(-20) rem-calc(-102) rem-calc(-20);
 
 			@include bp-down( sm ) {
-				margin: 0 0 rem-calc(100) 0;
+				margin: 0;
 			}
 		}
 
@@ -236,7 +219,7 @@
 		&.has-sidebar {
 
 			.site-main {
-				max-width: calc(#{ rem-calc(1082) } + #{ rem-calc(40) });
+				max-width: calc(#{ rem-calc($container-narrow-width) } + #{ rem-calc(40) });
 				width: calc(66% + #{rem-calc(40)});
 
 				@include bp-down( sm ) {

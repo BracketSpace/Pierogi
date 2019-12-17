@@ -1,0 +1,19 @@
+body:not(.has-sidebar) .wp-block-group {
+
+	&.alignwide {
+		max-width: #{ $alignwide-width + 2 * $container-padding }px;
+
+		@include bp-down(sm) {
+			max-width: #{ $alignwide-width + 2 * $container-mobile-padding }px;
+		}
+	}
+
+	&.alignwide,
+	&.alignfull {
+
+		.wp-block-group__inner-container {
+
+			@extend .container;
+		}
+	}
+}
