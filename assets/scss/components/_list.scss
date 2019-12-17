@@ -2,18 +2,9 @@ article ol,
 article ul,
 .block-library-list ol,
 .block-library-list ul {
-	list-style: none;
-	padding-left: rem-calc(20);
 
 	li {
 		line-height: rem-calc(45);
-
-		&::before {
-			color: color(gray, 5);
-			display: inline-block;
-			margin-left: -1em;
-			width: 1.5em;
-		}
 	}
 
 }
@@ -21,25 +12,21 @@ article ul,
 /* stylelint-disable no-descending-specificity */
 article ul,
 .block-library-list ul {
+	list-style: none;
+	padding-left: rem-calc(20);
 
 	li::before {
+		color: color(gray, 5);
 		content: "\2022";
+		display: inline-block;
+		margin-left: -1em;
+		width: 1.5em;
 	}
 }
 
 article ol,
 .block-library-list ol {
-	counter-reset: li;
-
-	li {
-		counter-increment: li;
-
-		&::before {
-			content: counter(li) ".";
-			font-weight: 700;
-
-			@include font-size( 18, 45 );
-		}
-	}
+	padding-left: rem-calc(25);
 }
-/* stylelint-enable */
+
+/* styleling-enable */
