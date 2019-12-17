@@ -5,12 +5,12 @@
 body.page,
 body.single-post {
 
+	main.site-main a {
+		color: color(yellow);
+	}
+
 	article {
 		position: relative;
-
-		a {
-			color: color(yellow);
-		}
 	}
 
 	.entry-content {
