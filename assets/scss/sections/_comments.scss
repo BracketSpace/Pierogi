@@ -1,3 +1,30 @@
+.comment-navigation .nav-links {
+	display: flex;
+	font-weight: 700;
+	justify-content: space-between;
+	margin: rem-calc(40) 0;
+
+	@include font-size( 19, 23 );
+
+	a {
+		color: color(yellow);
+		position: relative;
+		text-decoration: none;
+
+		&:hover::after {
+			opacity: 1;
+		}
+
+		@include after( "", 100%, rem-calc( 2 ) ) {
+			background-color: color(yellow);
+			bottom: rem-calc(-2);
+			left: 0;
+			opacity: 0;
+			transition: 0.2s;
+		}
+	}
+}
+
 .comments-area {
 	margin: rem-calc(150) 0 rem-calc(100) 0;
 
@@ -26,15 +53,16 @@
 			padding-left: rem-calc(67);
 		}
 
-		.avatar {
-			border-radius: 50%;
-			left: 0;
-			position: absolute;
+	}
 
-			@include bp-down( sm ) {
-				height: auto;
-				width: rem-calc(45);
-			}
+	.avatar {
+		border-radius: 50%;
+		left: 0;
+		position: absolute;
+
+		@include bp-down( sm ) {
+			height: auto;
+			width: rem-calc(45);
 		}
 	}
 
@@ -123,24 +151,17 @@
 		}
 	}
 
-	ul {
+	.comment-list {
 		line-height: initial;
 		list-style: none;
+		padding-left: 0;
 	}
 
-	.comment-list {
-		padding-left: 0;
+	article {
+		margin-bottom: rem-calc(100);
 
-		li {
-
-			article {
-				margin-bottom: rem-calc(100);
-
-				@include bp-down( sm ) {
-					margin-bottom: rem-calc(60);
-				}
-			}
-
+		@include bp-down( sm ) {
+			margin-bottom: rem-calc(60);
 		}
 	}
 
@@ -151,46 +172,13 @@
 			padding-left: 5%;
 		}
 
-		li {
+		article {
+			margin-bottom: rem-calc(60);
 
-			article {
-				margin-bottom: rem-calc(60);
+			@include bp-down( sm ) {
 
-				@include bp-down( sm ) {
-
-					margin-bottom: rem-calc(40);
-				}
+				margin-bottom: rem-calc(40);
 			}
-
 		}
 	}
 }
-
-/* stylelint-disable no-descending-specificity */
-.comment-navigation .nav-links {
-	display: flex;
-	font-weight: 700;
-	justify-content: space-between;
-	margin: rem-calc(40) 0;
-
-	@include font-size( 19, 23 );
-
-	a {
-		color: color(yellow);
-		position: relative;
-		text-decoration: none;
-
-		&:hover::after {
-			opacity: 1;
-		}
-
-		@include after( "", 100%, rem-calc( 2 ) ) {
-			background-color: color(yellow);
-			bottom: rem-calc(-2);
-			left: 0;
-			opacity: 0;
-			transition: 0.2s;
-		}
-	}
-}
-/* stylelint-enable */
