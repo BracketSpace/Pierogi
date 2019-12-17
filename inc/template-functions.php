@@ -120,7 +120,7 @@ add_filter( 'the_author', 'pierogi_the_author' );
  * @return string
  */
 function pierogi_the_excerpt( $excerpt ) {
-	if ( is_singular( 'post' ) ) {
+	if ( is_singular( 'post' ) && $excerpt ) {
 		return sprintf( '<div class="post-excerpt">%s</div>', $excerpt );
 	}
 
@@ -191,3 +191,22 @@ function pierogi_comment_form_field() {
 	);
 }
 add_filter( 'comment_form_field_comment', 'pierogi_comment_form_field' );
+
+/**
+ * Filter comment form comment fields
+ *
+ * @param  string  $excerpt Post Excerpt.
+ * @param  WP_Post $post    Post object.
+ * @return string
+ */
+function pierogi_get_the_excerpt( $excerpt, $post ) {
+	if ( is_singular( 'post' ) || is_page() ) {
+		if ( post_password_required( $post ) || ! $post->post_excerpt ) {
+			// Prevent displaying auto generated excerpt on single post/page.
+			return null;
+		}
+	}
+
+	return $excerpt;
+}
+add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
