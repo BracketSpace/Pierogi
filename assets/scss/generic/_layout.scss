@@ -3,10 +3,21 @@
  */
 
 .content-area {
-	padding: rem-calc(100) 0 rem-calc(150);
+	padding-bottom: rem-calc(150);
 
 	@include bp-down(sm) {
-		padding: 0 0 rem-calc(100);
+		padding-bottom: rem-calc(100);
+	}
+}
+
+body.single-post .content-area {
+
+	@include bp-up(lg) {
+		padding-top: rem-calc(100);
+	}
+
+	@include bp-between(sm, lg) {
+		padding-top: rem-calc(60);
 	}
 }
 
