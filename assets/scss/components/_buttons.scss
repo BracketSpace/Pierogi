@@ -45,7 +45,9 @@ input[type="button"] {
 	}
 }
 
-.btn-secondary {
+.btn-secondary,
+input[type="submit"].btn-secondary,
+input[type="button"].btn-secondary {
 	background-color: color(gray, 5);
 
 	@extend %btn;
