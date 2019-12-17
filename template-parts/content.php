@@ -14,24 +14,18 @@
 	<header class="entry-header">
 
 		<?php if ( has_post_thumbnail() ) : ?>
-
-			<div class="alignwide">
-				<?php pierogi_post_thumbnail( 'post-header' ); ?>
-			</div>
-
+			<?php pierogi_post_thumbnail( 'post-header' ); ?>
 		<?php endif; ?>
 
 		<div class="author-image">
-			<div class="author-image-inner">
-				<?php echo get_avatar( get_the_author_meta( 'ID' ), 139 ); ?>
-			</div>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139 ); ?>
 		</div>
 
 		<div class="entry-meta">
 				<?php pierogi_entry_meta(); ?>
 		</div>
 
-		<div class="single-post-header">
+		<div class="entry-title-wrap">
 					<?php
 					the_title( '<h1 class="entry-title">', '</h1>' );
 
@@ -40,6 +34,8 @@
 					};
 					?>
 		</div>
+
+		<?php the_excerpt(); ?>
 
 	</header><!-- .entry-header -->
 

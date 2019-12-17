@@ -13,7 +13,7 @@
 body.no-sidebar {
 
 	&.page,
-	&.post {
+	&.single-post {
 
 		main.site-main {
 			max-width: rem-calc($content-width);
@@ -35,7 +35,7 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 		display: flex;
 		justify-content: space-between;
 
-		@include bp-down(sm) {
+		@include bp-down(md) {
 			display: block;
 		}
 
@@ -43,7 +43,7 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 			max-width: rem-calc(1082);
 			width: 66%;
 
-			@include bp-down(sm) {
+			@include bp-down(md) {
 				max-width: 100%;
 				width: 100%;
 			}

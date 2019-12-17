@@ -1,10 +1,28 @@
 .single-post {
 
-	.post-thumbnail {
-		margin-bottom: rem-calc(-90);
+	.entry-header {
+		margin-bottom: rem-calc(78);
+		padding-bottom: rem-calc(100);
+		position: relative;
 
-		@include bp-down( sm ) {
-			margin-bottom: rem-calc(-40);
+		@include bp-down(sm) {
+			padding-bottom: rem-calc(60);
+		}
+
+		@include before {
+			background-color: color(light);
+			bottom: 0;
+			left: -50vw;
+			right: -50vw;
+			top: rem-calc(-100);
+			z-index: -1;
+		}
+	}
+
+	.post-thumbnail {
+
+		@include bp-down(sm) {
+			padding: 0;
 		}
 
 		img {
@@ -17,14 +35,28 @@
 
 	.entry-meta {
 		color: color(gray, 6);
+		font-weight: 500;
+		margin-bottom: rem-calc(6);
 		text-align: center;
 		text-transform: uppercase;
 
 		@include font-size( 16, 19 );
 
 		@include bp-down( sm ) {
+			margin-bottom: rem-calc(37);
 
 			@include font-size( 12, 20 );
+		}
+
+		> span:not(:first-child)::before {
+			background-color: color(gray, 6);
+			border-radius: 50%;
+			content: "";
+			display: inline-block;
+			height: rem-calc(6);
+			margin: 0 rem-calc(10);
+			vertical-align: rem-calc(3);
+			width: rem-calc(6);
 		}
 
 		a {
@@ -38,92 +70,167 @@
 
 		.cat-links {
 
-			@include bp-down( sm ) {
+			@include bp-down(sm) {
 				display: block;
-				margin-top: rem-calc(10);
+				margin-top: rem-calc(5);
+
+				&::before {
+					display: none !important;
+				}
 			}
 		}
 	}
 
-	.single-post-header {
-		margin: rem-calc(8) auto rem-calc(60) auto;
-		max-width: rem-calc(826);
+	.entry-title-wrap {
+		margin: 0 0 rem-calc(60);
 
-		@include bp-down( sm ) {
-			margin-top: rem-calc(40);
+		@include bp-down(sm) {
+			margin-bottom: rem-calc(100);
 		}
 	}
 
 	.author-image {
-		align-items: center;
-		background-color: color(white);
-		border-radius: 50%;
-		display: flex;
-		height: rem-calc(179);
 		justify-content: center;
 		margin: 0 auto;
-		overflow: hidden;
+		margin-top: rem-calc(-90);
 		position: relative;
 		width: rem-calc(179);
 		z-index: 10;
 
-		@include bp-down( sm ) {
-			height: rem-calc(70);
-			width: rem-calc(70);
+		@include bp-down(md) {
+			margin-top: rem-calc(-70);
+			width: rem-calc(128);
 		}
 
-		&-inner {
-			background-color: color(white);
-			border-radius: 50%;
-			height: rem-calc(139);
-			overflow: hidden;
-			width: rem-calc(139);
+		@include bp-down(sm) {
+			margin-bottom: rem-calc(10);
+			margin-top: rem-calc(-32);
+			width: rem-calc(64);
+		}
 
-			@include bp-down( sm ) {
-				height: rem-calc(50);
-				width: rem-calc(50);
+		img {
+			border: solid rem-calc(20) color(light);
+			border-radius: 50%;
+			display: block;
+			height: auto;
+			width: 100%;
+
+			@include bp-down(md) {
+				border-width: rem-calc(14);
+			}
+
+			@include bp-down(sm) {
+				border-width: rem-calc(7);
+			}
+		}
+	}
+
+	.post-excerpt p {
+		color: color(gray, 5);
+		margin: 0;
+		text-align: center;
+
+		@include font-size(27, 50);
+
+		@include bp-down(sm) {
+
+			@include font-size(23, 40);
+		}
+	}
+
+	&.no-sidebar {
+
+		.post-thumbnail {
+
+			@extend %alignfull;
+
+			@include bp-up(sm) {
+				padding: 0 rem-calc($container-padding);
+			}
+		}
+	}
+
+	&.has-sidebar {
+
+		.entry-header {
+
+			@include bp-up(md) {
+				margin-bottom: rem-calc(18);
+			}
+
+			&::before {
+
+				@include bp-up(md) {
+					display: none;
+				}
+			}
+		}
+
+		.post-thumbnail {
+
+			@include bp-down(sm) {
+				margin-left: rem-calc(-20);
+				margin-right: rem-calc(-20);
 			}
 
 			img {
-				height: auto;
-				width: 100%;
+
+				@include bp-up(md) {
+					margin-left: 0;
+				}
 			}
 		}
-	}
-}
-
-.has-sidebar {
-
-	.post-thumbnail {
-
-		img {
-			margin-left: 0;
-		}
-	}
-
-	.alignwide {
-
-		@include bp-up( md ) {
-			width: auto;
-		}
-	}
-
-	@include bp-up( sm ) {
 
 		.author-image {
-			margin-left: rem-calc(-20);
+
+			@include bp-between(sm, lg) {
+				margin-top: rem-calc(-70);
+				width: rem-calc(128);
+			}
+
+			img {
+
+				@include bp-between(sm, lg) {
+					border-width: rem-calc(14);
+				}
+
+				@include bp-up(md) {
+					border-color: color(white);
+				}
+			}
 		}
 
-		.entry-meta {
-			text-align: left;
+		.entry-title-wrap {
+
+			@include bp-up(md) {
+				margin-bottom: rem-calc(40);
+			}
 		}
 
-		.single-post-header {
-			margin-bottom: rem-calc(34);
-			max-width: 100%;
+		.post-excerpt p {
 
-			.entry-title {
+			@include bp-up(md) {
 				text-align: left;
+			}
+		}
+
+		@include bp-up(md) {
+
+			.author-image {
+				margin-left: rem-calc(-20);
+			}
+
+			.entry-meta {
+				text-align: left;
+			}
+
+			.entry-title-wrap {
+				margin-bottom: rem-calc(34);
+				max-width: 100%;
+
+				.entry-title {
+					text-align: left;
+				}
 			}
 		}
 	}

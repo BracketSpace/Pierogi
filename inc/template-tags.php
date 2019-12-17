@@ -55,7 +55,7 @@ if ( ! function_exists( 'pierogi_posted_by' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		$output = '<span class="byline"> ' . $byline . '</span>';
+		$output = '<span class="byline">' . $byline . '</span>';
 
 		if ( $echo ) {
 			echo $output; // phpcs:ignore
@@ -144,7 +144,7 @@ if ( ! function_exists( 'pierogi_entry_meta' ) ) :
 			$items[] = sprintf( '<span class="cat-links">%s</span>', $categories );
 		}
 
-		echo implode( ' &#183; ', $items ); // phpcs:ignore
+		echo implode( '', $items ); // phpcs:ignore
 	}
 endif;
 

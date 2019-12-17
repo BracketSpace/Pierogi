@@ -112,3 +112,18 @@ function pierogi_the_author( $author_name ) {
 	return $author_name;
 }
 add_filter( 'the_author', 'pierogi_the_author' );
+
+/**
+ * Filter post excerpt
+ *
+ * @param string $excerpt Excerpt content.
+ * @return string
+ */
+function pierogi_the_excerpt( $excerpt ) {
+	if ( is_singular( 'post' ) ) {
+		return sprintf( '<div class="post-excerpt">%s</div>', $excerpt );
+	}
+
+	return $excerpt;
+}
+add_filter( 'the_excerpt', 'pierogi_the_excerpt' );
