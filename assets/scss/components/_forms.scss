@@ -1,4 +1,5 @@
-label {
+label,
+p.label {
 	color: color(gray, 5);
 	display: block;
 	font-weight: 700;
@@ -24,10 +25,10 @@ textarea {
 	border: 0 transparent;
 	border-radius: rem-calc(5);
 	color: color(gray, 3);
-	padding: rem-calc(20) rem-calc(40) rem-calc(18) rem-calc(40);
+	padding: rem-calc(19) rem-calc(40);
 	width: 100%;
 
-	@include font-size( 18, 25 );
+	@include font-size( 18, 24 );
 
 	/* stylelint-disable no-descending-specificity */
 	::placeholder {
@@ -39,6 +40,8 @@ textarea {
 textarea {
 	min-height: rem-calc(206);
 	padding: rem-calc(40);
+
+	@include font-size( 18, 25 );
 }
 
 select {
@@ -67,37 +70,38 @@ input[type="checkbox"] {
 		display: inline-block;
 		font-weight: 400;
 		margin: rem-calc(6) 0;
-		padding: 0;
+		padding: 0 0 0 rem-calc(44);
 		position: relative;
 		text-transform: initial;
 
 		@include font-size( 21, 25 );
-	}
 
-	+ label::before {
-		background: #f7f7f7;
-		border: 1px solid color(gray, 7);
-		content: "";
-		display: inline-block;
-		height: rem-calc(24);
-		margin-right: rem-calc(20);
-		vertical-align: text-top;
-		width: rem-calc(24);
+		@include before("", rem-calc(24), rem-calc(24), 0, 0) {
+			background: #f7f7f7;
+			border: 1px solid color(gray, 7);
+		}
+
+		@include after("") {
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 0;
+			top: 50%;
+			transform: translateY(-50%) scale(0.3);
+			transition: all 0.2s;
+		}
+
 	}
 
 	&:checked + label::after {
-		background-repeat: no-repeat;
-		background-size: cover;
-		content: "";
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
+		opacity: 1;
+		transform: translateY(-50%) scale(1);
 	}
 }
 
 input[type="checkbox"] {
 
-	&:checked + label::after {
+	// stylelint-disable-next-line no-descending-specificity
+	+ label::after {
 		background-image: url("../images/check.svg");
 		height: rem-calc(13);
 		left: rem-calc(5);
@@ -105,14 +109,14 @@ input[type="checkbox"] {
 	}
 }
 
-
 input[type="radio"] {
 
-	label::before {
+	+ label::before {
 		border-radius: 50%;
 	}
 
-	&:checked + label::after {
+	// stylelint-disable-next-line no-descending-specificity
+	+ label::after {
 		background-image: url("../images/radio-active.svg");
 		height: rem-calc(8);
 		left: rem-calc(8);
