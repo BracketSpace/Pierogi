@@ -1,0 +1,69 @@
+.wp-block-pullquote,
+.wp-block-quote,
+body.single-post .entry-content .wp-block-quote,
+body.single-post .entry-content .wp-block-pullquote {
+	border: 0 solid transparent;
+	margin: rem-calc(60) 0;
+	padding: 0;
+	position: relative;
+	text-align: left;
+
+	@media (max-width: rem-calc( 1770 )) {
+		margin: rem-calc(60) rem-calc(20);
+	}
+
+	@include after( "", rem-calc( 71 ), rem-calc( 45 ), rem-calc( -12 ), rem-calc( -46 )) {
+
+		z-index: -1;
+
+		@include background("quote_shape.svg");
+	}
+
+	&.has-text-align-right {
+		text-align: right;
+
+		&::after {
+			left: initial;
+			right: rem-calc(-25);
+		}
+	}
+
+	&.is-large,
+	&.is-style-large {
+		padding: 0;
+	}
+
+	&.has-background {
+
+		blockquote {
+			max-width: 100%;
+			padding: rem-calc(20);
+		}
+
+		&::after {
+			z-index: 1;
+		}
+	}
+
+	p {
+		font-family: $font-secondary;
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: rem-calc(0.36);
+		margin: rem-calc(13) 0;
+
+		@include font-size( 18, 35 );
+	}
+
+	cite,
+	.wp-block-quote__citation,
+	.wp-block-pullquote__citation {
+		color: color(yellow);
+		font-style: normal;
+		font-weight: 900;
+		letter-spacing: rem-calc(0.25);
+
+		@include font-size( 21, 25 );
+	}
+
+}
