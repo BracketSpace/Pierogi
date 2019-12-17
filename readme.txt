@@ -1,5 +1,5 @@
 === Pierogi ===
-Contributors: BracketSpace, szaleq, Kubitomakita
+Contributors: BracketSpace, szaleq, tomaszadamowicz, Kubitomakita
 Tags: blog, news, portfolio, grid-layout, one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 Requires at least: 5.0
 Tested up to: WordPress 5.3
