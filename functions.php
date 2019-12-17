@@ -109,10 +109,10 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_editor_style( 'style-editor.css' );
 
 		// Register image size for posts list.
-		add_image_size( 'post-list-thumb', 521, 348, true );
+		add_image_size( 'post-list', 521, 348, true );
 
 		// Register image size for post header.
-		add_image_size( 'post-header-image', 1270, 846, true );
+		add_image_size( 'post-header', 1270, 846, true );
 
 		// Add excerpt support for pages.
 		add_post_type_support( 'page', 'excerpt' );

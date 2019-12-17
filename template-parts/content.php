@@ -16,7 +16,7 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 
 		<div class="alignwide">
 
-		<?php pierogi_post_thumbnail( 'post-header-image' ); ?>
+		<?php pierogi_post_thumbnail( 'post-header' ); ?>
 
 		</div>
 
