@@ -1,4 +1,5 @@
-.wp-block-video {
+.wp-block-video,
+.wp-block-embed.is-type-video {
 	margin: rem-calc(100) 0;
 
 	@include bp-down(sm) {
@@ -9,16 +10,11 @@
 .wp-block-embed.is-type-video {
 	height: 0;
 	height: auto;
-	margin: rem-calc(100) 0;
 	max-width: 100%;
 	overflow: hidden;
 	padding-bottom: 56.25%;
 	padding-top: 30px;
 	position: relative;
-
-	@include bp-down( sm ) {
-		margin: rem-calc(60) 0;
-	}
 
 	iframe,
 	object,
