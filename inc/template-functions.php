@@ -120,8 +120,8 @@ add_filter( 'the_author', 'pierogi_the_author' );
  * @return string
  */
 function pierogi_the_excerpt( $excerpt ) {
-	if ( is_singular( 'post' ) && $excerpt ) {
-		return sprintf( '<div class="post-excerpt">%s</div>', $excerpt );
+	if ( $excerpt && ( is_singular( 'post' ) || is_page() ) ) {
+		return sprintf( '<div class="excerpt">%s</div>', $excerpt );
 	}
 
 	return $excerpt;

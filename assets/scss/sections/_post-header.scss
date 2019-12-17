@@ -98,24 +98,12 @@
 		}
 	}
 
-	.post-excerpt {
+	.excerpt {
 		margin-top: rem-calc(60);
+		text-align: center;
 
 		@include bp-down(sm) {
 			margin-top: rem-calc(100);
-		}
-
-		p {
-			color: color(gray, 5);
-			margin: 0;
-			text-align: center;
-
-			@include font-size(27, 50);
-
-			@include bp-down(sm) {
-
-				@include font-size(23, 40);
-			}
 		}
 	}
 
@@ -184,17 +172,11 @@
 			}
 		}
 
-		.post-excerpt {
+		.excerpt {
 
 			@include bp-up(md) {
 				margin-top: rem-calc(40);
-			}
-
-			p {
-
-				@include bp-up(md) {
-					text-align: left;
-				}
+				text-align: left;
 			}
 		}
 
@@ -209,7 +191,6 @@
 			}
 
 			.entry-title-wrap {
-				margin-bottom: rem-calc(34);
 				max-width: 100%;
 
 				.entry-title {
