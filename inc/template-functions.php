@@ -77,3 +77,21 @@ function pierogi_drop_cap( $content ) {
 
 }
 add_action( 'the_content', 'pierogi_drop_cap' );
+
+/**
+ * Filter comment author text
+ *
+ * @param string $translated_text Translated text.
+ * @param string $text  Text to translate.
+ * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+ *
+ * @return string
+ */
+function pierogi_remove_comments_text( $translated_text, $text, $domain ) {
+	if ( '%s <span class="says">says:</span>' === $text && 'default' === $domain ) {
+		return '%s';
+	}
+
+	return $translated_text;
+}
+add_filter( 'gettext', 'pierogi_remove_comments_text', 20, 3);
