@@ -95,3 +95,20 @@ function pierogi_remove_comments_text( $translated_text, $text, $domain ) {
 	return $translated_text;
 }
 add_filter( 'gettext', 'pierogi_remove_comments_text', 20, 3);
+
+/**
+ * Filter post author name
+ *
+ * @param string $author_name Author name.
+ * @return string
+ */
+function pierogi_the_author( $author_name ) {
+	$first_name = get_the_author_meta( 'first_name' );
+
+	if ( $first_name ) {
+		return $first_name;
+	}
+
+	return $author_name;
+}
+add_filter( 'the_author', 'pierogi_the_author' );

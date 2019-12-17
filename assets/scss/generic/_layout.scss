@@ -2,11 +2,11 @@
  * Layout
  */
 
-main.site-main {
-	padding-bottom: rem-calc(150);
+.content-area {
+	padding: rem-calc(100) 0 rem-calc(150);
 
 	@include bp-down(sm) {
-		padding-bottom: rem-calc(100);
+		padding: 0 0 rem-calc(100);
 	}
 }
 

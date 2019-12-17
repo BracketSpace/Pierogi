@@ -7,51 +7,40 @@
  * @package Pierogi
  */
 
-$pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php if ( has_post_thumbnail() ) : ?>
-
-		<div class="alignwide">
-
-		<?php pierogi_post_thumbnail( 'post-header' ); ?>
-
-		</div>
-
-	<?php endif; ?>
-
 	<header class="entry-header">
+
+		<?php if ( has_post_thumbnail() ) : ?>
+
+			<div class="alignwide">
+				<?php pierogi_post_thumbnail( 'post-header' ); ?>
+			</div>
+
+		<?php endif; ?>
+
 		<div class="author-image">
 			<div class="author-image-inner">
 				<?php echo get_avatar( get_the_author_meta( 'ID' ), 139 ); ?>
 			</div>
 		</div>
+
 		<div class="entry-meta">
-				<?php
-					pierogi_posted_on();
-				?>
-				&#183;
-				<?php
-				the_author_meta( 'display_name' );
-				if ( $pierogi_categories_list ) {
-					/* translators: 1: list of categories. */
-					printf( ' &#183; <span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $pierogi_categories_list ); // phpcs:ignore
-				}
-				?>
-		</div><!-- .entry-meta -->
+				<?php pierogi_entry_meta(); ?>
+		</div>
+
 		<div class="single-post-header">
 					<?php
-
 					the_title( '<h1 class="entry-title">', '</h1>' );
 
 					if ( function_exists( 'the_subtitle' ) ) {
 						the_subtitle( '<p class="entry-subtitle">', '</p>' );
 					};
-
 					?>
 		</div>
+
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
