@@ -137,28 +137,39 @@ add_filter( 'the_excerpt', 'pierogi_the_excerpt' );
 function pierogi_comment_form_fields( $fields ) {
 	$commenter = wp_get_current_commenter();
 	$req       = get_option( 'require_name_email' );
-	$aria_req  = $req ? "aria-required='true'" : '';
+	$aria_req  = $req ? " aria-required='true'" : '';
 
-	$fields['author'] =
+	$fields['author'] = sprintf(
 		'<p class="comment-form-author">
-			<label for="author">' . __( 'Your name (required)', 'pierogi' ) . '</label>
-			<input id="author" name="author" type="text" placeholder="' . esc_attr__( 'Awesome Client-Love', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author'] ) .
-		'" size="30" max-lenght="245"' . $aria_req . ' />
-		</p>';
+			<label for="author">%s</label>
+			<input id="author" name="author" type="text" placeholder="%s" value="%s" size="30" max-lenght="245"%s />
+		</p>',
+		esc_html__( 'Your name (required)', 'pierogi' ),
+		esc_attr__( 'Awesome Client-Love', 'pierogi' ),
+		esc_attr( $commenter['comment_author'] ),
+		$aria_req
+	);
 
-	$fields['email'] =
+	$fields['email'] = sprintf(
 		'<p class="comment-form-email">
-			<label for="email">' . __( 'Your email (required)', 'pierogi' ) . '</label>
-			<input id="email" name="email" type="email" placeholder="' . esc_attr__( 'hello@awesomeclient.com', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author_email'] ) .
-		'" size="30" max-lenght="100" ' . $aria_req . ' />
-		</p>';
+			<label for="email">%s</label>
+			<input id="email" name="email" type="email" placeholder="%s" value="%s" size="30" max-lenght="100"%s />
+		</p>',
+		esc_html__( 'Your email (required)', 'pierogi' ),
+		esc_attr__( 'hello@awesomeclient.com', 'pierogi' ),
+		esc_attr( $commenter['comment_author_email'] ),
+		$aria_req
+	);
 
-	$fields['url'] =
+	$fields['url'] = sprintf(
 		'<p class="comment-form-url">
-			<label for="url">' . __( 'Website', 'pierogi' ) . '</label>
-			<input id="url" name="url" type="url"  placeholder="' . esc_attr__( 'Awesome Client-Love', 'pierogi' ) . '" value="' . esc_attr( $commenter['comment_author_url'] ) .
-		'" />
-		</p>';
+			<label for="url">%s</label>
+			<input id="url" name="url" type="url"  placeholder="%s" value="%s" />
+		</p>',
+		esc_html__( 'Website', 'pierogi' ),
+		esc_attr__( 'Awesome Client-Love', 'pierogi' ),
+		esc_attr( $commenter['comment_author_url'] )
+	);
 
 	return $fields;
 }
@@ -170,11 +181,13 @@ add_filter( 'comment_form_default_fields', 'pierogi_comment_form_fields' );
  * @return string
  */
 function pierogi_comment_form_field() {
-	$field .= '<p class="comment-form-comment">';
-	$field .= '<label for="comment">' . esc_html( 'Leave a reply', 'pierogi' ) . '</label>';
-	$field .= '<textarea id="comment" name="comment" required="required" placeholder="' . esc_html( 'Write a comment...', 'pierogi' ) . '"></textarea>';
-	$field .= '</p>';
-
-	return $field;
+	return sprintf(
+		'<p class="comment-form-comment">
+			<label for="comment">%s</label>
+			<textarea id="comment" name="comment" required="required" placeholder="%s"></textarea>
+		</p>',
+		esc_html( 'Leave a reply', 'pierogi' ),
+		esc_html( 'Write a comment...', 'pierogi' )
+	);
 }
 add_filter( 'comment_form_field_comment', 'pierogi_comment_form_field' );

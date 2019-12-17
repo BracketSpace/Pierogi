@@ -162,7 +162,7 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 			return;
 		}
 
-		$thumbnail = get_the_post_thumbnail(  $post->ID, $size );
+		$thumbnail = get_the_post_thumbnail( null, $size );
 
 		if ( ! is_singular() ) {
 			$thumbnail = sprintf(

@@ -30,7 +30,8 @@
 
 	.comment-notes,
 	.comment-form-comment,
-	.comment-form-url {
+	.comment-form-url,
+	.comment-form-cookies-consent {
 		width: 100%;
 	}
 
@@ -83,9 +84,5 @@
 			max-width: 100%;
 			width: 100%;
 		}
-	}
-
-	.comment-form-cookies-consent {
-		width: 100%;
 	}
 }
