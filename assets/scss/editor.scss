@@ -6,14 +6,21 @@
 @import "generic/variables";
 
 body {
+	color: color(gray);
+	font-family: $font-primary;
 
 	@import "generic/normalize";
 	@import "generic/functions";
 	@import "generic/mixins";
 	@import "generic/typography";
+	@import "editor/title";
+	@import "editor/layout";
 	@import "components/links";
 	@import "components/buttons";
+	@import "components/container";
+	@import "components/drop-cap";
 	@import "sections/title";
+	@import "blocks/image";
+	@import "blocks/group";
 	@import "blocks/gallery";
-
 }

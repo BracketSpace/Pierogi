@@ -36,7 +36,7 @@
 		}
 	}
 
-	input[type="text"] {
+	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
 		background: color(white) url("../images/icon-search.svg") no-repeat;
 		background-position: rem-calc(40) center;
 		border: none;
@@ -44,13 +44,18 @@
 		color: color(gray, 6);
 		flex: 1 1 auto;
 		height: rem-calc(62);
-		padding: 0 rem-calc(40) 0 rem-calc(80);
+		padding: 0 rem-calc(40) 0 rem-calc(78);
 		width: 100%;
 
 		@include font-size(18);
 
 		@include bp-down(md) {
 			margin: 0 0 rem-calc(36);
+		}
+
+		@include bp-down(xs) {
+			background-position: rem-calc(20) center;
+			padding: 0 rem-calc(20) 0 rem-calc(58);
 		}
 
 		&::placeholder {
@@ -60,7 +65,7 @@
 
 	input[type="submit"] {
 		flex: 0 0 auto;
-		height: rem-calc(62);
+		max-height: rem-calc(62);
 
 		@include bp-up(md) {
 			margin-left: rem-calc(40);
@@ -78,7 +83,9 @@
 		transform: translateY(-50%);
 
 		@include bp-down(md) {
-			display: none;
+			margin-top: rem-calc(26);
+			position: static;
+			transform: none;
 		}
 
 		img {

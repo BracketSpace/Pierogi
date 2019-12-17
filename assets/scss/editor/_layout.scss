@@ -1,0 +1,21 @@
+.wp-block,
+.block-editor-block-list__layout .block-editor-block-list__block {
+	max-width: $editor-block-width;
+
+	&[data-align="wide"] {
+		max-width: $editor-block-width-wide;
+	}
+
+	&[data-align="full"] {
+		max-width: none;
+	}
+
+	&[data-align="wide"],
+	&[data-align="full"] {
+
+		// stylelint-disable-next-line no-descending-specificity
+		.wp-block {
+			max-width: none;
+		}
+	}
+}

@@ -31,9 +31,16 @@ $breakpoints: (
 );
 
 $container-width: 1640;
-$container-narrow-width: 1080;
+$container-narrow-width: 1082;
 $container-padding: 40;
 $container-mobile-padding: 20;
+$content-width: 896;
+
+$alignwide-width: 1270;
+
+$editor-block-width-delta: 30px;
+$editor-block-width: ( $content-width + $editor-block-width-delta );
+$editor-block-width-wide: ( $alignwide-width + $editor-block-width-delta );
 
 :root {
 	--scrollbar-width: 0;
