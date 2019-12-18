@@ -62,6 +62,156 @@ function pierogi_footer_text_filter( $text ) {
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
 
 /**
+ * Adds markup for Drop Cap
+ *
+ * @param  string $content Post content.
+ * @return string
+ */
+function pierogi_drop_cap( $content ) {
+	return preg_replace_callback( '%(<p(?:[^>]+)(?:class="[^"]*(?:has-drop-cap)[^"]*")(?:[^>]*)>)([^<>]+)(</p>)%i', function( $matches ) {
+		unset( $matches[0] );
+		$matches[2] = sprintf( '<span>%s</span>%s', substr( $matches[2], 0, 1 ), substr( $matches[2], 1 ) );
+
+		return implode( '', $matches );
+	}, $content );
+
+}
+add_action( 'the_content', 'pierogi_drop_cap' );
+
+/**
+ * Filter comment author text
+ *
+ * @param string $translated_text Translated text.
+ * @param string $text  Text to translate.
+ * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+ *
+ * @return string
+ */
+function pierogi_remove_comments_text( $translated_text, $text, $domain ) {
+	if ( '%s <span class="says">says:</span>' === $text && 'default' === $domain ) {
+		return '%s';
+	}
+
+	return $translated_text;
+}
+add_filter( 'gettext', 'pierogi_remove_comments_text', 20, 3);
+
+/**
+ * Filter post author name
+ *
+ * @param string $author_name Author name.
+ * @return string
+ */
+function pierogi_the_author( $author_name ) {
+	$first_name = get_the_author_meta( 'first_name' );
+
+	if ( $first_name ) {
+		return $first_name;
+	}
+
+	return $author_name;
+}
+add_filter( 'the_author', 'pierogi_the_author' );
+
+/**
+ * Filter post excerpt
+ *
+ * @param string $excerpt Excerpt content.
+ * @return string
+ */
+function pierogi_the_excerpt( $excerpt ) {
+	if ( $excerpt && ( is_singular( 'post' ) || is_page() ) ) {
+		return sprintf( '<div class="excerpt">%s</div>', $excerpt );
+	}
+
+	return $excerpt;
+}
+add_filter( 'the_excerpt', 'pierogi_the_excerpt' );
+
+/**
+ * Filter comment form fields
+ *
+ * @param array $fields Comment form fields.
+ * @return array
+ */
+function pierogi_comment_form_fields( $fields ) {
+	$commenter = wp_get_current_commenter();
+	$req       = get_option( 'require_name_email' );
+	$aria_req  = $req ? " aria-required='true'" : '';
+
+	$fields['author'] = sprintf(
+		'<p class="comment-form-author">
+			<label for="author">%s</label>
+			<input id="author" name="author" type="text" placeholder="%s" value="%s" size="30" max-lenght="245"%s />
+		</p>',
+		esc_html__( 'Your name (required)', 'pierogi' ),
+		esc_attr__( 'Awesome Client-Love', 'pierogi' ),
+		esc_attr( $commenter['comment_author'] ),
+		$aria_req
+	);
+
+	$fields['email'] = sprintf(
+		'<p class="comment-form-email">
+			<label for="email">%s</label>
+			<input id="email" name="email" type="email" placeholder="%s" value="%s" size="30" max-lenght="100"%s />
+		</p>',
+		esc_html__( 'Your email (required)', 'pierogi' ),
+		esc_attr__( 'hello@awesomeclient.com', 'pierogi' ),
+		esc_attr( $commenter['comment_author_email'] ),
+		$aria_req
+	);
+
+	$fields['url'] = sprintf(
+		'<p class="comment-form-url">
+			<label for="url">%s</label>
+			<input id="url" name="url" type="url"  placeholder="%s" value="%s" />
+		</p>',
+		esc_html__( 'Website', 'pierogi' ),
+		esc_attr__( 'Awesome Client-Love', 'pierogi' ),
+		esc_attr( $commenter['comment_author_url'] )
+	);
+
+	return $fields;
+}
+add_filter( 'comment_form_default_fields', 'pierogi_comment_form_fields' );
+
+/**
+ * Filter comment form comment fields
+ *
+ * @return string
+ */
+function pierogi_comment_form_field() {
+	return sprintf(
+		'<p class="comment-form-comment">
+			<label for="comment">%s</label>
+			<textarea id="comment" name="comment" required="required" placeholder="%s"></textarea>
+		</p>',
+		esc_html( 'Leave a reply', 'pierogi' ),
+		esc_html( 'Write a comment...', 'pierogi' )
+	);
+}
+add_filter( 'comment_form_field_comment', 'pierogi_comment_form_field' );
+
+/**
+ * Filter comment form comment fields
+ *
+ * @param  string  $excerpt Post Excerpt.
+ * @param  WP_Post $post    Post object.
+ * @return string
+ */
+function pierogi_get_the_excerpt( $excerpt, $post ) {
+	if ( is_singular( 'post' ) || is_page() ) {
+		if ( post_password_required( $post ) || ! $post->post_excerpt ) {
+			// Prevent displaying auto generated excerpt on single post/page.
+			return null;
+		}
+	}
+
+	return $excerpt;
+}
+add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
+
+/**
  * Change the Tag Cloud's Font Sizes.
  *
  * @param string $input Tag cloud link.
@@ -69,13 +219,12 @@ add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
  * @return string
  */
 function pierogi_format_tagcloud_link( $input ) {
-	$input     = preg_replace('/ style=("|\')(.*?)("|\')/', '', $input);
-	$input     = str_replace('<span class="tag-link-count"> (', ' <span class="post_count">', $input);
-	$input     = str_replace(')</span>', '</span>', $input);
+	$input     = preg_replace( '/ style=("|\')(.*?)("|\')/', '', $input );
+	$input     = str_replace( '<span class="tag-link-count"> (', ' <span class="post_count">', $input );
+	$input     = str_replace( ')</span>', '</span>', $input );
 	$separator = '<span class="separator">&#183</span> <span class="post_count">';
 	$input     = str_replace( '<span class="post_count">', $separator, $input );
 
 	return $input;
 }
-
-add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link', 10, 1 );
+add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );

@@ -50,7 +50,7 @@ $pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( [ 'mid_size' => 2 ] );
 
 		else :
 

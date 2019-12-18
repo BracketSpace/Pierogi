@@ -69,17 +69,12 @@
 
 				@include after {
 					background-color: color(yellow);
-					bottom: rem-calc(10);
+					bottom: rem-calc(-2);
 					height: rem-calc(2);
-					left: rem-calc(29);
+					left: rem-calc(0);
 					opacity: 0;
-					right: rem-calc(29);
+					right: rem-calc(0);
 					transition: 0.2s;
-
-					@include bp-down( lg ) {
-						left: rem-calc(20);
-						right: rem-calc(20);
-					}
 				}
 
 				@include font-size( 18, 22 );
@@ -161,16 +156,33 @@
 				display: none;
 			}
 
-			/* stylelint-disable-next-line no-descending-specificity */
-			> li > a {
-				display: block;
-				line-height: rem-calc(45);
-				padding: 0 rem-calc(29);
 
-				@include bp-down( lg ) {
-					padding: 0 rem-calc(20);
+			/* stylelint-disable no-descending-specificity */
+			> li {
+
+				> a,
+				> span {
+					display: block;
+					line-height: rem-calc(45);
+					padding: 0 rem-calc(29);
+
+					@include bp-down( lg ) {
+						padding: 0 rem-calc(20);
+					}
+
+					&::after {
+						bottom: rem-calc(10);
+						left: rem-calc(29);
+						right: rem-calc(29);
+
+						@include bp-down( lg ) {
+							left: rem-calc(20);
+							right: rem-calc(20);
+						}
+					}
 				}
 			}
+			/* stylelint-enable */
 		}
 	}
 
@@ -235,8 +247,13 @@
 	padding: 0;
 	width: rem-calc(25);
 
-	@media (max-width: rem-calc( 1025 )) {
+	@include bp-down(md) {
 		display: flex;
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
 	}
 
 	/* stylelint-disable no-descending-specificity */
