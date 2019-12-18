@@ -19,8 +19,20 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			the_posts_pagination( [ 'mid_size' => 2 ] );
+			?>
 
+			<div class="post-navigation">
+
+				<?php
+				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo get_previous_post_link( '%link', '<span>' . esc_html__( 'Previous post', 'pierogi' ) . '</span><span>%title</span>' );
+				echo get_next_post_link( '%link', '<span>' . esc_html__( 'Next post', 'pierogi'  ) . '</span><span>%title</span>' );
+				// phpcs:enable
+				?>
+
+			</div>
+
+			<?php
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();

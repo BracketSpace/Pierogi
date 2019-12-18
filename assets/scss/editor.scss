@@ -17,8 +17,11 @@ body {
 	@import "editor/layout";
 	@import "components/links";
 	@import "components/buttons";
+	@import "components/container";
+	@import "components/drop-cap";
 	@import "sections/title";
 	@import "blocks/image";
+	@import "blocks/group";
 	@import "blocks/columns";
 	@import "blocks/media-text";
 
