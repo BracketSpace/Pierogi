@@ -66,7 +66,13 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	comment_form([
+		'title_reply_before'   => '',
+		'title_reply'          => '',
+		'title_reply_after'    => '',
+		'comment_notes_before' => '<p class="comment-notes">' . esc_html( 'Your email address will not be published.', 'pierogi' ) . '</p>',
+		'label_submit'         => esc_html('Comment', 'pierogi'),
+	]);
 	?>
 
 </div><!-- #comments -->

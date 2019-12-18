@@ -1,18 +1,40 @@
+/**
+ * Alignment
+ */
+
+%alignfull {
+	left: 50%;
+	margin-left: calc((-100vw + 17px) / 2);
+	margin-left: calc(-50vw + (var(--scrollbar-width) / 2));
+	position: relative;
+	width: calc(100vw - 17px);
+	width: calc(100vw - var(--scrollbar-width));
+}
 
 body:not(.has-sidebar) {
 
 	.alignfull {
-		left: 50%;
-		max-width: calc(100vw - var(--scrollbar-width));
-		position: relative;
-		transform: translateX(-50%);
-		width: calc(100vw - var(--scrollbar-width));
+
+		@extend %alignfull;
 	}
 
 	.alignwide,
 	.wp-block-separator.is-style-wide {
 		max-width: rem-calc($alignwide-width);
 
-		@extend .alignfull;
+		@extend %alignfull;
+
+		$alignwide-with-padding: $alignwide-width + 2 * $container-padding;
+
+		@include bp-up($alignwide-with-padding) {
+			margin-left: rem-calc(-$alignwide-width / 2);
+		}
+
+		@include bp-between($alignwide-width, $alignwide-with-padding) {
+			margin-left: calc((-100vw + 17px) / 2 + #{ rem-calc($container-padding) });
+			margin-left: calc(-50vw + (var(--scrollbar-width) / 2) + #{ rem-calc($container-padding) });
+			width: calc(100vw - 17px - #{ rem-calc(2 * $container-padding) });
+			width: calc(100vw - var(--scrollbar-width) - #{ rem-calc(2 * $container-padding) });
+		}
 	}
 }
