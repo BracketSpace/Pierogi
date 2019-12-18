@@ -82,6 +82,19 @@ p,
 	}
 }
 
+p.excerpt,
+.excerpt p {
+	color: color(gray, 5);
+	margin: 0;
+
+	@include font-size(27, 50);
+
+	@include bp-down(sm) {
+
+		@include font-size(23, 40);
+	}
+}
+
 body.archive,
 body.search,
 body.blog {
