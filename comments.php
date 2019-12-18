@@ -23,41 +23,36 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php
-	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
+
 		<h2 class="comments-title">
+
 			<?php
 			$pierogi_comment_count = get_comments_number();
-			if ( '1' === $pierogi_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'pierogi' ),
-					'<span>' . esc_html( get_the_title() ) . '</span>'
-				);
-			} else {
-				printf(
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $pierogi_comment_count, 'comments title', 'pierogi' ) ),
-					esc_html( number_format_i18n( $pierogi_comment_count ) ),
-					'<span>' . esc_html( get_the_title() ) . '</span>'
-				);
-			}
+
+			printf(
+				/* translators: 1: comment count number. */
+				esc_html( _nx( '%1$s Comment', '%1$s Comments', $pierogi_comment_count, 'comments-title', 'pierogi' ) ),
+				esc_html( number_format_i18n( $pierogi_comment_count ) )
+			);
 			?>
+
 		</h2><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
+		<ul class="comment-list">
 			<?php
 			wp_list_comments(
-				array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				)
+				[
+					'style'       => 'ul',
+					'short_ping'  => true,
+					'avatar_size' => 100,
+				]
 			);
 			?>
-		</ol><!-- .comment-list -->
+		</ul><!-- .comment-list -->
 
 		<?php
 		the_comments_navigation();
@@ -71,7 +66,13 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	comment_form([
+		'title_reply_before'   => '',
+		'title_reply'          => '',
+		'title_reply_after'    => '',
+		'comment_notes_before' => '<p class="comment-notes">' . esc_html( 'Your email address will not be published.', 'pierogi' ) . '</p>',
+		'label_submit'         => esc_html('Comment', 'pierogi'),
+	]);
 	?>
 
 </div><!-- #comments -->

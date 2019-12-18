@@ -23,7 +23,7 @@
 		display: flex;
 		min-height: 100%;
 		padding: rem-calc(115) rem-calc(20);
-		transition: all 0.6s;
+		transition: all 0.3s;
 		width: 100%;
 
 		@media (max-height: rem-calc(600)) {
@@ -66,21 +66,22 @@
 				margin-bottom: rem-calc(20);
 			}
 		}
+	}
 
-		a,
-		span {
-			color: color(gray, 3);
-			letter-spacing: rem-calc(0.54);
-			overflow: hidden;
-			position: relative;
-			text-decoration: none;
-			text-overflow: ellipsis;
-			text-transform: uppercase;
-			white-space: nowrap;
-		}
+	a,
+	span {
+		color: color(gray, 5);
+		letter-spacing: rem-calc(0.54);
+		overflow: hidden;
+		position: relative;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		text-transform: uppercase;
+		transition: color 0.3s;
+		white-space: nowrap;
 
-		@include bp-down(360) {
-			max-width: rem-calc(260);
+		&:hover {
+			color: color(gray, 2);
 		}
 	}
 
@@ -123,6 +124,7 @@
 
 		a,
 		span {
+			color: color(gray, 3);
 			overflow: initial;
 			text-overflow: initial;
 			white-space: initial;
@@ -147,6 +149,22 @@
 		}
 	}
 
+	.mobile-submenu-button {
+		appearance: none;
+		background: transparent url("../images/mobile-menu-arrow.svg") no-repeat center;
+		border: 0;
+		cursor: pointer;
+		height: rem-calc(25);
+		margin-left: rem-calc(20);
+		vertical-align: middle;
+		width: rem-calc(25);
+
+		&:active,
+		&:focus {
+			outline: none;
+		}
+	}
+
 	#mobile-menu {
 		left: 50%;
 		max-width: 100%;
@@ -154,26 +172,14 @@
 		transform: translateX(-50%);
 		transition: all 0.3s;
 
-		.mobile-submenu-button {
-			appearance: none;
-			background: transparent url("../images/mobile-menu-arrow.svg") no-repeat center;
-			border: 0;
-			cursor: pointer;
-			height: rem-calc(25);
-			margin-left: rem-calc(20);
-			vertical-align: middle;
-			width: rem-calc(25);
-
-			&:active,
-			&:focus {
-				outline: none;
-			}
-		}
-
 		> li {
 			display: flex;
 
 			&.active {
+
+				.item-wrap a {
+					color: color(gray, 2);
+				}
 
 				.sub-menu {
 					display: block;
@@ -194,6 +200,11 @@
 
 		.mobile-menu-wrap {
 			width: 50%;
+		}
+
+		/* stylelint-disable-next-line no-descending-specificity */
+		#mobile-menu > li > a {
+			color: color(gray, 6);
 		}
 
 		/* stylelint-disable-next-line no-descending-specificity */

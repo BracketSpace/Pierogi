@@ -34,9 +34,7 @@
     "style-loader": "^1.0.0",
     "stylelint-order": "^3.1.1",
     "stylelint-webpack-plugin": "^1.1.0",
-    "webpack-extraneous-file-cleanup-plugin": "^2.0.0"
-  },
-  "dependencies": {
+    "webpack-extraneous-file-cleanup-plugin": "^2.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "normalize-scss": "^7.0.1",
     "normalize-wheel": "^1.0.1"

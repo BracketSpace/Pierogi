@@ -109,7 +109,10 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_editor_style( 'style-editor.css' );
 
 		// Register image size for posts list.
-		add_image_size( 'post-list-thumb', 521, 348, true );
+		add_image_size( 'post-list', 521, 348, true );
+
+		// Register image size for post header.
+		add_image_size( 'post-header', 1270, 846, true );
 
 		// Add excerpt support for pages.
 		add_post_type_support( 'page', 'excerpt' );
@@ -163,8 +166,6 @@ function pierogi_scripts() {
 
 	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', [ 'wp-i18n' ], $version, true );
 
-	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -206,11 +207,6 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Image functions
- */
-require get_template_directory() . '/inc/images.php';
 
 /**
  * Load Jetpack compatibility file.

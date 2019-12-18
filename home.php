@@ -13,7 +13,7 @@ get_header();
 
 ?>
 <header class="page-header">
-	<h1 class="page-title screen-reader-text"><?php echo esc_html( $pierogi_page_title ); ?></h1>
+	<h1 class="page-title"><?php echo esc_html( $pierogi_page_title ); ?></h1>
 
 	<?php
 	if ( function_exists( 'the_subtitle' ) ) {
