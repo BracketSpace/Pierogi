@@ -1,3 +1,5 @@
+import { triggerEvent } from '../helpers';
+
 export default class SearchForm {
 	constructor() {
 		this.modalBtns = document.querySelectorAll( '[data-toggle-element]' );
@@ -9,20 +11,21 @@ export default class SearchForm {
 
 	init() {
 		this.toggleModal = this.toggleModal.bind( this );
-
-		this.mediaQuery = window.matchMedia( '( max-width: 1025px )' );
-
-		window.addEventListener( 'resize', this.handleResize.bind( this ) );
+		this.hideModal = this.hideModal.bind( this );
 
 		for ( const element of this.modalBtns ) {
 			element.addEventListener( 'click', this.toggleModal );
 		}
-	}
 
-	handleResize() {
-		if ( this.activeModal ) {
-			this.hideModal();
-		}
+		document.addEventListener( 'click', ( e ) => {
+			if ( e.target.matches( 'button.search-close' ) || e.target.matches( 'button.search-close *' ) ) {
+				this.hideModal();
+			}
+		} );
+
+		window.addEventListener( 'pierogi.viewportchange', this.hideModal );
+		window.addEventListener( 'pierogi.menuclose', this.hideModal );
+		window.addEventListener( 'resize', this.resizeModal.bind( this ) );
 	}
 
 	toggleModal( e ) {
@@ -35,32 +38,42 @@ export default class SearchForm {
 		}
 	}
 
+	calculateModalHeight() {
+		let height = 0;
+
+		for ( const child of this.activeModal.children ) {
+			height += child.clientHeight;
+		}
+
+		return height;
+	}
+
 	openModal( element ) {
 		const	modalID = element.getAttribute( 'data-toggle-element' );
 
 		this.activeModal = document.getElementById( modalID );
 
-		const
-			height = ( this.mediaQuery.matches ) ? window.innerHeight : this.activeModal.scrollHeight + 200,
-			closeBtn = this.activeModal.querySelector( '.search-close' );
+		const height = this.calculateModalHeight();
 
 		this.activeModal.style.maxHeight = `${ height }px`;
-		this.activeModal.style.height = `${ height }px`;
 
-		if ( this.mediaQuery.matches ) {
-			this.activeModal.classList.add( 'header-search-mobile-active' );
-		}
-
-		closeBtn.addEventListener( 'click', this.toggleModal );
+		triggerEvent( 'searchformopen', { height } );
 	}
 
 	hideModal() {
-		if ( this.mediaQuery.matches ) {
-			this.activeModal.classList.remove( 'header-search-mobile-active' );
-		}
+		if ( this.activeModal ) {
+			this.activeModal.style.maxHeight = 0;
+			this.activeModal = false;
 
-		this.activeModal.style.maxHeight = 0;
-		this.activeModal.style.height = 0;
-		this.activeModal = false;
+			triggerEvent( 'searchformclose' );
+		}
+	}
+
+	resizeModal() {
+		if ( this.activeModal ) {
+			const height = this.calculateModalHeight();
+
+			this.activeModal.style.maxHeight = `${ height }px`;
+		}
 	}
 }
