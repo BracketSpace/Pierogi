@@ -15,3 +15,26 @@
 	float: right;
 	margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
 }
+
+.blocks-gallery-grid .blocks-gallery-image,
+.blocks-gallery-grid .blocks-gallery-item,
+.wp-block-gallery .blocks-gallery-image,
+.wp-block-gallery .blocks-gallery-item {
+
+	figure {
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	figcaption {
+		background: transparent;
+		color: color(gray, 6);
+		font-weight: 700;
+		padding: rem-calc(20) 0 0 0;
+		position: static;
+		text-align: left;
+
+		@include font-size(14, 17);
+	}
+}
