@@ -1,12 +1,30 @@
 .wp-block-separator {
-	border-color: color(gray, 6);
 	margin: rem-calc(100) auto;
 
 	@include bp-down( sm ) {
 		margin: rem-calc(60) auto;
 	}
 
+	&:not(.is-style-dots) {
+		background-color: color(gray, 6);
+		border: none;
+		border-radius: rem-calc(2);
+		height: rem-calc(2);
+	}
+
 	&:not(.is-style-wide):not(.is-style-dots) {
-		max-width: 100px;
+		max-width: rem-calc(100);
+	}
+
+	&.is-style-dots {
+		line-height: 0;
+
+		&::before {
+			color: color(gray, 6);
+			letter-spacing: rem-calc(12);
+			padding-left: rem-calc(12);
+
+			@include font-size( 65 );
+		}
 	}
 }
