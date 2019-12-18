@@ -251,6 +251,11 @@
 		display: flex;
 	}
 
+	&:active,
+	&:focus {
+		outline: none;
+	}
+
 	/* stylelint-disable no-descending-specificity */
 	span {
 		background-color: color(gray, 5);
