@@ -24,6 +24,11 @@
 @import "generic/typography";
 @import "generic/alignment";
 @import "generic/layout";
+@import "blocks/group";
+@import "blocks/image";
+@import "blocks/cover";
+@import "blocks/columns";
+@import "blocks/media-text";
 @import "components/buttons";
 @import "components/container";
 @import "components/drop-cap";
@@ -33,9 +38,6 @@
 @import "components/forms";
 @import "components/pagination";
 @import "components/entry-meta";
-@import "blocks/group";
-@import "blocks/image";
-@import "blocks/cover";
 @import "sections/author-box";
 @import "sections/comments";
 @import "sections/comment-form";
