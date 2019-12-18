@@ -1,28 +1,8 @@
-.wp-block-video,
-.wp-block-embed.is-type-video {
+.is-type-video,
+.wp-block-video {
 	margin: rem-calc(100) 0;
 
 	@include bp-down(sm) {
 		margin: rem-calc(60) 0;
-	}
-}
-
-.wp-block-embed.is-type-video {
-	height: 0;
-	height: auto;
-	max-width: 100%;
-	overflow: hidden;
-	padding-bottom: 56.25%;
-	padding-top: 30px;
-	position: relative;
-
-	iframe,
-	object,
-	embed {
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
 	}
 }
