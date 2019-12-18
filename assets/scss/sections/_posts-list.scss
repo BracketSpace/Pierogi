@@ -1,4 +1,6 @@
-.blog {
+body.blog,
+body.archive,
+body.search {
 
 	.posts {
 
@@ -7,29 +9,8 @@
 		}
 	}
 
-	.entry-meta,
-	.entry-meta a {
-		color: color(gray, 6);
-		font-weight: 400;
-		letter-spacing: rem-calc(0.4);
+	.entry-meta {
 		margin-bottom: rem-calc(10);
-		text-decoration: none;
-		text-transform: uppercase;
-
-		@include font-size( 16, 19 );
-
-		@include bp-down( sm ) {
-
-			@include font-size( 12, 20 );
-		}
-	}
-
-	.entry-meta a {
-		transition: 0.2s;
-
-		&:hover {
-			color: color(yellow);
-		}
 	}
 
 	.entry-title {
@@ -40,7 +21,7 @@
 
 			@include font-size( 28, 34 );
 		}
-		/* stylelint-disable no-descending-specificity  */
+
 		a {
 			color: color(gray, 2);
 			letter-spacing: rem-calc(0.4);
