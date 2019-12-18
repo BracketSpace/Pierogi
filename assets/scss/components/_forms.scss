@@ -123,3 +123,20 @@ input[type="radio"] {
 		width: rem-calc(8);
 	}
 }
+
+// stylelint-disable no-descending-specificity
+label {
+
+	input,
+	select,
+	textarea {
+		margin-top: rem-calc(10);
+	}
+}
+
+.post-password-form {
+
+	label {
+		margin-bottom: rem-calc(60);
+	}
+}

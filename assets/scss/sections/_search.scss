@@ -36,7 +36,7 @@
 		}
 	}
 
-	input[type="text"] {
+	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
 		background: color(white) url("../images/icon-search.svg") no-repeat;
 		background-position: rem-calc(40) center;
 		border: none;
