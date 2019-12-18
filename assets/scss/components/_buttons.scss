@@ -32,7 +32,6 @@
 .bg-accent,
 .bg-accent-hover:hover,
 .bg-accent-hover:focus,
-.comment-reply-link,
 input[type="submit"],
 input[type="button"] {
 	background-color: color(pink);
@@ -45,7 +44,9 @@ input[type="button"] {
 	}
 }
 
-.btn-secondary {
+.btn-secondary,
+input[type="submit"].btn-secondary,
+input[type="button"].btn-secondary {
 	background-color: color(gray, 5);
 
 	@extend %btn;
@@ -53,14 +54,5 @@ input[type="button"] {
 	&:hover {
 		border-color: color(gray, 5);
 		color: color(gray, 5);
-	}
-}
-
-main.site-main {
-
-
-	button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
-
-		@extend .btn-primary;
 	}
 }

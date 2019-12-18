@@ -10,8 +10,11 @@
 if ( ! function_exists( 'pierogi_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
+	 *
+	 * @param bool $echo Whether to echo the result.
+	 * @return string
 	 */
-	function pierogi_posted_on() {
+	function pierogi_posted_on( $echo = true ) {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
 		$time_string = sprintf(
@@ -28,24 +31,37 @@ if ( ! function_exists( 'pierogi_posted_on' ) ) :
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore
+		$output = '<span class="posted-on">' . $posted_on . '</span>';
 
+		if ( $echo ) {
+			echo $output; // phpcs:ignore
+		}
+
+		return $output;
 	}
 endif;
 
 if ( ! function_exists( 'pierogi_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
+	 *
+	 * @param bool $echo Whether to echo the result.
+	 * @return string
 	 */
-	function pierogi_posted_by() {
+	function pierogi_posted_by( $echo = true ) {
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'pierogi' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore
+		$output = '<span class="byline">' . $byline . '</span>';
 
+		if ( $echo ) {
+			echo $output; // phpcs:ignore
+		}
+
+		return $output;
 	}
 endif;
 
@@ -109,6 +125,29 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'pierogi_entry_meta' ) ) :
+	/**
+	 * Prints HTML with entry meta.
+	 */
+	function pierogi_entry_meta() {
+		$items = [
+			pierogi_posted_on( false ),
+		];
+
+		if ( is_single() ) {
+			$items[] = pierogi_posted_by( false );
+		}
+
+		$categories = get_the_category_list( ', ' );
+
+		if ( $categories ) {
+			$items[] = sprintf( '<span class="cat-links">%s</span>', $categories );
+		}
+
+		echo implode( '', $items ); // phpcs:ignore
+	}
+endif;
+
 if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
@@ -123,7 +162,7 @@ if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 			return;
 		}
 
-		$thumbnail = get_the_post_thumbnail(  $post->ID, $size );
+		$thumbnail = get_the_post_thumbnail( null, $size );
 
 		if ( ! is_singular() ) {
 			$thumbnail = sprintf(

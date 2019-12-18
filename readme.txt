@@ -1,38 +1,24 @@
 === Pierogi ===
-
-Contributors: automattic
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
-
-Requires at least: 4.5
-Tested up to: 4.8
+Contributors: BracketSpace, szaleq, tomaszadamowicz, Kubitomakita
+Tags: blog, news, portfolio, grid-layout, one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
+Requires at least: 5.0
+Tested up to: WordPress 5.3
 Stable tag: 1.0.0
-License: GNU General Public License v2 or later
-License URI: LICENSE
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A starter theme called Pierogi.
+Pierogi theme by BracketSpace
 
 == Description ==
 
-Description
-
-== Installation ==
-
-1. In your admin panel, go to Appearance > Themes and click the Add New button.
-2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
-
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-Pierogi includes support for Infinite Scroll in Jetpack.
+Clean, Gutenberg-ready theme with pixel-perfect design from Poland. Who doesn't like pierogies?
 
 == Changelog ==
 
-= 1.0 - May 12 2015 =
-* Initial release
+= 1.0.0 =
+Initial release
 
-== Credits ==
-
-* Based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-* normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)
+== Resources ==
+* normalize.css, © 2012-2019 Nicolas Gallagher and Jonathan Neal, MIT
+* Underscores, © 2012-2019 Automattic, Inc., GNU GPL v2 or later
+* normalize-wheel, © 2015-2019 Facebook, Inc., BSD
