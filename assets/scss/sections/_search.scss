@@ -1,0 +1,102 @@
+.search-form {
+	max-width: rem-calc(895);
+	position: relative;
+	width: 80%;
+
+	@include bp-up(md) {
+		padding: rem-calc(100) 0;
+	}
+
+	@include bp-down(md) {
+		max-width: rem-calc(700);
+		width: 100%;
+	}
+
+	span {
+		color: color(gray, 5);
+		display: none;
+		font-weight: 500;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include font-size( 18, 22 );
+
+		@include bp-down(md) {
+			display: block;
+		}
+	}
+
+	form {
+		align-items: center;
+		display: flex;
+
+		@include bp-down(md) {
+			flex-direction: column;
+			padding-bottom: rem-calc(100);
+		}
+	}
+
+	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+		background: color(white) url("../images/icon-search.svg") no-repeat;
+		background-position: rem-calc(40) center;
+		border: none;
+		border-radius: rem-calc(5);
+		color: color(gray, 6);
+		flex: 1 1 auto;
+		height: rem-calc(62);
+		padding: 0 rem-calc(40) 0 rem-calc(78);
+		width: 100%;
+
+		@include font-size(18);
+
+		@include bp-down(md) {
+			margin: 0 0 rem-calc(36);
+		}
+
+		@include bp-down(xs) {
+			background-position: rem-calc(20) center;
+			padding: 0 rem-calc(20) 0 rem-calc(58);
+		}
+
+		&::placeholder {
+			color: color(gray, 6);
+		}
+	}
+
+	input[type="submit"] {
+		flex: 0 0 auto;
+		max-height: rem-calc(62);
+
+		@include bp-up(md) {
+			margin-left: rem-calc(40);
+		}
+	}
+
+	.search-close {
+		background-color: transparent;
+		border: transparent;
+		cursor: pointer;
+		padding: rem-calc(10);
+		position: absolute;
+		right: rem-calc(-66);
+		top: 50%;
+		transform: translateY(-50%);
+
+		@include bp-down(md) {
+			margin-top: rem-calc(26);
+			position: static;
+			transform: none;
+		}
+
+		img {
+			display: block;
+			transform: rotate(0);
+			transform-origin: center;
+			transition: 0.2s;
+		}
+
+		&:hover img {
+			transform: rotate(90deg);
+		}
+	}
+}

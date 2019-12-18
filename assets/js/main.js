@@ -1,21 +1,15 @@
-class Test {
-	test = 'initial test value';
+/**
+ * Internal dependencies
+ */
+import './scrollbar-width';
+import './menu';
+import skipLinkFocus from './skip-link-focus';
+import ViewportObserver from './viewport';
+import ButtonColors from './button-colors';
+import SearchForm from './search-form';
+import '../images/searchform-close.svg';
 
-	constructor() {
-		this.test = 'abrakadabra';
-
-		console.log( this.test );
-
-		this.init();
-	}
-
-	init() {
-		console.log( 'init!' );
-
-		this.test = 'initiated';
-
-		console.log( this.test );
-	}
-}
-
-new Test();
+skipLinkFocus();
+new ViewportObserver;
+new SearchForm;
+new ButtonColors;
