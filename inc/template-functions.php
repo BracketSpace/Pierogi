@@ -219,12 +219,14 @@ add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
  * @return string
  */
 function pierogi_format_tagcloud_link( $input ) {
-	$input     = preg_replace( '/ style=("|\')(.*?)("|\')/', '', $input );
-	$input     = str_replace( '<span class="tag-link-count"> (', ' <span class="post_count">', $input );
-	$input     = str_replace( ')</span>', '</span>', $input );
-	$separator = '<span class="separator">&#183</span> <span class="post_count">';
-	$input     = str_replace( '<span class="post_count">', $separator, $input );
+	$input = preg_replace( '/ style=("|\')(.*?)("|\')/', '', $input );
 
-	return $input;
+	return str_replace( [
+		'<span class="tag-link-count"> (',
+		')</span>',
+	], [
+		' <span class="tag-link-count">',
+		'</span>',
+	], $input );
 }
 add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );
