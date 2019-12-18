@@ -2,7 +2,7 @@
  * Layout
  */
 
-main.site-main {
+.content-area {
 	padding-bottom: rem-calc(150);
 
 	@include bp-down(sm) {
@@ -10,10 +10,21 @@ main.site-main {
 	}
 }
 
+body.single-post .content-area {
+
+	@include bp-up(lg) {
+		padding-top: rem-calc(100);
+	}
+
+	@include bp-between(sm, lg) {
+		padding-top: rem-calc(60);
+	}
+}
+
 body.no-sidebar {
 
 	&.page,
-	&.post {
+	&.single-post {
 
 		main.site-main {
 			max-width: rem-calc($content-width);
@@ -35,7 +46,7 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 		display: flex;
 		justify-content: space-between;
 
-		@include bp-down( sm ) {
+		@include bp-down(md) {
 			display: block;
 		}
 
@@ -43,7 +54,7 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 			max-width: rem-calc(1082);
 			width: 66%;
 
-			@include bp-down( sm ) {
+			@include bp-down(md) {
 				max-width: 100%;
 				width: 100%;
 			}
@@ -55,7 +66,7 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 	max-width: rem-calc(521);
 	width: 32%;
 
-	@include bp-down( sm ) {
+	@include bp-down( md ) {
 		max-width: auto;
 		width: 100%;
 	}

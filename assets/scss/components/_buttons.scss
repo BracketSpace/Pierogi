@@ -56,12 +56,3 @@ input[type="button"].btn-secondary {
 		color: color(gray, 5);
 	}
 }
-
-main.site-main {
-
-
-	button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
-
-		@extend .btn-primary;
-	}
-}
