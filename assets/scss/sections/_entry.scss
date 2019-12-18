@@ -5,7 +5,7 @@
 body.page,
 body.single-post {
 
-	main.site-main a {
+	main.site-main a:not(.btn-primary):not(.btn-secondary):not(.wp-block-button__link) {
 		color: color(yellow);
 	}
 
