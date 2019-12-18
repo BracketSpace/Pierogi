@@ -166,8 +166,6 @@ function pierogi_scripts() {
 
 	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', [ 'wp-i18n' ], $version, true );
 
-	wp_enqueue_script( 'pierogi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
