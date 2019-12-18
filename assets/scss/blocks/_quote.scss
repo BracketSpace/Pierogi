@@ -8,7 +8,7 @@ body.single-post .entry-content .wp-block-pullquote {
 	position: relative;
 	text-align: left;
 
-	@media (max-width: rem-calc( 1770 )) {
+	@include bp-down(rem-calc( 1770 )) {
 		margin: rem-calc(60) rem-calc(20);
 	}
 
@@ -17,6 +17,10 @@ body.single-post .entry-content .wp-block-pullquote {
 		z-index: -1;
 
 		@include background("quote_shape.svg");
+
+		@include bp-down(sm) {
+			left: rem-calc(-40);
+		}
 	}
 
 	&.has-text-align-right {
@@ -24,7 +28,11 @@ body.single-post .entry-content .wp-block-pullquote {
 
 		&::after {
 			left: initial;
-			right: rem-calc(-25);
+			right: rem-calc(-45);
+
+			@include bp-down(sm) {
+				right: rem-calc(-40);
+			}
 		}
 	}
 
