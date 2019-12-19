@@ -2,30 +2,24 @@
 
 	a {
 		display: block;
+		margin-bottom: rem-calc(20);
+		padding: rem-calc(12) rem-calc(37);
+		text-transform: uppercase;
+
+		span {
+			margin-left: rem-calc(10);
+		}
 	}
 
-	li {
+	.current-menu-item > a {
+		color: color(gray, 3);
+		transition: 0.2s;
 
-		a {
-			margin-bottom: rem-calc(20);
-			padding: rem-calc(12) rem-calc(37);
-			text-transform: uppercase;
+		&:hover {
+			color: color(gray, 3);
 
 			span {
-				margin-left: rem-calc(10);
-			}
-		}
-
-		&.current-menu-item > a {
-			color: color(gray, 3);
-			transition: 0.2s;
-
-			&:hover {
-				color: color(gray, 3);
-
-				span {
-					color: color(yellow);
-				}
+				color: color(yellow);
 			}
 		}
 	}

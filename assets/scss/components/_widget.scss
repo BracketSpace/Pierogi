@@ -30,7 +30,7 @@
 	li {
 		color: color(gray, 6);
 
-		@include font-size( 16, 19 );
+		@include font-size(16, 19);
 	}
 
 	a {
@@ -54,9 +54,9 @@ h2.widget-title {
 	margin: 0 0 rem-calc(40) 0;
 	text-align: center;
 
-	@include font-size( 30, 25 );
+	@include font-size(30, 25);
 
-	@include bp-down( sm ) {
+	@include bp-down(sm) {
 		margin: 0 0 rem-calc(60) 0;
 	}
 }
