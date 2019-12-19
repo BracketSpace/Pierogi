@@ -14,8 +14,16 @@
 
 			@include font-size(14, 17);
 		}
+
+		&:hover {
+
+			.tag-link-count::before {
+				background-color: color(yellow);
+			}
+		}
 	}
 
+	/* stylelint-disable no-descending-specificity */
 	.tag-link-count {
 
 		&::before {
@@ -25,8 +33,10 @@
 			display: inline-block;
 			height: rem-calc(6);
 			margin: 0 rem-calc(10);
+			transition: 0.2s;
 			vertical-align: 15%;
 			width: rem-calc(6);
 		}
 	}
+	/* stylelint-enable */
 }
