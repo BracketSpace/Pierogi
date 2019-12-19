@@ -13,7 +13,7 @@
 
 	@include font-size( 23, 28 );
 
-	@include bp-down( sm ) {
+	@include bp-down( xs ) {
 		padding: rem-calc(9) rem-calc(37);
 
 		@include font-size(14, 16);

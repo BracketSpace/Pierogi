@@ -87,19 +87,6 @@ body.search {
 		}
 	}
 
-	.content-area {
-		display: flex;
-		justify-content: space-between;
-		margin-top: rem-calc(147);
-		width: 100%;
-
-		@include bp-down( sm ) {
-			display: block;
-			margin-top: rem-calc(100);
-			width: 100%;
-		}
-	}
-
 	.site-main {
 		align-content: flex-start;
 
@@ -145,7 +132,7 @@ body.search {
 			margin-bottom: rem-calc(-100);
 		}
 
-		.post {
+		article {
 			display: flex;
 			margin-bottom: rem-calc(100);
 			width: 100%;
@@ -204,7 +191,7 @@ body.search {
 			}
 		}
 
-		.post {
+		article {
 			align-self: baseline;
 			margin: 0 rem-calc(20) rem-calc(102) rem-calc(20);
 			max-width: rem-calc(521);
@@ -223,16 +210,7 @@ body.search {
 
 		&.has-sidebar {
 
-			.site-main {
-				max-width: calc(#{ rem-calc($container-narrow-width) } + #{ rem-calc(40) });
-				width: calc(66% + #{rem-calc(40)});
-
-				@include bp-down( sm ) {
-					width: 100%;
-				}
-			}
-
-			.post {
+			article {
 				width: calc(50% - #{ rem-calc(40) });
 
 				@include bp-down( lg ) {

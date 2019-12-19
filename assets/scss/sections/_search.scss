@@ -1,15 +1,8 @@
 .search-form {
-	max-width: rem-calc(895);
 	position: relative;
-	width: 80%;
 
 	@include bp-up(md) {
 		padding: rem-calc(100) 0;
-	}
-
-	@include bp-down(md) {
-		max-width: rem-calc(700);
-		width: 100%;
 	}
 
 	span {
@@ -29,16 +22,12 @@
 	form {
 		align-items: center;
 		display: flex;
-
-		@include bp-down(md) {
-			flex-direction: column;
-			padding-bottom: rem-calc(100);
-		}
 	}
 
 	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
-		background: color(white) url("../images/icon-search.svg") no-repeat;
+		background-image: url("../images/icon-search.svg");
 		background-position: rem-calc(40) center;
+		background-repeat: no-repeat;
 		border: none;
 		border-radius: rem-calc(5);
 		color: color(gray, 6);
@@ -48,10 +37,6 @@
 		width: 100%;
 
 		@include font-size(18);
-
-		@include bp-down(md) {
-			margin: 0 0 rem-calc(36);
-		}
 
 		@include bp-down(xs) {
 			background-position: rem-calc(20) center;
@@ -65,10 +50,44 @@
 
 	input[type="submit"] {
 		flex: 0 0 auto;
+		margin-left: rem-calc(40);
 		max-height: rem-calc(62);
+	}
 
-		@include bp-up(md) {
-			margin-left: rem-calc(40);
+	.search-close {
+		display: none;
+	}
+}
+
+.site-header .search-form {
+	max-width: rem-calc(895);
+	width: 80%;
+
+	@include bp-down(md) {
+		max-width: rem-calc(700);
+		width: 100%;
+	}
+
+	form {
+
+		@include bp-down(md) {
+			flex-direction: column;
+			padding-bottom: rem-calc(100);
+		}
+	}
+
+	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+		background-color: color(white);
+
+		@include bp-down(md) {
+			margin: 0 0 rem-calc(36);
+		}
+	}
+
+	input[type="submit"] {
+
+		@include bp-between(sm, md) {
+			margin-left: 0;
 		}
 	}
 
@@ -76,6 +95,7 @@
 		background-color: transparent;
 		border: transparent;
 		cursor: pointer;
+		display: block;
 		padding: rem-calc(10);
 		position: absolute;
 		right: rem-calc(-66);
@@ -97,6 +117,28 @@
 
 		&:hover img {
 			transform: rotate(90deg);
+		}
+	}
+}
+
+.site-content .search-form {
+
+	@include bp-down(md) {
+		padding: rem-calc(60) 0;
+	}
+
+	form {
+
+		@include bp-down(sm) {
+			flex-direction: column;
+			padding-bottom: rem-calc(100);
+		}
+	}
+
+	input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+
+		@include bp-down(sm) {
+			margin: 0 0 rem-calc(36);
 		}
 	}
 }

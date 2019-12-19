@@ -80,9 +80,7 @@
 		</div><!-- .header-inner -->
 
 		<div id="header-search" class="header-search">
-			<div class="search-form">
-				<?php get_search_form(); ?>
-			</div>
+			<?php get_search_form(); ?>
 		</div>
 
 
