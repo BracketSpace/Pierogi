@@ -81,20 +81,6 @@ function pierogi_drop_cap( $content ) {
 add_action( 'the_content', 'pierogi_drop_cap' );
 
 /**
- * Add responsive wrapper around table
- *
- * @param string $content Post content.
- *
- * @return string
- */
-function pierogi_responsive_tables( $content ) {
-	return preg_replace_callback('~<table.*?</table>~is', function( $match ) {
-		return '<div class="responsive-table">' . $match[0] . '</div>';
-	}, $content);
-}
-add_action( 'the_content', 'pierogi_responsive_tables' );
-
-/**
  * Filter comment author text
  *
  * @param string $translated_text Translated text.
