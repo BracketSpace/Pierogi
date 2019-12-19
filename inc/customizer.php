@@ -33,6 +33,14 @@ function pierogi_customize_register( $wp_customize ) {
 		);
 
 		$wp_customize->selective_refresh->add_partial(
+			'pierogi_accent_color',
+			[
+				'selector'            => '#pierogi-custom-css',
+				'render_callback'     => 'pierogi_custom_styles',
+			]
+		);
+
+		$wp_customize->selective_refresh->add_partial(
 			'footer_logo',
 			[
 				'selector'            => 'a.footer-logo-link',
@@ -49,6 +57,29 @@ function pierogi_customize_register( $wp_customize ) {
 			]
 		);
 	}
+
+	$wp_customize->remove_control( 'header_textcolor' );
+
+	$wp_customize->add_setting( 'pierogi_accent_color', [
+		'transport' => 'postMessage',
+		'default'   => pierogi_get_theme_mod_default( 'pierogi_accent_color' ),
+	] );
+
+	$wp_customize->add_setting( 'pierogi_secondary_color', [
+		'transport' => 'postMessage',
+		'default'   => pierogi_get_theme_mod_default( 'pierogi_secondary_color' ),
+	] );
+
+	$wp_customize->add_control( 'pierogi_accent_color', [
+		'type'    => 'color',
+		'label'   => __( 'Accent Color', 'pierogi' ),
+		'section' => 'colors',
+	] );
+	$wp_customize->add_control( 'pierogi_secondary_color', [
+		'type'    => 'color',
+		'label'   => __( 'Secondary Color', 'pierogi' ),
+		'section' => 'colors',
+	] );
 
 	$wp_customize->add_section( 'pierogi_footer', [
 		'title'    => __( 'Footer', 'pierogi' ),
@@ -188,9 +219,12 @@ add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );
  */
 function pierogi_get_theme_mods_defaults() {
 	$defaults = [
-		'pierogi_theme_layout' => 'no-sidebar',
-		'pierogi_blog_layout'  => 'grid',
-		'pierogi_footer_text'  => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
+		'pierogi_theme_layout'    => 'no-sidebar',
+		'pierogi_blog_layout'     => 'grid',
+		'pierogi_footer_text'     => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
+		'pierogi_accent_color'    => '#ffc33a',
+		'pierogi_secondary_color' => '#ff8787',
+		'background_color'        => '#ff0000',
 	];
 
 	return apply_filters( 'pierogi_theme_mod_defaults', $defaults );
