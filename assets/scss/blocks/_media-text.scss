@@ -1,0 +1,59 @@
+.wp-block-media-text {
+	margin: rem-calc(60) 0;
+
+	@include bp-down(sm) {
+		display: block;
+	}
+
+	&:not(.has-media-on-the-right) .wp-block-media-text__content {
+
+		@include bp-up(sm) {
+			padding-left: rem-calc($container-padding);
+		}
+	}
+
+	&.has-media-on-the-right .wp-block-media-text__content {
+
+		@include bp-up(sm) {
+			padding-right: rem-calc($container-padding);
+		}
+	}
+
+	&.alignwide,
+	&.alignfull {
+
+		.wp-block-media-text__content {
+			padding-left: rem-calc($container-padding);
+			padding-right: rem-calc($container-padding);
+
+			@include bp-down(sm) {
+				padding-left: rem-calc($container-mobile-padding);
+				padding-right: rem-calc($container-mobile-padding);
+			}
+		}
+	}
+
+	&:not(.alignwide):not(.alignfull) {
+
+		.wp-block-media-text__content {
+
+			@include bp-down(sm) {
+				padding: 0;
+			}
+		}
+
+		&:not(.has-media-on-the-right) .wp-block-media-text__content {
+
+			@include bp-up(sm) {
+				padding-right: 0;
+			}
+		}
+
+		&.has-media-on-the-right .wp-block-media-text__content {
+
+			@include bp-up(sm) {
+				padding-left: 0;
+			}
+		}
+	}
+}

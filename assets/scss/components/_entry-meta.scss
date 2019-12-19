@@ -1,0 +1,34 @@
+.entry-meta {
+	color: color(gray, 6);
+	font-weight: 500;
+	text-transform: uppercase;
+
+	@include font-size( 16, 19 );
+
+	@include bp-down( sm ) {
+
+		@include font-size( 12, 20 );
+	}
+
+	> span:not(:first-child)::before {
+		background-color: color(gray, 6);
+		border-radius: 50%;
+		content: "";
+		display: inline-block;
+		height: rem-calc(6);
+		margin: 0 rem-calc(10);
+		vertical-align: rem-calc(3);
+		width: rem-calc(6);
+	}
+
+	a {
+		color: color(gray, 6) !important;
+		text-decoration: none;
+		transition: 0.2s;
+
+		&:hover {
+			color: color(yellow) !important;
+		}
+	}
+
+}
