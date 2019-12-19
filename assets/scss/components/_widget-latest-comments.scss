@@ -6,15 +6,15 @@
 		color: color(gray, 6);
 		display: block;
 
-		@include font-size( 14, 17);
+		@include font-size(14, 17);
+
+		@include bp-down(sm) {
+
+			@include font-size(12, 20);
+		}
 
 		&:hover {
 			color: color(yellow);
-		}
-
-		@include bp-down( sm ) {
-
-			@include font-size(12, 20 );
 		}
 	}
 }
