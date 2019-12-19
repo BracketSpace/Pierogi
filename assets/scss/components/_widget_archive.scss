@@ -1,0 +1,9 @@
+.widget_archive {
+
+	@extend .widget_categories;
+
+	a[aria-current] {
+		color: color(gray, 3);
+	}
+
+}

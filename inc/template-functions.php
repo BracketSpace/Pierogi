@@ -226,3 +226,25 @@ function pierogi_add_custom_category_widget_walker( $args ) {
 	return $args;
 }
 add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );
+
+/**
+ * Filter archives count display
+ *
+ * @param string $link Archive links.
+ *
+ * @return string
+ */
+function pierogi_archive_count( $link ) {
+	$link = str_replace( [
+		'</a>&nbsp;(',
+		')',
+	], [
+		'&nbsp;',
+		'</a>',
+	],
+		$link
+	);
+
+	return $link;
+}
+add_filter('get_archives_link', 'pierogi_archive_count');
