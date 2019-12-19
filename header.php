@@ -79,12 +79,9 @@
 			</div>
 		</div><!-- .header-inner -->
 
-		<div id="header-search" class="header-big-section header-search">
+		<div id="header-search" class="header-search">
 			<div class="search-form">
-				<span><?php esc_html_e( 'Search', 'pierogi' ); ?></span>
-
 				<?php get_search_form(); ?>
-
 			</div>
 		</div>
 

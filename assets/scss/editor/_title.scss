@@ -1,0 +1,26 @@
+.editor-post-title {
+
+	textarea {
+		color: color(gray);
+		font-family: $font-primary;
+		margin: 0;
+
+		@extend h1;
+	}
+}
+
+.post-type-page body {
+	// TODO: style page title
+
+	.editor-post-title {
+		padding-bottom: rem-calc(74);
+		padding-top: rem-calc(83);
+
+		textarea {
+			text-align: center;
+
+			@extend h1;
+		}
+	}
+
+}
