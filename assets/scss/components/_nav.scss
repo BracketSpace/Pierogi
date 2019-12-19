@@ -220,7 +220,7 @@
 	}
 }
 
-.site-header.large .main-navigation .main-menu-wrap li.menu-item-has-children .sub-menu {
+.site-header-large .main-navigation .main-menu-wrap li.menu-item-has-children .sub-menu {
 	padding-top: rem-calc(79);
 
 	&::after {
@@ -228,7 +228,7 @@
 	}
 }
 
-.site-header:not(.large) .main-menu-wrap > ul {
+body:not(.site-header-large) .main-menu-wrap > ul {
 
 	@include bp-down(sm) {
 		padding-top: rem-calc(169);

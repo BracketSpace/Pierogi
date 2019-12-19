@@ -86,7 +86,7 @@
 
 	input[type="submit"] {
 
-		@include bp-between(sm, md) {
+		@include bp-down(md) {
 			margin-left: 0;
 		}
 	}
@@ -124,14 +124,13 @@
 .site-content .search-form {
 
 	@include bp-down(md) {
-		padding: rem-calc(60) 0;
+		padding: rem-calc(60) 0 rem-calc(100);
 	}
 
 	form {
 
 		@include bp-down(sm) {
 			flex-direction: column;
-			padding-bottom: rem-calc(100);
 		}
 	}
 
@@ -139,6 +138,13 @@
 
 		@include bp-down(sm) {
 			margin: 0 0 rem-calc(36);
+		}
+	}
+
+	input[type="submit"] {
+
+		@include bp-down(sm) {
+			margin-left: 0;
 		}
 	}
 }

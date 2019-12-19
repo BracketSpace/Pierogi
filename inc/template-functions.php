@@ -12,15 +12,13 @@
  * @return array
  */
 function pierogi_body_classes( $classes ) {
-	$display_sidebar = get_theme_mod( 'pierogi_sidebar_settings' );
-
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
 
 	// Adds a layout class.
-	$classes[] = get_theme_mod( 'pierogi_theme_layout' );
+	$classes[] = is_404() ? 'no-sidebar' : get_theme_mod( 'pierogi_theme_layout' );
 
 	// Add blog page layout type css class.
 	$blog_layout = is_home() ? get_theme_mod( 'pierogi_blog_layout' ) :
@@ -28,6 +26,10 @@ function pierogi_body_classes( $classes ) {
 
 	if ( $blog_layout ) {
 		$classes[] = "blog-layout-{$blog_layout}";
+	}
+
+	if ( ! has_custom_logo() && get_bloginfo( 'description' ) ) {
+		$classes[] = 'site-header-large';
 	}
 
 	return $classes;

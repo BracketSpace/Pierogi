@@ -24,15 +24,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'pierogi' ); ?></a>
 
-	<?php
-	$pierogi_header_class = 'site-header';
-
-	if ( ! has_custom_logo() && get_bloginfo( 'description' ) ) {
-		$pierogi_header_class .= ' large';
-	}
-	?>
-
-	<header id="masthead" class="<?php echo esc_attr( $pierogi_header_class ); ?>">
+	<header id="masthead" class="site-header">
 		<div class="header-inner">
 			<div class="container">
 				<div class="site-branding">
