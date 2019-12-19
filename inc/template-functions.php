@@ -211,3 +211,18 @@ function pierogi_get_the_excerpt( $excerpt, $post ) {
 	return $excerpt;
 }
 add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
+
+/**
+ * Add custom category widget walker
+ *
+ * @param array $args Array of categories widget options.
+ *
+ * @return array
+ */
+function pierogi_add_custom_category_widget_walker( $args ) {
+
+	$args['walker'] = new Pierogi_Widget_Category_Walker();
+
+	return $args;
+}
+add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );

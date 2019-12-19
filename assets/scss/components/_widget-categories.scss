@@ -1,0 +1,31 @@
+.widget_categories {
+
+	li {
+
+		a {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: rem-calc(20);
+			padding: rem-calc(12) rem-calc(37);
+			text-transform: uppercase;
+
+			span {
+				margin-left: rem-calc(10);
+			}
+		}
+
+		&.current-cat > a {
+			color: color(gray, 3);
+			transition: 0.2s;
+
+			&:hover {
+				color: color(gray, 3);
+
+				span {
+					color: color(yellow);
+				}
+			}
+		}
+	}
+
+}
