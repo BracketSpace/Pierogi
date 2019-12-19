@@ -215,16 +215,22 @@ function pierogi_get_the_excerpt( $excerpt, $post ) {
 add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
 
 /**
- * Add custom category widget walker
+ * Filter categories widget count display
  *
- * @param array $args Array of categories widget options.
+ * @param string $link Categories widget links.
  *
- * @return array
+ * @return string
  */
-function pierogi_add_custom_category_widget_walker( $args ) {
+function pierogi_categories_count( $link ) {
 
-	$args['walker'] = new Pierogi_Widget_Category_Walker();
-
-	return $args;
+	return str_replace( [
+		'</a> (',
+		')',
+	], [
+		'<span>',
+		'</span></a>',
+	],
+			$link
+		);
 }
-add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );
+add_filter( 'wp_list_categories', 'pierogi_categories_count' );
