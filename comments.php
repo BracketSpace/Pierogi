@@ -42,7 +42,12 @@ if ( post_password_required() ) {
 
 		<?php the_comments_navigation(); ?>
 
-		<ul class="comment-list">
+		<ul class="comment-list 
+		<?php
+		if ( ! get_option('show_avatars') ) {
+			echo 'has-avatars';}
+		?>
+		">
 			<?php
 			wp_list_comments(
 				[
