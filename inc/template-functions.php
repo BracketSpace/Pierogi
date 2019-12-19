@@ -239,8 +239,8 @@ function pierogi_archive_count( $link ) {
 		'</a>&nbsp;(',
 		')',
 	], [
-		'&nbsp;',
-		'</a>',
+		'&nbsp;<span>',
+		'</span></a>',
 	],
 		$link
 	);
