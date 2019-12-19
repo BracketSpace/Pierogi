@@ -226,5 +226,4 @@ function pierogi_add_custom_category_widget_walker( $args ) {
 
 	return $args;
 }
-
 add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );
