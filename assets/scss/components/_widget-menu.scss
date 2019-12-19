@@ -11,16 +11,7 @@
 		}
 	}
 
-	.current-menu-item > a {
+	.current-menu-item > a:not(:hover) {
 		color: color(gray, 3);
-		transition: 0.2s;
-
-		&:hover {
-			color: color(gray, 3);
-
-			span {
-				color: color(yellow);
-			}
-		}
 	}
 }
