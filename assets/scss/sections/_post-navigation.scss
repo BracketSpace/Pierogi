@@ -8,7 +8,6 @@
 		transition: 0.3s;
 
 		&:first-of-type {
-			color: color(gray, 6);
 			display: block;
 			letter-spacing: rem-calc(0.42);
 			padding-bottom: rem-calc(10);
@@ -65,13 +64,13 @@
 			max-width: 31%;
 			max-width: calc(31% + #{ rem-calc(58) });
 
-			span {
-				color: color(yellow);
-			}
-
 			&::before {
 				opacity: 1;
 			}
+		}
+
+		&:not(:hover) span:first-of-type {
+			color: color(gray, 6);
 		}
 	}
 

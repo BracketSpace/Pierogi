@@ -35,3 +35,8 @@
 		@include font-size( 14, 1 );
 	}
 }
+
+a {
+	color: color(yellow);
+	transition: color 0.3s;
+}
