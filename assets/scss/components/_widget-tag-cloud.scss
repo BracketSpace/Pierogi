@@ -16,9 +16,17 @@
 		}
 	}
 
-	.separator {
-		display: inline-block;
-		font-size: rem-calc(26);
-		line-height: rem-calc(6);
+	.tag-link-count {
+
+		&::before {
+			background-color: color(gray, 6);
+			border-radius: 50%;
+			content: "";
+			display: inline-block;
+			height: rem-calc(6);
+			margin: 0 rem-calc(10);
+			vertical-align: 15%;
+			width: rem-calc(6);
+		}
 	}
 }

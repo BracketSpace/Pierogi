@@ -7,6 +7,11 @@
  * @package Pierogi
  */
 
+/**
+ * Add custom cateogry walker class
+ */
+require get_template_directory() . '/inc/classes/class-pierogi-widget-category-walker.php';
+
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

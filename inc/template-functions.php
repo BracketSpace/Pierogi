@@ -23,9 +23,11 @@ function pierogi_body_classes( $classes ) {
 	$classes[] = get_theme_mod( 'pierogi_theme_layout' );
 
 	// Add blog page layout type css class.
-	if ( is_home() ) {
-		$blog_layout = get_theme_mod( 'pierogi_blog_layout' );
-		$classes[]   = "blog-layout-{$blog_layout}";
+	$blog_layout = is_home() ? get_theme_mod( 'pierogi_blog_layout' ) :
+		( is_search() || is_archive() ? 'list' : false );
+
+	if ( $blog_layout ) {
+		$classes[] = "blog-layout-{$blog_layout}";
 	}
 
 	return $classes;
@@ -230,3 +232,18 @@ function pierogi_format_tagcloud_link( $input ) {
 	], $input );
 }
 add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );
+
+/**
+ * Add custom category widget walker
+ *
+ * @param array $args Array of categories widget options.
+ *
+ * @return array
+ */
+function pierogi_add_custom_category_widget_walker( $args ) {
+
+	$args['walker'] = new Pierogi_Widget_Category_Walker();
+
+	return $args;
+}
+add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker', 10, 2 );
