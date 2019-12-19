@@ -1,7 +1,5 @@
-.wp-block-pullquote,
 .wp-block-quote,
-body.single-post .entry-content .wp-block-quote,
-body.single-post .entry-content .wp-block-pullquote {
+body.single-post .entry-content .wp-block-quote {
 	border: 0 solid transparent;
 	margin: rem-calc(60) 0;
 	padding: 0;
