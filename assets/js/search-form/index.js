@@ -49,9 +49,11 @@ export default class SearchForm {
 	}
 
 	openModal( element ) {
-		const	modalID = element.getAttribute( 'data-toggle-element' );
+		const modalID = element.getAttribute( 'data-toggle-element' );
 
 		this.activeModal = document.getElementById( modalID );
+
+		this.activeModal.querySelector( '.seach-input' ).focus();
 
 		const height = this.calculateModalHeight();
 
