@@ -12,6 +12,8 @@
 
 	a {
 		color: color(gray, 3);
+		display: block;
+		margin-bottom: rem-calc(10);
 		text-decoration: none;
 
 		@include font-size(20, 24);
@@ -23,7 +25,7 @@
 
 	span {
 		color: color(gray, 6);
-		display: block;
+		text-transform: uppercase;
 
 		@include font-size(14, 17);
 
