@@ -76,7 +76,6 @@ function pierogi_drop_cap( $content ) {
 
 		return implode( '', $matches );
 	}, $content );
-
 }
 add_action( 'the_content', 'pierogi_drop_cap' );
 

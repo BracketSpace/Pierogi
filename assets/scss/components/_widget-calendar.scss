@@ -36,8 +36,6 @@
 	thead,
 	tfoot,
 	td:not([colspan]):not(.pad) {
-		border: rem-calc(3) solid transparent;
-		border-radius: rem-calc(5);
 		box-shadow: 0 0 rem-calc(3) 0 rgba(0, 0, 0, 0.16);
 		margin: rem-calc(2);
 	}
@@ -46,9 +44,15 @@
 
 		/* stylelint-disable no-descending-specificity*/
 		td {
+			width: rem-calc(67);
 
-			&:hover {
-				border-color: color(yellow) !important;
+			a {
+				border: rem-calc(3) solid transparent;
+				border-radius: rem-calc(5);
+
+				&:hover {
+					border-color: color(yellow) !important;
+				}
 			}
 		}
 		/* stylelint-enable */

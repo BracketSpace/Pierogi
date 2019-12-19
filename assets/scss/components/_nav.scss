@@ -83,10 +83,9 @@
 			/* stylelint-enable */
 			&.current_page_item > a,
 			&.current_page_item > span {
-				color: color(gray, 1);
 
-				&:hover {
-					color: color(yellow);
+				&:not(:hover) {
+					color: color(gray, 1);
 				}
 			}
 
@@ -149,6 +148,7 @@
 			margin-top: rem-calc(-4);
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
+			-ms-overflow-style: none;
 			scrollbar-width: none;
 			width: 100%;
 
