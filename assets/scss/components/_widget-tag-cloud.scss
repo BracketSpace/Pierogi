@@ -8,11 +8,11 @@
 		padding: rem-calc(13) rem-calc(20) rem-calc(9) rem-calc(20);
 		text-transform: uppercase;
 
-		@include font-size( 16, 19);
+		@include font-size(16, 19);
 
-		@include bp-down( sm ) {
+		@include bp-down(sm) {
 
-			@include font-size( 14, 17 );
+			@include font-size(14, 17);
 		}
 	}
 
