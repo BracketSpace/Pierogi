@@ -43,20 +43,18 @@ body.no-sidebar {
 body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 
 	.content-area {
-		display: flex;
-		justify-content: space-between;
 
-		@include bp-down(md) {
-			display: block;
+		@include bp-up(md) {
+			display: flex;
+			justify-content: space-between;
 		}
 
 		.site-main {
-			max-width: rem-calc(1082);
-			width: 66%;
 
-			@include bp-down(md) {
-				max-width: 100%;
-				width: 100%;
+			@include bp-up(md) {
+				margin-right: rem-calc(40);
+				max-width: rem-calc(1080);
+				width: calc(68%);
 			}
 		}
 	}
@@ -64,8 +62,33 @@ body.has-sidebar:not(.search):not(.error404):not(.blog-layout-grid) {
 
 .widget-area {
 
-	@include bp-down( md ) {
-		max-width: auto;
-		width: 100%;
+	@include bp-up(md) {
+		max-width: rem-calc(520);
+		width: 32%;
+	}
+
+	@include bp-between(sm, md) {
+		margin: 0 rem-calc(-20);
+	}
+
+	@include bp-down(sm) {
+		margin: auto;
+		max-width: rem-calc(520);
+	}
+
+	&::after {
+		clear: both;
+		content: "";
+		display: block;
+	}
+
+	.widget {
+
+		@include bp-between(sm, md) {
+			float: left;
+			margin-left: rem-calc(20);
+			margin-right: rem-calc(20);
+			width: calc(50% - #{ rem-calc(40) });
+		}
 	}
 }
