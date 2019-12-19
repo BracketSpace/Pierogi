@@ -15,37 +15,10 @@
 	.site-info {
 		background-color: color(gray);
 		color: color(white);
-		padding: rem-calc(20) 0;
-
-		@include font-size(18, 24);
+		padding: rem-calc(17) 0;
 
 		@include bp-down(sm) {
-			padding: rem-calc(40) 0;
-
-			@include font-size(12, 24);
-
-			span {
-				display: block;
-			}
-		}
-
-		.footer-logo {
-			margin: 0 rem-calc(20) 0 0;
-
-			@include bp-down(sm) {
-				margin: 0 0 rem-calc(28) 0;
-			}
-
-			img {
-				height: auto;
-				max-height: rem-calc(48);
-				max-width: rem-calc(133);
-
-				@include bp-down(sm) {
-					max-height: rem-calc(36);
-					max-width: rem-calc(100);
-				}
-			}
+			padding: rem-calc(40) 0 rem-calc(38);
 		}
 
 		a {
@@ -56,48 +29,99 @@
 
 	.footer-navigation {
 		background-color: color(yellow-light);
-		padding: rem-calc(138) 0;
+		padding: rem-calc(118) 0;
 
 		@include bp-down(sm) {
-			padding: rem-calc(82) 0;
+			padding: rem-calc(80) 0;
 		}
 
 		ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			list-style: none;
 			margin: 0;
 			padding: 0;
+		}
+
+		li {
+			margin: rem-calc(20) rem-calc(50);
+
+			@include bp-down(md) {
+				margin: rem-calc(20) rem-calc(30);
+			}
+
+			@include bp-down(xs) {
+				margin: rem-calc(20);
+			}
+		}
+
+		a {
+			color: color(gray, 1);
+			display: block;
+			font-weight: 800;
+			letter-spacing: 0.03em;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			@include font-size(18, 22);
+
+			&:focus,
+			&:hover,
+			&:active {
+				box-shadow: 0 rem-calc(3) 0 0 color(gray, 2);
+				text-decoration: none;
+			}
+		}
+	}
+
+	.footer-logo-link {
+		flex: 0 0 auto;
+		margin: 0 rem-calc(20) 0 0;
+
+		@include bp-down(sm) {
+			margin: 0 0 rem-calc(35);
+		}
+
+		img {
+			display: block;
+			height: auto;
+			max-height: rem-calc(48);
+			width: auto;
+
+			@include bp-down(xs) {
+				max-height: rem-calc(36);
+			}
+		}
+	}
+
+	.footer-text {
+		color: color(white);
+		flex: 1 1 auto;
+
+		@include font-size(18, 24);
+
+		@include bp-down(md) {
+			max-width: rem-calc(480);
+		}
+
+		@include bp-up(sm) {
+			margin: rem-calc(12) 0;
+			text-align: right;
+		}
+
+		@include bp-down(sm) {
+			margin: 0;
+			max-width: rem-calc(440);
 			text-align: center;
 
-			li {
-				display: inline-block;
-				margin: 0 rem-calc(50);
+			@include font-size(16, 24);
+		}
 
-				@include bp-down(md) {
-					margin: rem-calc(25) rem-calc(20);
-				}
+		@include bp-down(xs) {
+			max-width: rem-calc(320);
 
-				@include bp-down(xs) {
-					margin: rem-calc(25) rem-calc(18);
-				}
-
-				a {
-
-					@include font-size(18, 22);
-
-					color: color(gray, 1);
-					display: block;
-					font-weight: 600;
-					letter-spacing: 0.03em;
-					text-decoration: none;
-					text-transform: uppercase;
-
-					&:focus,
-					&:hover,
-					&:active {
-						box-shadow: 0 rem-calc(3) 0 0 color(gray, 2);
-						text-decoration: none;
-					}
-				}
-			}
+			@include font-size(12, 24);
 		}
 	}
 }

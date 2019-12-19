@@ -10,12 +10,12 @@
 if ( ! function_exists( 'pierogi_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
+	 *
+	 * @param bool $echo Whether to echo the result.
+	 * @return string
 	 */
-	function pierogi_posted_on() {
+	function pierogi_posted_on( $echo = true ) {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
 
 		$time_string = sprintf(
 			$time_string,
@@ -27,28 +27,41 @@ if ( ! function_exists( 'pierogi_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'pierogi' ),
+			esc_html_x( '%s', 'post date', 'pierogi' ), // phpcs:ignore
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore
+		$output = '<span class="posted-on">' . $posted_on . '</span>';
 
+		if ( $echo ) {
+			echo $output; // phpcs:ignore
+		}
+
+		return $output;
 	}
 endif;
 
 if ( ! function_exists( 'pierogi_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
+	 *
+	 * @param bool $echo Whether to echo the result.
+	 * @return string
 	 */
-	function pierogi_posted_by() {
+	function pierogi_posted_by( $echo = true ) {
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'pierogi' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore
+		$output = '<span class="byline">' . $byline . '</span>';
 
+		if ( $echo ) {
+			echo $output; // phpcs:ignore
+		}
+
+		return $output;
 	}
 endif;
 
@@ -63,7 +76,7 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'pierogi' ) . '</span>', $categories_list ); // phpcs:ignore
+				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'pierogi' ) . '</span>', $categories_list ); // phpcs:ignore
 			}
 
 			/* translators: used between list items, there is a space after the comma */
@@ -112,43 +125,154 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'pierogi_entry_meta' ) ) :
+	/**
+	 * Prints HTML with entry meta.
+	 */
+	function pierogi_entry_meta() {
+		$items = [
+			pierogi_posted_on( false ),
+		];
+
+		if ( is_single() ) {
+			$items[] = pierogi_posted_by( false );
+		}
+
+		$categories = get_the_category_list( ', ' );
+
+		if ( $categories ) {
+			$items[] = sprintf( '<span class="cat-links">%s</span>', $categories );
+		}
+
+		echo implode( '', $items ); // phpcs:ignore
+	}
+endif;
+
 if ( ! function_exists( 'pierogi_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
+	 *
+	 * @param string $size Post thumbnail size.
 	 */
-	function pierogi_post_thumbnail() {
+	function pierogi_post_thumbnail( $size = null ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
-		if ( is_singular() ) :
-			?>
+		$thumbnail = get_the_post_thumbnail( null, $size );
 
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
-
-		<?php else : ?>
-
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail(
-				'post-thumbnail',
-				array(
-					'alt' => the_title_attribute(
-						array(
-							'echo' => false,
-						)
-					),
-				)
+		if ( ! is_singular() ) {
+			$thumbnail = sprintf(
+				'<a href="%s" aria-hidden="true" tabindex="-1">%s</a>',
+				esc_html( get_the_permalink() ),
+				$thumbnail
 			);
-			?>
-		</a>
+		}
 
-			<?php
-		endif; // End is_singular().
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		printf( '<div class="post-thumbnail">%s</div>', $thumbnail );
 	}
 endif;
+
+if ( ! function_exists( 'pierogi_footer_logo' ) ) :
+	/**
+	 * Displays footer logo.
+	 */
+	function pierogi_footer_logo() {
+		$footer_logo_id = get_theme_mod( 'footer_logo', null );
+
+		if ( $footer_logo_id ) {
+			$footer_logo_attr = [
+				'class' => 'footer-logo',
+			];
+
+			$image_alt = get_post_meta( $footer_logo_id, '_wp_attachment_image_alt', true );
+			if ( empty( $image_alt ) ) {
+				$footer_logo_attr['alt'] = get_bloginfo( 'name', 'display' );
+			}
+
+			printf(
+					'<a href="%1$s" class="footer-logo-link" rel="home">%2$s</a>',
+					esc_url( home_url( '/' ) ),
+					wp_get_attachment_image( $footer_logo_id, 'full', false, $footer_logo_attr )
+			);
+		} elseif ( is_customize_preview() ) {
+			printf(
+				'<a href="%1$s" class="footer-logo-link" style="display:none;"><img class="footer-logo"/></a>',
+				esc_url( home_url( '/' ) )
+			);
+		}
+	}
+endif;
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_display_sidebar() {
+	if ( 'has-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
+		get_sidebar();
+	}
+}
+
+/**
+ * Display sidebar based on theme settings
+ *
+ * @return void
+ */
+function pierogi_footer_text() {
+	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'pierogi_footer_text' ) ) );
+}
+
+/**
+ * Display warning when no menu is set
+ *
+ * @return void
+ */
+function pierogi_no_menu_warning() {
+	printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+}
+
+/**
+ * Echoes image url
+ *
+ * @param  string $image Image name.
+ * @return void
+ */
+function pierogi_image_url( $image ) {
+	$template_url = get_template_directory_uri();
+	echo esc_url( "{$template_url}/images/$image" );
+}
+
+/**
+ * Display inline SVG from file.
+ *
+ * @param  string $filename Filename to load.
+ * @return void
+ */
+function pierogi_inline_svg( $filename ) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo pierogi_get_inline_svg( $filename );
+}
+
+/**
+ * Get inline SVG from file.
+ *
+ * @param  string $filename Filename to load.
+ * @return string|bool
+ */
+function pierogi_get_inline_svg( $filename ) {
+	$directory = get_template_directory();
+	$filename  = "{$directory}/images/{$filename}.svg";
+
+	if ( is_file( $filename ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		return file_get_contents( $filename );
+	}
+
+	return false;
+}

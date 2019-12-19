@@ -1,0 +1,54 @@
+.entry-content::after {
+	clear: both;
+	content: "";
+	display: block;
+}
+
+.wp-block-image {
+	margin: 0;
+
+	img {
+		vertical-align: top;
+	}
+
+	figure.alignleft {
+		margin: rem-calc(8) rem-calc(16) rem-calc(16) 0;
+	}
+
+	figure.alignright {
+		margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
+	}
+
+	figcaption,
+	figcaption a {
+		color: color(gray, 6);
+		margin-bottom: 0;
+		margin-top: rem-calc(20);
+		text-align: left;
+		text-transform: uppercase;
+
+		@include font-size( 14, 17 );
+
+		@include bp-down( sm ) {
+
+			@include font-size( 12, 20 );
+		}
+	}
+}
+
+figure.wp-block-image,
+.wp-block-image figure:not(.alignleft):not(.alignright) {
+	margin: rem-calc(100) 0;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) 0;
+	}
+}
+
+.wp-block-image .aligncenter {
+	margin: rem-calc(100) auto;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) auto;
+	}
+}
