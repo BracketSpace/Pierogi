@@ -20,7 +20,7 @@
 		@include font-size( 21, 25 );
 
 		@include after ( "", calc( 100% + #{ rem-calc( 4 ) } ), rem-calc( 9 ) ) {
-			background-color: color(yellow);
+			background-color: color(yellow-light);
 			bottom: 0;
 			left: 50%;
 			opacity: 0;

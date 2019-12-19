@@ -189,6 +189,11 @@ function pierogi_enqueue_block_editor_scripts() {
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
 
 /**
+ * Load helper functions.
+ */
+require get_template_directory() . '/inc/helpers.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -202,6 +207,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Implement the custom styles.
+ */
+require get_template_directory() . '/inc/custom-styles.php';
 
 /**
  * Customizer additions.

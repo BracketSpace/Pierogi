@@ -95,18 +95,6 @@ p.excerpt,
 	}
 }
 
-body.archive,
-body.search,
-body.blog {
-
-	p {
-		color: color(gray, 5);
-		letter-spacing: 0;
-
-		@include font-size(18, 24);
-	}
-}
-
 body.single-post p.featured {
 	color: color(gray, 5);
 	letter-spacing: 0.02em;
