@@ -1,0 +1,33 @@
+.tagcloud {
+	margin: rem-calc(-10);
+	margin-bottom: rem-calc(90);
+
+	a {
+		display: inline-block;
+		margin: rem-calc(10);
+		padding: rem-calc(13) rem-calc(20) rem-calc(9) rem-calc(20);
+		text-transform: uppercase;
+
+		@include font-size(16, 19);
+
+		@include bp-down(sm) {
+
+			@include font-size(14, 17);
+		}
+	}
+
+	/* stylelint-disable no-descending-specificity */
+	.tag-link-count {
+
+		&::before {
+			border: solid rem-calc(3);
+			border-radius: 50%;
+			content: "";
+			display: inline-block;
+			margin: 0 rem-calc(10);
+			transition: 0.2s;
+			vertical-align: 15%;
+		}
+	}
+	/* stylelint-enable */
+}

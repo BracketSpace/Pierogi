@@ -234,24 +234,12 @@ function pierogi_display_widgets() {
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
 		dynamic_sidebar( 'sidebar-1' );
 	} else {
-		the_widget(
-			'WP_Widget_Categories',
-			[
-				'count'        => '1',
-				'hierarchical' => '1',
-			],
-			$args
-		);
-		the_widget(
-			'WP_Widget_Tag_Cloud',
-			[ 'count' => '1' ],
-			$args
-		);
-		the_widget(
-			'WP_Widget_Recent_Comments',
-			[],
-			$args
-		);
+		the_widget( 'WP_Widget_Categories', [
+			'count'        => '1',
+			'hierarchical' => '1',
+		], $args );
+		the_widget( 'WP_Widget_Tag_Cloud', [ 'count' => '1' ], $args );
+		the_widget( 'WP_Widget_Recent_Comments', [], $args );
 	}
 }
 

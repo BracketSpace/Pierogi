@@ -247,3 +247,37 @@ function pierogi_get_layout() {
 		return get_theme_mod( 'pierogi_theme_layout' );
 	}
 }
+
+/**
+ * Modify tag cloud widget markup
+ *
+ * @param string $input Tag cloud link.
+ *
+ * @return string
+ */
+function pierogi_format_tagcloud_link( $input ) {
+	$input = preg_replace( '/ style=("|\')(.*?)("|\')/', '', $input );
+
+	return str_replace( [
+		'<span class="tag-link-count"> (',
+		')</span>',
+	], [
+		' <span class="tag-link-count">',
+		'</span>',
+	], $input );
+}
+add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );
+
+/**
+ * Add custom category widget walker
+ *
+ * @param array $args Array of categories widget options.
+ *
+ * @return array
+ */
+function pierogi_add_custom_category_widget_walker( $args ) {
+	$args['walker'] = new Pierogi_Widget_Category_Walker();
+
+	return $args;
+}
+add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker' );
