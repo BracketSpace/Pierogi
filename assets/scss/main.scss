@@ -24,12 +24,6 @@
 @import "generic/typography";
 @import "generic/alignment";
 @import "generic/layout";
-@import "blocks/group";
-@import "blocks/image";
-@import "blocks/cover";
-@import "blocks/columns";
-@import "blocks/media-text";
-@import "blocks/audio";
 @import "components/buttons";
 @import "components/container";
 @import "components/drop-cap";
@@ -42,6 +36,7 @@
 @import "components/widget-menu";
 @import "components/widget-tag-cloud";
 @import "components/widget-calendar";
+@import "components/widget_archive";
 @import "components/forms";
 @import "components/pagination";
 @import "components/entry-meta";
@@ -57,3 +52,9 @@
 @import "sections/post-navigation";
 @import "sections/post-header";
 @import "sections/404";
+@import "blocks/group";
+@import "blocks/image";
+@import "blocks/audio";
+@import "blocks/cover";
+@import "blocks/columns";
+@import "blocks/code";
