@@ -1,39 +1,31 @@
-article ol,
-article ul,
-.block-library-list ol,
-.block-library-list ul {
+article,
+.block-library-list {
 
 	li {
 		line-height: rem-calc(45);
 	}
 
-}
+	ul {
+		list-style: none;
+		padding-left: rem-calc(20);
 
-/* stylelint-disable no-descending-specificity */
-article ul,
-.block-library-list ul {
-	list-style: none;
-	padding-left: rem-calc(20);
+		&:not(.blocks-gallery-grid) > li::before {
+			color: color(gray, 5);
+			content: "\2022";
+			display: inline-block;
+			margin-left: -1em;
+			width: 1.5em;
+		}
+	}
 
-	li::before {
-		color: color(gray, 5);
-		content: "\2022";
-		display: inline-block;
-		margin-left: -1em;
-		width: 1.5em;
+	ol {
+		padding-left: rem-calc(25);
+
+		> li::marker {
+			color: color(gray, 5);
+			font-weight: 700;
+
+			@include font-size(18, 45);
+		}
 	}
 }
-
-article ol,
-.block-library-list ol {
-	padding-left: rem-calc(25);
-
-	li::marker {
-		color: color(gray, 5);
-		font-weight: 700;
-
-		@include font-size( 18, 45 );
-	}
-}
-
-/* styleling-enable */
