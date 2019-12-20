@@ -18,7 +18,11 @@ function pierogi_body_classes( $classes ) {
 	}
 
 	// Adds a layout class.
-	$classes[] = is_404() ? 'no-sidebar' : get_theme_mod( 'pierogi_theme_layout' );
+	if ( is_page_template( 'templates/template-full-width.php' ) || is_404() ) {
+		$classes[] = 'no-sidebar';
+	} else {
+		$classes[] = get_theme_mod( 'pierogi_theme_layout' );
+	}
 
 	// Add blog page layout type css class.
 	$blog_layout = is_home() ? get_theme_mod( 'pierogi_blog_layout' ) :
