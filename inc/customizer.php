@@ -74,7 +74,7 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 	$wp_customize->add_control( 'secondary_color', [
 		'type'    => 'color',
-		'label'   => __( 'Secondary Color', 'pierogi' ),
+		'label'   => __( 'Buttons Color', 'pierogi' ),
 		'section' => 'colors',
 	] );
 
