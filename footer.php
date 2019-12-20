@@ -9,7 +9,7 @@
  * @package Pierogi
  */
 
-$pierogi_footer_text = get_theme_mod( 'pierogi_footer_text', null );
+$pierogi_footer_text = get_theme_mod( 'footer_text', null );
 ?>
 
 	</div><!-- #content -->

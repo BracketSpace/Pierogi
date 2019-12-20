@@ -24,12 +24,7 @@ export default class ButtonColors {
 			button.setAttribute( 'data-color', style.color );
 		}
 
-		if ( button.classList.contains( 'has-background' ) ) {
-			button.style.borderColor = style.backgroundColor;
-			button.style.color = style.backgroundColor;
-		} else {
-			button.style.color = button.style.backgroundColor;
-		}
+		button.style.color = style.backgroundColor;
 	}
 
 	handleMouseOut( button ) {

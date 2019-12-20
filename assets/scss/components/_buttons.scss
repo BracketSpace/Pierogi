@@ -1,6 +1,6 @@
 %btn {
 	-webkit-appearance: none;
-	border: rem-calc(3) solid transparent;
+	border: rem-calc(3) solid;
 	border-radius: rem-calc(5);
 	color: color(white);
 	cursor: pointer;
@@ -17,6 +17,10 @@
 		padding: rem-calc(9) rem-calc(37);
 
 		@include font-size(14, 16);
+	}
+
+	&:not(:hover) {
+		border-color: transparent;
 	}
 
 	&:hover {
@@ -39,7 +43,6 @@ input[type="button"] {
 	@extend %btn;
 
 	&:hover {
-		border-color: color(pink);
 		color: color(pink);
 	}
 }
@@ -52,7 +55,6 @@ input[type="button"].btn-secondary {
 	@extend %btn;
 
 	&:hover {
-		border-color: color(gray, 5);
 		color: color(gray, 5);
 	}
 }

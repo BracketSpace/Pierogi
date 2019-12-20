@@ -66,18 +66,6 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 			)
 		);
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'pierogi_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -88,19 +76,16 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		 */
 		add_theme_support(
 			'custom-logo',
-			array(
+			[
 				'height'      => 48,
 				'width'       => 133,
 				'flex-width'  => true,
 				'flex-height' => true,
-			)
+			]
 		);
 
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
-
-		// Add empty editor colot palette.
-		add_theme_support( 'editor-color-palette' );
 
 		// Add editor styles support.
 		add_theme_support( 'editor-styles');
@@ -189,16 +174,6 @@ function pierogi_enqueue_block_editor_scripts() {
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
 
 /**
- * Load helper functions.
- */
-require get_template_directory() . '/inc/helpers.php';
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -211,7 +186,7 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * Implement the custom styles.
  */
-require get_template_directory() . '/inc/custom-styles.php';
+require get_template_directory() . '/inc/custom-colors.php';
 
 /**
  * Customizer additions.
