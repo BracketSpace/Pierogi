@@ -1,0 +1,6 @@
+.wp-block-pullquote,
+body.single-post .entry-content .wp-block-pullquote {
+
+	@extend .wp-block-quote;
+
+}
