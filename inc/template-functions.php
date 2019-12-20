@@ -231,20 +231,9 @@ add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker
  * Filter archives count display
  *
  * @param string $link Archive links.
- *
  * @return string
  */
 function pierogi_archive_count( $link ) {
-	$link = str_replace( [
-		'</a>&nbsp;(',
-		')',
-	], [
-		'&nbsp;<span>',
-		'</span></a>',
-	],
-		$link
-	);
-
-	return $link;
+	return preg_replace( '#</a>&nbsp;\(([0-9]+)\)#i', '<span>$1</span></a>', $link );
 }
-add_filter('get_archives_link', 'pierogi_archive_count');
+add_filter( 'get_archives_link', 'pierogi_archive_count' );
