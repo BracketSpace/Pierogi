@@ -1,0 +1,25 @@
+.widget_recent_comments {
+
+	@extend .widget_recent_entries;
+
+	.comment-author-link {
+		display: block;
+		margin-bottom: rem-calc(10);
+
+		a {
+			color: color(gray, 6);
+			display: block;
+
+			@include font-size(14, 17);
+
+			@include bp-down(sm) {
+
+				@include font-size(12, 20);
+			}
+
+			&:hover {
+				color: color(yellow);
+			}
+		}
+	}
+}
