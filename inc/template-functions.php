@@ -215,27 +215,6 @@ function pierogi_get_the_excerpt( $excerpt, $post ) {
 add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
 
 /**
- * Filter categories widget count display
- *
- * @param string $link Categories widget links.
- *
- * @return string
- */
-function pierogi_categories_count( $link ) {
-
-	return str_replace( [
-		'</a> (',
-		')',
-	], [
-		'<span>',
-		'</span></a>',
-	],
-			$link
-		);
-}
-add_filter( 'wp_list_categories', 'pierogi_categories_count' );
-
-/**
  * Returns theme layout
  *
  * @return string
@@ -256,31 +235,15 @@ function pierogi_get_layout() {
  * @return string
  */
 function pierogi_format_tagcloud_link( $input ) {
-	$input = preg_replace( '/ style=("|\')(.*?)("|\')/', '', $input );
-
-	return str_replace( [
-		'<span class="tag-link-count"> (',
-		')</span>',
+	return preg_replace( [
+		'/ style=("|\')(.*?)("|\')/',
+		'#<span class="tag-link-count"> \(([0-9]+)\)</span>#i',
 	], [
-		' <span class="tag-link-count">',
-		'</span>',
+		'',
+		'<span class="tag-link-count">$1</span>',
 	], $input );
 }
 add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );
-
-/**
- * Add custom category widget walker
- *
- * @param array $args Array of categories widget options.
- *
- * @return array
- */
-function pierogi_add_custom_category_widget_walker( $args ) {
-	$args['walker'] = new Pierogi_Widget_Category_Walker();
-
-	return $args;
-}
-add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker' );
 
 /**
  * Filter archives count display
@@ -289,6 +252,7 @@ add_filter( 'widget_categories_args', 'pierogi_add_custom_category_widget_walker
  * @return string
  */
 function pierogi_archive_count( $link ) {
-	return preg_replace( '#</a>&nbsp;\(([0-9]+)\)#i', '<span>$1</span></a>', $link );
+	return preg_replace( '#</a>(?:&nbsp;|[\s]+)\(([0-9]+)\)#i', '<span>$1</span></a>', $link );
 }
 add_filter( 'get_archives_link', 'pierogi_archive_count' );
+add_filter( 'wp_list_categories', 'pierogi_archive_count' );
