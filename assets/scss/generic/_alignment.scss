@@ -18,8 +18,7 @@ body:not(.has-sidebar) {
 		@extend %alignfull;
 	}
 
-	.alignwide,
-	.wp-block-separator.is-style-wide {
+	.alignwide {
 		max-width: rem-calc($alignwide-width);
 
 		@extend %alignfull;
