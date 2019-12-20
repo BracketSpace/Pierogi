@@ -7,7 +7,6 @@
 	@include font-size( 19, 23 );
 
 	a {
-		color: color(yellow);
 		position: relative;
 		text-decoration: none;
 
@@ -16,7 +15,6 @@
 		}
 
 		@include after( "", 100%, rem-calc( 2 ) ) {
-			background-color: color(yellow);
 			bottom: rem-calc(-2);
 			left: 0;
 			opacity: 0;
@@ -75,10 +73,9 @@
 		}
 
 		a {
-			color: color(gray, 6);
 
-			&:hover {
-				color: color(yellow);
+			&:not(:hover) {
+				color: color(gray, 6);
 			}
 		}
 	}
@@ -125,10 +122,13 @@
 		}
 
 		.comment-reply-link {
-			color: color(gray, 3);
 			position: relative;
 			text-decoration: none;
 			text-transform: uppercase;
+
+			&:not(:hover) {
+				color: color(gray, 3);
+			}
 
 			@include after( "", 100%, rem-calc( 2 ) ) {
 				background-color: color(gray, 3);

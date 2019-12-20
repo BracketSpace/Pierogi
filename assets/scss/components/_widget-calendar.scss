@@ -27,14 +27,17 @@
 		text-align: center;
 
 		a {
-			border: rem-calc(3) solid transparent;
+			border: rem-calc(3) solid;
 			border-radius: inherit;
 			color: color(gray, 3);
 			display: block;
 			transition: 0.2s;
 
+			&:not(:hover) {
+				border-color: transparent;
+			}
+
 			&:hover {
-				border-color: color(yellow) !important;
 				color: color(yellow);
 			}
 		}

@@ -28,13 +28,13 @@ function pierogi_get_accent_selectors() {
 			'.screen-reader-text:focus',
 			'.main-navigation .main-menu-wrap li:hover > a',
 			'.author-box .h6',
-			'.comments-area .comment-metadata a:hover',
-			'.comment-navigation .nav-links a',
 			'.site-header .site-branding p',
 			'.post-navigation a:hover',
 			'body.blog a:hover',
 			'body.archive a:hover',
 			'body.search a:hover',
+			'.widget_calendar td a:hover',
+			'.widget_calendar th a:hover',
 		],
 		'background-color' => [
 			'body.blog .read-more:hover::after',
@@ -46,6 +46,7 @@ function pierogi_get_accent_selectors() {
 			'body.blog .read-more:hover::after',
 			'body.archive .read-more:hover::after',
 			'body.search .read-more:hover::after',
+			'.comments-area .reply .comment-reply-link:hover::after',
 		],
 		'stroke' => [
 			'.site-header .navigation-container .search-button:hover g',
@@ -53,6 +54,10 @@ function pierogi_get_accent_selectors() {
 		],
 		'border-color' => [
 			'.screen-reader-text:focus',
+			'.widget_categories a:hover',
+			'.widget_tag_cloud a:hover',
+			'.widget_archive a:hover',
+			'.widget_nav_menu a:hover',
 		],
 	];
 }

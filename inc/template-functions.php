@@ -256,3 +256,28 @@ function pierogi_archive_count( $link ) {
 }
 add_filter( 'get_archives_link', 'pierogi_archive_count' );
 add_filter( 'wp_list_categories', 'pierogi_archive_count' );
+
+/**
+ * Display widgets
+ *
+ * @param mixed $index Sidebar index.
+ * @param bool  $has_widgets Whether sodebar has widgets.
+ * @return void
+ */
+function pierogi_display_default_widgets( $index, $has_widgets ) {
+	if ( $has_widgets ) {
+		return;
+	}
+
+	$args = [
+		'before_title' => '<h2 class="widget-title">',
+	];
+
+	the_widget( 'WP_Widget_Categories', [
+		'count'        => '1',
+		'hierarchical' => '1',
+	], $args );
+	the_widget( 'WP_Widget_Tag_Cloud', [ 'count' => '1' ], $args );
+	the_widget( 'WP_Widget_Recent_Comments', [], $args );
+}
+add_action( 'dynamic_sidebar_before', 'pierogi_display_default_widgets', 10, 2 );

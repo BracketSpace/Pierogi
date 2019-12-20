@@ -11,6 +11,6 @@
 
 <aside id="secondary" class="widget-area">
 
-	<?php pierogi_display_widgets(); ?>
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 
 </aside><!-- #secondary -->
