@@ -215,7 +215,7 @@ endif;
  */
 function pierogi_display_sidebar() {
 
-	if ( ! is_page_template( 'templates/template-full-width.php' ) && 'has-sidebar' === get_theme_mod( 'pierogi_theme_layout' ) ) {
+	if ( 'has-sidebar' === pierogi_get_layout() ) {
 		get_sidebar();
 	}
 }

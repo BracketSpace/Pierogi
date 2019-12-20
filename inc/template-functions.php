@@ -18,11 +18,7 @@ function pierogi_body_classes( $classes ) {
 	}
 
 	// Adds a layout class.
-	if ( is_page_template( 'templates/template-full-width.php' ) || is_404() ) {
-		$classes[] = 'no-sidebar';
-	} else {
-		$classes[] = get_theme_mod( 'pierogi_theme_layout' );
-	}
+	$classes[] = pierogi_get_layout();
 
 	// Add blog page layout type css class.
 	$blog_layout = is_home() ? get_theme_mod( 'pierogi_blog_layout' ) :
@@ -238,3 +234,16 @@ function pierogi_categories_count( $link ) {
 		);
 }
 add_filter( 'wp_list_categories', 'pierogi_categories_count' );
+
+/**
+ * Returns theme layout
+ *
+ * @return string
+ */
+function pierogi_get_layout() {
+	if ( is_page_template( 'templates/template-full-width.php' ) || is_404() ) {
+		return 'no-sidebar';
+	} else {
+		return get_theme_mod( 'pierogi_theme_layout' );
+	}
+}
