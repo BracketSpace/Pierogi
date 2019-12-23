@@ -11,7 +11,7 @@ body.single-post {
 
 	.entry-content {
 
-		p {
+		> p {
 			margin: 0;
 
 			&:not(:first-child) {

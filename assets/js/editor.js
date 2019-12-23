@@ -14,8 +14,6 @@ domReady( () => {
 	unregisterBlockStyle( 'core/button', 'fill' );
 	unregisterBlockStyle( 'core/quote', 'default' );
 	unregisterBlockStyle( 'core/quote', 'large' );
-	unregisterBlockStyle( 'core/pullquote', 'default' );
-	unregisterBlockStyle( 'core/pullquote', 'solid-color' );
 
 	new ButtonColors;
 } );
