@@ -85,6 +85,7 @@ p,
 p.excerpt,
 .excerpt p {
 	color: color(gray, 5);
+	letter-spacing: 0.02em;
 	margin: 0;
 
 	@include font-size(27, 50);
@@ -93,13 +94,6 @@ p.excerpt,
 
 		@include font-size(23, 40);
 	}
-}
-
-body.single-post p.featured {
-	color: color(gray, 5);
-	letter-spacing: 0.02em;
-
-	@include font-size(27, 50);
 }
 
 ul,

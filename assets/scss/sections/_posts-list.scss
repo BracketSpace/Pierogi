@@ -47,9 +47,12 @@ body.search {
 		}
 	}
 
-	.excerpt {
-		color: color(gray, 5);
+	.entry-content a.excerpt {
 		text-decoration: none;
+
+		&:not(:hover) {
+			color: color(gray, 5);
+		}
 
 		p {
 			color: inherit;

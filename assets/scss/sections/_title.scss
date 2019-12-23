@@ -20,11 +20,10 @@ body.page .entry-header {
 	.entry-subtitle,
 	.page-subtitle,
 	.archive-description p {
-
-		@extend .featured;
 		color: color(gray, 4);
 		margin: rem-calc(15) 0 0 0;
-
 		text-align: center;
+
+		@extend .featured;
 	}
 }
