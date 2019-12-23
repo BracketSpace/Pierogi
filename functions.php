@@ -43,13 +43,11 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'primary' => esc_html__( 'Primary', 'pierogi' ),
-				'mobile'  => esc_html__( 'Mobile', 'pierogi' ),
-				'footer'  => esc_html__( 'Footer Menu', 'pierogi' ),
-			)
-		);
+		register_nav_menus( [
+			'primary' => esc_html__( 'Primary', 'pierogi' ),
+			'mobile'  => esc_html__( 'Mobile', 'pierogi' ),
+			'footer'  => esc_html__( 'Footer Menu', 'pierogi' ),
+		] );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -57,13 +55,13 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		 */
 		add_theme_support(
 			'html5',
-			array(
+			[
 				'search-form',
 				'comment-form',
 				'comment-list',
 				'gallery',
 				'caption',
-			)
+			]
 		);
 
 		// Add theme support for selective refresh for widgets.
@@ -116,7 +114,7 @@ function pierogi_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'pierogi_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'pierogi_content_width', 1080 );
 }
 add_action( 'after_setup_theme', 'pierogi_content_width', 0 );
 
@@ -126,17 +124,15 @@ add_action( 'after_setup_theme', 'pierogi_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function pierogi_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'pierogi' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'pierogi' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+	register_sidebar( [
+		'name'          => esc_html__( 'Sidebar', 'pierogi' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'pierogi' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	] );
 }
 add_action( 'widgets_init', 'pierogi_widgets_init' );
 
@@ -176,12 +172,20 @@ add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts
 /**
  * Custom template tags for this theme.
  */
+require get_template_directory() . '/inc/helpers.php';
+
+/**
+ * Custom template tags for this theme.
+ */
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/template-functions/comment-form.php';
+require get_template_directory() . '/inc/template-functions/content.php';
+require get_template_directory() . '/inc/template-functions/layout.php';
+require get_template_directory() . '/inc/template-functions/sidebar.php';
 
 /**
  * Implement the custom styles.
@@ -199,15 +203,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-add_filter( 'walker_nav_menu_start_el', function( $item_output, $item, $depth, $args ) {
-	if ( isset( $args->mobile ) && $args->mobile && 0 === $depth ) {
-		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-			$item_output .= '<button class="mobile-submenu-button"></button>';
-		}
-
-		$item_output = sprintf( '<div class="item-wrap">%s</div>', $item_output );
-	}
-
-	return $item_output;
-}, 10, 4 );

@@ -208,72 +208,38 @@ if ( ! function_exists( 'pierogi_footer_logo' ) ) :
 	}
 endif;
 
-/**
- * Display sidebar based on theme settings
- *
- * @return void
- */
-function pierogi_display_sidebar() {
+if ( ! function_exists( 'pierogi_display_sidebar' ) ) :
+	/**
+	 * Display sidebar based on theme settings
+	 *
+	 * @return void
+	 */
+	function pierogi_display_sidebar() {
 
-	if ( 'has-sidebar' === pierogi_get_layout() ) {
-		get_sidebar();
+		if ( 'has-sidebar' === pierogi_get_layout() ) {
+			get_sidebar();
+		}
 	}
-}
+endif;
 
-/**
- * Display sidebar based on theme settings
- *
- * @return void
- */
-function pierogi_footer_text() {
-	echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'footer_text' ) ) );
-}
-
-/**
- * Display warning when no menu is set
- *
- * @return void
- */
-function pierogi_no_menu_warning() {
-	printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
-}
-
-/**
- * Echoes image url
- *
- * @param  string $image Image name.
- * @return void
- */
-function pierogi_image_url( $image ) {
-	$template_url = get_template_directory_uri();
-	echo esc_url( "{$template_url}/images/$image" );
-}
-
-/**
- * Display inline SVG from file.
- *
- * @param  string $filename Filename to load.
- * @return void
- */
-function pierogi_inline_svg( $filename ) {
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo pierogi_get_inline_svg( $filename );
-}
-
-/**
- * Get inline SVG from file.
- *
- * @param  string $filename Filename to load.
- * @return string|bool
- */
-function pierogi_get_inline_svg( $filename ) {
-	$directory = get_template_directory();
-	$filename  = "{$directory}/images/{$filename}.svg";
-
-	if ( is_file( $filename ) ) {
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		return file_get_contents( $filename );
+if ( ! function_exists( 'pierogi_footer_text' ) ) :
+	/**
+	 * Display sidebar based on theme settings
+	 *
+	 * @return void
+	 */
+	function pierogi_footer_text() {
+		echo wp_kses_post( apply_filters( 'pierogi_footer_text', get_theme_mod( 'footer_text' ) ) );
 	}
+endif;
 
-	return false;
-}
+if ( ! function_exists( 'pierogi_no_menu_warning' ) ) :
+	/**
+	 * Display warning when no menu is set
+	 *
+	 * @return void
+	 */
+	function pierogi_no_menu_warning() {
+		printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+	}
+endif;
