@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import 'custom-event-polyfill';
+
+/**
  * Internal dependencies
  */
 import './scrollbar-width';
