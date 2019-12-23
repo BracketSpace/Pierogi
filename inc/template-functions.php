@@ -220,11 +220,15 @@ add_filter( 'get_the_excerpt', 'pierogi_get_the_excerpt', 10, 2 );
  * @return string
  */
 function pierogi_get_layout() {
-	if ( is_page_template( 'templates/template-full-width.php' ) || is_404() ) {
+	if ( is_404() ) {
 		return 'no-sidebar';
-	} else {
-		return get_theme_mod( 'theme_layout' );
 	}
+
+	if ( is_page_template( 'templates/template-full-width.php' ) ) {
+		return 'full-width';
+	}
+
+	return get_theme_mod( 'pierogi_theme_layout' );
 }
 
 /**
