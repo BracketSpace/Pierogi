@@ -18,6 +18,8 @@ body {
 	@import "editor/pullquote";
 	@import "editor/links";
 	@import "editor/tables";
+	@import "editor/file";
+	@import "editor/paragraph";
 	@import "components/links";
 	@import "components/buttons";
 	@import "components/container";
@@ -35,4 +37,5 @@ body {
 	@import "blocks/columns";
 	@import "blocks/media-text";
 	@import "blocks/separator";
+	@import "blocks/file";
 }

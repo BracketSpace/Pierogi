@@ -1,0 +1,10 @@
+.wp-block-file__content-wrapper {
+
+	@extend %wp-block-file;
+
+	.wp-block-file__textlink {
+		text-decoration: underline;
+
+		@extend a;
+	}
+}
