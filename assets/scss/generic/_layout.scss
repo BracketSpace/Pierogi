@@ -10,51 +10,46 @@
 	}
 }
 
-body.single-post .content-area {
+body {
 
-	@include bp-up(lg) {
-		padding-top: rem-calc(100);
-	}
+	&.single .content-area {
 
-	@include bp-between(sm, lg) {
-		padding-top: rem-calc(60);
-	}
-}
+		@include bp-up(lg) {
+			padding-top: rem-calc(100);
+		}
 
-body.no-sidebar {
-
-	&.page,
-	&.single-post {
-
-		main.site-main {
-			max-width: rem-calc($content-width);
+		@include bp-between(sm, lg) {
+			padding-top: rem-calc(60);
 		}
 	}
 
-	&:not(.blog-layout-grid) {
+	&.has-sidebar {
 
-		.site-main {
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
-}
-
-body.has-sidebar {
-
-	.content-area {
-
-		@include bp-up(md) {
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.site-main {
+		.content-area {
 
 			@include bp-up(md) {
-				margin-right: rem-calc(40);
-				max-width: rem-calc(1080);
-				width: calc(68%);
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.site-main {
+
+				@include bp-up(md) {
+					margin-right: rem-calc(40);
+					max-width: rem-calc($container-narrow-width);
+					width: calc(68%);
+				}
+			}
+		}
+	}
+
+	&.no-sidebar {
+
+		&.single,
+		&.page {
+
+			.site-content.container {
+				max-width: rem-calc($content-width + (2 * $container-padding));
 			}
 		}
 	}

@@ -244,7 +244,7 @@ function pierogi_get_layout() {
 	if ( is_404() ) {
 		return 'no-sidebar';
 	} elseif ( is_page_template( 'templates/template-full-width.php' ) ) {
-		return;
+		return 'full-width';
 	} else {
 		return get_theme_mod( 'pierogi_theme_layout' );
 	}
