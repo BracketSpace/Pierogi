@@ -11,7 +11,7 @@
  * @return array
  */
 function pierogi_get_accent_selectors() {
-	return [
+	return apply_filters( 'pierogi_accent_color_selectors', [
 		'color' => [
 			'a',
 			'body.blog .entry-title a:hover',
@@ -59,7 +59,7 @@ function pierogi_get_accent_selectors() {
 			'.widget_archive a:hover',
 			'.widget_nav_menu a:hover',
 		],
-	];
+	] );
 }
 
 /**
@@ -68,7 +68,7 @@ function pierogi_get_accent_selectors() {
  * @return array
  */
 function pierogi_get_accent_light_selectors() {
-	return [
+	return apply_filters( 'pierogi_accent_light_color_selectors', [
 		'background-color' => [
 			'.site-footer .footer-navigation',
 			'.navigation.pagination .nav-links a::after',
@@ -80,7 +80,7 @@ function pierogi_get_accent_light_selectors() {
 			'body.page article .has-drop-cap:not(:focus) > span::before',
 			'body.single-post article .has-drop-cap:not(:focus) > span::before',
 		],
-	];
+	] );
 }
 
 /**
@@ -89,7 +89,7 @@ function pierogi_get_accent_light_selectors() {
  * @return array
  */
 function pierogi_get_secondary_selectors() {
-	return [
+	return apply_filters( 'pierogi_secondary_color_selectors', [
 		'background-color' => [
 			'.btn-primary',
 			'.faux-button',
@@ -127,7 +127,7 @@ function pierogi_get_secondary_selectors() {
 			'.main-navigation-mobile .current-menu-item > .item-wrap > a',
 			'.main-navigation-mobile .current-menu-item > .item-wrap > span',
 		],
-	];
+	] );
 }
 
 /**
@@ -146,7 +146,7 @@ function pierogi_prepare_custom_css( $styles, $color ) {
 		$rules[] = "\t{$selectors} {\n\t\t{$prop}: {$color};\n\t}";
 	}
 
-	return implode( "\n\n", $rules );
+	return apply_filters( 'pierogi_custom_css', implode( "\n\n", $rules ) );
 }
 
 /**
