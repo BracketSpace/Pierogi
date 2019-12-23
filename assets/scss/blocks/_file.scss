@@ -2,15 +2,18 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: rem-calc(60);
 
 	@include bp-down(sm) {
-		align-items: center;
 		flex-direction: column;
 		justify-content: center;
+	}
 
-		a {
-			display: block;
-			margin: rem-calc(20) 0;
+	.wp-block-file__button {
+		margin-left: 0;
+
+		@include bp-down(sm) {
+			margin-top: rem-calc(20);
 		}
 	}
 }
