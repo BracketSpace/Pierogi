@@ -33,3 +33,17 @@ body:not(.has-sidebar).page {
 		max-width: rem-calc(1270);
 	}
 }
+
+/* stylelint-disable no-descending-specificity */
+body.single,
+body.page {
+
+	&[class*="-template-template-full-width"] {
+
+		.site-content.container {
+			max-width: rem-calc($container-width);
+		}
+	}
+
+}
+/* stylelint-enable */

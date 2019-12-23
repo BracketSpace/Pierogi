@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full width page
+ * Template Name: Full Width
  * Template Post Type: post, page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
