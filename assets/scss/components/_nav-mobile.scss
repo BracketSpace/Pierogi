@@ -202,20 +202,19 @@
 			width: 50%;
 		}
 
-		/* stylelint-disable-next-line no-descending-specificity */
-		#mobile-menu > li > a {
-			color: color(gray, 6);
-		}
-
-		/* stylelint-disable-next-line no-descending-specificity */
-		.item-wrap {
-			left: 0;
-			transform: translateX(0);
-		}
-
 		#mobile-menu {
 			left: 100%;
 			transform: translateX(-100%);
+
+			.item-wrap {
+				left: 0;
+				transform: translateX(0);
+
+				/* stylelint-disable-next-line no-descending-specificity */
+				a {
+					color: color(gray, 6);
+				}
+			}
 		}
 	}
 }
