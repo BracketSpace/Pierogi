@@ -21,8 +21,8 @@
 		margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
 	}
 
-	&.blocks-gallery-image,
-	&.blocks-gallery-item {
+	.blocks-gallery-image,
+	.blocks-gallery-item {
 
 		figure {
 			align-items: flex-start;
@@ -45,7 +45,7 @@
 
 body:not(.has-sidebar) {
 
-	/* stylelint-disable no-descending-specificity */
+	/* stylelint-disable-next-line no-descending-specificity */
 	.wp-block-gallery {
 
 		&.alignwide,
@@ -54,5 +54,4 @@ body:not(.has-sidebar) {
 			padding-right: rem-calc(16);
 		}
 	}
-	/* stylelint-enable */
 }
