@@ -56,7 +56,7 @@ function pierogi_get_layout() {
 	} elseif ( is_page_template( 'templates/template-full-width.php' ) ) {
 		$layout = 'full-width';
 	} else {
-		$layout = get_theme_mod( 'pierogi_theme_layout' );
+		$layout = get_theme_mod( 'theme_layout' );
 	}
 
 	return apply_filters( 'pierogi_get_layout', $layout );
