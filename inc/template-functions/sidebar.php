@@ -43,7 +43,7 @@ add_filter( 'wp_list_categories', 'pierogi_archive_count' );
  * @return void
  */
 function pierogi_display_default_widgets( $index, $has_widgets ) {
-	if ( $has_widgets ) {
+	if ( $has_widgets || is_admin() ) {
 		return;
 	}
 
