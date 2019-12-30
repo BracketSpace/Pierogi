@@ -86,3 +86,23 @@ function pierogi_filter_nav_menu_start_el( $item_output, $item, $depth, $args ) 
 	return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'pierogi_filter_nav_menu_start_el', 10, 4 );
+
+/**
+ * Filter $content_width globals
+ *
+ * @param  int $width Content width.
+ * @return int
+ */
+function pierogi_filter_content_width( $width ) {
+	switch ( pierogi_get_layout() ) {
+		case 'no-sidebar':
+			$width = 896;
+			break;
+		case 'full-width':
+			$width = 1640;
+			break;
+	}
+
+	return $width;
+}
+add_action( 'pierogi_content_width', 'pierogi_filter_content_width', 1 );
