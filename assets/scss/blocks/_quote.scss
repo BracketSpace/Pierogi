@@ -26,7 +26,11 @@ body.single-post .entry-content .wp-block-quote {
 
 		&::after {
 			left: initial;
-			right: rem-calc(-45);
+			right: rem-calc(-30);
+
+			@include bp-down(rem-calc( 1770 )) {
+				right: rem-calc(-45);
+			}
 
 			@include bp-down(sm) {
 				right: rem-calc(-40);

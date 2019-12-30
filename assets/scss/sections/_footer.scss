@@ -63,6 +63,7 @@
 			letter-spacing: 0.03em;
 			text-decoration: none;
 			text-transform: uppercase;
+			transition: 0.2s;
 
 			@include font-size(18, 22);
 
