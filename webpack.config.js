@@ -19,7 +19,7 @@ module.exports = ( env, argv ) => {
 		},
 		output: {
 			path: path.resolve( __dirname, 'js' ),
-			filename: './[name].js',
+			filename: './[name].min.js',
 		},
 		performance: {
 			hints: false,

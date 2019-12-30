@@ -206,7 +206,7 @@ function pierogi_customize_partial_footer_text() {
  */
 function pierogi_customize_controls_js() {
 	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_script( 'pierogi-customize-controls', get_template_directory_uri() . '/js/customize-controls.js', array( 'wp-color-picker' ), '1.0.0', true );
+	wp_enqueue_script( 'pierogi-customize-controls', get_template_directory_uri() . '/js/customize-controls.min.js', array( 'wp-color-picker' ), pierogi_get_version(), true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'pierogi_customize_controls_js' );
 
@@ -214,7 +214,7 @@ add_action( 'customize_controls_enqueue_scripts', 'pierogi_customize_controls_js
  * Add customize preview js.
  */
 function pierogi_customize_preview_js() {
-	wp_enqueue_script( 'pierogi-customize-preview', get_template_directory_uri() . '/js/customize-preview.js', array( 'customize-preview' ), '1.0.0', true );
+	wp_enqueue_script( 'pierogi-customize-preview', get_template_directory_uri() . '/js/customize-preview.min.js', array( 'customize-preview' ), pierogi_get_version(), true );
 
 	wp_localize_script( 'pierogi-customize-preview', 'Pierogi', array(
 		'colors' => array(

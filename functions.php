@@ -7,6 +7,11 @@
  * @package Pierogi
  */
 
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/helpers.php';
+
 if ( ! function_exists( 'pierogi_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -140,12 +145,11 @@ add_action( 'widgets_init', 'pierogi_widgets_init' );
  * Enqueue scripts and styles.
  */
 function pierogi_scripts() {
-	$theme   = wp_get_theme();
-	$version = $theme->get( 'Version' );
+	$version = pierogi_get_version();
 
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.js', array( 'wp-i18n' ), $version, true );
+	wp_enqueue_script( 'pierogi-script', get_template_directory_uri() . '/js/main.min.js', array( 'wp-i18n' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -164,15 +168,10 @@ add_action( 'wp_enqueue_scripts', 'pierogi_scripts' );
  * Enqeues block editor scripts
  */
 function pierogi_enqueue_block_editor_scripts() {
-	wp_enqueue_script( 'pierogi-editor-script', get_stylesheet_directory_uri() . '/js/editor.js', array( 'wp-data' ), filemtime( get_stylesheet_directory() . '/js/editor.js' ), true );
+	wp_enqueue_script( 'pierogi-editor-script', get_stylesheet_directory_uri() . '/js/editor.min.js', array( 'wp-data' ), pierogi_get_version(), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/helpers.php';
 
 /**
  * Custom template tags for this theme.

@@ -61,3 +61,12 @@ function pierogi_get_layout() {
 
 	return apply_filters( 'pierogi_get_layout', $layout );
 }
+
+/**
+ * Returns theme version
+ *
+ * @return string
+ */
+function pierogi_get_version() {
+	return wp_get_theme()->get( 'Version' );
+}
