@@ -30,6 +30,7 @@ $pierogi_footer_text = get_theme_mod( 'footer_text', null );
 				<p class="footer-text">
 					<?php pierogi_footer_text(); ?>
 				</p>
+			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

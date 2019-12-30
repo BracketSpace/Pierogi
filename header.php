@@ -57,7 +57,7 @@
 						) );
 						?>
 					</nav><!-- #site-navigation -->
-					<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
+					<button class="toggle-header-modal search-button" aria-controls="header-search" aria-expanded="false" data-toggle-element="header-search">
 						<?php pierogi_inline_svg( 'icon-search' ); ?>
 					</button>
 				</div>
