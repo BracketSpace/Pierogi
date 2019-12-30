@@ -6,6 +6,7 @@
 .gitignore
 .gitattributes
 .stylelintrc
+assets/src
 composer.json
 composer.lock
 node_modules
