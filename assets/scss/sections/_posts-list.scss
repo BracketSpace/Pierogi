@@ -39,7 +39,8 @@ body.search {
 		color: color(gray, 2);
 		letter-spacing: rem-calc(0.4);
 		margin: rem-calc(10) 0 rem-calc(20) 0;
-		word-break: break-word;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
 
 		@include bp-down( sm ) {
 			margin: rem-calc(10) 0;
