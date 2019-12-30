@@ -130,9 +130,9 @@ if ( ! function_exists( 'pierogi_entry_meta' ) ) :
 	 * Prints HTML with entry meta.
 	 */
 	function pierogi_entry_meta() {
-		$items = [
+		$items = array(
 			pierogi_posted_on( false ),
-		];
+		);
 
 		if ( is_single() ) {
 			$items[] = pierogi_posted_by( false );
@@ -185,9 +185,9 @@ if ( ! function_exists( 'pierogi_footer_logo' ) ) :
 		$footer_logo_id = get_theme_mod( 'footer_logo', null );
 
 		if ( $footer_logo_id ) {
-			$footer_logo_attr = [
+			$footer_logo_attr = array(
 				'class' => 'footer-logo',
-			];
+			);
 
 			$image_alt = get_post_meta( $footer_logo_id, '_wp_attachment_image_alt', true );
 			if ( empty( $image_alt ) ) {
@@ -240,6 +240,6 @@ if ( ! function_exists( 'pierogi_no_menu_warning' ) ) :
 	 * @return void
 	 */
 	function pierogi_no_menu_warning() {
-		printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+		printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html__( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
 	}
 endif;

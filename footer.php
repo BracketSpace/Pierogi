@@ -17,11 +17,11 @@ $pierogi_footer_text = get_theme_mod( 'footer_text', null );
 	<footer id="colophon" class="site-footer">
 		<nav class="footer-navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'pierogi' ); ?>">
 			<?php
-			wp_nav_menu( [
+			wp_nav_menu( array(
 				'theme_location' => 'footer',
 				'menu_class'     => 'footer-menu',
 				'depth'          => 1,
-			] );
+			) );
 			?>
 		</nav><!-- .footer-navigation -->
 		<div class="site-info">

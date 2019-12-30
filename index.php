@@ -14,7 +14,7 @@
 
 get_header();
 
-$pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
+$pierogi_page_title = is_front_page() ? esc_html__( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
 
 ?>
 
@@ -50,7 +50,7 @@ $pierogi_page_title = is_front_page() ? esc_html( 'Blog', 'pierogi' ) : get_the_
 
 			endwhile;
 
-			the_posts_pagination( [ 'mid_size' => 2 ] );
+			the_posts_pagination( array( 'mid_size' => 2 ) );
 
 		else :
 

@@ -9,7 +9,7 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 
 <aside class="author-box">
 	<div class="author-gravatar">
-		<?php echo get_avatar( get_the_author_meta( 'ID' ), 147, '', '', [ 'force_display' => true ] ); ?>
+		<?php echo get_avatar( get_the_author_meta( 'ID' ), 147, '', '', array( 'force_display' => true ) ); ?>
 	</div>
 	<div class="author-box-content-wrap">
 		<div class="author-title">

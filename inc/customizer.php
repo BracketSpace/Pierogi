@@ -18,80 +18,80 @@ function pierogi_customize_register( $wp_customize ) {
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
 			'blogname',
-			[
+			array(
 				'selector'        => '.site-title a',
 				'render_callback' => 'pierogi_customize_partial_blogname',
-			]
+			)
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			'blogdescription',
-			[
+			array(
 				'selector'        => '.site-description',
 				'render_callback' => 'pierogi_customize_partial_blogdescription',
-			]
+			)
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			'footer_logo',
-			[
+			array(
 				'selector'            => 'a.footer-logo-link',
 				'render_callback'     => 'pierogi_customize_partial_footer_logo',
 				'container_inclusive' => true,
-			]
+			)
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			'footer_text',
-			[
+			array(
 				'selector'            => '.footer-text',
 				'render_callback'     => 'pierogi_customize_partial_footer_text',
-			]
+			)
 		);
 	}
 
 	$colors = pierogi_get_theme_mod_default( 'colors' );
 
-	$wp_customize->add_setting( 'colors', [
+	$wp_customize->add_setting( 'colors', array(
 		'transport' => 'postMessage',
 		'default'   => $colors,
-	] );
+	) );
 
-	$wp_customize->add_setting( 'accent_color', [
+	$wp_customize->add_setting( 'accent_color', array(
 		'transport' => 'postMessage',
 		'default'   => $colors['accent'],
-	] );
+	) );
 
-	$wp_customize->add_setting( 'secondary_color', [
+	$wp_customize->add_setting( 'secondary_color', array(
 		'transport' => 'postMessage',
 		'default'   => $colors['secondary'],
-	] );
+	) );
 
-	$wp_customize->add_control( 'accent_color', [
+	$wp_customize->add_control( 'accent_color', array(
 		'type'    => 'color',
 		'label'   => __( 'Accent Color', 'pierogi' ),
 		'section' => 'colors',
-	] );
-	$wp_customize->add_control( 'secondary_color', [
+	) );
+	$wp_customize->add_control( 'secondary_color', array(
 		'type'    => 'color',
 		'label'   => __( 'Buttons Color', 'pierogi' ),
 		'section' => 'colors',
-	] );
+	) );
 
-	$wp_customize->add_section( 'pierogi_footer', [
+	$wp_customize->add_section( 'pierogi_footer', array(
 		'title'    => __( 'Footer', 'pierogi' ),
 		'priority' => 120,
-	] );
+	) );
 
-	$wp_customize->add_setting( 'footer_logo', [
+	$wp_customize->add_setting( 'footer_logo', array(
 		'transport' => 'postMessage',
-	] );
+	) );
 
 	$wp_customize->add_control(
 		new WP_Customize_Cropped_Image_Control(
 			$wp_customize,
 			'footer_logo',
-			[
+			array(
 				'label'         => __( 'Footer Logo', 'pierogi' ),
 				'section'       => 'pierogi_footer',
 				'settings'      => 'footer_logo',
@@ -100,7 +100,7 @@ function pierogi_customize_register( $wp_customize ) {
 				'height'        => 48,
 				'flex_width'    => true,
 				'flex_height'   => true,
-				'button_labels' => [
+				'button_labels' => array(
 					'select'       => __( 'Select logo', 'pierogi' ),
 					'change'       => __( 'Change logo', 'pierogi' ),
 					'remove'       => __( 'Remove', 'pierogi' ),
@@ -108,59 +108,59 @@ function pierogi_customize_register( $wp_customize ) {
 					'placeholder'  => __( 'No logo selected', 'pierogi' ),
 					'frame_title'  => __( 'Select logo', 'pierogi' ),
 					'frame_button' => __( 'Choose logo', 'pierogi' ),
-				],
-			]
+				),
+			)
 		)
 	);
 
-	$wp_customize->add_setting( 'footer_text', [
+	$wp_customize->add_setting( 'footer_text', array(
 		'capability' => 'edit_theme_options',
 		'default'    => pierogi_get_theme_mod_default( 'footer_text' ),
 		'transport'  => 'postMessage',
-	] );
+	) );
 
-	$wp_customize->add_control( 'footer_text', [
+	$wp_customize->add_control( 'footer_text', array(
 		'type'        => 'textarea',
 		'section'     => 'pierogi_footer',
 		'label'       => __( 'Footer Text', 'pierogi' ),
-	] );
+	) );
 
-	$wp_customize->add_section( 'pierogi_layout', [
+	$wp_customize->add_section( 'pierogi_layout', array(
 		'title'    => __( 'Layout', 'pierogi' ),
 		'priority' => 100,
-	] );
+	) );
 
-	$wp_customize->add_setting( 'theme_layout', [
+	$wp_customize->add_setting( 'theme_layout', array(
 		'default' => pierogi_get_theme_mod_default( 'theme_layout' ),
 		'type'    => 'theme_mod',
-	] );
+	) );
 
-	$wp_customize->add_control( 'theme_layout_control', [
+	$wp_customize->add_control( 'theme_layout_control', array(
 		'section'  => 'pierogi_layout',
 		'settings' => 'theme_layout',
 		'type'     => 'radio',
 		'label'    => __( 'Layout', 'pierogi' ),
-		'choices'  => [
+		'choices'  => array(
 			'no-sidebar'  => __( 'No Sidebar', 'pierogi' ),
 			'has-sidebar' => __( 'With Sidebar', 'pierogi' ),
-		],
-	] );
+		),
+	) );
 
-	$wp_customize->add_setting( 'blog_layout', [
+	$wp_customize->add_setting( 'blog_layout', array(
 		'default' => pierogi_get_theme_mod_default( 'blog_layout' ),
 		'type'    => 'theme_mod',
-	] );
+	) );
 
-	$wp_customize->add_control( 'blog_layout_control', [
+	$wp_customize->add_control( 'blog_layout_control', array(
 		'section'  => 'pierogi_layout',
 		'settings' => 'blog_layout',
 		'type'     => 'radio',
 		'label'    => __( 'Blog Posts Layout', 'pierogi' ),
-		'choices'  => [
+		'choices'  => array(
 			'grid' => __( 'Grid', 'pierogi' ),
 			'list' => __( 'List', 'pierogi' ),
-		],
-	] );
+		),
+	) );
 
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
@@ -206,7 +206,7 @@ function pierogi_customize_partial_footer_text() {
  */
 function pierogi_customize_controls_js() {
 	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_script( 'pierogi-customize-controls', get_template_directory_uri() . '/js/customize-controls.js', [ 'wp-color-picker' ], '1.0.0', true );
+	wp_enqueue_script( 'pierogi-customize-controls', get_template_directory_uri() . '/js/customize-controls.js', array( 'wp-color-picker' ), '1.0.0', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'pierogi_customize_controls_js' );
 
@@ -214,15 +214,15 @@ add_action( 'customize_controls_enqueue_scripts', 'pierogi_customize_controls_js
  * Add customize preview js.
  */
 function pierogi_customize_preview_js() {
-	wp_enqueue_script( 'pierogi-customize-preview', get_template_directory_uri() . '/js/customize-preview.js', [ 'customize-preview' ], '1.0.0', true );
+	wp_enqueue_script( 'pierogi-customize-preview', get_template_directory_uri() . '/js/customize-preview.js', array( 'customize-preview' ), '1.0.0', true );
 
-	wp_localize_script( 'pierogi-customize-preview', 'Pierogi', [
-		'colors' => [
+	wp_localize_script( 'pierogi-customize-preview', 'Pierogi', array(
+		'colors' => array(
 			'accent'    => pierogi_get_accent_selectors(),
 			'light'     => pierogi_get_accent_light_selectors(),
 			'secondary' => pierogi_get_secondary_selectors(),
-		],
-	] );
+		),
+	) );
 }
 add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );
 
@@ -232,16 +232,16 @@ add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );
  * @return array
  */
 function pierogi_get_theme_mods_defaults() {
-	$defaults = [
+	$defaults = array(
 		'theme_layout' => 'no-sidebar',
 		'blog_layout'  => 'grid',
 		'footer_text'  => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
-		'colors'       => [
+		'colors'       => array(
 			'accent'    => '#ffc33a',
 			'light'     => '#ffd983',
 			'secondary' => '#ff8787',
-		],
-	];
+		),
+	);
 
 	return apply_filters( 'pierogi_theme_mod_defaults', $defaults );
 }

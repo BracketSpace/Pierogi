@@ -47,14 +47,14 @@
 						<span id="menu-container-shadow-left" class="navigation-shadow navigation-shadow-left"></span>
 						<span id="menu-container-shadow-right" class="navigation-shadow navigation-shadow-right"></span>
 						<?php
-						wp_nav_menu( [
+						wp_nav_menu( array(
 							'theme_location'  => 'primary',
 							'menu_id'         => 'primary-menu',
 							'container_class' => 'main-menu-wrap',
 							'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
 							'depth'           => 2,
 							'fallback_cb'     => 'pierogi_no_menu_warning',
-						] );
+						) );
 						?>
 					</nav><!-- #site-navigation -->
 					<button class="toggle-header-modal search-button" aria-controls="search-modal" aria-expanded="false" data-toggle-element="header-search">
@@ -80,14 +80,14 @@
 			<?php
 			$pierogi_mobile_location = has_nav_menu( 'mobile' ) ? 'mobile' : 'primary';
 
-			wp_nav_menu( [
+			wp_nav_menu( array(
 				'theme_location'  => $pierogi_mobile_location,
 				'menu_id'         => 'mobile-menu',
 				'container_class' => 'mobile-menu-wrap',
 				'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
 				'depth'           => 2,
 				'mobile'          => true,
-			] );
+			) );
 			?>
 		</nav>
 	</header><!-- #masthead -->

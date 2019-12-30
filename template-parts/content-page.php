@@ -19,10 +19,10 @@
 		<?php
 		the_content();
 
-		wp_link_pages( [
+		wp_link_pages( array(
 			'before' => sprintf( '<div class="page-links"><span class="label">%s</span>', esc_html__( 'Pages:', 'pierogi' ) ),
 			'after'  => '</div>',
-		] );
+		) );
 		?>
 	</div><!-- .entry-content -->
 

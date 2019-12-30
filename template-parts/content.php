@@ -18,7 +18,7 @@
 		<?php endif; ?>
 
 		<div class="author-image">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', [ 'force_display' => true ] ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', array( 'force_display' => true ) ); ?>
 		</div>
 
 		<div class="entry-meta">
@@ -65,6 +65,6 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<?php get_template_part( 'template-parts/author-box' ); ?>
+	<?php get_template_part( 'template-parts/post-author-box' ); ?>
 
 </article><!-- #post-<?php the_ID(); ?> -->
