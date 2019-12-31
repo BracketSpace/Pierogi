@@ -7,14 +7,15 @@ article,
 
 	ul {
 		list-style: none;
-		padding-left: rem-calc(20);
+		padding-left: rem-calc(29);
 
-		&:not(.blocks-gallery-grid) > li::before {
-			color: color(gray, 5);
-			content: "\2022";
-			display: inline-block;
-			margin-left: -1em;
-			width: 1.5em;
+		&:not(.blocks-gallery-grid) > li {
+			position: relative;
+
+			@include before("", rem-calc(8), rem-calc(8), rem-calc(20), rem-calc(-29)) {
+				background-color: color(gray, 5);
+				border-radius: 50%;
+			}
 		}
 	}
 
