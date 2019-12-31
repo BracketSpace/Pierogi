@@ -12,9 +12,21 @@
  * @return string
  */
 function pierogi_drop_cap( $content ) {
-	return preg_replace_callback( '%(<p(?:[^>]+)(?:class="[^"]*(?:has-drop-cap)[^"]*")(?:[^>]*)>)([^<>]+)(</p>)%i', function( $matches ) {
+	return preg_replace_callback( '%(<p(?:[^>]+)(?:class="[^"]*(?:has-drop-cap)[^"]*")(?:[^>]*)>)((?!</p).+)(</p>)%i', function( $matches ) {
 		unset( $matches[0] );
-		$matches[2] = sprintf( '<span>%s</span>%s', substr( $matches[2], 0, 1 ), substr( $matches[2], 1 ) );
+		$matches[1] = str_replace( 'has-drop-cap', 'pierogi-drop-cap', $matches[1] );
+		$first_letter;
+		$remaining_text;
+
+		if ( '<' === substr( $matches[2], 0, 1 ) && preg_match( '%((?:(?:<strong>)|(?:<em>))+)(.+)%i', $matches[2], $submatches ) ) {
+			$first_letter   = $submatches[1] . substr( $submatches[2], 0, 1 ) . str_replace( '<', '</', $submatches[1] );
+			$remaining_text = $submatches[1] . substr( $submatches[2], 1 );
+		} else {
+			$first_letter   = substr( $matches[2], 0, 1 );
+			$remaining_text = substr( $matches[2], 1 );
+		}
+
+		$matches[2] = sprintf( '<span>%s</span>%s', $first_letter, $remaining_text );
 
 		return implode( '', $matches );
 	}, $content );

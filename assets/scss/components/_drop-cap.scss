@@ -16,31 +16,24 @@
 body.page,
 body.single-post {
 
-	article .has-drop-cap:not(:focus) {
+	article .pierogi-drop-cap:not(:focus) > span {
+		float: left;
+		font-weight: 800;
+		letter-spacing: 0.03em;
+		margin-left: rem-calc(-4);
+		position: relative;
+		text-transform: uppercase;
 
-		&::first-letter {
-			float: none;
-		}
+		@include font-size(69, 56);
 
-		> span {
-			float: left;
-			font-weight: 800;
-			letter-spacing: 0.03em;
-			margin-left: rem-calc(-4);
-			position: relative;
-			text-transform: uppercase;
-
-			@include font-size(69, 56);
-
-			@include before {
-				background-color: color(yellow-light);
-				bottom: 0;
-				bottom: rem-calc(-9);
-				height: rem-calc(24);
-				left: rem-calc(-2);
-				right: rem-calc(-2);
-				z-index: -1;
-			}
+		@include before {
+			background-color: color(yellow-light);
+			bottom: 0;
+			bottom: rem-calc(-9);
+			height: rem-calc(24);
+			left: rem-calc(-2);
+			right: rem-calc(-2);
+			z-index: -1;
 		}
 	}
 }
