@@ -6,6 +6,11 @@ html {
 	box-sizing: border-box;
 }
 
+html,
+body {
+	overflow-x: hidden;
+}
+
 *,
 *::before,
 *::after {
@@ -18,7 +23,6 @@ body {
 	background-color: color(white);
 	color: color(gray);
 	font-family: $font-primary;
-	overflow-x: hidden;
 }
 
 .menu-open {
