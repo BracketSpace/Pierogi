@@ -1,11 +1,3 @@
-.comments-area {
-	margin-top: rem-calc(100);
-
-	@include bp-down(sm) {
-		margin-top: rem-calc(60);
-	}
-}
-
 .comment-form {
 	display: flex;
 	flex-wrap: wrap;

@@ -7,20 +7,29 @@
  * @package Pierogi
  */
 
-$pierogi_page_title = is_front_page() ? esc_html__( 'Blog', 'pierogi' ) : get_the_title( get_option( 'page_for_posts' ) );
+$pierogi_page_for_posts = get_option( 'page_for_posts' );
+$pierogi_page_title     = is_front_page() ? false : get_the_title( $pierogi_page_for_posts );
 
 get_header();
 
 ?>
-	<header class="page-header">
-		<h1 class="page-title"><?php echo esc_html( $pierogi_page_title ); ?></h1>
 
-		<?php
-		if ( function_exists( 'the_subtitle' ) ) {
-			the_subtitle( '<p class="entry-subtitle featured">', '</p>' );
-		}
-		?>
-	</header>
+	<?php if ( $pierogi_page_title ) : ?>
+
+		<header class="page-header">
+			<h1 class="page-title"><?php echo esc_html( $pierogi_page_title ); ?></h1>
+
+			<?php
+			if ( function_exists( 'get_the_subtitle' ) ) :
+				$pierogi_subtitle = get_the_subtitle( $pierogi_page_for_posts );
+				if ( $pierogi_subtitle ) :  
+					?>
+					<p class="entry-subtitle featured"><?php echo esc_html( $pierogi_subtitle ); ?></p>
+				<?php endif; ?>
+			<?php endif; ?>
+		</header>
+
+	<?php endif; ?>
 
 	<div class="content-area">
 		<main id="main" class="site-main">

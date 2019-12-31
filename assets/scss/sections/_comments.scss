@@ -24,10 +24,10 @@
 }
 
 .comments-area {
-	margin: rem-calc(150) 0 rem-calc(100) 0;
+	margin: rem-calc(100) 0 0;
 
 	@include bp-down( sm ) {
-		margin: rem-calc(100) 0 rem-calc(60) 0;
+		margin: rem-calc(60) 0 0;
 	}
 
 	.comments-title {

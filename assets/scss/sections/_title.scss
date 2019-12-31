@@ -1,10 +1,10 @@
 .page-header,
 .entry-title-wrap,
 body.page .entry-header {
-	margin: rem-calc(145) 0 rem-calc(147);
+	margin: 0 0 rem-calc(147);
 
 	@include bp-down( sm ) {
-		margin: rem-calc(100) 0;
+		margin-bottom: rem-calc(100);
 	}
 
 	h1 {

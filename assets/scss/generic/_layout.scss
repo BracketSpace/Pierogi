@@ -16,6 +16,14 @@ main.site-main {
 
 body {
 
+	&:not(.single-post) .site-content {
+		padding-top: rem-calc(145);
+
+		@include bp-down(sm) {
+			padding-top: rem-calc(100);
+		}
+	}
+
 	&.single .content-area {
 
 		@include bp-up(lg) {
