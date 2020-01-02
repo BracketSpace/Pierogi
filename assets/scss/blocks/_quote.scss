@@ -7,6 +7,10 @@ body.single-post .entry-content .wp-block-quote {
 	text-align: left;
 
 	@include bp-down(rem-calc( 1770 )) {
+		margin: rem-calc(60) 0 rem-calc(60) rem-calc(20);
+	}
+
+	@include bp-down(md) {
 		margin: rem-calc(60) rem-calc(20);
 	}
 
@@ -26,11 +30,7 @@ body.single-post .entry-content .wp-block-quote {
 
 		&::after {
 			left: initial;
-			right: rem-calc(-30);
-
-			@include bp-down(rem-calc( 1770 )) {
-				right: rem-calc(-45);
-			}
+			right: rem-calc(-45);
 
 			@include bp-down(sm) {
 				right: rem-calc(-40);
@@ -76,4 +76,22 @@ body.single-post .entry-content .wp-block-quote {
 		@include font-size( 21, 25 );
 	}
 
+}
+
+body.has-sidebar .entry-content .wp-block-quote.has-text-align-right {
+
+	p,
+	cite {
+
+		@include bp-up(md) {
+			margin-right: rem-calc(45);
+		}
+	}
+
+	&::after {
+
+		@include bp-up(md) {
+			right: 0;
+		}
+	}
 }
