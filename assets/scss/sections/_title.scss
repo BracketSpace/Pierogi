@@ -19,11 +19,19 @@ body.page .entry-header {
 
 	.entry-subtitle,
 	.page-subtitle,
+	.archive-description,
 	.archive-description p {
 		color: color(gray, 4);
-		margin: rem-calc(15) 0 0 0;
+		margin: rem-calc(15) auto 0 auto;
+		max-width: rem-calc(550);
 		text-align: center;
 
-		@extend .featured;
+		@include font-size(23, 30);
+
+		@include bp-down( sm ) {
+
+			@include font-size( 21, 30 );
+		}
+
 	}
 }
