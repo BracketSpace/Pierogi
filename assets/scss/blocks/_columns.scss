@@ -5,6 +5,10 @@
 		flex-wrap: nowrap;
 	}
 
+	@include bp-down(xs) {
+		margin: rem-calc(60) 0 0 0;
+	}
+
 	&.alignwide,
 	&.alignfull {
 		padding-left: rem-calc($container-padding);
@@ -21,6 +25,7 @@
 
 		@include bp-down(sm) {
 			flex-basis: calc(50% - #{ rem-calc($container-mobile-padding / 2) });
+			margin-bottom: rem-calc(60);
 		}
 
 		&:not(:first-child) {
