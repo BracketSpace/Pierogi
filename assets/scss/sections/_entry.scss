@@ -11,7 +11,7 @@ body.single-post {
 
 	.entry-content {
 
-		a {
+		a:not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary) {
 			border-bottom: 2px solid color(yellow);
 			text-decoration: none;
 			transition: 0.2s;

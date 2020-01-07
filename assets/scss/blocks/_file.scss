@@ -14,10 +14,14 @@
 		justify-content: center;
 	}
 
-	.wp-block-file__button {
+	a.wp-block-file__button {
 
 		@include bp-down(sm) {
 			margin: rem-calc(20) 0 0;
+		}
+
+		&:hover {
+			color: color(pink);
 		}
 	}
 }

@@ -58,6 +58,8 @@ function pierogi_get_accent_selectors() {
 			'.widget_tag_cloud a:hover',
 			'.widget_archive a:hover',
 			'.widget_nav_menu a:hover',
+			'body.single-post .entry-content a:not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
+
 		),
 	) );
 }
@@ -111,6 +113,7 @@ function pierogi_get_secondary_selectors() {
 			'.bg-accent-hover:focus:hover',
 			'input[type="submit"]:hover',
 			'input[type="button"]:hover',
+			'.wp-block-file a.wp-block-file__button:hover',
 		),
 		'color' => array(
 			'.btn-primary:hover',
@@ -126,6 +129,7 @@ function pierogi_get_secondary_selectors() {
 			'.main-navigation-mobile .current-menu-item > span',
 			'.main-navigation-mobile .current-menu-item > .item-wrap > a',
 			'.main-navigation-mobile .current-menu-item > .item-wrap > span',
+			'.wp-block-file a.wp-block-file__button:hover',
 		),
 	) );
 }
