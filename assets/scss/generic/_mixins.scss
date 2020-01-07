@@ -152,11 +152,8 @@
 
 @mixin table {
 
+	table,
 	.wp-block-table {
-		margin: rem-calc(100) 0;
-	}
-
-	table {
 		margin: rem-calc(100) 0;
 	}
 

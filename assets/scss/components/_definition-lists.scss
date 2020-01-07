@@ -1,0 +1,13 @@
+dl {
+	margin: rem-calc(100) 0;
+
+	@include font-size(21, 35);
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	padding: rem-calc(10) 0;
+}
