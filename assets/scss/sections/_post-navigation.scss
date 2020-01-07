@@ -61,8 +61,10 @@
 
 		&:hover {
 			color: color(yellow);
-			max-width: 31%;
-			max-width: calc(31% + #{ rem-calc(58) });
+
+			@include bp-up(sm) {
+				max-width: calc(31% + #{ rem-calc(58) });
+			}
 
 			&::before {
 				opacity: 1;
