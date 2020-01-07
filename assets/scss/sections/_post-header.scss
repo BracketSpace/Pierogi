@@ -1,5 +1,15 @@
 .single-post {
 
+	article:not(.has-post-thumbnail) {
+
+		@include bp-down(sm) {
+
+			.entry-header {
+				margin-top: rem-calc(20);
+			}
+		}
+	}
+
 	.entry-header {
 		margin-bottom: rem-calc(78);
 		padding-bottom: rem-calc(100);
