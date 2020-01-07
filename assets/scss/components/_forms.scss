@@ -85,8 +85,7 @@ input[type="checkbox"] {
 			background-repeat: no-repeat;
 			background-size: cover;
 			opacity: 0;
-			top: 50%;
-			transform: translateY(-50%) scale(0.3);
+			transform: scale(0.3);
 			transition: all 0.2s;
 		}
 
@@ -94,7 +93,7 @@ input[type="checkbox"] {
 
 	&:checked + label::after {
 		opacity: 1;
-		transform: translateY(-50%) scale(1);
+		transform: scale(1);
 	}
 }
 
@@ -105,6 +104,7 @@ input[type="checkbox"] {
 		background-image: url("../images/check.svg");
 		height: rem-calc(13);
 		left: rem-calc(5);
+		top: rem-calc(6);
 		width: rem-calc(15);
 	}
 }
@@ -120,6 +120,7 @@ input[type="radio"] {
 		background-image: url("../images/radio-active.svg");
 		height: rem-calc(8);
 		left: rem-calc(8);
+		top: rem-calc(8);
 		width: rem-calc(8);
 	}
 }
