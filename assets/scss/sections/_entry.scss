@@ -11,6 +11,10 @@ body.single-post {
 
 	.entry-content {
 
+		a:hover {
+			text-decoration: none;
+		}
+
 		> p {
 			margin: 0;
 
