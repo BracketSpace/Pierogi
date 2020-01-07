@@ -11,8 +11,14 @@ body.single-post {
 
 	.entry-content {
 
-		a:hover {
+		a {
+			border-bottom: 2px solid color(yellow);
 			text-decoration: none;
+			transition: 0.2s;
+
+			&:hover {
+				border-color: transparent;
+			}
 		}
 
 		> p {
