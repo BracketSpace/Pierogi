@@ -1,0 +1,35 @@
+.widget_media_gallery {
+
+	.gallery {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 rem-calc(-10);
+	}
+
+	figure {
+		margin: rem-calc(10);
+
+		figcaption {
+			color: color(gray, 6);
+			margin-top: rem-calc(10);
+			text-transform: uppercase;
+
+			@include font-size(12, 17);
+		}
+
+		img {
+			display: block;
+			height: auto;
+			max-width: 100%;
+		}
+	}
+
+	@for $i from 1 through 9 {
+
+		.gallery-columns-#{$i} .gallery-item {
+			width: calc((100% / #{$i}) - #{rem-calc(20)});
+		}
+	}
+
+}
+
