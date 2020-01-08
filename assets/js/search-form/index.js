@@ -53,7 +53,7 @@ export default class SearchForm {
 
 		this.activeModal = document.getElementById( modalID );
 
-		this.activeModal.querySelector( '.seach-input' ).focus();
+		this.activeModal.querySelector( '.search-input' ).focus();
 
 		const height = this.calculateModalHeight();
 
