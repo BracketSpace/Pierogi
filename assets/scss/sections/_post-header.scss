@@ -77,6 +77,19 @@
 		word-wrap: break-word;
 	}
 
+	.entry-subtitle {
+		margin-top: rem-calc(60);
+		max-width: 100%;
+
+		@include font-size(27,50);
+
+		@include bp-down(sm) {
+			margin-top: rem-calc(100);
+
+			@include font-size(23,40);
+		}
+	}
+
 	.author-image {
 		justify-content: center;
 		margin: 0 auto;
@@ -144,6 +157,15 @@
 				@include bp-up(md) {
 					display: none;
 				}
+			}
+		}
+
+		.entry-subtitle {
+			margin-top: rem-calc(40);
+			text-align: left;
+
+			@include bp-down(sm) {
+				margin-top: rem-calc(100);
 			}
 		}
 

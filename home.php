@@ -21,8 +21,8 @@ get_header();
 
 			<?php
 			if ( function_exists( 'get_the_subtitle' ) ) :
-				$pierogi_subtitle = get_the_subtitle( $pierogi_page_for_posts );
-				if ( $pierogi_subtitle ) :  
+				$pierogi_subtitle = get_the_subtitle( $pierogi_page_for_posts, '', '', false );
+				if ( $pierogi_subtitle ) :
 					?>
 					<p class="entry-subtitle featured"><?php echo esc_html( $pierogi_subtitle ); ?></p>
 				<?php endif; ?>
