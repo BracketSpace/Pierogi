@@ -1,5 +1,12 @@
 .widget_nav_menu {
 
+	@extend %widget-list;
+
+	> ul {
+
+		@extend %widget-list-ul;
+	}
+
 	a {
 		display: block;
 		margin-bottom: rem-calc(20);

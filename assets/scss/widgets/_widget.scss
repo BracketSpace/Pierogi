@@ -18,14 +18,7 @@
 	}
 }
 
-.widget_categories,
-.widget_tag_cloud,
-.widget_nav_menu {
-
-	> ul {
-		margin: rem-calc(40) 0;
-		padding-left: 0;
-	}
+%widget-list {
 
 	li {
 		color: color(gray, 6);
@@ -45,6 +38,16 @@
 			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.16);
 			color: color(yellow);
 		}
+	}
+}
+
+%widget-list-ul {
+	list-style: none;
+	margin: rem-calc(40) 0;
+	padding-left: 0;
+
+	li::before {
+		display: none !important;
 	}
 }
 

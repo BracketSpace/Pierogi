@@ -1,25 +1,31 @@
-.tagcloud {
-	margin: rem-calc(-10);
-	margin-bottom: rem-calc(90);
+.widget_tag_cloud {
 
-	a {
-		display: inline-block;
-		margin: rem-calc(10);
-		padding: rem-calc(13) rem-calc(20) rem-calc(9) rem-calc(20);
-		text-transform: uppercase;
+	@extend %widget-list;
 
-		@include font-size(16, 19);
+	> ul {
 
-		@include bp-down(sm) {
-
-			@include font-size(14, 17);
-		}
+		@extend %widget-list-ul;
 	}
 
-	/* stylelint-disable no-descending-specificity */
-	.tag-link-count {
+	.tagcloud {
+		margin: rem-calc(-10);
+		margin-bottom: rem-calc(90);
 
-		&::before {
+		a {
+			display: inline-block;
+			margin: rem-calc(10);
+			padding: rem-calc(13) rem-calc(20) rem-calc(9) rem-calc(20);
+			text-transform: uppercase;
+
+			@include font-size(16, 19);
+
+			@include bp-down(sm) {
+
+				@include font-size(14, 17);
+			}
+		}
+
+		.tag-link-count::before {
 			border: solid rem-calc(3);
 			border-radius: 50%;
 			content: "";
@@ -29,5 +35,4 @@
 			vertical-align: 15%;
 		}
 	}
-	/* stylelint-enable */
 }

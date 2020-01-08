@@ -11,16 +11,6 @@ body.single-post {
 
 	.entry-content {
 
-		a:not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary) {
-			border-bottom: 2px solid color(yellow);
-			text-decoration: none;
-			transition: 0.2s;
-
-			&:hover {
-				border-color: transparent;
-			}
-		}
-
 		> p {
 			margin: 0;
 
@@ -30,6 +20,16 @@ body.single-post {
 
 			&:not(:last-child) {
 				margin-bottom: rem-calc(60);
+			}
+
+			a:not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary) {
+				border-bottom: 2px solid color(yellow);
+				text-decoration: none;
+				transition: 0.2s;
+
+				&:hover {
+					border-color: transparent;
+				}
 			}
 
 			+ h1,
