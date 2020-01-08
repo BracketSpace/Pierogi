@@ -1,0 +1,22 @@
+.widget_rss {
+
+	@extend .widget_recent_entries;
+
+	.widget-title .rsswidget {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+
+	.rssSummary {
+		margin-top: rem-calc(10);
+
+		@include font-size(20,24);
+	}
+
+	cite {
+		display: block;
+		margin-top: rem-calc(10);
+
+		@include font-size(14,17);
+	}
+}

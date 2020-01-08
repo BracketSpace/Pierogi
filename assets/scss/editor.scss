@@ -33,6 +33,7 @@ body {
 	@import "blocks/separator";
 	@import "blocks/file";
 	@import "blocks/embed";
+	@import "blocks/rss";
 	@import "components/links";
 	@import "components/buttons";
 	@import "components/container";
@@ -51,4 +52,6 @@ body {
 	@import "widgets/menu";
 	@import "widgets/tag-cloud";
 	@import "widgets/calendar";
+	@import "widgets/rss";
+	@import "widgets/gallery";
 }

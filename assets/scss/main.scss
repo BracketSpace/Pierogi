@@ -37,6 +37,7 @@
 @import "blocks/media-text";
 @import "blocks/gallery";
 @import "blocks/file";
+@import "blocks/rss";
 @import "components/iframe";
 @import "components/buttons";
 @import "components/container";
@@ -72,3 +73,5 @@
 @import "widgets/menu";
 @import "widgets/tag-cloud";
 @import "widgets/calendar";
+@import "widgets/rss";
+@import "widgets/gallery";

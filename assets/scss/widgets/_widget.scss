@@ -62,4 +62,8 @@ h2.widget-title {
 	@include bp-down(sm) {
 		margin: 0 0 rem-calc(60) 0;
 	}
+
+	a {
+		color: color(gray, 5);
+	}
 }
