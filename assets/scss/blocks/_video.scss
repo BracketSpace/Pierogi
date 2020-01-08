@@ -1,8 +1,0 @@
-.is-type-video,
-.wp-block-video {
-	margin: rem-calc(100) 0;
-
-	@include bp-down(sm) {
-		margin: rem-calc(60) 0;
-	}
-}
