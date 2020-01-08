@@ -90,16 +90,3 @@
 	}
 }
 
-.paged.has-sidebar {
-
-	.navigation.pagination {
-
-		@include bp-between( sm, md ) {
-			margin-bottom: rem-calc(150);
-		}
-
-		@include bp-down(sm) {
-			margin-bottom: rem-calc(60);
-		}
-	}
-}

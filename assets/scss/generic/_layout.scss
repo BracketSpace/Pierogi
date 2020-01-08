@@ -75,11 +75,11 @@ body {
 	}
 
 	@include bp-between(sm, md) {
-		margin: 0 rem-calc(-20);
+		margin: rem-calc(150) rem-calc(-20) 0 rem-calc(-20);
 	}
 
 	@include bp-down(sm) {
-		margin: auto;
+		margin: rem-calc(60) auto 0 auto;
 		max-width: rem-calc(520);
 	}
 
