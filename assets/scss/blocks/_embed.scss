@@ -4,4 +4,16 @@
 	@include bp-down(sm) {
 		margin: rem-calc(60) 0;
 	}
+
+	.pierogi-video-wrap {
+		position: relative;
+
+		iframe {
+			height: 100% !important;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100% !important;
+		}
+	}
 }
