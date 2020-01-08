@@ -142,11 +142,9 @@
 		line-height: initial;
 		list-style: none;
 		padding-left: 0;
-	}
 
-	.comment-list:not(.has-avatars) {
-
-		article.comment-body {
+		&.has-avatars article.comment-body {
+			min-height: 100px;
 			padding-left: rem-calc(140);
 
 			@include bp-down( sm ) {
@@ -155,11 +153,39 @@
 		}
 	}
 
-	article {
-		margin-bottom: rem-calc(100);
+	li {
+		margin: rem-calc(100) 0;
 
 		@include bp-down( sm ) {
-			margin-bottom: rem-calc(60);
+			margin: rem-calc(60) 0;
+		}
+
+		&.trackback,
+		&.pingback {
+			margin: rem-calc(40) 0;
+
+			.comment-body {
+				color: color(gray, 6);
+				display: flex;
+				flex-direction: column;
+				text-transform: uppercase;
+
+				@include font-size(16, 19);
+
+				a {
+
+					&:not(.url) {
+						color: color(gray, 6);
+						text-decoration: none;
+					}
+
+					&.url {
+						text-transform: none;
+
+						@include font-size(21, 35);
+					}
+				}
+			}
 		}
 	}
 
