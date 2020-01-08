@@ -48,7 +48,8 @@
 	}
 }
 
-h2.widget-title {
+h2.widget-title,
+h2.widget-title .rsswidget {
 	color: color(gray, 5);
 	font-weight: 700;
 	margin: 0 0 rem-calc(40) 0;
