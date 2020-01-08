@@ -1,5 +1,4 @@
-.is-type-video,
-.wp-block-video {
+.wp-block-embed {
 	margin: rem-calc(100) 0;
 
 	@include bp-down(sm) {
