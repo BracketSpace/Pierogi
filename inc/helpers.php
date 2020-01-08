@@ -12,8 +12,7 @@
  * @return void
  */
 function pierogi_image_url( $image ) {
-	$template_url = get_template_directory_uri();
-	echo esc_url( "{$template_url}/images/$image" );
+	echo esc_url( get_theme_file_uri( "images/{$image}" ) );
 }
 
 /**
