@@ -63,7 +63,7 @@
 	}
 
 	thead,
-	tfoot,
+	tfoot td:not(.pad),
 	td:not([colspan]):not(.pad) {
 		box-shadow: 0 0 rem-calc(3) 0 rgba(0, 0, 0, 0.16);
 	}
