@@ -18,11 +18,11 @@
 		<?php endif; ?>
 
 		<div class="author-image">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', array( 'force_display' => true ) ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', [ 'force_display' => true ] ); ?>
 		</div>
 
 		<div class="entry-meta">
-				<?php pierogi_entry_meta(); ?>
+			<?php pierogi_entry_meta(); ?>
 		</div>
 
 		<div class="entry-title-wrap">
@@ -46,24 +46,37 @@
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pierogi' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+					[
+						'span' => [
+							'class' => [],
+						],
+					]
 				),
 				get_the_title()
 			)
 		);
 
 		wp_link_pages(
-			array(
+			[
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pierogi' ),
 				'after'  => '</div>',
-			)
+			]
 		);
 		?>
 	</div><!-- .entry-content -->
+
+	<?php if ( has_tag() ) : ?>
+
+		<footer class="entry-footer">
+			<div class="entry-meta">
+				<span class="entry-tags">
+					<?php esc_html_e( 'Tagged:', 'pierogi' ); ?>
+					<?php pierogi_entry_tags(); ?>
+				</span>
+			</div>
+		</footer>
+
+	<?php endif; ?>
 
 	<?php get_template_part( 'template-parts/post-author-box' ); ?>
 

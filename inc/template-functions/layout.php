@@ -53,15 +53,15 @@ add_action( 'wp_head', 'pierogi_pingback_header' );
  * @return string
  */
 function pierogi_footer_text_filter( $text ) {
-	return str_ireplace( array(
+	return str_ireplace( [
 		'%year%',
 		'BracketSpace',
 		'WordPress',
-	), array(
+	], [
 		date( 'Y' ),
 		sprintf( '<a href="%s">%s</a>', 'https://bracketspace.com?utm_source=theme&utm_medium=footer&utm_campaign=pierogi', 'BracketSpace' ),
 		sprintf( '<a href="%s">%s</a>', 'https://wordpress.org', 'WordPress' ),
-	), esc_html( $text ) );
+	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
 

@@ -86,7 +86,10 @@
 	<rule ref="WordPress-Extra"><!-- Includes WordPress-Core -->
 		<!-- Getting error on placeholder files, index.php -->
 		<exclude name="PEAR.Functions.FunctionCallSignature" />
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
 	</rule>
+
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
 
 	<!-- Set the minimum supported WP version. This is used by several sniffs.
 		 The minimum version set here should be in line with the minimum WP version

@@ -63,7 +63,7 @@ get_header();
 				?>
 
 			</div>
-			<?php the_posts_pagination( array( 'mid_size' => 2 ) ); ?>
+			<?php the_posts_pagination( [ 'mid_size' => 2 ] ); ?>
 
 		</main><!-- #main -->
 

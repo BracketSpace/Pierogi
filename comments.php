@@ -44,11 +44,11 @@ if ( post_password_required() ) {
 
 		<ul class="comment-list<?php get_option( 'show_avatars' ) && print( ' has-avatars' ); ?>">
 			<?php
-			wp_list_comments( array(
+			wp_list_comments( [
 				'style'       => 'ul',
 				'short_ping'  => true,
 				'avatar_size' => 100,
-			) );
+			] );
 			?>
 		</ul><!-- .comment-list -->
 
@@ -64,13 +64,13 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form(array(
+	comment_form([
 		'title_reply_before'   => '',
 		'title_reply'          => '',
 		'title_reply_after'    => '',
 		'comment_notes_before' => '<p class="comment-notes">' . esc_html__( 'Your email address will not be published.', 'pierogi' ) . '</p>',
 		'label_submit'         => esc_html__( 'Comment', 'pierogi' ),
-	));
+	]);
 	?>
 
 </div><!-- #comments -->

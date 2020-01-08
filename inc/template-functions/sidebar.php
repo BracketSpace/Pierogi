@@ -13,13 +13,13 @@
  * @return string
  */
 function pierogi_format_tagcloud_link( $input ) {
-	return preg_replace( array(
+	return preg_replace( [
 		'/ style=("|\')(.*?)("|\')/',
 		'#<span class="tag-link-count"> \(([0-9]+)\)</span>#i',
-	), array(
+	], [
 		'',
 		'<span class="tag-link-count">$1</span>',
-	), $input );
+	], $input );
 }
 add_filter( 'wp_generate_tag_cloud', 'pierogi_format_tagcloud_link' );
 
@@ -47,15 +47,15 @@ function pierogi_display_default_widgets( $index, $has_widgets ) {
 		return;
 	}
 
-	$args = array(
+	$args = [
 		'before_title' => '<h2 class="widget-title">',
-	);
+	];
 
-	the_widget( 'WP_Widget_Categories', array(
+	the_widget( 'WP_Widget_Categories', [
 		'count'        => '1',
 		'hierarchical' => '1',
-	), $args );
-	the_widget( 'WP_Widget_Tag_Cloud', array( 'count' => '1' ), $args );
-	the_widget( 'WP_Widget_Recent_Comments', array(), $args );
+	], $args );
+	the_widget( 'WP_Widget_Tag_Cloud', [ 'count' => '1' ], $args );
+	the_widget( 'WP_Widget_Recent_Comments', [], $args );
 }
 add_action( 'dynamic_sidebar_before', 'pierogi_display_default_widgets', 10, 2 );

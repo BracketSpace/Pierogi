@@ -94,11 +94,11 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 					wp_kses(
 						/* translators: %s: post title */
 						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'pierogi' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
+						[
+							'span' => [
+								'class' => [],
+							],
+						]
 					),
 					get_the_title()
 				)
@@ -111,11 +111,11 @@ if ( ! function_exists( 'pierogi_entry_footer' ) ) :
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Edit <span class="screen-reader-text">%s</span>', 'pierogi' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+					[
+						'span' => [
+							'class' => [],
+						],
+					]
 				),
 				get_the_title()
 			),
@@ -130,9 +130,9 @@ if ( ! function_exists( 'pierogi_entry_meta' ) ) :
 	 * Prints HTML with entry meta.
 	 */
 	function pierogi_entry_meta() {
-		$items = array(
+		$items = [
 			pierogi_posted_on( false ),
-		);
+		];
 
 		if ( is_single() ) {
 			$items[] = pierogi_posted_by( false );
@@ -145,6 +145,36 @@ if ( ! function_exists( 'pierogi_entry_meta' ) ) :
 		}
 
 		echo implode( '', $items ); // phpcs:ignore
+	}
+endif;
+
+if ( ! function_exists( 'pierogi_entry_tags' ) ) :
+	/**
+	 * Prints HTML with entry meta.
+	 *
+	 * @param string $separator Separator.
+	 */
+	function pierogi_entry_tags( $separator = ', ' ) {
+		$tags = get_the_tags( get_the_ID() );
+
+		if ( ! $tags ) {
+			return;
+		}
+
+		$links = [];
+
+		foreach ( $tags as $tag ) {
+			$links[] = sprintf(
+				'<a href="%s" title="%s" class="%s">%s</a>',
+				get_tag_link( $tag->term_id ),
+				/* translators: %s is a Tag Name. */
+				sprintf( __( '%s Tag', 'pierogi' ), $tag->name ),
+				$tag->slug,
+				$tag->name,
+			);
+		}
+
+		echo implode( $separator, $links ); // phpcs:ignore
 	}
 endif;
 
@@ -185,9 +215,9 @@ if ( ! function_exists( 'pierogi_footer_logo' ) ) :
 		$footer_logo_id = get_theme_mod( 'footer_logo', null );
 
 		if ( $footer_logo_id ) {
-			$footer_logo_attr = array(
+			$footer_logo_attr = [
 				'class' => 'footer-logo',
-			);
+			];
 
 			$image_alt = get_post_meta( $footer_logo_id, '_wp_attachment_image_alt', true );
 			if ( empty( $image_alt ) ) {
