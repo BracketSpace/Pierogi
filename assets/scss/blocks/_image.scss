@@ -1,23 +1,48 @@
-.entry-content::after {
-	clear: both;
-	content: "";
-	display: block;
-}
+.entry-content {
 
-.wp-block-image {
-	margin: 0;
-	max-width: none;
+	&::after {
+		clear: both;
+		content: "";
+		display: block;
+	}
 
 	img {
-		vertical-align: top;
+		display: block;
+		height: auto;
+		max-width: 100%;
 	}
 
-	figure.alignleft {
-		margin: rem-calc(8) rem-calc(16) rem-calc(16) 0;
-	}
+	figure,
+	img {
 
-	figure.alignright {
-		margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
+		&.alignleft {
+			float: left;
+			margin: rem-calc(8) rem-calc(16) rem-calc(16) 0;
+		}
+
+		&.alignright {
+			float: right;
+			margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
+		}
+
+		&.alignnone {
+			margin: rem-calc(100) 0;
+			max-width: 100%;
+
+			@include bp-down( sm ) {
+				margin: rem-calc(60) 0;
+			}
+		}
+
+		&.aligncenter {
+			margin: rem-calc(100) auto;
+			max-width: 100%;
+
+			@include bp-down( sm ) {
+				margin: rem-calc(60) auto;
+			}
+		}
+
 	}
 
 	figcaption,
@@ -35,21 +60,13 @@
 			@include font-size( 12, 20 );
 		}
 	}
-}
 
-figure.wp-block-image,
-.wp-block-image figure:not(.alignleft):not(.alignright) {
-	margin: rem-calc(100) 0;
+	.wp-block-image {
+		margin: 0;
+		max-width: none;
 
-	@include bp-down( sm ) {
-		margin: rem-calc(60) 0;
-	}
-}
-
-.wp-block-image .aligncenter {
-	margin: rem-calc(100) auto;
-
-	@include bp-down( sm ) {
-		margin: rem-calc(60) auto;
+		img {
+			vertical-align: top;
+		}
 	}
 }
