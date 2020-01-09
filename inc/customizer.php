@@ -53,18 +53,21 @@ function pierogi_customize_register( $wp_customize ) {
 	$colors = pierogi_get_theme_mod_default( 'colors' );
 
 	$wp_customize->add_setting( 'colors', [
-		'transport' => 'postMessage',
-		'default'   => $colors,
+		'transport'         => 'postMessage',
+		'default'           => $colors,
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_colors',
 	] );
 
 	$wp_customize->add_setting( 'accent_color', [
-		'transport' => 'postMessage',
-		'default'   => $colors['accent'],
+		'transport'         => 'postMessage',
+		'default'           => $colors['accent'],
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_colors',
 	] );
 
 	$wp_customize->add_setting( 'secondary_color', [
-		'transport' => 'postMessage',
-		'default'   => $colors['secondary'],
+		'transport'         => 'postMessage',
+		'default'           => $colors['secondary'],
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_colors',
 	] );
 
 	$wp_customize->add_control( 'accent_color', [
@@ -84,7 +87,8 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 
 	$wp_customize->add_setting( 'footer_logo', [
-		'transport' => 'postMessage',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_footer_logo',
 	] );
 
 	$wp_customize->add_control(
@@ -114,9 +118,10 @@ function pierogi_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting( 'footer_text', [
-		'capability' => 'edit_theme_options',
-		'default'    => pierogi_get_theme_mod_default( 'footer_text' ),
-		'transport'  => 'postMessage',
+		'capability'        => 'edit_theme_options',
+		'default'           => pierogi_get_theme_mod_default( 'footer_text' ),
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_footer_text',
 	] );
 
 	$wp_customize->add_control( 'footer_text', [
@@ -131,8 +136,9 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 
 	$wp_customize->add_setting( 'theme_layout', [
-		'default' => pierogi_get_theme_mod_default( 'theme_layout' ),
-		'type'    => 'theme_mod',
+		'default'           => pierogi_get_theme_mod_default( 'theme_layout' ),
+		'type'              => 'theme_mod',
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_theme_layout',
 	] );
 
 	$wp_customize->add_control( 'theme_layout_control', [
@@ -147,8 +153,9 @@ function pierogi_customize_register( $wp_customize ) {
 	] );
 
 	$wp_customize->add_setting( 'blog_layout', [
-		'default' => pierogi_get_theme_mod_default( 'blog_layout' ),
-		'type'    => 'theme_mod',
+		'default'           => pierogi_get_theme_mod_default( 'blog_layout' ),
+		'type'              => 'theme_mod',
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_blog_layout',
 	] );
 
 	$wp_customize->add_control( 'blog_layout_control', [
@@ -164,6 +171,64 @@ function pierogi_customize_register( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'pierogi_customize_register' );
+
+/**
+ * Theme Mod sanitization callback
+ *
+ * @param  mixed $value Value to sanitize.
+ * @return mixed
+ */
+function pierogi_sanitize_theme_mod_colors( $value ) {
+	if ( is_array( $value ) ) {
+		foreach ( $value as &$val ) {
+			$val = pierogi_sanitize_theme_mod_colors( $val );
+		}
+
+		return $value;
+	}
+
+	return sanitize_hex_color( $value );
+}
+
+/**
+ * Theme Mod sanitization callback
+ *
+ * @param  int $value Value to sanitize.
+ * @return int
+ */
+function pierogi_sanitize_theme_mod_footer_logo( $value ) {
+	return (int) $value;
+}
+
+/**
+ * Theme Mod sanitization callback
+ *
+ * @param  string $value Value to sanitize.
+ * @return string
+ */
+function pierogi_sanitize_theme_mod_footer_text( $value ) {
+	return sanitize_textarea_field( esc_html( $value ) );
+}
+
+/**
+ * Theme Mod sanitization callback
+ *
+ * @param  string $value Value to sanitize.
+ * @return string
+ */
+function pierogi_sanitize_theme_mod_theme_layout( $value ) {
+	return in_array( $value, [ 'no-sidebar', 'has-sidebar' ], true ) ? $value : 'has-sidebar';
+}
+
+/**
+ * Theme Mod sanitization callback
+ *
+ * @param  string $value Value to sanitize.
+ * @return string
+ */
+function pierogi_sanitize_theme_mod_blog_layout( $value ) {
+	return in_array( $value, [ 'grid', 'list' ], true ) ? $value : 'list';
+}
 
 /**
  * Render the site title for the selective refresh partial.

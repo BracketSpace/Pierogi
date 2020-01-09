@@ -170,7 +170,7 @@ if ( ! function_exists( 'pierogi_entry_tags' ) ) :
 				/* translators: %s is a Tag Name. */
 				sprintf( __( '%s Tag', 'pierogi' ), $tag->name ),
 				$tag->slug,
-				$tag->name,
+				$tag->name
 			);
 		}
 
