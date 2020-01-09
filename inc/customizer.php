@@ -279,7 +279,7 @@ add_action( 'customize_controls_enqueue_scripts', 'pierogi_customize_controls_js
  * Add customize preview js.
  */
 function pierogi_customize_preview_js() {
-	wp_enqueue_script( 'pierogi-customize-preview', get_theme_file_uri( 'customize-preview.min.js' ), [ 'customize-preview' ], pierogi_get_version(), true );
+	wp_enqueue_script( 'pierogi-customize-preview', get_theme_file_uri( 'js/customize-preview.min.js' ), [ 'customize-preview' ], pierogi_get_version(), true );
 
 	wp_localize_script( 'pierogi-customize-preview', 'Pierogi', [
 		'colors' => [

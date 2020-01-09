@@ -58,8 +58,8 @@ function pierogi_footer_text_filter( $text ) {
 		'WordPress',
 	], [
 		date( 'Y' ),
-		sprintf( '<a href="%s">%s</a>', 'https://bracketspace.com?utm_source=theme&utm_medium=footer&utm_campaign=pierogi', 'BracketSpace' ),
-		sprintf( '<a href="%s">%s</a>', 'https://wordpress.org', 'WordPress' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://bracketspace.com', 'BracketSpace' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://wordpress.org', 'WordPress' ),
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );
