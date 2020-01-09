@@ -33,12 +33,17 @@ function pierogi_inline_svg( $filename ) {
  * @return string|bool
  */
 function pierogi_get_inline_svg( $filename ) {
-	$directory = get_template_directory();
-	$filename  = "{$directory}/images/{$filename}.svg";
+	global $wp_filesystem;
 
-	if ( is_file( $filename ) ) {
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		return file_get_contents( $filename );
+	//phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+	require_once ABSPATH . '/wp-admin/includes/file.php';
+	WP_Filesystem();
+
+	$directory = get_template_directory();
+	$filename  = "{$directory}/assets/images/{$filename}.svg";
+
+	if ( $wp_filesystem->exists( $filename ) ) {
+		return $wp_filesystem->get_contents( $filename );
 	}
 
 	return false;
