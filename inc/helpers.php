@@ -40,7 +40,7 @@ function pierogi_get_inline_svg( $filename ) {
 	WP_Filesystem();
 
 	$directory = get_template_directory();
-	$filename  = "{$directory}/assets/images/{$filename}.svg";
+	$filename  = "{$directory}/images/{$filename}.svg";
 
 	if ( $wp_filesystem->exists( $filename ) ) {
 		return $wp_filesystem->get_contents( $filename );
