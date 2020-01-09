@@ -75,6 +75,10 @@
 
 		.next {
 			margin-left: rem-calc(50);
+
+			@include bp-down(sm) {
+				margin-left: auto;
+			}
 		}
 	}
 
