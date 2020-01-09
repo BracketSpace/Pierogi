@@ -9,6 +9,14 @@
 		transition: 0.3s;
 		word-wrap: break-word;
 
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			display: inline-block;
+			max-width: rem-calc(259);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
 		&:first-of-type {
 			display: block;
 			letter-spacing: rem-calc(0.42);
