@@ -64,7 +64,7 @@ function pierogi_get_accent_selectors() {
 			'.widget_tag_cloud a:hover',
 			'.widget_archive a:hover',
 			'.widget_nav_menu a:hover',
-			'body.single-post .entry-content a:not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
+			'body.single-post .entry-content a:not(.wp-block-button__link):not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
 		],
 	] );
 }
