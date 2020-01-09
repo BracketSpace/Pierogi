@@ -1,4 +1,5 @@
 import normalizeWheel from 'normalize-wheel';
+import Cookie from 'js-cookie';
 import { innerWidth } from '../helpers';
 
 export default class MainMenu {
@@ -23,10 +24,8 @@ export default class MainMenu {
 	}
 
 	init() {
-		this.calculateMenuSize = this.calculateMenuSize.bind( this );
-
-		window.addEventListener( 'resize', this.calculateMenuSize );
-		window.addEventListener( 'load', this.calculateMenuSize );
+		window.addEventListener( 'resize', this.calculateMenuSize.bind( this ) );
+		window.addEventListener( 'load', this.loadMenu.bind( this ) );
 
 		this.shadowRight.addEventListener( 'mouseover', this.shadowElementScrollLeft.bind( this ) );
 		this.shadowRight.addEventListener( 'mouseleave', () => clearInterval( this.intervalRight ) );
@@ -45,6 +44,10 @@ export default class MainMenu {
 		}
 	}
 
+	loadMenu() {
+		this.calculateMenuSize();
+	}
+
 	calculateMenuSize() {
 		const
 			containerWidth = innerWidth( this.container ),
@@ -56,6 +59,12 @@ export default class MainMenu {
 
 		if ( this.menu.scrollWidth > this.menu.clientWidth ) {
 			this.nav.classList.add( 'scrollable' );
+
+			if ( ! Cookie.get( 'pierogi_menu_initial_animation' ) ) {
+				this.nav.classList.add( 'initial-animation' );
+
+				Cookie.set( 'pierogi_menu_initial_animation', true );
+			}
 		} else if ( this.nav.classList.contains( 'scrollable' ) ) {
 			this.nav.classList.remove( 'scrollable' );
 		}

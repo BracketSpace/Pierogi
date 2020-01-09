@@ -195,11 +195,6 @@
 		}
 
 		#primary-menu > li {
-			animation: menuInitialScroll;
-			animation-delay: 1s;
-			animation-duration: 2s;
-			animation-timing-function: ease-in-out;
-			will-change: margin-left;
 
 			&:first-child {
 				padding-left: rem-calc(44);
@@ -216,6 +211,14 @@
 					padding-right: rem-calc(35);
 				}
 			}
+		}
+
+		&.initial-animation #primary-menu > li {
+			animation: menuInitialScroll;
+			animation-delay: 1s;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out;
+			will-change: transform;
 		}
 	}
 }
