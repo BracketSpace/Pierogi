@@ -97,11 +97,12 @@
 			margin-left: rem-calc(30);
 			padding: 0;
 			position: relative;
+			width: rem-calc(20);
 			z-index: 11;
 
 			svg {
 				display: block;
-				margin-top: rem-calc(1);
+				margin-top: rem-calc(-4);
 
 				g,
 				line {
