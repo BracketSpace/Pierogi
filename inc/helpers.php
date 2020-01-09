@@ -67,6 +67,15 @@ function pierogi_get_layout() {
 }
 
 /**
+ * Returns theme layout
+ *
+ * @return string
+ */
+function pierogi_get_blog_layout() {
+	return apply_filters( 'pierogi_get_blog_layout', get_theme_mod( 'blog_layout' ) );
+}
+
+/**
  * Returns theme version
  *
  * @return string

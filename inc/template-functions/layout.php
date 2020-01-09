@@ -21,8 +21,7 @@ function pierogi_body_classes( $classes ) {
 	$classes[] = pierogi_get_layout();
 
 	// Add blog page layout type css class.
-	$blog_layout = is_home() ? get_theme_mod( 'blog_layout' ) :
-		( is_search() || is_archive() ? 'list' : false );
+	$blog_layout = pierogi_get_blog_layout();
 
 	if ( $blog_layout ) {
 		$classes[] = "blog-layout-{$blog_layout}";
