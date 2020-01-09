@@ -212,15 +212,10 @@ body.search {
 			}
 		}
 
-		&.has-sidebar {
+		&.has-sidebar article {
 
-			article {
+			@include bp-up(lg) {
 				width: calc(50% - #{ rem-calc(40) });
-
-				@include bp-down( lg ) {
-					max-width: 100%;
-					width: 100%;
-				}
 			}
 		}
 	}
