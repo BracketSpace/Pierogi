@@ -5,7 +5,9 @@
 
 	span {
 		background-color: color(white);
+		overflow-wrap: break-word;
 		transition: 0.3s;
+		word-wrap: break-word;
 
 		&:first-of-type {
 			display: block;
