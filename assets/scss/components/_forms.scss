@@ -57,6 +57,10 @@ select {
 	@media (max-width: rem-calc( 334 )) {
 		min-width: rem-calc(300);
 	}
+
+	&::-ms-expand {
+		display: none;
+	}
 }
 
 input[type="radio"],
