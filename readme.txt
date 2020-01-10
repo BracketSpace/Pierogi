@@ -17,7 +17,10 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
-= 1.0.1 =
+= Unreleased =
+[Changed] Small design adjustments
+
+= 1.0.2 =
 [Fixed] Theme screenshot properly
 
 = 1.0.1 =
