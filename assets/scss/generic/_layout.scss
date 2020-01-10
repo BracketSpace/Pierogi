@@ -41,17 +41,16 @@ body {
 
 			@include bp-up(md) {
 				display: flex;
-				justify-content: center;
+				justify-content: space-between;
 			}
 
 			.site-main {
 
 				@include bp-up(md) {
-					flex: 1 1 75%;
+					flex: 0 1 64%;
 					margin-left: 0;
 					margin-right: rem-calc(40);
 					max-width: rem-calc($container-narrow-width);
-					width: 75%;
 				}
 			}
 		}
@@ -74,7 +73,7 @@ body {
 	@include bp-up(md) {
 		max-width: rem-calc(420);
 		min-width: rem-calc(314);
-		width: 28%;
+		width: 30%;
 	}
 
 	@include bp-between(sm, md) {
