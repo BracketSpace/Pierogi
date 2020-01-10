@@ -1,4 +1,6 @@
-figcaption {
+figcaption,
+.wp-caption-text,
+.gallery-caption {
 	color: color(gray, 6);
 	margin-bottom: 0 !important;
 	margin-top: rem-calc(20) !important;
