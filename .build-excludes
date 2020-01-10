@@ -1,3 +1,4 @@
+.babelrc
 .build-excludes
 .editorconfig
 .eslintrc
@@ -6,7 +7,9 @@
 .gitignore
 .gitattributes
 .stylelintrc
-assets/src
+assets
+builds
+vendor
 composer.json
 composer.lock
 node_modules
@@ -14,6 +17,8 @@ package.json
 package-lock.json
 phpcs.xml
 postcss.config.js
+LICENSE
 README.md
+grumphp.yml
 webpack.config.js
 yarn.lock
