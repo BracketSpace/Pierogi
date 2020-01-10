@@ -38,5 +38,17 @@
 
 a {
 	color: color(yellow);
-	transition: color 0.3s;
+	transition: 0.3s;
+}
+
+%underline-links {
+
+	a:not(.wp-block-button__link):not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary) {
+		border-bottom: 2px solid;
+		text-decoration: none;
+
+		&:hover {
+			border-color: transparent;
+		}
+	}
 }

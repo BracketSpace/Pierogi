@@ -92,6 +92,8 @@
 	.comment-content {
 		line-height: rem-calc(35);
 
+		@extend %underline-links;
+
 		p {
 			margin: rem-calc(10) 0;
 
