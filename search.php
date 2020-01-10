@@ -30,7 +30,7 @@ get_header();
 
 <?php endif; ?>
 
-	<section id="primary" class="content-area">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 			<div class="posts">
@@ -66,7 +66,7 @@ get_header();
 
 		<?php	pierogi_display_sidebar(); ?>
 
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
 <?php
 get_footer();
