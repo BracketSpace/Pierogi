@@ -17,6 +17,7 @@
 	table {
 		border-collapse: separate;
 		border-spacing: rem-calc(10);
+		table-layout: fixed;
 	}
 
 	td,
@@ -44,10 +45,6 @@
 	}
 
 	tbody {
-
-		td {
-			width: calc(100% / #{ rem-calc(67) });
-		}
 
 		&::before,
 		&::after {
