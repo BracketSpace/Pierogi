@@ -1,0 +1,27 @@
+%wp-block-file {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.wp-block-file {
+	margin: rem-calc(60) 0;
+
+	@extend %wp-block-file;
+
+	@include bp-down(sm) {
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	a.wp-block-file__button {
+
+		@include bp-down(sm) {
+			margin: rem-calc(20) 0 0;
+		}
+
+		&:hover {
+			color: color(pink);
+		}
+	}
+}

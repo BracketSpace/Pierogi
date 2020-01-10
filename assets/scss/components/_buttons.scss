@@ -1,0 +1,60 @@
+%btn {
+	-webkit-appearance: none;
+	border: rem-calc(3) solid;
+	border-radius: rem-calc(5);
+	color: color(white);
+	cursor: pointer;
+	font-weight: 700;
+	letter-spacing: rem-calc(0.69);
+	overflow-wrap: break-word;
+	padding: rem-calc(16) rem-calc(57) rem-calc(15) rem-calc(57);
+	text-transform: uppercase;
+	transition: 0.3s ease-in;
+
+	@include font-size( 23, 28 );
+
+	@include bp-down( xs ) {
+		padding: rem-calc(9) rem-calc(37);
+
+		@include font-size(14, 16);
+	}
+
+	&:not(:hover) {
+		border-color: transparent;
+	}
+
+	&:hover {
+		background-color: transparent !important;
+	}
+}
+
+.btn-primary,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file
+.wp-block-file__button,
+.bg-accent,
+.bg-accent-hover:hover,
+.bg-accent-hover:focus,
+input[type="submit"],
+input[type="button"] {
+	background-color: color(pink);
+
+	@extend %btn;
+
+	&:hover {
+		color: color(pink);
+	}
+}
+
+.btn-secondary,
+input[type="submit"].btn-secondary,
+input[type="button"].btn-secondary {
+	background-color: color(gray, 5);
+
+	@extend %btn;
+
+	&:hover {
+		color: color(gray, 5);
+	}
+}

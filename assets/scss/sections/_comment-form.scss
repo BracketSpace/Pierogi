@@ -1,0 +1,80 @@
+.comment-form {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 rem-calc(-20);
+
+	textarea {
+		height: rem-calc(177);
+		min-height: rem-calc(177);
+	}
+
+	label {
+		margin-top: rem-calc(35);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
+	}
+
+	p {
+		margin: 0 rem-calc(20);
+	}
+
+	.comment-notes,
+	.comment-form-comment,
+	.comment-form-url,
+	.comment-form-cookies-consent {
+		width: 100%;
+	}
+
+	.comment-form-author {
+		width: calc(40% - #{rem-calc(40)});
+
+		@include bp-down( sm ) {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	.comment-form-email {
+		width: calc(60% - #{rem-calc(40)});
+
+		@include bp-down( sm ) {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	.comment-form-cookies-consent {
+		margin: rem-calc(35) rem-calc(20) rem-calc(10) rem-calc(20);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
+	}
+
+	.form-submit {
+		margin-top: rem-calc(35);
+
+		@include bp-down( sm ) {
+			margin-top: rem-calc(20);
+		}
+	}
+}
+
+.has-sidebar .comment-form {
+
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url {
+
+		@include bp-up( rem-calc( 1370 ) ) {
+			width: calc(33.333% - #{rem-calc(40)});
+		}
+
+		@include bp-down( rem-calc( 930 ) ) {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+}

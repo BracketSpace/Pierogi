@@ -1,0 +1,26 @@
+.widget_recent_comments,
+.wp-block-latest-comments {
+
+	@extend %recent-items;
+
+	.comment-author-link a,
+	.wp-block-latest-comments__comment-author {
+		color: color(gray, 6);
+		margin-bottom: rem-calc(10);
+	}
+
+	.wp-block-latest-comments__comment-date {
+		color: color(gray, 6);
+		margin-top: rem-calc(10);
+		text-transform: uppercase;
+
+		@include font-size(14, 17);
+	}
+
+	.recentcomments {
+
+		a {
+			display: inline;
+		}
+	}
+}

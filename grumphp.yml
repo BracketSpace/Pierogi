@@ -1,0 +1,28 @@
+parameters:
+  git_dir: .
+  bin_dir: composer/bin
+  ignore_unstaged_changes: true
+  tasks:
+    composer:
+      with_dependencies: false
+      strict: false
+    phpcs:
+      standard: ./phpcs.xml
+      ignore_patterns: ['/vendor/', '/dist/']
+    git_blacklist:
+      keywords:
+        - 'die('
+        - 'print_r('
+        - 'var_dump('
+        - 'exit;'
+      triggered_by: ['php']
+    git_branch_name:
+      whitelist:
+        - '/develop|(feature|component|section|block\/.*)/'
+      blacklist:
+        - 'master'
+    npm_script:
+      script: "lint"
+      triggered_by: [js, scss]
+      working_directory: "./"
+      is_run_task: true

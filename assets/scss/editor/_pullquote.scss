@@ -1,0 +1,10 @@
+.wp-block-pullquote blockquote > .block-editor-rich-text p {
+
+	@include font-size( 18, 35 );
+}
+
+.wp-block-pullquote__citation,
+.wp-block-pullquote cite,
+.wp-block-pullquote footer {
+	text-transform: initial;
+}

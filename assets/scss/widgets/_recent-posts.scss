@@ -1,0 +1,95 @@
+%recent-items {
+	padding: 0;
+
+	ul {
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		margin-bottom: rem-calc(40);
+
+		@include font-size(20, 24);
+
+		&::before {
+			display: none !important;
+		}
+	}
+
+	a {
+		color: color(gray, 3);
+		text-decoration: none;
+
+		&:hover {
+			color: color(yellow);
+		}
+	}
+
+	.wp-block-latest-posts__post-excerpt,
+	.wp-block-latest-comments__comment-excerpt {
+		color: color(gray, 5);
+
+		@include font-size(18, 24);
+
+		@include bp-down( sm ) {
+
+			@include font-size(16, 22);
+		}
+	}
+}
+
+.widget_recent_entries,
+.wp-block-latest-posts {
+
+	@extend %recent-items;
+
+	li {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&.is-grid li {
+		margin: 0 0 rem-calc(40);
+	}
+
+	@include bp-up(600) {
+
+		@for $i from 2 through 6 {
+
+			&.columns-#{ $i } li {
+				padding: 0 rem-calc(10);
+				width: calc(( 100% + #{rem-calc(20)} ) / #{$i});
+
+				&:nth-child(#{$i}n+1) {
+					margin-left: rem-calc(-10);
+				}
+
+				&:nth-child(#{$i}n+#{$i}) {
+					margin-right: rem-calc(-10);
+				}
+			}
+		}
+	}
+
+	* {
+		order: 2;
+	}
+
+	.post-date,
+	.wp-block-latest-posts__post-date {
+		color: color(gray, 6);
+		display: block;
+		margin-bottom: rem-calc(10);
+		order: 1;
+		text-transform: uppercase;
+
+		@include font-size(14, 17);
+
+		@include bp-down(sm) {
+
+			@include font-size(12, 20);
+		}
+	}
+}

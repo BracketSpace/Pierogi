@@ -1,0 +1,30 @@
+/**
+ * Global styles
+ */
+
+html {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	background-color: color(white);
+	color: color(gray);
+	font-family: $font-primary;
+}
+
+.menu-open {
+	overflow: hidden;
+}

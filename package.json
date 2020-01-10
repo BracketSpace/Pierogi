@@ -1,0 +1,47 @@
+{
+  "name": "pierogi",
+  "version": "1.0.0",
+  "description": "Pierogi WordPress Theme",
+  "author": "BracketSpace",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start": "wp-scripts start --mode development",
+    "build": "wp-scripts build --mode development",
+    "build:production": "wp-scripts build --mode production",
+    "lint:scripts": "eslint -c .eslintrc.prod ./assets/js/**/*.js",
+    "lint:styles": "stylelint ./assets/scss/**/*.scss",
+    "fix:scripts": "eslint -c .eslintrc.prod ./assets/js/**/*.js --fix",
+    "fix:styles": "stylelint ./assets/scss/**/*.scss --fix",
+    "lint": "run-p \"lint:*\"",
+    "fix": "run-p \"fix:*\""
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@wordpress/scripts": "^6.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "custom-event-polyfill": "^1.0.7",
+    "eslint": "^6.7.1",
+    "eslint-loader": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^5.0.2",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "js-cookie": "^2.2.1",
+    "node-sass": "^4.13.0",
+    "normalize-scss": "^7.0.1",
+    "normalize-wheel": "^1.0.1",
+    "npm-run-all": "^4.1.5",
+    "perfectionist": "^2.4.0",
+    "pixrem": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "stylelint-order": "^3.1.1",
+    "stylelint-webpack-plugin": "^1.1.0",
+    "webpack-extraneous-file-cleanup-plugin": "^2.0.0"
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ]
+}

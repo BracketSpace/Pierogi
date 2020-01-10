@@ -1,0 +1,37 @@
+.page-header,
+.entry-title-wrap,
+body.page .entry-header {
+	margin: 0 0 rem-calc(147);
+
+	@include bp-down( sm ) {
+		margin-bottom: rem-calc(100);
+	}
+
+	h1 {
+
+		color: color(gray, 1);
+		margin-bottom: rem-calc(15);
+		margin-top: 0;
+
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.entry-subtitle,
+	.page-subtitle,
+	.archive-description,
+	.archive-description p {
+		color: color(gray, 4);
+		margin: rem-calc(15) auto 0 auto;
+		max-width: rem-calc(550);
+		text-align: center;
+
+		@include font-size(23, 30);
+
+		@include bp-down( sm ) {
+
+			@include font-size( 21, 30 );
+		}
+
+	}
+}

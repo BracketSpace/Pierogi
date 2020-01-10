@@ -1,0 +1,68 @@
+.wp-block-pullquote {
+	margin: rem-calc(100) 0;
+	padding: rem-calc(60) 0;
+
+	@include bp-down(sm) {
+		margin: rem-calc(60) 0;
+		padding: rem-calc(40) 0;
+	}
+
+	blockquote {
+		margin: 0;
+
+		p,
+		> .block-editor-rich-text p {
+			margin-bottom: 1em;
+
+			@include font-size(27, 50);
+
+		}
+	}
+
+	cite,
+	.wp-block-pullquote__citation {
+		font-style: normal;
+	}
+
+	&.is-style-solid-color {
+		background-color: color(light);
+
+		blockquote {
+			max-width: none;
+			padding: 0 rem-calc($container-padding);
+
+			@include bp-down(sm) {
+				padding: 0 rem-calc($container-mobile-padding);
+			}
+
+			p {
+				margin-bottom: 1em;
+			}
+
+			&:not(.has-text-color) {
+
+				cite,
+				.wp-block-pullquote__citation {
+					color: color(gray, 3);
+				}
+			}
+		}
+	}
+
+	&:not(.is-style-solid-color) {
+		border-bottom: rem-calc(2) solid color(gray, 5);
+		border-top: rem-calc(2) solid color(gray, 5);
+
+		blockquote:not(.has-text-color) {
+
+			cite,
+			.wp-block-pullquote__citation {
+				color: color(yellow);
+			}
+		}
+
+		blockquote p {
+			margin-bottom: 1em;
+		}
+	}
+}

@@ -1,0 +1,103 @@
+/**
+ * Layout
+ */
+
+.content-area {
+	padding-bottom: rem-calc(150);
+
+	@include bp-down(sm) {
+		padding-bottom: rem-calc(100);
+	}
+}
+
+main.site-main {
+	margin: 0 auto;
+}
+
+body {
+
+	&:not(.single-post) .site-content {
+		padding-top: rem-calc(145);
+
+		@include bp-down(sm) {
+			padding-top: rem-calc(100);
+		}
+	}
+
+	&.single .content-area {
+
+		@include bp-up(lg) {
+			padding-top: rem-calc(100);
+		}
+
+		@include bp-between(sm, lg) {
+			padding-top: rem-calc(60);
+		}
+	}
+
+	&.has-sidebar {
+
+		.content-area {
+
+			@include bp-up(md) {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.site-main {
+
+				@include bp-up(md) {
+					flex: 0 1 64%;
+					margin-left: 0;
+					margin-right: rem-calc(40);
+					max-width: rem-calc($container-narrow-width);
+				}
+			}
+		}
+	}
+
+	&.no-sidebar {
+
+		&.single,
+		&.page {
+
+			.site-content.container {
+				max-width: rem-calc($content-width + (2 * $container-padding));
+			}
+		}
+	}
+}
+
+.widget-area {
+
+	@include bp-up(md) {
+		max-width: rem-calc(420);
+		min-width: rem-calc(314);
+		width: 30%;
+	}
+
+	@include bp-between(sm, md) {
+		margin: rem-calc(150) rem-calc(-20) 0 rem-calc(-20);
+	}
+
+	@include bp-down(sm) {
+		margin: rem-calc(60) auto 0 auto;
+		max-width: rem-calc(520);
+	}
+
+	&::after {
+		clear: both;
+		content: "";
+		display: block;
+	}
+
+	.widget {
+
+		@include bp-between(sm, md) {
+			float: left;
+			margin-left: rem-calc(20);
+			margin-right: rem-calc(20);
+			width: calc(50% - #{ rem-calc(40) });
+		}
+	}
+}

@@ -1,0 +1,256 @@
+/**
+ * Mixins
+ */
+
+@mixin background($url, $size: contain, $position: center, $repeat: no-repeat) {
+	background-image: url("../images/"+$url);
+	background-position: $position;
+	background-repeat: $repeat;
+	background-size: $size;
+}
+
+@mixin pseudoelement($content: "", $width: null, $height: null, $top: null, $left: null) {
+
+	@if (is-number($width) and null == unit($width)) {
+		$width: rem-calc($width);
+	}
+
+	@if (is-number($height) and null == unit($height)) {
+		$height: rem-calc($height);
+	}
+
+	@if (is-number($top) and null == unit($top)) {
+		$top: rem-calc($top);
+	}
+
+	@if (is-number($left) and null == unit($left)) {
+		$left: rem-calc($left);
+	}
+
+	content: $content;
+	display: block;
+	height: $height;
+	left: $left;
+	position: absolute;
+	top: $top;
+	width: $width;
+
+	@content;
+}
+
+@mixin before($content: "", $width: null, $height: null, $top: null, $left: null) {
+
+	&::before {
+
+		@include pseudoelement($content, $width, $height, $top, $left) {
+			@content;
+		}
+	}
+}
+
+@mixin after($content: "", $width: null, $height: null, $top: null, $left: null) {
+
+	&::after {
+
+		@include pseudoelement($content, $width, $height, $top, $left) {
+			@content;
+		}
+	}
+}
+
+@mixin bp-up($breakpoint, $use-rem: true) {
+	$breakpoint-value: bp($breakpoint, $use-rem);
+
+	@if ($breakpoint-value) {
+
+		@media (min-width: $breakpoint-value) {
+			@content;
+		}
+	}
+}
+
+@mixin bp-down($breakpoint, $use-rem: true) {
+	$breakpoint-value: bp($breakpoint, $use-rem);
+	$diff: 1;
+
+	@if ($use-rem == true) {
+		$diff: rem-calc($diff);
+	}
+
+	@if ($breakpoint-value) {
+
+		@media (max-width: ($breakpoint-value - $diff)) {
+			@content;
+		}
+	}
+}
+
+@mixin bp-between($low, $high, $use-rem: true) {
+	$low-value: bp($low, $use-rem);
+	$high-value: bp($high, $use-rem);
+	$diff: 1;
+
+	@if ($use-rem == true) {
+		$diff: rem-calc($diff);
+	}
+
+	@if ($low-value and $high-value) {
+
+		@media (min-width: $low-value) and (max-width: ($high-value - $diff)) {
+			@content;
+		}
+	}
+}
+
+@mixin img {
+
+	img {
+		display: block;
+		height: auto;
+		max-width: 100%;
+
+		@content;
+	}
+}
+
+@mixin font-size($size, $line-height: null) {
+	font-size: rem-calc($size);
+
+	@if (type-of($line-height) == "number") {
+		$calculated: $line-height / $size;
+		$round: round($calculated * 10000) / 10000;
+
+		@if ($calculated != $round) {
+			/* stylelint-disable-next-line */
+			$calculated: calc(#{$line-height}em / #{$size});
+		}
+
+		line-height: $calculated;
+	}
+}
+
+@mixin stripped-table {
+
+	.wp-block-table.is-style-stripes table {
+
+		tbody {
+
+			tr,
+			th {
+
+				&:nth-child(odd) {
+					background-color: color(white);
+				}
+
+				&:nth-child(even) {
+					background-color: #f7f7f7;
+				}
+			}
+		}
+	}
+}
+
+@mixin table {
+
+	table,
+	.wp-block-table {
+		margin: rem-calc(100) 0;
+	}
+
+	table,
+	.wp-block-table table {
+		border: none;
+		border-spacing: 0;
+
+		@include bp-down( sm ) {
+			margin: rem-calc(60) 0;
+		}
+	}
+
+	.wp-block-table table {
+		margin: 0;
+	}
+
+	th,
+	td {
+		border: none;
+
+		&:first-child {
+			border-bottom-left-radius: rem-calc(5);
+			border-top-left-radius: rem-calc(5);
+		}
+
+		&:last-child {
+			border-bottom-right-radius: rem-calc(5);
+			border-top-right-radius: rem-calc(5);
+		}
+	}
+
+	thead,
+	tfoot {
+		color: color(white);
+		letter-spacing: rem-calc(0.3);
+		text-transform: uppercase;
+
+		@include font-size( 16, 19 );
+
+		tr {
+			background-color: color(pink);
+		}
+
+		/* stylelint-disable no-descending-specificity */
+		th,
+		td {
+			/* stylelint-enable */
+			padding: rem-calc(22) rem-calc(47) rem-calc(21) rem-calc(47);
+			position: relative;
+
+			@include after( "\2022" ) {
+				color: color(white);
+				font-size: rem-calc(21);
+				right: rem-calc(-4.5);
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			&:first-child {
+				padding-left: rem-calc(40);
+			}
+
+			&:last-child {
+				padding-right: rem-calc(40);
+
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+
+	tbody {
+		color: color(gray, 1);
+
+		@include font-size(21, 45);
+
+		/* stylelint-disable no-descending-specificity */
+		th,
+		td {
+			/* stylelint-enable */
+			border-bottom: rem-calc(1) solid #f7f7f7;
+			padding: rem-calc(9) rem-calc(20) rem-calc(10) rem-calc(20);
+			text-align: center;
+		}
+
+		tr:last-of-type {
+
+			th,
+			td {
+				border-bottom: none;
+			}
+		}
+
+	}
+
+	@include stripped-table;
+
+}

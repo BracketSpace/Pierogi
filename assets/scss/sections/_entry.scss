@@ -1,0 +1,85 @@
+/**
+ * Post/Page content style
+ */
+
+body.page,
+body.single-post {
+
+	article {
+		position: relative;
+	}
+
+	.entry-content {
+
+		@extend %underline-links;
+
+		> p {
+			margin: 0;
+
+			&:not(:first-child) {
+				margin-top: rem-calc(40);
+			}
+
+			&:not(:last-child) {
+				margin-bottom: rem-calc(60);
+			}
+
+			+ h1,
+			+ h2 {
+				margin-top: rem-calc(100);
+			}
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		.page-links {
+
+			@extend %pagination-links;
+
+			.label {
+				font-weight: 400;
+
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+body.page {
+
+	.excerpt {
+		margin-bottom: rem-calc(100);
+		text-align: center;
+
+		@include bp-down(sm) {
+			margin-bottom: rem-calc(78);
+		}
+	}
+
+	&.has-sidebar .excerpt {
+
+		@include bp-up(md) {
+			text-align: left;
+		}
+
+		@include bp-up(sm) {
+			margin-bottom: rem-calc(118);
+		}
+	}
+
+	footer.entry-footer {
+		bottom: rem-calc(-40);
+		position: absolute;
+	}
+}
+
+body.single-post {
+
+	footer.entry-footer {
+		margin: rem-calc(60) 0;
+	}
+}

@@ -1,0 +1,53 @@
+/**
+ * Variables
+ */
+
+$font-primary: "Lato", sans-serif;
+$font-secondary: "Libre Baskerville", serif;
+
+$colors: (
+	yellow: #ffc33a,
+	yellow-light: #ffd983,
+	pink: #ff8787,
+	black: #000,
+	gray: (
+		#21252a,
+		#343a40,
+		#495057,
+		#717680,
+		#868e96,
+		#adb5bd,
+		#dfdfdf
+	),
+	cream: #fdefef,
+	light: #f7f7f7,
+	white: #fff
+);
+
+$breakpoints: (
+	xs: 480,
+	sm: 768,
+	md: 1024,
+	lg: 1200
+);
+
+$container-width: 1640;
+$container-narrow-width: 1080;
+$container-padding: 40;
+$container-mobile-padding: 20;
+$content-width: 896;
+
+$alignwide-width: 1270;
+
+$editor-block-width-delta: 30px;
+$editor-block-width: ( $content-width + $editor-block-width-delta );
+$editor-block-width-wide: ( $alignwide-width + $editor-block-width-delta );
+
+:root {
+	--scrollbar-width: 0;
+	--admin-bar-height: 32px;
+
+	@media (max-width: 782px) {
+		--admin-bar-height: 46px;
+	}
+}

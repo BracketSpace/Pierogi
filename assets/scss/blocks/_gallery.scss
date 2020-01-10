@@ -1,0 +1,57 @@
+.wp-block-gallery,
+.blocks-gallery-grid {
+
+	&:not(.alignleft):not(.alignright) {
+		margin-bottom: rem-calc(100);
+		margin-top: rem-calc(100);
+
+		@include bp-down( sm ) {
+			margin-bottom: rem-calc(60);
+			margin-top: rem-calc(60);
+		}
+	}
+
+	&.alignleft {
+		float: left;
+		margin: rem-calc(8) rem-calc(16) rem-calc(16) 0;
+	}
+
+	&.alignright {
+		float: right;
+		margin: rem-calc(8) 0 rem-calc(16) rem-calc(16);
+	}
+
+	.blocks-gallery-image,
+	.blocks-gallery-item {
+
+		figure {
+			align-items: flex-start;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		figcaption {
+			background: transparent;
+			color: color(gray, 6);
+			font-weight: 700;
+			padding: rem-calc(20) 0 0 0;
+			position: static;
+			text-align: left;
+
+			@include font-size(14, 17);
+		}
+	}
+}
+
+body:not(.has-sidebar) {
+
+	/* stylelint-disable-next-line no-descending-specificity */
+	.wp-block-gallery {
+
+		&.alignwide,
+		&.alignfull {
+			padding-left: rem-calc(16);
+			padding-right: rem-calc(16);
+		}
+	}
+}

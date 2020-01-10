@@ -1,0 +1,18 @@
+figcaption {
+	color: color(gray, 6);
+	margin-bottom: 0 !important;
+	margin-top: rem-calc(20) !important;
+	text-align: left;
+	text-transform: uppercase;
+
+	@include font-size( 14, 17 );
+
+	@include bp-down( sm ) {
+
+		@include font-size( 12, 20 );
+	}
+
+	a {
+		color: inherit;
+	}
+}

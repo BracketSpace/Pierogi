@@ -1,0 +1,60 @@
+.wp-block-columns {
+	margin: rem-calc(60) 0;
+
+	@include bp-up(sm) {
+		flex-wrap: nowrap;
+	}
+
+	@include bp-down(xs) {
+		margin: rem-calc(60) 0 0 0;
+	}
+
+	&.alignwide,
+	&.alignfull {
+		padding-left: rem-calc($container-padding);
+		padding-right: rem-calc($container-padding);
+
+		@include bp-down(sm) {
+			padding-left: rem-calc($container-mobile-padding);
+			padding-right: rem-calc($container-mobile-padding);
+		}
+	}
+
+	.wp-block-column {
+		flex-basis: calc(50% - #{ rem-calc($container-padding / 2) });
+
+		@include bp-down(sm) {
+			flex-basis: calc(50% - #{ rem-calc($container-mobile-padding / 2) });
+			margin-bottom: rem-calc(60);
+		}
+
+		&:not(:first-child) {
+
+			@include bp-up(md) {
+				margin-left: rem-calc($container-padding);
+			}
+
+			@include bp-between(sm, md) {
+				margin-left: rem-calc($container-mobile-padding);
+			}
+		}
+
+		&:nth-child(2n) {
+
+			@include bp-between(600, sm) {
+				margin-left: rem-calc($container-mobile-padding);
+			}
+		}
+
+		> * {
+
+			&:first-child {
+				margin-top: 0 !important;
+			}
+
+			&:last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+}

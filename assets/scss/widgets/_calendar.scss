@@ -1,0 +1,67 @@
+.widget_calendar {
+	color: color(gray, 6);
+	margin: rem-calc(100)  0;
+
+	@include bp-down( sm ) {
+		margin: rem-calc(60) 0;
+	}
+
+	caption {
+		color: color(gray, 3);
+		margin-bottom: rem-calc(20);
+		text-transform: uppercase;
+
+		@include font-size(16, 19);
+	}
+
+	table {
+		border-collapse: separate;
+		border-spacing: rem-calc(10);
+		table-layout: fixed;
+	}
+
+	td,
+	th {
+		border-radius: rem-calc(5);
+		line-height: rem-calc(44);
+		padding: 0;
+		text-align: center;
+
+		a {
+			border: rem-calc(3) solid;
+			border-radius: inherit;
+			color: color(gray, 3);
+			display: block;
+			transition: 0.2s;
+
+			&:not(:hover) {
+				border-color: transparent;
+			}
+
+			&:hover {
+				color: color(yellow);
+			}
+		}
+	}
+
+	tbody {
+
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			height: rem-calc(10);
+		}
+	}
+
+	#wp-calendar {
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	thead,
+	tfoot td:not(.pad),
+	td:not([colspan]):not(.pad) {
+		box-shadow: 0 0 rem-calc(3) 0 rgba(0, 0, 0, 0.16);
+	}
+}

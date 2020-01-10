@@ -1,0 +1,11 @@
+*.log
+*.lock
+package-lock.json
+style.css
+style-editor.css
+
+/vendor
+/node_modules
+/js
+/images
+/assets/dist
