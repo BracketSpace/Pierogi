@@ -33,10 +33,19 @@ function pierogi_customize_register( $wp_customize ) {
 		);
 
 		$wp_customize->selective_refresh->add_partial(
+			'footer_menu',
+			[
+				'selector'            => '.footer-navigation',
+				'render_callback'     => 'pierogi_footer_navigation',
+				'container_inclusive' => true,
+			]
+		);
+
+		$wp_customize->selective_refresh->add_partial(
 			'footer_logo',
 			[
 				'selector'            => 'a.footer-logo-link',
-				'render_callback'     => 'pierogi_customize_partial_footer_logo',
+				'render_callback'     => 'pierogi_footer_logo',
 				'container_inclusive' => true,
 			]
 		);
@@ -44,8 +53,8 @@ function pierogi_customize_register( $wp_customize ) {
 		$wp_customize->selective_refresh->add_partial(
 			'footer_text',
 			[
-				'selector'            => '.footer-text',
-				'render_callback'     => 'pierogi_customize_partial_footer_text',
+				'selector'        => '.footer-text',
+				'render_callback' => 'pierogi_footer_text',
 			]
 		);
 	}
@@ -61,13 +70,13 @@ function pierogi_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'accent_color', [
 		'transport'         => 'postMessage',
 		'default'           => $colors['accent'],
-		'sanitize_callback' => 'pierogi_sanitize_theme_mod_colors',
+		'sanitize_callback' => 'sanitize_hex_color',
 	] );
 
 	$wp_customize->add_setting( 'secondary_color', [
 		'transport'         => 'postMessage',
 		'default'           => $colors['secondary'],
-		'sanitize_callback' => 'pierogi_sanitize_theme_mod_colors',
+		'sanitize_callback' => 'sanitize_hex_color',
 	] );
 
 	$wp_customize->add_control( 'accent_color', [
@@ -88,7 +97,7 @@ function pierogi_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'author_avatar', [
 		'default'           => pierogi_get_theme_mod_default( 'author_avatar' ),
-		'sanitize_callback' => 'pierogi_sanitize_theme_mod_author_avatar',
+		'sanitize_callback' => 'rest_sanitize_boolean',
 	] );
 
 	$wp_customize->add_control( 'author_avatar', [
@@ -103,9 +112,20 @@ function pierogi_customize_register( $wp_customize ) {
 		'priority' => 120,
 	] );
 
+	$wp_customize->add_setting( 'footer_menu', [
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	] );
+
+	$wp_customize->add_control( 'footer_menu', [
+		'type'    => 'checkbox',
+		'section' => 'pierogi_footer',
+		'label'   => __( 'Show Footer Menu', 'pierogi' ),
+	] );
+
 	$wp_customize->add_setting( 'footer_logo', [
 		'transport'         => 'postMessage',
-		'sanitize_callback' => 'pierogi_sanitize_theme_mod_footer_logo',
+		'sanitize_callback' => 'absint',
 	] );
 
 	$wp_customize->add_control(
@@ -116,7 +136,6 @@ function pierogi_customize_register( $wp_customize ) {
 				'label'         => __( 'Footer Logo', 'pierogi' ),
 				'section'       => 'pierogi_footer',
 				'settings'      => 'footer_logo',
-				'priority'      => 9,
 				'width'         => 134,
 				'height'        => 48,
 				'flex_width'    => true,
@@ -196,35 +215,11 @@ add_action( 'customize_register', 'pierogi_customize_register' );
  * @return mixed
  */
 function pierogi_sanitize_theme_mod_colors( $value ) {
-	if ( is_array( $value ) ) {
-		foreach ( $value as &$val ) {
-			$val = pierogi_sanitize_theme_mod_colors( $val );
-		}
-
-		return $value;
+	foreach ( $value as &$val ) {
+		$val = pierogi_sanitize_theme_mod_colors( $val );
 	}
 
-	return sanitize_hex_color( $value );
-}
-
-/**
- * Theme Mod sanitization callback
- *
- * @param  bool $value Value to sanitize.
- * @return bool
- */
-function pierogi_sanitize_theme_mod_author_avatar( $value ) {
-	return (bool) $value;
-}
-
-/**
- * Theme Mod sanitization callback
- *
- * @param  int $value Value to sanitize.
- * @return int
- */
-function pierogi_sanitize_theme_mod_footer_logo( $value ) {
-	return (int) $value;
+	return $value;
 }
 
 /**
@@ -276,24 +271,6 @@ function pierogi_customize_partial_blogdescription() {
 }
 
 /**
- * Render the footer logo for the selective refresh partial.
- *
- * @return void
- */
-function pierogi_customize_partial_footer_logo() {
-	pierogi_footer_logo();
-}
-
-/**
- * Render the footer text for the selective refresh partial.
- *
- * @return void
- */
-function pierogi_customize_partial_footer_text() {
-	pierogi_footer_text();
-}
-
-/**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function pierogi_customize_controls_js() {
@@ -329,6 +306,7 @@ function pierogi_get_theme_mods_defaults() {
 		'blog_layout'   => 'grid',
 		'footer_text'   => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
 		'author_avatar' => true,
+		'footer_menu'   => true,
 		'colors'        => [
 			'accent'    => '#ffc33a',
 			'light'     => '#ffd983',

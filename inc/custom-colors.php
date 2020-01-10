@@ -77,7 +77,7 @@ function pierogi_get_accent_selectors() {
 function pierogi_get_accent_light_selectors() {
 	return apply_filters( 'pierogi_accent_light_color_selectors', [
 		'background-color' => [
-			'.site-footer .footer-navigation',
+			'.site-footer nav.footer-navigation',
 			'.navigation.pagination .nav-links a::after',
 			'body.page .entry-content .page-links a::after',
 			'body.single-post .entry-content .page-links a::after',

@@ -27,7 +27,7 @@
 		}
 	}
 
-	.footer-navigation {
+	nav.footer-navigation {
 		background-color: color(yellow-light);
 		padding: rem-calc(118) 0;
 
@@ -71,6 +71,7 @@
 			&:hover,
 			&:active {
 				box-shadow: 0 rem-calc(3) 0 0 color(gray, 2);
+				color: color(gray, 1);
 				text-decoration: none;
 			}
 		}

@@ -273,3 +273,18 @@ if ( ! function_exists( 'pierogi_no_menu_warning' ) ) :
 		printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html__( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
 	}
 endif;
+
+if ( ! function_exists( 'pierogi_footer_navigation' ) ) :
+	/**
+	 * Display warning when no menu is set
+	 *
+	 * @return void
+	 */
+	function pierogi_footer_navigation() {
+		if ( get_theme_mod( 'footer_menu' ) ) {
+			get_template_part( 'template-parts/footer-navigation' );
+		} elseif ( is_customize_preview() ) {
+			echo '<div class="footer-navigation"></div>';
+		}
+	}
+endif;
