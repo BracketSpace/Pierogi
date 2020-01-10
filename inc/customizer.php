@@ -81,6 +81,23 @@ function pierogi_customize_register( $wp_customize ) {
 		'section' => 'colors',
 	] );
 
+	$wp_customize->add_section( 'pierogi_post_settings', [
+		'title'    => __( 'Post Settings', 'pierogi' ),
+		'priority' => 120,
+	] );
+
+	$wp_customize->add_setting( 'author_avatar', [
+		'default'           => pierogi_get_theme_mod_default( 'author_avatar' ),
+		'sanitize_callback' => 'pierogi_sanitize_theme_mod_author_avatar',
+	] );
+
+	$wp_customize->add_control( 'author_avatar', [
+		'type'        => 'checkbox',
+		'section'     => 'pierogi_post_settings',
+		'label'       => __( 'Show Author Avatar', 'pierogi' ),
+		'description' => __( 'Whether to show author avatar in post header.', 'pierogi' ),
+	] );
+
 	$wp_customize->add_section( 'pierogi_footer', [
 		'title'    => __( 'Footer', 'pierogi' ),
 		'priority' => 120,
@@ -193,6 +210,16 @@ function pierogi_sanitize_theme_mod_colors( $value ) {
 /**
  * Theme Mod sanitization callback
  *
+ * @param  bool $value Value to sanitize.
+ * @return bool
+ */
+function pierogi_sanitize_theme_mod_author_avatar( $value ) {
+	return (bool) $value;
+}
+
+/**
+ * Theme Mod sanitization callback
+ *
  * @param  int $value Value to sanitize.
  * @return int
  */
@@ -298,10 +325,11 @@ add_action( 'customize_preview_init', 'pierogi_customize_preview_js' );
  */
 function pierogi_get_theme_mods_defaults() {
 	$defaults = [
-		'theme_layout' => 'no-sidebar',
-		'blog_layout'  => 'grid',
-		'footer_text'  => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
-		'colors'       => [
+		'theme_layout'  => 'no-sidebar',
+		'blog_layout'   => 'grid',
+		'footer_text'   => '© %year% All Rights Reserved. Pierogi by BracketSpace. Proudly powered by WordPress',
+		'author_avatar' => true,
+		'colors'        => [
 			'accent'    => '#ffc33a',
 			'light'     => '#ffd983',
 			'secondary' => '#ff8787',

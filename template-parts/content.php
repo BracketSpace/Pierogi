@@ -7,19 +7,23 @@
  * @package Pierogi
  */
 
+$pierogi_show_avatar = get_theme_mod( 'author_avatar' );
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header">
+	<header class="entry-header<?php $pierogi_show_avatar && print( ' has-avatar' ); ?>">
 
 		<?php if ( has_post_thumbnail() ) : ?>
 			<?php pierogi_post_thumbnail( 'post-header' ); ?>
 		<?php endif; ?>
 
-		<div class="author-image">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', [ 'force_display' => true ] ); ?>
-		</div>
+		<?php if ( $pierogi_show_avatar ) : ?>
+			<div class="author-image">
+				<?php echo get_avatar( get_the_author_meta( 'ID' ), 139, '', '', [ 'force_display' => true ] ); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="entry-meta">
 			<?php pierogi_entry_meta(); ?>
