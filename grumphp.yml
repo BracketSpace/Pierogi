@@ -18,7 +18,7 @@ parameters:
       triggered_by: ['php']
     git_branch_name:
       whitelist:
-        - '/develop|(feature|component|section|block\/.*)/'
+        - '/develop|(feature|component|section|block|release\/.*)/'
       blacklist:
         - 'master'
     npm_script:
