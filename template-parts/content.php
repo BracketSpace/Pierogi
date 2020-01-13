@@ -16,7 +16,7 @@ $pierogi_show_avatar = get_theme_mod( 'author_avatar' );
 	<header class="entry-header<?php $pierogi_show_avatar && print( ' has-avatar' ); ?>">
 
 		<?php if ( has_post_thumbnail() ) : ?>
-			<?php pierogi_post_thumbnail( 'post-header' ); ?>
+			<?php pierogi_post_thumbnail( 'pierogi_post_header' ); ?>
 		<?php endif; ?>
 
 		<?php if ( $pierogi_show_avatar ) : ?>
