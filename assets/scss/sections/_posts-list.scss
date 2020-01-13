@@ -33,6 +33,10 @@ body.search {
 
 	.entry-meta {
 		margin-bottom: rem-calc(10);
+
+		@include bp-down( sm ) {
+			margin-bottom: 0;
+		}
 	}
 
 	.entry-title {
@@ -43,7 +47,7 @@ body.search {
 		word-wrap: break-word;
 
 		@include bp-down( sm ) {
-			margin: rem-calc(10) 0;
+			margin: rem-calc(2) 0 rem-calc(10) 0;
 
 			@include font-size( 28, 34 );
 		}
@@ -71,6 +75,8 @@ body.search {
 		@include font-size( 16, 19 );
 
 		@include bp-down( sm ) {
+			display: inline-block;
+			margin-top: rem-calc(10);
 
 			@include font-size( 14, 17 );
 		}
@@ -143,7 +149,7 @@ body.search {
 
 			@include bp-down(md) {
 				flex-direction: column;
-				margin: rem-calc(61) auto;
+				margin: rem-calc(60) auto;
 				max-width: rem-calc(521);
 				width: 100%;
 			}

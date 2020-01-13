@@ -15,7 +15,7 @@ $pierogi_categories_list = get_the_category_list( esc_html__( ', ', 'pierogi' ) 
 
 	<?php if ( has_post_thumbnail() ) : ?>
 
-		<?php pierogi_post_thumbnail( 'post-list' ); ?>
+		<?php pierogi_post_thumbnail( 'pierogi_post_list' ); ?>
 
 	<?php endif; ?>
 

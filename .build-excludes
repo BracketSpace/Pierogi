@@ -7,7 +7,7 @@
 .gitignore
 .gitattributes
 .stylelintrc
-assets
+assets/images
 builds
 vendor
 composer.json
