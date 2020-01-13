@@ -35,6 +35,7 @@ Initial release
 Pierogi WordPress Theme, Copyright 2020 BracketSpace
 Pierogi is distributed under the terms of the GNU GPL.
 
-* normalize.css, © 2012-2019 Nicolas Gallagher and Jonathan Neal, MIT
-* Underscores, © 2012-2019 Automattic, Inc., GNU GPL v2 or later
-* normalize-wheel, © 2015-2019 Facebook, Inc., BSD
+* normalize.css, © 2012-2020 Nicolas Gallagher and Jonathan Neal, MIT
+* Underscores, © 2012-2020 Automattic, Inc., GNU GPL v2 or later
+* normalize-wheel, © 2015-2020 Facebook, Inc., BSD
+* custom-event-polyfill, © 2016-2020 Evan Krambuhl, MIT
