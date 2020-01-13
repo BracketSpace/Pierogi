@@ -1,5 +1,4 @@
 import normalizeWheel from 'normalize-wheel';
-import Cookie from 'js-cookie';
 import { innerWidth } from '../helpers';
 
 export default class MainMenu {
@@ -59,12 +58,7 @@ export default class MainMenu {
 
 		if ( this.menu.scrollWidth > this.menu.clientWidth ) {
 			this.nav.classList.add( 'scrollable' );
-
-			if ( ! Cookie.get( 'pierogi_menu_initial_animation' ) ) {
-				this.nav.classList.add( 'initial-animation' );
-
-				Cookie.set( 'pierogi_menu_initial_animation', true );
-			}
+			this.nav.classList.add( 'initial-animation' );
 		} else if ( this.nav.classList.contains( 'scrollable' ) ) {
 			this.nav.classList.remove( 'scrollable' );
 		}

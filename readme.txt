@@ -21,6 +21,7 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 [Changed] Small design adjustments
 [Changed] In the package, the source files are included
 [Changed] Image sizes prefixed
+[Changed] Menu animation cookie removed
 
 = 1.0.2 =
 [Fixed] Theme screenshot properly
