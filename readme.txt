@@ -17,6 +17,9 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= [next] =
+[Changed] Google fonts enqueued as separate stylesheet
+
 = 1.0.3 =
 [Changed] Small design adjustments
 [Changed] In the package, the source files are included

@@ -94,7 +94,7 @@ if ( ! function_exists( 'pierogi_setup' ) ) :
 		add_theme_support( 'editor-styles');
 
 		// Add editor styles.
-		add_editor_style( 'style-editor.css' );
+		add_editor_style( [ 'style-editor.css', pierogi_fonts_url() ] );
 
 		// Register image size for posts list.
 		add_image_size( 'pierogi_post_list', 521, 348, true );
@@ -147,6 +147,9 @@ add_action( 'widgets_init', 'pierogi_widgets_init' );
 function pierogi_scripts() {
 	$version = pierogi_get_version();
 
+	// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	wp_enqueue_style( 'pierogi-fonts', pierogi_fonts_url(), [], null );
+
 	wp_enqueue_style( 'pierogi-style', get_stylesheet_uri(), [], $version );
 
 	wp_enqueue_script( 'pierogi-script', get_theme_file_uri( 'js/main.min.js' ), [ 'wp-i18n' ], $version, true );
@@ -172,6 +175,46 @@ function pierogi_enqueue_block_editor_scripts() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'pierogi_enqueue_block_editor_scripts' );
+
+if ( ! function_exists( 'pierogi_fonts_url' ) ) {
+	/**
+	 * Register Google font for Pierogi.
+	 *
+	 * @return string Google fonts URL.
+	 */
+	function pierogi_fonts_url() {
+		$fonts_url     = '';
+		$font_families = [];
+		$subsets       = 'latin,latin-ext';
+
+		/**
+		 * Translators: If there are characters in your language that are not
+		 * supported by Lato, translate this to 'off'. Do not translate
+		 * into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Lato font: on or off', 'pierogi' ) ) {
+			$font_families[] = 'Lato:300,300i,400,400i,700,700i,900,900i';
+		}
+
+		/**
+		 * Translators: If there are characters in your language that are not
+		 * supported by Libre Baskerville, translate this to 'off'. Do not translate
+		 * into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Libre Baskerville font: on or off', 'pierogi' ) ) {
+			$font_families[] = 'Libre+Baskerville:400i';
+		}
+
+		if ( $font_families ) {
+			$fonts_url = add_query_arg( [
+				'family' => rawurlencode( implode( '|', $font_families ) ),
+				'subset' => rawurlencode( $subsets ),
+			], 'https://fonts.googleapis.com/css' );
+		}
+
+		return esc_url_raw( $fonts_url );
+	}
+}
 
 /**
  * Custom template tags for this theme.
