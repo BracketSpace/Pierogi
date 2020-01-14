@@ -41,3 +41,5 @@ Pierogi is distributed under the terms of the GNU GPL.
 * Underscores, © 2012-2020 Automattic, Inc., GNU GPL v2 or later
 * normalize-wheel, © 2015-2020 Facebook, Inc., BSD
 * custom-event-polyfill, © 2016-2020 Evan Krambuhl, MIT
+* Lato font, © 2010-2020 Łukasz Dziedzic, SIL Open Font License, source: Google Fonts
+* Libre Baskerville font, © 2012-2020 Impallari Type, SIL Open Font License, source: Google Fonts
