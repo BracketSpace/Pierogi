@@ -53,6 +53,8 @@ function pierogi_get_accent_selectors() {
 			'body.archive .read-more:hover::after',
 			'body.search .read-more:hover::after',
 			'.comments-area .reply .comment-reply-link:hover::after',
+			'body.page article .pierogi-drop-cap:not(:focus) > span::before',
+			'body.single-post article .pierogi-drop-cap:not(:focus) > span::before',
 		],
 		'stroke' => [
 			'.site-header .navigation-container .search-button:hover g',
