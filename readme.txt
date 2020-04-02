@@ -3,7 +3,7 @@ Contributors: BracketSpace, szaleq, tomaszadamowicz, Kubitomakita
 Tags: blog, news, portfolio, grid-layout, one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,17 +17,22 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= 1.0.6 =
+* [Changed] Escaping and sanitization
+* [Changed] Better accessibility
+* [Added] `wp_body_open()` tag
+
 = 1.0.5 =
-[Changed] Small design adjustments
+* [Changed] Small design adjustments
 
 = 1.0.4 =
-[Changed] Google fonts enqueued as separate stylesheet
+* [Changed] Google fonts enqueued as separate stylesheet
 
 = 1.0.3 =
-[Changed] Small design adjustments
-[Changed] In the package, the source files are included
-[Changed] Image sizes prefixed
-[Changed] Menu animation cookie removed
+* [Changed] Small design adjustments
+* [Changed] In the package, the source files are included
+* [Changed] Image sizes prefixed
+* [Changed] Menu animation cookie removed
 
 = 1.0.2 =
 [Fixed] Theme screenshot properly
