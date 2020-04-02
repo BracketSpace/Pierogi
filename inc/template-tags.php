@@ -7,6 +7,19 @@
  * @package Pierogi
  */
 
+if ( ! function_exists( 'wp_body_open' ) ) {
+	// phpcs:disable
+	/**
+	 * Compatibility fallback
+	 *
+	 * @return void
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+	// phpcs:enable
+}
+
 if ( ! function_exists( 'pierogi_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.

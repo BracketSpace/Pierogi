@@ -57,9 +57,9 @@ function pierogi_footer_text_filter( $text ) {
 		'BracketSpace',
 		'WordPress',
 	], [
-		date( 'Y' ),
+		date_i18n( __( 'Y', 'pierogi' ) ),
 		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://bracketspace.com', 'BracketSpace' ),
-		sprintf( '<a href="%s" target="_blank">%s</a>', 'https://wordpress.org', 'WordPress' ),
+		sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( __( 'https://wordpress.org', 'pierogi' ) ), 'WordPress' ),
 	], esc_html( $text ) );
 }
 add_action( 'pierogi_footer_text', 'pierogi_footer_text_filter', 1000 );

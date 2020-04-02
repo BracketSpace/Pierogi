@@ -179,13 +179,13 @@ function pierogi_custom_styles() {
 		$accent_selectors = pierogi_get_accent_selectors();
 		$light_selectors  = pierogi_get_accent_light_selectors();
 
-		$custom_css[] = pierogi_prepare_custom_css( $accent_selectors, $colors['accent'] );
-		$custom_css[] = pierogi_prepare_custom_css( $light_selectors, $colors['light'] );
+		$custom_css[] = pierogi_prepare_custom_css( $accent_selectors, sanitize_hex_color( $colors['accent'] ) );
+		$custom_css[] = pierogi_prepare_custom_css( $light_selectors, sanitize_hex_color( $colors['light'] ) );
 	}
 
 	if ( $colors['secondary'] !== $defaults['secondary'] ) {
 		$secondary_selectors = pierogi_get_secondary_selectors();
-		$custom_css[]        = pierogi_prepare_custom_css( $secondary_selectors, $colors['secondary'] );
+		$custom_css[]        = pierogi_prepare_custom_css( $secondary_selectors, sanitize_hex_color( $colors['secondary'] ) );
 	}
 
 	if ( $custom_css ) {

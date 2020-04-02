@@ -17,7 +17,7 @@ function pierogi_comment_form_field() {
 			<textarea id="comment" name="comment" required="required" placeholder="%s"></textarea>
 		</p>',
 		esc_html__( 'Leave a reply', 'pierogi' ),
-		esc_html__( 'Write a comment...', 'pierogi' )
+		esc_attr__( 'Write a comment...', 'pierogi' )
 	);
 }
 add_filter( 'comment_form_field_comment', 'pierogi_comment_form_field' );
