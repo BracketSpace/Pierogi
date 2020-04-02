@@ -41,13 +41,13 @@
 
 }
 
-.widget_archive,
-.wp-block-archives {
+.widget_archive {
 
 	@extend %widget-archive;
 }
 
-.wp-block-archives {
+#page .wp-block-archives {
 
+	@extend %widget-archive;
 	@extend %widget-list-ul;
 }

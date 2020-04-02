@@ -1,10 +1,10 @@
-.widget_categories,
-.wp-block-categories {
+.widget_categories {
 
 	@extend %widget-archive;
 }
 
-.wp-block-categories {
+#page .wp-block-categories {
 
+	@extend %widget-archive;
 	@extend %widget-list-ul;
 }

@@ -39,11 +39,12 @@ function pierogi_get_accent_selectors() {
 			'.widget_calendar td a:hover',
 			'.widget_calendar th a:hover',
 			'.widget_archive a:hover',
-			'.wp-block-archives a:hover',
 			'.widget_categories a:hover',
-			'.wp-block-categories a:hover',
+			'#page .wp-block-archives a:hover',
+			'#page .wp-block-categories a:hover',
 			'.widget_nav_menu a:hover',
 			'.widget_tag_cloud a:hover',
+			'#page .entry-content a:hover',
 		],
 		'background-color' => [
 			'body.blog .read-more:hover::after',
@@ -66,9 +67,11 @@ function pierogi_get_accent_selectors() {
 		'border-color' => [
 			'.screen-reader-text:focus',
 			'.widget_categories a:hover',
-			'.widget_tag_cloud a:hover',
 			'.widget_archive a:hover',
+			'.widget_tag_cloud a:hover',
 			'.widget_nav_menu a:hover',
+			'#page .wp-block-archives a:hover',
+			'#page .wp-block-categories a:hover',
 			'body.single-post .entry-content a:not(.wp-block-button__link):not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
 		],
 		'outline-color' => [
