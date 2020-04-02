@@ -104,27 +104,22 @@
 			svg {
 				display: block;
 				margin-top: rem-calc(-4);
-
-				g,
-				line {
-					stroke: color(gray, 5);
-					transition: 0.2s;
-				}
 			}
 
-			&:hover {
+			g {
+				stroke: color(gray, 5);
+				transition: 0.2s;
+			}
 
-				g,
-				line {
+			&:hover,
+			&:focus {
+
+				g {
 					stroke: color(yellow);
 				}
 			}
-		}
 
-		.search-button.active {
-
-			svg g,
-			svg line {
+			&.active g {
 				stroke: color(gray, 1);
 			}
 		}

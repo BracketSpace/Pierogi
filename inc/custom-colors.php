@@ -27,6 +27,8 @@ function pierogi_get_accent_selectors() {
 			'.entry-meta a:hover',
 			'.screen-reader-text:focus',
 			'.main-navigation .main-menu-wrap li:hover > a',
+			'.main-navigation .main-menu-wrap li:focus-within > a',
+			'.main-navigation .main-menu-wrap li.focus-within > a',
 			'.author-box .h6',
 			'.site-header .site-branding p',
 			'.post-navigation a:hover',
@@ -58,7 +60,7 @@ function pierogi_get_accent_selectors() {
 		],
 		'stroke' => [
 			'.site-header .navigation-container .search-button:hover g',
-			'.site-header .navigation-container .search-button:hover line',
+			'.site-header .navigation-container .search-button:focus g',
 		],
 		'border-color' => [
 			'.screen-reader-text:focus',
@@ -67,6 +69,9 @@ function pierogi_get_accent_selectors() {
 			'.widget_archive a:hover',
 			'.widget_nav_menu a:hover',
 			'body.single-post .entry-content a:not(.wp-block-button__link):not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
+		],
+		'outline-color' => [
+			'*',
 		],
 	] );
 }

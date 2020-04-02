@@ -45,7 +45,9 @@
 			display: inline-block;
 			flex-shrink: 0;
 
-			&:hover {
+			&:hover,
+			&:focus-within,
+			&.focus-within {
 
 				> a {
 					color: color(yellow);
@@ -130,7 +132,8 @@
 				}
 
 				&:hover,
-				&:focus {
+				&:focus-within,
+				&.focus-within {
 
 					.sub-menu {
 						display: block;
@@ -254,8 +257,7 @@ body:not(.site-header-large) .main-menu-wrap > ul {
 		display: flex;
 	}
 
-	&:active,
-	&:focus {
+	&:active {
 		outline: none;
 	}
 

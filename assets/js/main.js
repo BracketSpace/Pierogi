@@ -2,6 +2,7 @@
  * External dependencies
  */
 import 'custom-event-polyfill';
+import 'focus-within-polyfill';
 
 /**
  * Internal dependencies
