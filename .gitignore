@@ -1,5 +1,4 @@
 *.log
-*.lock
 package-lock.json
 style.css
 style-editor.css
