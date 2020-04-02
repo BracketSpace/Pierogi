@@ -49,3 +49,15 @@ Pierogi is distributed under the terms of the GNU GPL.
 * custom-event-polyfill, © 2016-2020 Evan Krambuhl, MIT
 * Lato font, © 2010-2020 Łukasz Dziedzic, SIL Open Font License, source: Google Fonts
 * Libre Baskerville font, © 2012-2020 Impallari Type, SIL Open Font License, source: Google Fonts
+
+Image for theme screenshot (featured image), Copyright NordWood Themes
+License: CC0 1.0 Universal (CC0 1.0)
+Source: http://rightlight.nordwoodthemes.com/corn-bread-6/
+
+Image for theme screenshot (gravatar), Copyright Kuba Mikita
+License: CC BY 3.0
+Source: https://secure.gravatar.com/avatar/0a3ec35556bc3f7526f99ca67f39420f
+
+All SVG icons, Copyright Katarzyna Mikita
+License: CC0 1.0 Universal (CC0 1.0)
+Source: Internal
