@@ -23,10 +23,13 @@ function pierogi_get_accent_selectors() {
 			'body.blog .read-more:hover',
 			'body.archive .read-more:hover',
 			'body.search .read-more:hover',
+			'body.single-post .entry-content .wp-block-quote cite',
 			'.wp-block-cover a:hover',
 			'.entry-meta a:hover',
 			'.screen-reader-text:focus',
 			'.main-navigation .main-menu-wrap li:hover > a',
+			'.main-navigation .main-menu-wrap li:focus-within > a',
+			'.main-navigation .main-menu-wrap li.focus-within > a',
 			'.author-box .h6',
 			'.site-header .site-branding p',
 			'.post-navigation a:hover',
@@ -36,11 +39,12 @@ function pierogi_get_accent_selectors() {
 			'.widget_calendar td a:hover',
 			'.widget_calendar th a:hover',
 			'.widget_archive a:hover',
-			'.wp-block-archives a:hover',
 			'.widget_categories a:hover',
-			'.wp-block-categories a:hover',
+			'#page .wp-block-archives a:hover',
+			'#page .wp-block-categories a:hover',
 			'.widget_nav_menu a:hover',
 			'.widget_tag_cloud a:hover',
+			'#page .entry-content a:hover',
 		],
 		'background-color' => [
 			'body.blog .read-more:hover::after',
@@ -58,15 +62,20 @@ function pierogi_get_accent_selectors() {
 		],
 		'stroke' => [
 			'.site-header .navigation-container .search-button:hover g',
-			'.site-header .navigation-container .search-button:hover line',
+			'.site-header .navigation-container .search-button:focus g',
 		],
 		'border-color' => [
 			'.screen-reader-text:focus',
 			'.widget_categories a:hover',
-			'.widget_tag_cloud a:hover',
 			'.widget_archive a:hover',
+			'.widget_tag_cloud a:hover',
 			'.widget_nav_menu a:hover',
+			'#page .wp-block-archives a:hover',
+			'#page .wp-block-categories a:hover',
 			'body.single-post .entry-content a:not(.wp-block-button__link):not(.wp-block-file__button):not(.faux-button):not(.btn-primary):not(.btn-secondary)',
+		],
+		'outline-color' => [
+			'*',
 		],
 	] );
 }
@@ -179,13 +188,13 @@ function pierogi_custom_styles() {
 		$accent_selectors = pierogi_get_accent_selectors();
 		$light_selectors  = pierogi_get_accent_light_selectors();
 
-		$custom_css[] = pierogi_prepare_custom_css( $accent_selectors, $colors['accent'] );
-		$custom_css[] = pierogi_prepare_custom_css( $light_selectors, $colors['light'] );
+		$custom_css[] = pierogi_prepare_custom_css( $accent_selectors, sanitize_hex_color( $colors['accent'] ) );
+		$custom_css[] = pierogi_prepare_custom_css( $light_selectors, sanitize_hex_color( $colors['light'] ) );
 	}
 
 	if ( $colors['secondary'] !== $defaults['secondary'] ) {
 		$secondary_selectors = pierogi_get_secondary_selectors();
-		$custom_css[]        = pierogi_prepare_custom_css( $secondary_selectors, $colors['secondary'] );
+		$custom_css[]        = pierogi_prepare_custom_css( $secondary_selectors, sanitize_hex_color( $colors['secondary'] ) );
 	}
 
 	if ( $custom_css ) {

@@ -52,8 +52,11 @@ export default class SearchForm {
 		const modalID = element.getAttribute( 'data-toggle-element' );
 
 		this.activeModal = document.getElementById( modalID );
+		this.inactiveItems = this.activeModal.querySelectorAll( '[tabindex="-1"]' );
 
-		this.activeModal.querySelector( '.search-input' ).focus();
+		for ( const item of this.inactiveItems ) {
+			item.removeAttribute( 'tabindex' );
+		}
 
 		const height = this.calculateModalHeight();
 
@@ -65,7 +68,14 @@ export default class SearchForm {
 	hideModal() {
 		if ( this.activeModal ) {
 			this.activeModal.style.maxHeight = 0;
+			this.activeModal.inert = true;
 			this.activeModal = false;
+
+			for ( const item of this.inactiveItems ) {
+				item.setAttribute( 'tabindex', '-1' );
+			}
+
+			this.inactiveItems = false;
 
 			triggerEvent( 'searchformclose' );
 		}

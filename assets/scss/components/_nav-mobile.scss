@@ -159,8 +159,7 @@
 		vertical-align: middle;
 		width: rem-calc(25);
 
-		&:active,
-		&:focus {
+		&:active {
 			outline: none;
 		}
 	}
