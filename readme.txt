@@ -17,17 +17,22 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= 1.0.6 =
+* [Changed] Escaping and sanitization
+* [Changed] Better accessibility
+* [Added] `wp_body_open()` tag
+
 = 1.0.5 =
-[Changed] Small design adjustments
+* [Changed] Small design adjustments
 
 = 1.0.4 =
-[Changed] Google fonts enqueued as separate stylesheet
+* [Changed] Google fonts enqueued as separate stylesheet
 
 = 1.0.3 =
-[Changed] Small design adjustments
-[Changed] In the package, the source files are included
-[Changed] Image sizes prefixed
-[Changed] Menu animation cookie removed
+* [Changed] Small design adjustments
+* [Changed] In the package, the source files are included
+* [Changed] Image sizes prefixed
+* [Changed] Menu animation cookie removed
 
 = 1.0.2 =
 [Fixed] Theme screenshot properly
