@@ -23,6 +23,7 @@ function pierogi_get_accent_selectors() {
 			'body.blog .read-more:hover',
 			'body.archive .read-more:hover',
 			'body.search .read-more:hover',
+			'body.single-post .entry-content .wp-block-quote cite',
 			'.wp-block-cover a:hover',
 			'.entry-meta a:hover',
 			'.screen-reader-text:focus',
