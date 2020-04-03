@@ -1,3 +1,4 @@
+import focusTrap from 'focus-trap';
 import { triggerEvent } from '../helpers';
 
 const { __ } = wp.i18n;
@@ -6,17 +7,22 @@ export default class menuContainer {
 	activeItem;
 
 	constructor() {
+		this.header = document.getElementById( 'masthead' );
 		this.menuContainer = document.getElementById( 'site-navigation-mobile' );
 		this.menuToggle = document.getElementById( 'mobile-menu-button' );
 		this.menu = document.getElementById( 'mobile-menu' );
 		this.subMenuButtons = this.menuContainer.querySelectorAll( '.mobile-submenu-button' );
+		this.focusableItems = this.menuContainer.querySelectorAll( 'button, a' );
 
 		this.createSearchForm();
 		this.addMenuButtonsListeners();
+		this.toggleFocusable( false );
 
 		window.addEventListener( 'pierogi.viewportchange', this.watchBreakpointChange.bind( this ) );
 		window.addEventListener( 'pierogi.searchformopen', this.searchFormOpen.bind( this ) );
 		window.addEventListener( 'pierogi.searchformclose', this.searchFormClose.bind( this ) );
+
+		this.focusTrap = focusTrap( this.header );
 	}
 
 	watchBreakpointChange( e ) {
@@ -108,12 +114,33 @@ export default class menuContainer {
 		const
 			isActive = this.menuToggle.classList.contains( 'active' ),
 			eventType = isActive ? 'menuopen' : 'menuclose';
+		this.toggleFocusable( isActive );
+
+		if ( isActive ) {
+			this.menuContainer.setAttribute( 'aria-hidden', 'false' );
+			this.focusTrap.activate();
+		} else {
+			this.menuContainer.setAttribute( 'aria-hidden', 'true' );
+			this.focusTrap.deactivate();
+		}
 
 		triggerEvent( eventType );
 
 		document.querySelector( 'html' ).classList.toggle( 'menu-open' );
 		document.querySelector( 'body' ).classList.toggle( 'menu-open' );
 		this.resetSubmenus();
+	}
+
+	toggleFocusable( isActive ) {
+		if ( isActive ) {
+			for ( const item of this.focusableItems ) {
+				item.removeAttribute( 'tabindex' );
+			}
+		} else {
+			for ( const item of this.focusableItems ) {
+				item.setAttribute( 'tabindex', '-1' );
+			}
+		}
 	}
 
 	resetSubmenus() {

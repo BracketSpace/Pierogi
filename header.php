@@ -79,7 +79,7 @@
 		</div>
 
 
-		<nav id="site-navigation-mobile" class="main-navigation-mobile">
+		<nav id="site-navigation-mobile" class="main-navigation-mobile" aria-hidden="true">
 			<?php
 			$pierogi_mobile_location = has_nav_menu( 'mobile' ) ? 'mobile' : 'primary';
 
