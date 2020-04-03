@@ -17,6 +17,10 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Fine tune of the mobile menu tabbing
+* [Changed] Theme screenshot
+
 = 1.0.6 =
 * [Changed] Escaping and sanitization
 * [Changed] Better accessibility
