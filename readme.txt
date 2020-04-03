@@ -59,9 +59,9 @@ Image for theme screenshot (featured image), Copyright NordWood Themes
 License: CC0 1.0 Universal (CC0 1.0)
 Source: http://rightlight.nordwoodthemes.com/corn-bread-6/
 
-Image for theme screenshot (gravatar), Copyright Kuba Mikita
-License: CC BY 3.0
-Source: https://secure.gravatar.com/avatar/0a3ec35556bc3f7526f99ca67f39420f
+Image for theme screenshot (avatar), Copyright Daria Shevtsova
+License: CC0 1.0 Universal (CC0 1.0)
+Source: https://www.pexels.com/photo/back-view-of-woman-holding-her-denim-jacket-789812/
 
 All SVG icons, Copyright Katarzyna Mikita
 License: CC0 1.0 Universal (CC0 1.0)
