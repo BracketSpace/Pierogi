@@ -3,12 +3,14 @@
 .editorconfig
 .eslintrc
 .eslintrc.prod
+.actionspanel
+.github
 .git
 .gitignore
 .gitattributes
 .stylelintrc
 assets/images
-builds
+build
 vendor
 composer.json
 composer.lock
