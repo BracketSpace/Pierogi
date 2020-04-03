@@ -3,7 +3,7 @@ Contributors: BracketSpace, szaleq, tomaszadamowicz, Kubitomakita
 Tags: blog, news, portfolio, grid-layout, one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,10 @@ Clean, Gutenberg-ready theme with pixel-perfect design from Poland. Who doesn't 
 Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
+
+= 1.0.7 =
+* [Changed] Fine tune of the mobile menu tabbing
+* [Changed] Theme screenshot
 
 = 1.0.6 =
 * [Changed] Escaping and sanitization
@@ -59,9 +63,9 @@ Image for theme screenshot (featured image), Copyright NordWood Themes
 License: CC0 1.0 Universal (CC0 1.0)
 Source: http://rightlight.nordwoodthemes.com/corn-bread-6/
 
-Image for theme screenshot (gravatar), Copyright Kuba Mikita
-License: CC BY 3.0
-Source: https://secure.gravatar.com/avatar/0a3ec35556bc3f7526f99ca67f39420f
+Image for theme screenshot (avatar), Copyright Daria Shevtsova
+License: CC0 1.0 Universal (CC0 1.0)
+Source: https://www.pexels.com/photo/back-view-of-woman-holding-her-denim-jacket-789812/
 
 All SVG icons, Copyright Katarzyna Mikita
 License: CC0 1.0 Universal (CC0 1.0)

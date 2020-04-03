@@ -58,6 +58,8 @@ export default class SearchForm {
 			item.removeAttribute( 'tabindex' );
 		}
 
+		this.activeModal.querySelector( '.search-input' ).focus();
+
 		const height = this.calculateModalHeight();
 
 		this.activeModal.style.maxHeight = `${ height }px`;
