@@ -17,6 +17,9 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Theme screenshot
+
 = 1.0.7 =
 * [Changed] Fine tune of the mobile menu tabbing
 * [Changed] Theme screenshot
@@ -63,9 +66,9 @@ Image for theme screenshot (featured image), Copyright NordWood Themes
 License: CC0 1.0 Universal (CC0 1.0)
 Source: http://rightlight.nordwoodthemes.com/corn-bread-6/
 
-Image for theme screenshot (avatar), Copyright Daria Shevtsova
+Image for theme screenshot (avatar), Copyright Studio 7042
 License: CC0 1.0 Universal (CC0 1.0)
-Source: https://www.pexels.com/photo/back-view-of-woman-holding-her-denim-jacket-789812/
+Source: https://stocksnap.io/photo/BYFQQVMAUU
 
 All SVG icons, Copyright Katarzyna Mikita
 License: CC0 1.0 Universal (CC0 1.0)
