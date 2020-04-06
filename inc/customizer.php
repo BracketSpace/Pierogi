@@ -182,10 +182,7 @@ function pierogi_customize_register( $wp_customize ) {
 		'settings' => 'theme_layout',
 		'type'     => 'radio',
 		'label'    => __( 'Layout', 'pierogi' ),
-		'choices'  => [
-			'no-sidebar'  => __( 'No Sidebar', 'pierogi' ),
-			'has-sidebar' => __( 'With Sidebar', 'pierogi' ),
-		],
+		'choices'  => pierogi_get_theme_layout_options(),
 	] );
 
 	$wp_customize->add_setting( 'blog_layout', [
@@ -199,10 +196,7 @@ function pierogi_customize_register( $wp_customize ) {
 		'settings' => 'blog_layout',
 		'type'     => 'radio',
 		'label'    => __( 'Blog Posts Layout', 'pierogi' ),
-		'choices'  => [
-			'grid' => __( 'Grid', 'pierogi' ),
-			'list' => __( 'List', 'pierogi' ),
-		],
+		'choices'  => pierogi_get_blog_layout_options(),
 	] );
 
 }
@@ -239,7 +233,7 @@ function pierogi_sanitize_theme_mod_footer_text( $value ) {
  * @return string
  */
 function pierogi_sanitize_theme_mod_theme_layout( $value ) {
-	return in_array( $value, [ 'no-sidebar', 'has-sidebar' ], true ) ? $value : 'has-sidebar';
+	return in_array( $value, [ 'no-sidebar', 'has-sidebar' ], true ) ? $value : pierogi_get_theme_mod_default( 'theme_layout' );
 }
 
 /**
@@ -249,7 +243,7 @@ function pierogi_sanitize_theme_mod_theme_layout( $value ) {
  * @return string
  */
 function pierogi_sanitize_theme_mod_blog_layout( $value ) {
-	return in_array( $value, [ 'grid', 'list' ], true ) ? $value : 'list';
+	return pierogi_validate_blog_layout( $value ) ? $value : pierogi_get_theme_mod_default( 'blog_layout' );
 }
 
 /**
