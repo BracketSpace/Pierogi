@@ -17,6 +17,10 @@ Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Body layout classes now accepts only allowed values
+* [Fixed] Theme setup instructions are displayed only to logged in users
+
 = 1.0.8 =
 * [Changed] Theme screenshot
 
