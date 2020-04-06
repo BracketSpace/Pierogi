@@ -283,7 +283,9 @@ if ( ! function_exists( 'pierogi_no_menu_warning' ) ) :
 	 * @return void
 	 */
 	function pierogi_no_menu_warning() {
-		printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html__( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+		if ( current_user_can( 'edit_theme_options' ) ) {
+			printf( '<div class="not-set-menu"><p>%s</p></div>', esc_html__( 'Please add menu in Primary location in Appearance > Menus in admin panel', 'pierogi' ) );
+		}
 	}
 endif;
 
