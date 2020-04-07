@@ -3,7 +3,7 @@ Contributors: BracketSpace, szaleq, tomaszadamowicz, Kubitomakita
 Tags: blog, news, portfolio, grid-layout, one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,9 @@ Clean, Gutenberg-ready theme with pixel-perfect design from Poland. Who doesn't 
 Source code is available on GitHub: https://github.com/BracketSpace/Pierogi
 
 == Changelog ==
+
+= 1.0.10 =
+* [Changed] Theme screenshot
 
 = 1.0.9 =
 * [Changed] Body layout classes now accepts only allowed values
@@ -66,9 +69,9 @@ Pierogi is distributed under the terms of the GNU GPL.
 * Lato font, © 2010-2020 Łukasz Dziedzic, SIL Open Font License, source: Google Fonts
 * Libre Baskerville font, © 2012-2020 Impallari Type, SIL Open Font License, source: Google Fonts
 
-Image for theme screenshot (featured image), Copyright NordWood Themes
+Image for theme screenshot (featured image), Copyright Brodie Vissers
 License: CC0 1.0 Universal (CC0 1.0)
-Source: http://rightlight.nordwoodthemes.com/corn-bread-6/
+Source: https://stocksnap.io/photo/I0ZLP3OGW8
 
 Image for theme screenshot (avatar), Copyright Studio 7042
 License: CC0 1.0 Universal (CC0 1.0)
